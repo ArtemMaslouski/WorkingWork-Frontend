@@ -1,0 +1,108 @@
+.header_component {
+    background-color: rgb(255, 255, 255);
+    padding: 0vw 5vw;
+}
+
+.header_content {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    z-index: 1;
+}
+
+.nav {
+    display: flex; 
+    align-items: center; 
+    position: relative;
+    width: 100%; 
+    font-size: 1rem;
+}
+
+.nav li {
+    list-style: none;
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+.logo_and_menu {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.desktop_links {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; 
+}
+
+.desktop_links li {
+    padding: 0 10px;
+}
+
+.nav_list {
+    display: flex; 
+    align-items: center; 
+    flex-direction: row;
+    margin-left: auto; /* Размещает меню справа */
+}
+
+.menu-icon {
+    display: none; 
+    cursor: pointer;
+    color: black;
+}
+
+/* Скрываем элементы из меню на больших экранах */
+.nav_list .createExercise,
+.nav_list .findExercise {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop_links {
+        display: none; 
+    }
+
+    .nav {
+        justify-content: space-between;
+    }
+
+    .nav_list {
+        display: none; 
+        flex-direction: column; 
+        position: absolute;
+        padding: 10px 0; 
+        right: 0;
+        top: 5vh; 
+        background-color: white; 
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+        z-index: 100; 
+    }
+
+    .nav_list.active {
+        display: flex; 
+    }
+
+    .nav_list .createExercise,
+    .nav_list .findExercise {
+        display: block; /* Показываем элементы в меню на маленьких экранах */
+    }
+
+    .nav_list li {
+        margin: 10px 0; 
+        width: 100%;
+        text-align: center; 
+    }
+
+    .menu-icon {
+        display: block; 
+    }
+
+    .logo img {
+        width: 90px; 
+    }
+}

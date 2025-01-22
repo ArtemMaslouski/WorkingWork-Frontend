@@ -1,8 +1,7 @@
 body {
     margin: 0;
-    padding: 1vw 3vw; 
+    /* padding: 0vw 3vw 1vw 3vw;  */
     position: relative;
-   
 }
 
 body::after {
@@ -28,7 +27,7 @@ body::after {
 }
 
 @media (max-width: 768px) {
-    body {
-        padding: 2vw; 
-    }
+    /* body {
+        padding: 0vw 3vw; 
+    } */
 }
