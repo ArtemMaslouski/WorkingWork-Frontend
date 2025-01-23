@@ -5,6 +5,7 @@ import { IoIosMenu } from "react-icons/io";
 import { FiMapPin } from "react-icons/fi";
 import { TfiWorld } from "react-icons/tfi";
 import { FaQuestion } from "react-icons/fa";
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
@@ -18,9 +19,9 @@ const Header = () => {
       <div className="header_content">
         <nav className="nav">
           <div className="logo_and_menu">
-            <li className='logo'>
+            <NavLink className='logo' to='/'>
               <img src={Logo} alt="logo working work" />
-            </li>
+            </NavLink>
             <ul className="desktop_links">
               <li to='/CreateExercise' className='createExercise'>Создать задание</li>
               <li to='/FindExercise' className='findExercise'>Найти задание</li>

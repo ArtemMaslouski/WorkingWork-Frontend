@@ -1,0 +1,6 @@
+# Игнорировать кэш Babel
+node_modules/.cache/
+
+# Игнорировать временные файлы сборки
+client1/node_modules/.cache/
+client1/node_modules/.cache/default-development/

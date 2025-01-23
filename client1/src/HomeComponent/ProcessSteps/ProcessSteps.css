@@ -1,0 +1,57 @@
+.processSteps_component {
+    margin-top: 5vh;
+}
+
+.cards_container {
+    display: flex;
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    margin-top: 10vh;
+}
+
+.card {
+    display: flex; /* Use flexbox for card layout */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Push image to the bottom */
+    background-color: #DDE8C5; 
+    border: 1px solid #EE5300;  
+    align-items: center;
+    text-align: center;
+    width: 20vw; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.text_content {
+    padding: 0 1vw; 
+}
+
+.card img {
+    max-width: 100%; 
+    height: auto; 
+    margin-top: auto; /* Push image to the bottom */
+}
+
+@media (max-width: 768px) {
+    .cards_container {
+        display: flex;
+        justify-content: space-between; 
+        margin-top: 8vh;
+        font-size: 1rem;
+    }
+    
+    .card {
+        display: flex; 
+        flex-direction: column;
+        justify-content: space-between; 
+        background-color: #DDE8C5; 
+        border: 1px solid #EE5300;  
+        align-items: center;
+        text-align: center;
+        width: 25vw; 
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    }
+    
+    .card img {
+        height: auto; 
+    }
+}
