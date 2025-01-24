@@ -2,6 +2,7 @@ import React from 'react'
 import './HomePage.css'
 import HomeIntro from '../../HomeComponent/HomeIntro/HomeIntro'
 import ProcessSteps from '../../HomeComponent/ProcessSteps/ProcessSteps'
+import ActionBut from '../../HomeComponent/ActionButComponent/ActionButComponent'
 
 const HomePage = () => {
   return (
@@ -9,6 +10,8 @@ const HomePage = () => {
       <HomeIntro/>
       
       <ProcessSteps/>
+      
+      <ActionBut/>
     </div>
   )
 }

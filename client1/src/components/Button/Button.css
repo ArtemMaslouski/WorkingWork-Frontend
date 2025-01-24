@@ -1,0 +1,22 @@
+.contact-button{
+    border-radius: 20px;
+}
+
+button{
+    width: 20vw;
+    height: 7vh;
+    font-weight: 545;
+    font-size: 1rem;
+}
+
+/* button:active{
+
+} */
+@media (max-width: 768px) {
+    button{
+        width: 45%;
+        height: 6vh;
+        font-weight: 545;
+        font-size: 1rem;
+    }
+}

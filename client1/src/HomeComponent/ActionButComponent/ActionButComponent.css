@@ -1,0 +1,31 @@
+.action_component{
+    margin-top: 15vh;
+    margin-bottom: 10vh;
+}
+
+.find_help_component p{
+    font-size: 1.2rem;
+    align-items: center;
+    text-align: center;
+}
+
+.action_button{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    padding-top: 8vh;
+}
+
+@media (max-width: 768px) {
+    .action_component{
+        margin-top: 5vh;
+    }
+    .find_help_component p{
+        font-size: 1.1rem;
+    }
+    
+    .action_button{
+        padding-top: 4vh;
+    }
+}
