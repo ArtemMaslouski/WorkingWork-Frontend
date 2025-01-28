@@ -6,13 +6,13 @@
     display: flex;
     justify-content: space-between; 
     flex-wrap: wrap; 
-    margin-top: 10vh;
+    margin-top: 8vh;
 }
 
 .card {
-    display: flex; /* Use flexbox for card layout */
-    flex-direction: column; /* Stack children vertically */
-    justify-content: space-between; /* Push image to the bottom */
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
     background-color: #DDE8C5; 
     border: 1px solid #EE5300;  
     align-items: center;
@@ -28,7 +28,7 @@
 .card img {
     max-width: 100%; 
     height: auto; 
-    margin-top: auto; /* Push image to the bottom */
+    margin-top: auto; 
 }
 
 @media (max-width: 768px) {
@@ -38,7 +38,7 @@
         margin-top: 8vh;
         font-size: 1rem;
     }
-    
+
     .card {
         display: flex; 
         flex-direction: column;

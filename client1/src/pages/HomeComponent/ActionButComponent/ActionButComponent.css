@@ -4,7 +4,7 @@
 }
 
 .find_help_component p{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     align-items: center;
     text-align: center;
 }
@@ -22,7 +22,7 @@
         margin-top: 5vh;
     }
     .find_help_component p{
-        font-size: 1.1rem;
+        font-size: 1.1rem; 
     }
     
     .action_button{

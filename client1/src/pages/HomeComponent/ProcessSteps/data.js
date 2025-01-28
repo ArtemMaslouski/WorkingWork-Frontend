@@ -1,6 +1,6 @@
-import card1 from '../../shared/photo/cards/card1.jpg';
-import card2 from '../../shared/photo/cards/card2.jpg';
-import card3 from '../../shared/photo/cards/card3.jpg';
+import card1 from '../../../shared/photo/cards/card1.jpg';
+import card2 from '../../../shared/photo/cards/card2.jpg';
+import card3 from '../../../shared/photo/cards/card3.jpg';
 
 const cardsData = [
     {

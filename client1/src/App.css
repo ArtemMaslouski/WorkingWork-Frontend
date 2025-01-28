@@ -1,7 +1,12 @@
 body {
     margin: 0;
     /* padding: 0vw 3vw 1vw 3vw;  */
+    /* background: url('./shared//photo//A_subtle_background_design_inspired_by_the_aesthetic_of_GTA_featuring_soft_muted_colors_like_grey_and_beige_The_design_includes_faint_outlines_of_urban_elements_like_skyscrapers_graffiti_and_street_art_but_not_too_detailed_.jpeg')  no-repeat center center fixed;; */
     position: relative;
+    background-size: cover; /* Заставляет изображение занимать всю область */
+    position: relative;
+
+     
 }
 
 body::after {
@@ -26,8 +31,48 @@ body::after {
     overflow: auto; 
 }
 
+@font-face {
+    font-family: 'Pricedown';
+    src: url('./shared//font//Pricedown\ Bl.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gta';
+    src: url('./shared/font//gta-russian-regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'russo';
+    src: url('./shared/font/Russo_One.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gta2';
+    src: url('./shared/font//Roboto-VariableFont_wdth\,wght.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+ h2{
+    font-size: 1.7rem;
+    /* font-family: Pricedown ; */
+}
+ h3, p
+{
+    font-size: 1rem;
+}
 @media (max-width: 768px) {
-    /* body {
-        padding: 0vw 3vw; 
-    } */
+   
+     h2{
+        font-size: 1.5rem;
+    }
+    h3,
+     p
+    {
+        font-size: 1rem;
+    }
 }

@@ -1,0 +1,51 @@
+.searchBar_component{
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    width: 100%;
+}
+
+.searchBar_component p{
+    font-size: 1.4rem;
+    align-items: center;
+    text-align: center;
+}
+
+.help_form {
+    width: 100%;
+    min-height: 400px; 
+    height: auto; 
+    background-image: url('../../../shared/photo/searcbar_arm.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    position: relative; 
+}
+
+.help_form > * {
+    position: relative; 
+    z-index: 2; 
+}
+
+@media (max-width: 768px) {
+   
+    .find_help_component p{
+        font-size: 1.1rem; 
+    }
+
+    .help_form {
+        width: 100%;
+        min-height: 300px; 
+        height: auto; 
+        background-image: url('../../../shared/photo/searcbar_arm.jpg');
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat; 
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        position: relative; 
+    }
+}

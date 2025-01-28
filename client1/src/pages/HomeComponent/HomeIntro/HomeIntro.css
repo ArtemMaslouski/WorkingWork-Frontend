@@ -2,17 +2,18 @@
     margin-top: 5vh;
     display: flex;
     justify-content: space-between;
-    
+    /* font-family: Pricedown; */
 }
 
 .intro_item h1{
     color:rgba(238,83,0);
     margin-top: 15vh;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    /* font-family: Pricedown ; */
 }
 
 .intro_item p{
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 .text_state {
@@ -27,16 +28,15 @@
 }
 
 @media (max-width: 768px) {
-
+    
     .homeIntro_content{
-        padding-top: 1vh;
+        margin-top: 1vh;
         display: inline;
         justify-content: center;
         align-items: center;
     }
-    
     .intro_item h1{
-        color:rgba(238,83,0);
+        margin-top: 5vh;
         font-size: 1.5rem;
     }
     

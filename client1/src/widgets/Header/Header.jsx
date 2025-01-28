@@ -35,9 +35,9 @@ const Header = () => {
           <ul className={`nav_list ${isMenu ? 'active' : ''}`}>
             <li to='/CreateExercise' className='createExercise'>Создать задание</li>
             <li to='/FindExercise' className='findExercise'>Найти задание</li>
-            <li><FiMapPin /></li>
-            <li><TfiWorld /></li>
-            <li><FaQuestion /></li>
+            <li><FiMapPin size={20}/></li>
+            <li><TfiWorld size={20}/></li>
+            <li><FaQuestion size={20}/></li>
             <li>Войти</li>
           </ul>
         </nav>
