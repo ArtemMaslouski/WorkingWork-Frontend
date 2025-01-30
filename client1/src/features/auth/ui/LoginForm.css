@@ -1,0 +1,17 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+   
+    height: 100vh; 
+    text-align: center; 
+}
+
+
+hr {
+    width: 100%;
+    border: none;
+    border-top: 2px solid #ccc;
+    margin: 10px 0;
+}
+

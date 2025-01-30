@@ -37,8 +37,8 @@ const Header = () => {
             <li to='/FindExercise' className='findExercise'>Найти задание</li>
             <li><FiMapPin size={20}/></li>
             <li><TfiWorld size={20}/></li>
-            <li><FaQuestion size={20}/></li>
-            <li>Войти</li>
+            <NavLink to='/QuestionComponent'><FaQuestion size={20}/></NavLink>
+            <NavLink to='/SignIn'>Войти</NavLink>
           </ul>
         </nav>
       </div>

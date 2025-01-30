@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './widgets/Header/Header';
 import Footer from './widgets/Footer/Footer';
 import HomePage from './pages/HomePage/HomePage';
+import QuestionComponent from './pages/QuestionComponent/QuestionComponent';
+import SignIn from './pages/SignIn/SignIn';
 
 function App() {
   return (
@@ -12,10 +14,10 @@ function App() {
        <div className="content">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* <Route path="/RoutesBus" element={<RoutesBus />} />
-          <Route path="/Tariffs" element={<Tariffs />} />
-          <Route path="/Contacts" element={<Contacts />} />
-          <Route path="/LoginAuthorizationPage" element={<LoginAuthorizationPage />} /> */}
+          <Route path="/QuestionComponent" element={<QuestionComponent />} />
+          {/* {/* <Route path="/Tariffs" element={<Tariffs />} /> */}
+          <Route path="/SignIn" element={<SignIn />} />
+          
         </Routes>
       </div>
       

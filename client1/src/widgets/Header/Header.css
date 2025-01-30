@@ -48,7 +48,16 @@
     display: flex; 
     align-items: center; 
     flex-direction: row;
-    margin-left: auto; /* Размещает меню справа */
+    gap:10px;
+    margin-left: auto; 
+}
+
+.nav_list a{
+    color:black;
+}
+
+.nav_list a:active{
+    color: #EE5300; 
 }
 
 .menu-icon {
