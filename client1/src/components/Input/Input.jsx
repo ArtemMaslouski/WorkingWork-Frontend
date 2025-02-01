@@ -13,7 +13,7 @@ const Input = ({ type, name, label, required, showToggleButton, togglePasswordVi
               required={required}
               value={value}
               placeholder=' '
-              // onChange={onChange}
+              onChange={onChange}
               
           />
           <label>{label}<span>{required ? '*' : ''}</span></label>
@@ -22,7 +22,7 @@ const Input = ({ type, name, label, required, showToggleButton, togglePasswordVi
               type="button" 
               className="toggle-password" 
               onClick={togglePasswordVisibility}
-          >
+            >
               {isPasswordVisible ? <IoEyeSharp /> : <FaEyeSlash />}
           </button>
           )}

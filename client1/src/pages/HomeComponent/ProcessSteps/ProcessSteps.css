@@ -1,6 +1,18 @@
 .processSteps_component {
     margin-top: 5vh;
 }
+.processSteps_component h2,
+.processSteps_component h3{
+    font-family: Pricedown;
+}
+.processSteps_component h3{
+    font-size: 1.2rem;
+    font-family: Pricedown;
+}
+
+.text_content p{
+    font-family: gta;;
+}
 
 .cards_container {
     display: flex;
@@ -30,6 +42,7 @@
     height: auto; 
     margin-top: auto; 
 }
+
 
 @media (max-width: 768px) {
     .cards_container {

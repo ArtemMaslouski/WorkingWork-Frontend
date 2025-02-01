@@ -11,11 +11,11 @@ const ActionButComponent = () => {
             <div className="action_button">
                 <Button   
                     text="Найти исполнителя" 
-                    style={{ backgroundColor: '#EE5300', color: 'black', border: '2px solid #EE5300' }} 
+                    style={{ backgroundColor: '#EE5300',fontWeight:'bold', color: 'black', border: '2px solid #EE5300', width:'36%' }} 
                 />
                 <Button
                     text="Стать исполнителем" 
-                    style={{ backgroundColor: 'white', color: 'black', border: '2px solid #EE5300'  }} />
+                    style={{ backgroundColor: 'white',fontWeight:'bold', color: 'black', border: '2px solid #EE5300',width:'36%'  }} />
             </div>
         </div>
     </div>

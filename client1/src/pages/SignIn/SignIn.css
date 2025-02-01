@@ -2,10 +2,10 @@
     padding: 0vw 5vw;
 }
 
-.forms{
-    height: 80vh;
+.signIn_registration_component .forms_comp{
+    /* height: 80vh; */
     background-image: url('../../shared/photo/forRegisterphoto/registerPerson.jpg');
-    background-size: 50%; 
+    background-size: 44%; 
     background-repeat: no-repeat; 
     display: flex; 
     flex-direction: column; 
@@ -21,15 +21,17 @@
 
 
 @media (max-width: 768px) {
-    .forms{
+    .signIn_registration_component .forms_comp{
         height: 40vh;
-        background-image: url('../../shared/photo/forRegisterphoto/registerPerson.jpg');
-        background-size: 100%; 
-        background-repeat: no-repeat; 
-        display: flex; 
+        background-image: none;
+        display: flex;
         flex-direction: column; 
         justify-content: left; 
         position: relative; 
+    }
+    .element_forms{
+        margin-top: 5vh;
+    
     }
 }
 

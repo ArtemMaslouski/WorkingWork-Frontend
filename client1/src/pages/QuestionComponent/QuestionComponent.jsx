@@ -15,11 +15,14 @@ const QuestionComponent = () => {
             <div className="support_button">
                 <Button
                     text='Заказ'
-                    style={{backgroundColor:'white', height:'5vh'}}
+                    style={{backgroundColor: 'white', 
+                    color: 'black', border: '2px solid #EE5300', height:'5vh', width:'20vw'}}
                     />
+                   
                 <Button
                     text='Поддержка'
-                    style={{backgroundColor:'white', height:'5vh'}}
+                    style={{backgroundColor: 'white', 
+                    color: 'black', border: '2px solid #EE5300', height:'5vh', width:'20vw'}}
                 />
             </div>
 

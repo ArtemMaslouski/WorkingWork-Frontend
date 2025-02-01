@@ -3,10 +3,11 @@ import Input from '../../../components/Input/Input'
 import Button from '../../../components/Button/Button'
 import './LoginForm.css'
 
-const LoginForm = ({ email, setEmail, password, setPassword, togglePasswordVisibility, showPassword, onSubmit }) => {
+const LoginForm = ({ email, setEmail, password, setPassword, 
+  togglePasswordVisibility, showPassword, onSubmit,onSwitchToRegister,onSwitchToForgotPassword }) => {
   return (
-    <form>
-        <h1>Вход и регистрация<br/><hr/></h1>
+    <form className="forms" onSubmit={onSubmit}>
+        <h1>Вход<br/><hr/></h1>
         <Input 
                 type='email' 
                 name='email' 
@@ -26,10 +27,19 @@ const LoginForm = ({ email, setEmail, password, setPassword, togglePasswordVisib
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            {/* <Button type="submit" text={'Войти'} 
+
+            <Button type="submit" text={'Войти'} 
             style={{ backgroundColor: '#EE5300', 
-            color: 'black', border: '2px solid #EE5300'}} 
-            /> */}
+            color: 'black', border: '2px solid #EE5300', fontWeight:'bold'}} 
+            />
+
+          <p style={{ cursor: 'pointer', color: 'black', fontWeight:'bold' }} onClick={onSwitchToForgotPassword}>
+            Забыли пароль?
+          </p>
+
+          <p style={{ cursor: 'pointer', color: 'black', fontWeight:'bold' }} onClick={onSwitchToRegister}>
+          У вас ещё нет аккаунта? <span style={{ color:'#EE5300'}}>Зарегистрироваться</span> 
+          </p>
     </form>
   )
 }

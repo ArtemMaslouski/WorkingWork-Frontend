@@ -1,4 +1,5 @@
 .searchBar_component{
+    /* padding: 0vw 5vw; */
     margin-top: 10vh;
     margin-bottom: 5vh;
     width: 100%;
@@ -8,6 +9,7 @@
     font-size: 1.4rem;
     align-items: center;
     text-align: center;
+    font-family: gta;
 }
 
 .help_form {

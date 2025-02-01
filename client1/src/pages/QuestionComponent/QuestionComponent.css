@@ -1,6 +1,8 @@
 .question_component{
     padding: 10vh 5vw;
+    font-family: gta;
 }
+
 
 .question_item{
     display: flex;
@@ -15,6 +17,7 @@
 }
 .answers_questions h1{
     color:#EE5300;
+    font-family: Pricedown;
 }
 
 .answers_questions h2{

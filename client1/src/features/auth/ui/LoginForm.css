@@ -2,16 +2,36 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center; 
-   
     height: 100vh; 
     text-align: center; 
+    font-family: gta;
 }
 
+form h1{
+    font-family: 'Pricedown';
+}
 
 hr {
     width: 100%;
     border: none;
     border-top: 2px solid #ccc;
-    margin: 10px 0;
+    margin: 1vw 0;
 }
 
+form span{
+    color:gray;
+    margin-bottom: 1vw;
+    width: 35%;
+    font-size: 1rem;
+}
+
+
+@media (max-width: 768px) {
+    form span{
+        color:gray;
+        margin-bottom: 1vw;
+        width: 70%;
+        font-size: 1rem;
+    }
+    
+}

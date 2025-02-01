@@ -9,11 +9,12 @@
     color:rgba(238,83,0);
     margin-top: 15vh;
     font-size: 2.8rem;
-    /* font-family: Pricedown ; */
+    font-family: Pricedown ;
 }
 
 .intro_item p{
     font-size: 1.1rem;
+    font-family: gta;
 }
 
 .text_state {
@@ -26,6 +27,7 @@
     padding-left: 1vw;
     border: 1px solid rgb(140, 195, 18);
 }
+
 
 @media (max-width: 768px) {
     
@@ -64,4 +66,17 @@
     .image_mainPage img{
         width: 50vw;
     }
+}
+
+@media (min-width: 1560px) {
+    .image_mainPage img{
+        width: 33vw;
+    }
+    .intro_item h1{
+        color:rgba(238,83,0);
+        margin-top: 15vh;
+        font-size: 3.5rem;
+        font-family: Pricedown ;
+    }
+
 }
