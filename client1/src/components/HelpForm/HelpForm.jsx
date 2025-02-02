@@ -13,7 +13,7 @@ const HelpForm = () => {
         
        <Button 
         text="Оформить заявку"
-        style={{backgroundColor: '#EE5300', color:'black',border: '2px solid #EE5300', width:'40%'}}
+        style={{backgroundColor: '#EE5300', color:'black',border: '2px solid #EE5300', width:'43%'}}
         
             />
     </div>

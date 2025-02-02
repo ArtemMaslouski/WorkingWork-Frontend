@@ -2,6 +2,7 @@ import React from 'react'
 import Input from '../../../components/Input/Input'
 import Button from '../../../components/Button/Button'
 import './LoginForm.css'
+// import AuthPeople from '../model/api.js'
 
 const LoginForm = ({ email, setEmail, password, setPassword, 
   togglePasswordVisibility, showPassword, onSubmit,onSwitchToRegister,onSwitchToForgotPassword }) => {
