@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.79bd94ba.css",
-    "main.js": "/static/js/main.aa3d8aed.js",
+    "main.css": "/static/css/main.3e48d13f.css",
+    "main.js": "/static/js/main.ac61887f.js",
     "static/media/Roboto-Regular.ttf": "/static/media/Roboto-Regular.cfe3602cde0ad1c9ae0e.ttf",
     "static/media/registerPerson.jpg": "/static/media/registerPerson.1d1c35e5efcf58a057a6.jpg",
     "static/media/card2.jpg": "/static/media/card2.afcf91f337fd1dfe97e4.jpg",
@@ -13,11 +13,11 @@
     "static/media/back_ground.jpg": "/static/media/back_ground.e396a6392b41c9210929.jpg",
     "static/media/Pricedown Bl.otf": "/static/media/Pricedown Bl.6e212bcb2d96be599534.otf",
     "index.html": "/index.html",
-    "main.79bd94ba.css.map": "/static/css/main.79bd94ba.css.map",
-    "main.aa3d8aed.js.map": "/static/js/main.aa3d8aed.js.map"
+    "main.3e48d13f.css.map": "/static/css/main.3e48d13f.css.map",
+    "main.ac61887f.js.map": "/static/js/main.ac61887f.js.map"
   },
   "entrypoints": [
-    "static/css/main.79bd94ba.css",
-    "static/js/main.aa3d8aed.js"
+    "static/css/main.3e48d13f.css",
+    "static/js/main.ac61887f.js"
   ]
 }

@@ -44,25 +44,7 @@ body::after {
     font-weight: normal;
     font-style: normal;
 }
-/* @font-face {
-    font-family: 'gta';
-    src: url('./shared/font//gta-russian-regular.ttf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
 
-@font-face {
-    font-family: 'russo';
-    src: url('./shared/font/Russo_One.ttf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'gta2';
-    src: url('./shared/font//Roboto-VariableFont_wdth\,wght.ttf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-} */
 
  h2{
     font-size: 1.7rem;

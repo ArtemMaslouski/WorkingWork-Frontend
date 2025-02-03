@@ -1,6 +1,5 @@
 import { React, useState } from 'react';
 import './SignIn.css';
-import { FaArrowLeftLong } from "react-icons/fa6";
 import { LoginForm, RegisterForm, ForgotPasswordForm } from '../../features/auth/index.js';
 
 const SignIn = () => {

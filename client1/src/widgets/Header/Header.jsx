@@ -18,13 +18,16 @@ const Header = () => {
     <div className='header_component'>
       <div className="header_content">
         <nav className="nav">
+
           <div className="logo_and_menu">
+
             <NavLink className='logo' to='/'>
               <img src={Logo} alt="logo working work" />
             </NavLink>
+
             <ul className="desktop_links">
-              <li to='/CreateExercise' className='createExercise'>Создать задание</li>
-              <li to='/FindExercise' className='findExercise'>Найти задание</li>
+              <NavLink to='/CreateExercise' className={({ isActive }) => isActive ? 'createExercise active' : 'createExercise'}>Создать задание</NavLink>
+              <NavLink to='/FindExercise' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
             </ul>
           </div>
 
@@ -33,12 +36,12 @@ const Header = () => {
           </div>
 
           <ul className={`nav_list ${isMenu ? 'active' : ''}`}>
-            <li to='/CreateExercise' className='createExercise'>Создать задание</li>
-            <li to='/FindExercise' className='findExercise'>Найти задание</li>
-            <li><FiMapPin size={20}/></li>
-            <li><TfiWorld size={20}/></li>
-            <NavLink to='/QuestionComponent'><FaQuestion size={20}/></NavLink>
-            <NavLink to='/SignIn'>Войти</NavLink>
+            <NavLink to='/CreateExercise' className={({ isActive }) => isActive ? 'createExercise active' : 'createExercise'}>Создать задание</NavLink>
+            <NavLink to='/FindExercise' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
+            <NavLink to='/locationModal'><FiMapPin size={20}/></NavLink>
+            <NavLink to='/languageModal'><TfiWorld size={20}/></NavLink>
+            <NavLink to='/QuestionComponent' className={({ isActive }) => isActive ? 'active' : ''}><FaQuestion size={20}/></NavLink>
+            <NavLink to='/SignIn' className={({ isActive }) => isActive ? 'active' : ''}>Войти</NavLink>
           </ul>
         </nav>
       </div>
