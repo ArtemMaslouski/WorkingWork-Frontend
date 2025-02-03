@@ -5,7 +5,7 @@ class Auth {
     
     async registerUser({ UserName, Email, Password }) {
         try {
-            const response = await axios.post(`${baseURL}/create-user`, {
+            const response = await axios.post(`${baseURL}/auth/create-user`, {
                 UserName,
                 Email,
                 Password
@@ -19,7 +19,7 @@ class Auth {
 
     async login({UserName, Password}){
         try{
-            const response = await axios.post(`${baseURL}/login`,{
+            const response = await axios.post(`${baseURL}/auth/login`,{
                 UserName, Password
             });
             return response.data;
@@ -31,7 +31,7 @@ class Auth {
 
     async getUsers(){
         try{
-            const response = await axios.get(`${baseURL}/get-users`);
+            const response = await axios.get(`${baseURL}/auth/get-users`);
             return response.data;
         }catch(error){
             console.error('Ошибка при регистрации:', error.response?.data || error.message);
@@ -42,7 +42,7 @@ class Auth {
     // Удаление пользователя по ID
     async deleteUser({ id }) {
         try {
-            const response = await axios.delete(`${baseURL}/delete-users`, { data: { id } });
+            const response = await axios.delete(`${baseURL}/auth/delete-users`, { data: { id } });
             return response.data;
         } catch (error) {
             console.error('Ошибка при удалении пользователя:', error.response?.data || error.message);
@@ -51,7 +51,7 @@ class Auth {
     }
     async deleteUser(UserName) {//удаление по имени
         try {
-            const response = await axios.delete(`${baseURL}/delete-users`, { data: { Login: UserName } });
+            const response = await axios.delete(`${baseURL}/auth/delete-users`, { data: { Login: UserName } });
             return response.data;
         } catch (error) {
             console.error('Ошибка при удалении пользователя:', error.response?.data || error.message);
@@ -61,7 +61,7 @@ class Auth {
 
     async sendVerificationEmail(Email) {
         try {
-            const response = await axios.post(`${baseURL}/send`, { Email });
+            const response = await axios.post(`${baseURL}/auth/send`, { Email });
             return response.data;
         } catch (error) {
             console.error('Ошибка при отправке письма:', error.response?.data || error.message);
@@ -71,7 +71,7 @@ class Auth {
 
     async test() {//тестовая для авторизации
         try {
-            const response = await axios.get(`${baseURL}/test`, { withCredentials: true });
+            const response = await axios.get(`${baseURL}/auth/test`, { withCredentials: true });
             return response.data;
         } catch (error) {
             console.error('Ошибка при тестовом запросе:', error.response?.data || error.message);

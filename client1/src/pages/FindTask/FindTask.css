@@ -1,0 +1,43 @@
+.findTask_component{
+    padding: 0  5vw ;
+    font-family: gta;
+}
+.find_task_item{
+    background-image: url('../../shared/photo/findTaskPhoto/findTask.jpg');
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.find_task_item::before{
+    content:'';
+    position: absolute;top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1; 
+}
+
+.find_task_item > * {
+    position: relative; 
+    z-index: 2; 
+}
+
+.place_for_find_task{
+    padding-top: 10vh;
+    display:block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.place_for_find_task h1{
+    font-size: 2.5rem;
+    font-family: Pricedown ;
+    color:rgba(238,83,0);
+}

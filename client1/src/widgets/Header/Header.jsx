@@ -27,7 +27,7 @@ const Header = () => {
 
             <ul className="desktop_links">
               <NavLink to='/CreateExercise' className={({ isActive }) => isActive ? 'createExercise active' : 'createExercise'}>Создать задание</NavLink>
-              <NavLink to='/FindExercise' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
+              <NavLink to='/FindTask' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
             </ul>
           </div>
 
@@ -37,7 +37,7 @@ const Header = () => {
 
           <ul className={`nav_list ${isMenu ? 'active' : ''}`}>
             <NavLink to='/CreateExercise' className={({ isActive }) => isActive ? 'createExercise active' : 'createExercise'}>Создать задание</NavLink>
-            <NavLink to='/FindExercise' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
+            <NavLink to='/FindTask' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
             <NavLink to='/locationModal'><FiMapPin size={20}/></NavLink>
             <NavLink to='/languageModal'><TfiWorld size={20}/></NavLink>
             <NavLink to='/QuestionComponent' className={({ isActive }) => isActive ? 'active' : ''}><FaQuestion size={20}/></NavLink>

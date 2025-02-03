@@ -5,6 +5,7 @@ import Footer from './widgets/Footer/Footer';
 import HomePage from './pages/HomePage/HomePage';
 import QuestionComponent from './pages/QuestionComponent/QuestionComponent';
 import SignIn from './pages/SignIn/SignIn';
+import FindTask from './pages/FindTask/FindTask';
 
 function App() {
   return (
@@ -15,8 +16,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/QuestionComponent" element={<QuestionComponent />} />
-          {/* {/* <Route path="/Tariffs" element={<Tariffs />} /> */}
+          {/* {/* <Route path="/Tariffs" element={<Tariffs />} /> */}\
+          <Route path="/FindTask" element={<FindTask />} />
           <Route path="/SignIn" element={<SignIn />} />
+          
           
         </Routes>
       </div>
