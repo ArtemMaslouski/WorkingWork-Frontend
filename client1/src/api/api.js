@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {baseURL} from '../../../constants/someConstants'
+import {baseURL} from '../constants/someConstants'
 
 class Auth {
     

@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.3e48d13f.css",
-    "main.js": "/static/js/main.ac61887f.js",
+    "main.css": "/static/css/main.e5d8940c.css",
+    "main.js": "/static/js/main.4a574b19.js",
     "static/media/Roboto-Regular.ttf": "/static/media/Roboto-Regular.cfe3602cde0ad1c9ae0e.ttf",
     "static/media/registerPerson.jpg": "/static/media/registerPerson.1d1c35e5efcf58a057a6.jpg",
     "static/media/card2.jpg": "/static/media/card2.afcf91f337fd1dfe97e4.jpg",
     "static/media/mainPerson.jpg": "/static/media/mainPerson.f88b02d086f579a46fcd.jpg",
     "static/media/card1.jpg": "/static/media/card1.baf0a1d7b2afbed83bb2.jpg",
     "static/media/card3.jpg": "/static/media/card3.c31a91b7f9759833488d.jpg",
+    "static/media/findTask.jpg": "/static/media/findTask.2d70bc1d8dfb424ea2aa.jpg",
     "static/media/logo.jpg": "/static/media/logo.4b9e6af5542052daa914.jpg",
     "static/media/searcbar_arm.jpg": "/static/media/searcbar_arm.d95bdb2302736b538e73.jpg",
     "static/media/back_ground.jpg": "/static/media/back_ground.e396a6392b41c9210929.jpg",
     "static/media/Pricedown Bl.otf": "/static/media/Pricedown Bl.6e212bcb2d96be599534.otf",
     "index.html": "/index.html",
-    "main.3e48d13f.css.map": "/static/css/main.3e48d13f.css.map",
-    "main.ac61887f.js.map": "/static/js/main.ac61887f.js.map"
+    "main.e5d8940c.css.map": "/static/css/main.e5d8940c.css.map",
+    "main.4a574b19.js.map": "/static/js/main.4a574b19.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e48d13f.css",
-    "static/js/main.ac61887f.js"
+    "static/css/main.e5d8940c.css",
+    "static/js/main.4a574b19.js"
   ]
 }
