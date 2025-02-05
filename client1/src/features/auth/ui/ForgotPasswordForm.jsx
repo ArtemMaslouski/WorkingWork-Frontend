@@ -22,7 +22,7 @@ const ForgotPasswordForm = ({email, setEmail,onBackToLogin }) => {
           color: 'black', border: '2px solid #EE5300', fontWeight:'bold'}} 
         />
 
-      <p style={{ cursor: 'pointer', color: '#EE5300', fontWeight:'bold' }} onClick={onBackToLogin}>
+      <p title='Вернуться для входа в систему' style={{ cursor: 'pointer', color: '#EE5300', fontWeight:'bold' }} onClick={onBackToLogin}>
         Вернуться к входу
       </p>
     </form>

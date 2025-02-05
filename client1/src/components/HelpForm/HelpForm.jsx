@@ -1,9 +1,16 @@
 import React from 'react'
 import './HelpForm.css'
 import Button from '../Button/Button'
+import { useNavigate } from 'react-router-dom'
 
 const HelpForm = () => {
     
+  const navigate = useNavigate();
+
+  const handleClick =() =>{
+    navigate('./FindTask');
+  }
+
   return (
     <div className='helpForm_component'>
         <div className="text_information">
@@ -14,7 +21,7 @@ const HelpForm = () => {
        <Button 
         text="Оформить заявку"
         style={{backgroundColor: '#EE5300', color:'black',border: '2px solid #EE5300', width:'43%'}}
-        
+        onClick={handleClick}
             />
     </div>
   )

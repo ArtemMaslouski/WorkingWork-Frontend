@@ -28,17 +28,17 @@ const LoginForm = ({ email, setEmail, password, setPassword,
                 onChange={(e) => setPassword(e.target.value)}
             />
 
-            <Button type="submit" text={'Войти'} 
+            <Button type="submit" text={'Войти'}
             style={{ backgroundColor: '#EE5300', 
             color: 'black', border: '2px solid #EE5300', fontWeight:'bold'}} 
             />
 
-          <p style={{ cursor: 'pointer', color: 'black', fontWeight:'bold' }} onClick={onSwitchToForgotPassword}>
+          <p title ='Если забыли пароль, перейдите на страницу, нажатием на текст, для восстановления пароля' style={{ cursor: 'pointer', color: 'black', fontWeight:'bold' }} onClick={onSwitchToForgotPassword}>
             Забыли пароль?
           </p>
 
           <p style={{ cursor: 'pointer', color: 'black', fontWeight:'bold' }} onClick={onSwitchToRegister}>
-          У вас ещё нет аккаунта? <span style={{ color:'#EE5300'}}>Зарегистрироваться</span> 
+          У вас ещё нет аккаунта? <span title='Зарегистрироваться' style={{ color:'#EE5300'}}>Зарегистрироваться</span> 
           </p>
     </form>
   )

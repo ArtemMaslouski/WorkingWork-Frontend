@@ -4,10 +4,9 @@
     gap: 20px; 
     width: 100%; 
     font-size: 1.1rem;
-    margin: 5vh 0 5vh 0;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
-    background-color: white;
+    margin: 5vh 0;
+    padding: 5vh 0;
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     font-family: gta;
 }
@@ -18,40 +17,43 @@
     justify-content: center;
     padding: 10px;
     margin: 5px;
-    border:1px solid #b8b8b8;
+    border: 1px solid #a5a4a4;
     border-radius: 8px;
+    cursor: pointer;
+    color: #928F8F; 
+    text-decoration: none; 
+    gap:0.5vw;
 }
- 
 
-.service_item a {
-    display: flex;
-    align-items: center;
-    gap: 8px; 
+
+.services_component a {
+    color: inherit; 
     text-decoration: none;
-    color: #928F8F;
 }
 
 .service_item:hover {
-    border-color: #EE5300; 
+    border-color: #EE5300;
     background: #f7eac7; 
-}
-  
-.service_item:hover a {
     color: #EE5300; 
 }
+
+
+.service_item.active-service {
+    border-color: #EE5300;
+    background: #ffe8cc;
+    color: #EE5300;
+    text-decoration: none; 
+}
+
 
 @media (max-width: 768px) {
     .services_component {
         grid-template-columns: repeat(2, 1fr); 
     }
     .service_item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         padding: 5px;
         margin: 2px;
-        border:1px solid #a7a7a7;
-        border-radius: 8px;
+        border: 1px solid #a7a7a7;
         font-size: 0.9rem;
     }
 }

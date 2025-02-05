@@ -1,7 +1,7 @@
 .app-container {
     display: flex;
-    justify-content: center; /* Центрируем по горизонтали */
-    align-items: center; /* Центрируем по вертикали */
+    justify-content: center; 
+    align-items: center;
    
 }
 

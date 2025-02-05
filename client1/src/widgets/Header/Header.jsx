@@ -9,24 +9,31 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
+  const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+  const [isWorldModalOpen, setIsWorldModalOpen] = useState(false);
 
   const toggleIsMenu = () => {
     setIsMenu(prevState => !prevState);
-  }
+  };
+
+  const toggleMapModal = () => {
+    setIsMapModalOpen(prevState => !prevState);
+  };
+
+  const toggleWorldModal = () => {
+    setIsWorldModalOpen(prevState => !prevState);
+  };
 
   return (
     <div className='header_component'>
       <div className="header_content">
         <nav className="nav">
-
           <div className="logo_and_menu">
-
             <NavLink className='logo' to='/'>
               <img src={Logo} alt="logo working work" />
             </NavLink>
-
             <ul className="desktop_links">
-              <NavLink to='/CreateExercise' className={({ isActive }) => isActive ? 'createExercise active' : 'createExercise'}>Создать задание</NavLink>
+              <NavLink to='/CreatingTask' className={({ isActive }) => isActive ? 'createExercise active' : 'createExercise'}>Создать задание</NavLink>
               <NavLink to='/FindTask' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
             </ul>
           </div>
@@ -36,15 +43,22 @@ const Header = () => {
           </div>
 
           <ul className={`nav_list ${isMenu ? 'active' : ''}`}>
-            <NavLink to='/CreateExercise' className={({ isActive }) => isActive ? 'createExercise active' : 'createExercise'}>Создать задание</NavLink>
+            <NavLink to='/CreatingTask' className={({ isActive }) => isActive ? 'createExercise active' : 'createExercise'}>Создать задание</NavLink>
             <NavLink to='/FindTask' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
-            <NavLink to='/locationModal'><FiMapPin size={20}/></NavLink>
-            <NavLink to='/languageModal'><TfiWorld size={20}/></NavLink>
+            
+            <NavLink onClick={toggleMapModal} style={{ color: isMapModalOpen ? '#EE5300' : 'black' }}>
+              <FiMapPin size={20} />
+            </NavLink>
+            <NavLink onClick={toggleWorldModal} style={{ color: isWorldModalOpen ? '#EE5300' : 'black' }}>
+              <TfiWorld size={20} />
+            </NavLink>
+            
             <NavLink to='/QuestionComponent' className={({ isActive }) => isActive ? 'active' : ''}><FaQuestion size={20}/></NavLink>
             <NavLink to='/SignIn' className={({ isActive }) => isActive ? 'active' : ''}>Войти</NavLink>
           </ul>
         </nav>
       </div>
+     
     </div>
   );
 }

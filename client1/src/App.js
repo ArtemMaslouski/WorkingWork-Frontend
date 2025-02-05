@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage/HomePage';
 import QuestionComponent from './pages/QuestionComponent/QuestionComponent';
 import SignIn from './pages/SignIn/SignIn';
 import FindTask from './pages/FindTask/FindTask';
+import CreatingTask from './pages/CreatingTask/CreatingTask';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           {/* {/* <Route path="/Tariffs" element={<Tariffs />} /> */}\
           <Route path="/FindTask" element={<FindTask />} />
           <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/CreatingTask" element={<CreatingTask />}/>
           
           
         </Routes>

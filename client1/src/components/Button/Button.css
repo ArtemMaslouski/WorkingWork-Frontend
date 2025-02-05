@@ -1,6 +1,7 @@
 .contact-button{
     border-radius: 20px;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 button{
@@ -21,6 +22,7 @@ button{
     .contact-button{
         border-radius: 20px;
         margin-right: 20px;
+        
     }
 
     button{

@@ -17,10 +17,12 @@
     width: 100%;
 }
 
-.help_link ul li {
+.help_link ul a {
     list-style: none;
     width: 100%;
     text-align: center;
+    color:rgb(92,91,91);
+    text-decoration: none;
 }
 
 .footer_info{
@@ -35,13 +37,16 @@
     font-size: 0.85rem;
 }
 
-.icons {
+.icons a{
     list-style: none;
     display: flex;
     gap:1vw;
     color:rgb(92,91,91);
 }
-
+.icons{
+    display: flex;
+    gap:1vw;
+}
 @media (max-width: 768px) {
     .help_link ul {
         display: grid;
