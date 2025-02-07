@@ -14,7 +14,6 @@ const Input = ({ type, name, label, required, showToggleButton, togglePasswordVi
               value={value}
               placeholder=' '
               onChange={onChange}
-              
           />
           <label>{label}<span>{required ? '*' : ''}</span></label>
           {showToggleButton && (

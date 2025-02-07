@@ -17,7 +17,6 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/QuestionComponent" element={<QuestionComponent />} />
-          {/* {/* <Route path="/Tariffs" element={<Tariffs />} /> */}\
           <Route path="/FindTask" element={<FindTask />} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/CreatingTask" element={<CreatingTask />}/>

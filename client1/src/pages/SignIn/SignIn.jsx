@@ -1,12 +1,13 @@
 import { React, useState } from 'react';
 import './SignIn.css';
 import { LoginForm, RegisterForm, ForgotPasswordForm } from '../../features/auth/index.js';
+// import RecoveryForm from '../../features/auth/ui/RecoveryForm.jsx';
 
 const SignIn = () => {
     const [currentForm, setCurrentForm] = useState('login');
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [UserName, setName] = useState("");
+    const [Email, setEmail] = useState("");
+    const [Password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
@@ -23,9 +24,11 @@ const SignIn = () => {
                 <div className="element_forms">
                     {currentForm === 'login' && (
                         <LoginForm
-                            email={email}
+                            Email={Email}
                             setEmail={setEmail}
-                            password={password}
+                            Password={Password}
+                            UserName={UserName}
+                            setName={setName}
                             setPassword={setPassword}
                             togglePasswordVisibility={togglePasswordVisibility}
                             showPassword={showPassword}
@@ -35,11 +38,11 @@ const SignIn = () => {
                     )}
                     {currentForm === 'register' && (
                         <RegisterForm
-                            username={name}
-                            setUsername={setName}
-                            email={email}
+                            UserName={UserName}
+                            setName={setName}
+                            Email={Email}
                             setEmail={setEmail}
-                            password={password}
+                            Password={Password}
                             setPassword={setPassword}
                             togglePasswordVisibility={togglePasswordVisibility}
                             showPassword={showPassword}
@@ -48,12 +51,25 @@ const SignIn = () => {
                     )}
                     {currentForm === 'ForgotPasswordForm' && (
                         <ForgotPasswordForm
-                            email={email}
+                            Email={Email}
                             setEmail={setEmail}
                             onBackToLogin={handleBackToLogin}
                         />
+                       
                     )}
                 </div>
+               {/* <RecoveryForm
+                            email={email}
+                            setEmail={setEmail}
+                            password={password}
+                            setPassword={setPassword}
+                            username={name}
+                            setUsername={setName}
+                            togglePasswordVisibility={togglePasswordVisibility}
+                            showPassword={showPassword}
+                            setShowPassword={setShowPassword}
+                            onBackToLogin={handleBackToLogin}
+                        /> */}
             </div>
         </div>
     );

@@ -1,19 +1,32 @@
 import React from 'react'
 import Input from '../../../components/Input/Input'
 import Button from '../../../components/Button/Button'
-import './LoginForm.css'
+import '../styles/FormStyles.css'
+// import { handleSubmit } from '../model/eventHandler'
+// import userApi from '../../../api/userApi'
 
-const LoginForm = ({ email, setEmail, password, setPassword, 
-  togglePasswordVisibility, showPassword, onSubmit,onSwitchToRegister,onSwitchToForgotPassword }) => {
-  return (
-    <form className="forms" onSubmit={onSubmit}>
+const LoginForm = ({ Email, setEmail, Password, setPassword, 
+  togglePasswordVisibility, showPassword,onSwitchToRegister,onSwitchToForgotPassword }) => {
+   
+    // const handleSubmit = async (e) => {
+    //   e.preventDefault();
+    //   try{
+    //     const response = await userApi.login({Email, Password});
+    //     console.log(response)
+    //   }catch{
+    //     console.log('error')
+    //   }
+    // }
+ 
+    return (
+    <form className="forms" >
         <h1>Вход<br/><hr/></h1>
         <Input 
                 type='email' 
                 name='email' 
                 label={'Email'}
                 required={true} 
-                value={email}
+                value={Email}
                 onChange={(e) => setEmail(e.target.value)}
             />
             <Input 
@@ -24,7 +37,7 @@ const LoginForm = ({ email, setEmail, password, setPassword,
                 togglePasswordVisibility={togglePasswordVisibility} 
                 isPasswordVisible={showPassword}
                 required={true}
-                value={password}
+                value={Password}
                 onChange={(e) => setPassword(e.target.value)}
             />
 

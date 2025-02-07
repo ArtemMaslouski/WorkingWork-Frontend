@@ -6,9 +6,7 @@ class Auth {
     async registerUser({ UserName, Email, Password }) {
         try {
             const response = await axios.post(`${baseURL}/auth/create-user`, {
-                UserName,
-                Email,
-                Password
+                UserName, Email,Password
             });
             return response.data;
         } catch (error) {
@@ -49,15 +47,15 @@ class Auth {
             throw error;
         }
     }
-    async deleteUser(UserName) {//удаление по имени
-        try {
-            const response = await axios.delete(`${baseURL}/auth/delete-users`, { data: { Login: UserName } });
-            return response.data;
-        } catch (error) {
-            console.error('Ошибка при удалении пользователя:', error.response?.data || error.message);
-            throw error;
-        }
-    }
+    // async deleteUser(UserName) {
+    //     try {
+    //         const response = await axios.delete(`${baseURL}/auth/delete-users`, { data: { Login: UserName } });
+    //         return response.data;
+    //     } catch (error) {
+    //         console.error('Ошибка при удалении пользователя:', error.response?.data || error.message);
+    //         throw error;
+    //     }
+    // }
 
     async sendVerificationEmail(Email) {
         try {

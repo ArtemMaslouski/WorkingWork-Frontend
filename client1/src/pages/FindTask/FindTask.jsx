@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
+import React from 'react';
+
 import './FindTask.css';
 import InputService from '../../components/InputService/InputService';
-// import AuthPeople from '../../api/api'; 
+// import AuthPeople from '../../api/userApi'; 
 
 const FindTask = () => {
   // const [users, setUsers] = useState([]);
@@ -28,8 +30,8 @@ const FindTask = () => {
           <InputService placeholder="Например, требуется курьер, доставить товар" />
         </div>
       </div>
-      {/* <div className="all_users">
-        {error ? (
+      <div className="all_users">
+        {/* {error ? (
           <p>Ошибка при загрузке данных: {error.message}</p>
         ) : users.length > 0 ? (
           users.map((user) => (
@@ -41,8 +43,8 @@ const FindTask = () => {
           ))
         ) : (
           <p>Пользователи не найдены.</p>
-        )}
-      </div> */}
+        )} */}
+      </div>
     </div>
   );
 };
