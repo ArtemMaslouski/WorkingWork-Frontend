@@ -7,11 +7,15 @@ import QuestionComponent from './pages/QuestionComponent/QuestionComponent';
 import SignIn from './pages/SignIn/SignIn';
 import FindTask from './pages/FindTask/FindTask';
 import CreatingTask from './pages/CreatingTask/CreatingTask';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div className="App">
-      
+      {/* окна оповещения */}
+      <ToastContainer />
+
        <Header/>
        <div className="content">
         <Routes>

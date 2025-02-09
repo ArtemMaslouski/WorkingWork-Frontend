@@ -1,7 +1,7 @@
 import React from 'react'
 import Input from '../../../components/Input/Input'
 import Button from '../../../components/Button/Button'
-import userApi from '../../../api/userApi'
+import {handleRegisterSubmit} from '../model/eventHandler'
 
 const RegisterForm = ({
     UserName, setName,
@@ -11,19 +11,12 @@ const RegisterForm = ({
     onBackToLogin
 }) => {
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      
-      const response = await userApi.registerUser({ UserName, Email, Password });
-      console.log(response);
-    } catch (error) {
-      console.error('Ошибка при регистрации:', error);
-    }
-  };
-
+  const onSubmit =(e) =>{
+    handleRegisterSubmit(e, UserName, Email, Password, setName, setEmail, setPassword);
+  }
+  
   return (
-    <form className='forms' onSubmit={handleSubmit}>
+    <form className='forms' onSubmit={onSubmit}>
       <h1>Зарегистрироваться<br/><hr/></h1>
         <Input 
                 type='text' 

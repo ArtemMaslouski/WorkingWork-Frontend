@@ -2,24 +2,17 @@ import React from 'react'
 import Input from '../../../components/Input/Input'
 import Button from '../../../components/Button/Button'
 import '../styles/FormStyles.css'
-// import { handleSubmit } from '../model/eventHandler'
-// import userApi from '../../../api/userApi'
+import { handleLoginSubmit } from '../model/eventHandler'
 
 const LoginForm = ({ Email, setEmail, Password, setPassword, 
   togglePasswordVisibility, showPassword,onSwitchToRegister,onSwitchToForgotPassword }) => {
    
-    // const handleSubmit = async (e) => {
-    //   e.preventDefault();
-    //   try{
-    //     const response = await userApi.login({Email, Password});
-    //     console.log(response)
-    //   }catch{
-    //     console.log('error')
-    //   }
-    // }
- 
+    const onSubmit=(e)=>{
+      handleLoginSubmit(e,Email, Password, setEmail, setPassword)
+    }
+    
     return (
-    <form className="forms" >
+    <form className="forms" onSubmit={onSubmit}>
         <h1>Вход<br/><hr/></h1>
         <Input 
                 type='email' 

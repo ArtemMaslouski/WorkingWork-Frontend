@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 import Input from '../../../components/Input/Input';
 import { CiLock } from "react-icons/ci";
 import Button from '../../../components/Button/Button';
-import { handleSubmit } from '../model/eventHandler';
+// import { handleSubmit } from '../model/eventHandler';
 
 const ForgotPasswordForm = ({ Email, setEmail, onBackToLogin }) => {
   const [showCodeInput, setShowCodeInput] = useState(false);
   const [code, setCode] = useState('');
   
-  const onSubmit = (e) => {
-    e.preventDefault(); 
-    if (handleSubmit(e, Email, setShowCodeInput)) {
-      setShowCodeInput(true);
-    }
-  };
+  // const onSubmit = (e) => {
+  //   e.preventDefault(); 
+  //   if (handleSubmit(e, Email, setShowCodeInput)) {
+  //     setShowCodeInput(true);
+  //   }
+  // };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form >
       <div className='Lock_icon'><CiLock size={50} /></div>
         <h1>Не удается войти?<br/><hr/></h1>
         <span>Введите свой email, и мы отправим вам код для восстановления доступа</span>

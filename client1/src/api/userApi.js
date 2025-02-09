@@ -15,10 +15,10 @@ class Auth {
         }
     }
 
-    async login({UserName, Password}){
+    async login({Email, Password}){
         try{
             const response = await axios.post(`${baseURL}/auth/login`,{
-                UserName, Password
+                Email, Password
             });
             return response.data;
         }catch(error){
