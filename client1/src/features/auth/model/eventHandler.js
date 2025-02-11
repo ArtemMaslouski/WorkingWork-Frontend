@@ -5,10 +5,12 @@ import { toast } from 'react-toastify'
   export const handleRegisterSubmit = async (e, UserName, Email, Password, setName, setEmail, setPassword) => {
     e.preventDefault();
     if (!validateEmail(Email)) {
+      toast.error('Введите корректный адрес электронной почты')
       return; 
     }
 
     if (!validatePassword(Password)) {
+      toast.error('Пароль должен содержать заглавные буквы, строчные буквы, цифры и специальные символы')
       return; 
     }
     try {
@@ -25,7 +27,7 @@ import { toast } from 'react-toastify'
       setName('')
       setPassword('')
       setEmail('')
-      toast.error('Ошибка регистрации')
+      toast.error('Пользователь с таким email существует')
     }
   };
 
@@ -34,9 +36,10 @@ import { toast } from 'react-toastify'
       try{
         const response = await userApi.login({Email, Password});
         console.log(response)
+        toast.success(`Вы успешно вошли в аккаунт`)
         setEmail('')
         setPassword('')
-        toast.success(`Вы успешно вошли в аккаунт`)
+        
         
       }catch{
         console.log('error')
@@ -44,4 +47,20 @@ import { toast } from 'react-toastify'
         setEmail('')
         setPassword('')
       }
+  }
+
+  export const handleSendVerificationEmail = async(e,Email,setEmail)=>{
+    e.preventDefault();
+      try{
+        const response = await userApi.sendVerificationEmail(Email);
+        console.log(response)
+        setEmail('')
+        toast.success(`Вы успешно отправили код на почту`)
+        return true;
+      }catch{
+        console.log('error')
+        toast.error('Ошибка отправки')
+        setEmail('')
+      }
+      return false;
   }

@@ -47,22 +47,38 @@ class Auth {
             throw error;
         }
     }
-    // async deleteUser(UserName) {
-    //     try {
-    //         const response = await axios.delete(`${baseURL}/auth/delete-users`, { data: { Login: UserName } });
-    //         return response.data;
-    //     } catch (error) {
-    //         console.error('Ошибка при удалении пользователя:', error.response?.data || error.message);
-    //         throw error;
-    //     }
-    // }
 
     async sendVerificationEmail(Email) {
         try {
             const response = await axios.post(`${baseURL}/auth/send`, { Email });
             return response.data;
+            // if (response && response.success) {
+        
+            //     return true;
+            // }
         } catch (error) {
             console.error('Ошибка при отправке письма:', error.response?.data || error.message);
+            throw error;
+        }
+        // return false;
+    }
+
+    async verificateUserWithCodeFromEmail(Email, code){
+        try{
+            const response = await axios.post(`${baseURL}/auth/forgotPassword`, { code,Email });
+            return response.data;
+        }catch (error) {
+            console.log('Ошибка при отправке кода и почты')
+            throw error;
+        }
+    }
+
+    async resetPassword(Email, Password){
+        try{
+            const response = await axios.post(`${baseURL}/auth/resetPassword`, {Email, Password});
+            return response.data;
+        }catch(error){
+            console.log('Ошибка при изменении пароля')
             throw error;
         }
     }

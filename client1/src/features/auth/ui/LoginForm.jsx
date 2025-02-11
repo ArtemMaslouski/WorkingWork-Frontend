@@ -8,7 +8,7 @@ const LoginForm = ({ Email, setEmail, Password, setPassword,
   togglePasswordVisibility, showPassword,onSwitchToRegister,onSwitchToForgotPassword }) => {
    
     const onSubmit=(e)=>{
-      handleLoginSubmit(e,Email, Password, setEmail, setPassword)
+      handleLoginSubmit(e,Email, setEmail,Password, setPassword)
     }
     
     return (

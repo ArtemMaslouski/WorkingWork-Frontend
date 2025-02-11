@@ -2,21 +2,24 @@ import React, { useState } from 'react';
 import Input from '../../../components/Input/Input';
 import { CiLock } from "react-icons/ci";
 import Button from '../../../components/Button/Button';
-// import { handleSubmit } from '../model/eventHandler';
+import { handleSendVerificationEmail } from '../model/eventHandler';
 
 const ForgotPasswordForm = ({ Email, setEmail, onBackToLogin }) => {
   const [showCodeInput, setShowCodeInput] = useState(false);
   const [code, setCode] = useState('');
   
-  // const onSubmit = (e) => {
-  //   e.preventDefault(); 
-  //   if (handleSubmit(e, Email, setShowCodeInput)) {
-  //     setShowCodeInput(true);
-  //   }
-  // };
+  // открытие окна для кода
+  const onSubmit = async (e) => { 
+    const success = await handleSendVerificationEmail(e, Email, setEmail);
+    if (success) {
+        setShowCodeInput(true); 
+    } else {
+        console.log("Не удалось отправить код на email.");
+    }
+};
 
   return (
-    <form >
+    <form onSubmit={onSubmit}>
       <div className='Lock_icon'><CiLock size={50} /></div>
         <h1>Не удается войти?<br/><hr/></h1>
         <span>Введите свой email, и мы отправим вам код для восстановления доступа</span>
@@ -30,17 +33,16 @@ const ForgotPasswordForm = ({ Email, setEmail, onBackToLogin }) => {
           required={true}
         />
          {/* Если email валиден, появляется поле для кода */}
-        {showCodeInput && (
-            <Input
-              type='text'
-              name='code'
-              label='Введите код'
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-              required={true}
-              
-            />
-          )} 
+         {showCodeInput && (
+        <Input
+          type='text'
+          name='code'
+          label='Введите код'
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          required={true}
+        />
+      )} 
         <Button 
           text='Отправить' 
           style={{ backgroundColor: '#EE5300', color: 'black', border: '2px solid #EE5300', fontWeight:'bold' }} 
