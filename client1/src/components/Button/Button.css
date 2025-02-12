@@ -9,7 +9,7 @@ button{
     height: 6vh;
     font-weight: 545;
     font-size: 1.1rem;
-    font-family: gta;
+    font-family: gta; 
 }
 
 .contact-button:active {
@@ -32,3 +32,4 @@ button{
         font-size: 1rem;
     }
 }
+

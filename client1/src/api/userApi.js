@@ -52,20 +52,16 @@ class Auth {
         try {
             const response = await axios.post(`${baseURL}/auth/send`, { Email });
             return response.data;
-            // if (response && response.success) {
-        
-            //     return true;
-            // }
+           
         } catch (error) {
             console.error('Ошибка при отправке письма:', error.response?.data || error.message);
             throw error;
         }
-        // return false;
     }
 
-    async verificateUserWithCodeFromEmail(Email, code){
+    async verificateUserWithCodeFromEmail(Code, Email){
         try{
-            const response = await axios.post(`${baseURL}/auth/forgotPassword`, { code,Email });
+            const response = await axios.post(`${baseURL}/auth/forgotPassword`, { Code,Email });
             return response.data;
         }catch (error) {
             console.log('Ошибка при отправке кода и почты')
@@ -83,15 +79,6 @@ class Auth {
         }
     }
 
-    async test() {//тестовая для авторизации
-        try {
-            const response = await axios.get(`${baseURL}/auth/test`, { withCredentials: true });
-            return response.data;
-        } catch (error) {
-            console.error('Ошибка при тестовом запросе:', error.response?.data || error.message);
-            throw error;
-        }
-    }
 }
 
 const AuthPeople = new Auth();

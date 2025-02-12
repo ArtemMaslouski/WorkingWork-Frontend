@@ -7,8 +7,8 @@ import { handleLoginSubmit } from '../model/eventHandler'
 const LoginForm = ({ Email, setEmail, Password, setPassword, 
   togglePasswordVisibility, showPassword,onSwitchToRegister,onSwitchToForgotPassword }) => {
    
-    const onSubmit=(e)=>{
-      handleLoginSubmit(e,Email, setEmail,Password, setPassword)
+    const onSubmit= async (e)=>{
+      await handleLoginSubmit(e,Email, setEmail,Password, setPassword)
     }
     
     return (

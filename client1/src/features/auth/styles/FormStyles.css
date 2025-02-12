@@ -6,7 +6,9 @@ form {
     text-align: center; 
     font-family: gta;
 }
-
+.forms{
+    margin-top: 10vh;
+} 
 form h1{
     font-family: 'Pricedown';
 }

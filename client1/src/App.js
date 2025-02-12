@@ -8,6 +8,7 @@ import SignIn from './pages/SignIn/SignIn';
 import FindTask from './pages/FindTask/FindTask';
 import CreatingTask from './pages/CreatingTask/CreatingTask';
 import { ToastContainer } from 'react-toastify';
+ import {RecoveryForm} from './features/auth'
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
@@ -24,8 +25,12 @@ function App() {
           <Route path="/FindTask" element={<FindTask />} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/CreatingTask" element={<CreatingTask />}/>
-          
-          
+
+          <Route 
+            path="/RecoveryForm" 
+            element={<RecoveryForm />} 
+          />
+                    
         </Routes>
       </div>
       

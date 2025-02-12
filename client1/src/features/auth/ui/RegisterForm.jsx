@@ -2,6 +2,7 @@ import React from 'react'
 import Input from '../../../components/Input/Input'
 import Button from '../../../components/Button/Button'
 import {handleRegisterSubmit} from '../model/eventHandler'
+import '../styles/FormStyles.css'
 
 const RegisterForm = ({
     UserName, setName,
