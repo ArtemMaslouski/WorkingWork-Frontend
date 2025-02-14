@@ -2,10 +2,11 @@ import React from 'react'
 import Input from '../../../components/Input/Input'
 import Button from '../../../components/Button/Button'
 import '../styles/FormStyles.css'
-import { handleLoginSubmit } from '../model/eventHandler'
+import { handleLoginSubmit } from '../model/authHandlers'
 
-const LoginForm = ({ Email, setEmail, Password, setPassword, 
-  togglePasswordVisibility, showPassword,onSwitchToRegister,onSwitchToForgotPassword }) => {
+const LoginForm = ({ Email, setEmail, Password, 
+  setPassword, togglePasswordVisibility, showPassword,
+  onSwitchToRegister,onSwitchToForgotPassword }) => {
    
     const onSubmit= async (e)=>{
       await handleLoginSubmit(e,Email, setEmail,Password, setPassword)

@@ -16,7 +16,7 @@
     width: 100%;
     min-height: 400px; 
     height: auto; 
-    background-image: url('../../../shared/photo/searcbar_arm.jpg');
+    background-image: url('../../../shared/assets/photo/searcbar_arm.jpg');
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -41,7 +41,7 @@
         width: 100%;
         min-height: 300px; 
         height: auto; 
-        background-image: url('../../../shared/photo/searcbar_arm.jpg');
+        background-image: url('../../../shared/assets/photo/searcbar_arm.jpg');
         background-size: cover; 
         background-position: center; 
         background-repeat: no-repeat; 

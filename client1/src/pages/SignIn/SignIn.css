@@ -3,7 +3,7 @@
 }
 
 .signIn_registration_component .forms_comp{
-    background-image: url('../../shared/photo/forRegisterphoto/registerPerson.jpg');
+    background-image: url('../../shared/assets/photo/forRegisterphoto//registerPerson.jpg');
     background-size: 44%; 
     background-repeat: no-repeat; 
     display: flex; 
@@ -14,7 +14,7 @@
 
 @media (max-width: 768px) {
     .signIn_registration_component .forms_comp{
-        height: 40vh;
+        height: 30vh;
         background-image: none;
         display: flex;
         flex-direction: column; 
@@ -29,7 +29,7 @@
 
 @media (min-width: 768px) and (max-width: 1300px) {
     .signIn_registration_component .forms_comp{
-        background-image: url('../../shared/photo/forRegisterphoto/registerPerson.jpg');
+        background-image: url('../../shared/assets/photo/forRegisterphoto/registerPerson.jpg');
         background-size: 54%; 
         background-repeat: no-repeat; 
         display: flex; 

@@ -1,7 +1,7 @@
 import React from 'react'
 import './HomeIntro.css'
 import InputService from '../../../components/InputService/InputService'
-import Person from '../../../shared/photo/mainPerson.jpg'
+import Person from '../../../shared/assets/photo/mainPerson.jpg'
 
 const HomeIntro = () => {
   return (

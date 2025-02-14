@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Header.css';
-import Logo from '../../shared/photo/logo.jpg';
+import Logo from '../../shared/assets/photo/logo.jpg';
 import { IoIosMenu } from "react-icons/io";
 import { FiMapPin } from "react-icons/fi";
 import { TfiWorld } from "react-icons/tfi";

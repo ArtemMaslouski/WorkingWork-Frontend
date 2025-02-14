@@ -3,7 +3,7 @@
     font-family: gta;
 }
 .find_task_item{
-    background-image: url('../../shared/photo/findTaskPhoto/findTask.jpg');
+    background-image: url('../../shared/assets/photo/findTaskPhoto/findTask.jpg');
     height: 400px;
     background-size: cover;
     background-position: center;

@@ -1,7 +1,7 @@
 body {
     margin: 0;
     /* padding: 0vw 3vw 1vw 3vw;  */
-    background: url('./shared/photo//back_ground.jpg')  no-repeat center center fixed;;
+    background: url('./shared/assets/photo//back_ground.jpg')  no-repeat center center fixed;;
     position: relative;
     background-size: cover; 
     position: relative;
@@ -33,14 +33,14 @@ body::after {
 
 @font-face {
     font-family: 'Pricedown';
-    src: url('./shared//font//Pricedown\ Bl.otf') format('opentype');
+    src: url('./shared/assets/font/Pricedown\ Bl.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'gta';
-    src: url('./shared/font/Roboto-Regular.ttf') format('opentype');
+    src: url('./shared/assets/font/Roboto-Regular.ttf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }

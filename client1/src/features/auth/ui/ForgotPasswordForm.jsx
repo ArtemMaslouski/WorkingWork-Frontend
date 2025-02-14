@@ -1,34 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '../../../components/Input/Input';
 import { CiLock } from "react-icons/ci";
 import Button from '../../../components/Button/Button';
-import { useNavigate } from 'react-router-dom';
-import { handleSendVerificationEmail, handleVerificateUserWithCodeFromEmail } from '../model/eventHandler';
 import '../styles/FormStyles.css'
+import { useForgotPassword } from '../lib/hooks/useForgotPassword';
 
 const ForgotPasswordForm = ({ Email, setEmail, onBackToLogin  }) => {
+  const {
+    showCodeInput,
+    Code,
+    isCodeSent,
+    setCode,
+    onSendEmail,
+    onVerifyCode,
+} = useForgotPassword(Email, setEmail);
+  // const [showCodeInput, setShowCodeInput] = useState(false);
+  // const [Code, setCode] = useState('');
+  // const [isCodeSent, setIsCodeSent] = useState(false);
+  // const navigate = useNavigate();
 
-  const [showCodeInput, setShowCodeInput] = useState(false);
-  const [Code, setCode] = useState('');
-  const [isCodeSent, setIsCodeSent] = useState(false);
-  const navigate = useNavigate();
+  // const onSendEmail = async (e) => {
+  //   const success = await handleSendVerificationEmail(e, Email, setEmail);
+  //   if (success) {
+  //     setShowCodeInput(true);
+  //     setIsCodeSent(true);
+  //     console.log("Код отправлен на email.");
+  //   } else {
+  //     console.log("Не удалось отправить код на email.");
+  //   }
+  // };
 
-  const onSendEmail = async (e) => {
-    const success = await handleSendVerificationEmail(e, Email, setEmail);
-    if (success) {
-      setShowCodeInput(true);
-      setIsCodeSent(true);
-      console.log("Код отправлен на email.");
-    } else {
-      console.log("Не удалось отправить код на email.");
-    }
-  };
-
-  // Проверка кода из email
-  const onVerifyCode = async (e) => {
-    e.preventDefault();
-    await handleVerificateUserWithCodeFromEmail(Code, setCode, Email, setEmail, navigate);
-  };
+  // // Проверка кода из email
+  // const onVerifyCode = async (e) => {
+  //   e.preventDefault();
+  //   await handleVerificateUserWithCodeFromEmail(Code, setCode, Email, setEmail, navigate);
+  // };
   
 
   return (

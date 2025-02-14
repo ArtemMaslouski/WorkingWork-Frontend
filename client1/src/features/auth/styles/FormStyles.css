@@ -2,13 +2,10 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center; 
-    height: 70vh; 
     text-align: center; 
     font-family: gta;
 }
-.forms{
-    margin-top: 10vh;
-} 
+
 form h1{
     font-family: 'Pricedown';
 }
@@ -30,9 +27,31 @@ form span{
 
 @media (max-width: 768px) {
     form span{
-        color:gray;
-        margin-bottom: 1vw;
         width: 70%;
-        font-size: 1rem;
+    }
+
+    form{
+        height: 60vh;
+    }
+}
+@media (min-width: 1023px) {
+    .forms{
+        margin-top: 10vh;
+    } 
+
+    form{
+        height: 73vh;
+    }
+}
+
+@media (max-width: 480px) {
+    form span{
+        width: 70%;
+    }
+    .forms{
+        margin-top: 0.5vh;
+    } 
+    form{
+        height: 60vh;
     }
 }
