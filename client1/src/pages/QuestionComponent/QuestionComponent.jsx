@@ -1,6 +1,6 @@
 import {React, useState} from 'react'
 import './QuestionComponent.css'
-import Button from '../../components/Button/Button'
+import Button from '../../shared/ui/Button/Button'
 import question from './questions'
 
 const QuestionComponent = () => {

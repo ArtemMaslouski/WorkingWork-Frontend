@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/FormStyles.css'
-import Input from '../../../components/Input/Input';
-import Button from '../../../components/Button/Button';
+import Input from '../../../shared/ui/Input/Input';
+import Button from '../../../shared/ui/Button/Button';
 import { useRecoveryForm } from '../lib/hooks/useRecoveryForm';
 
 const RecoveryForm = () => {

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-// import React from 'react';
-
 import './FindTask.css';
-import InputService from '../../components/InputService/InputService';
+import InputService from '../../shared/ui/InputService/InputService';
 import AuthPeople from '../../api/userApi'; 
 
 const FindTask = () => {

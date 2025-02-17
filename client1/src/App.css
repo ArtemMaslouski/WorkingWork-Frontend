@@ -48,19 +48,19 @@ body::after {
 
  h2{
     font-size: 1.7rem;
-    /* font-family: Pricedown ; */
+    font-family: Pricedown ;
 }
  h3, p
 {
     font-size: 1rem;
 }
+
 @media (max-width: 768px) {
    
      h2{
         font-size: 1.5rem;
     }
-    h3,
-     p
+    h3,p
     {
         font-size: 1rem;
     }

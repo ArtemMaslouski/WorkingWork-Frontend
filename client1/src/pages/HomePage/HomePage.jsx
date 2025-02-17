@@ -1,11 +1,11 @@
 import React from 'react'
 import './HomePage.css'
-import HomeIntro from '../HomeComponent/HomeIntro/HomeIntro'
-import ProcessSteps from '../HomeComponent/ProcessSteps/ProcessSteps'
-import ActionBut from '../HomeComponent/ActionButComponent/ActionButComponent'
+import HomeIntro from '../../widgets/home/HomeIntro/HomeIntro'
+import ProcessSteps from '../../widgets/home/ProcessSteps/ProcessSteps'
+import ActionBut from '../../widgets/home/ActionButComponent/ActionButComponent'
 import ServicesList from '../../features/ServicesList/ui/ServicesList'
-import SearchBar from '../HomeComponent/SearchBar/SearchBar' 
-import ReviewComponent from '../HomeComponent/ReviewComponent/ReviewComponent'
+import SearchBar from '../../widgets/home/SearchBar/SearchBar' 
+import ReviewComponent from '../../widgets/home/ReviewComponent/ReviewComponent'
 
 const HomePage = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
-import Input from '../../../components/Input/Input';
+import Input from '../../../shared/ui/Input/Input';
 import { CiLock } from "react-icons/ci";
-import Button from '../../../components/Button/Button';
+import Button from '../../../shared/ui/Button/Button';
 import '../styles/FormStyles.css'
 import { useForgotPassword } from '../lib/hooks/useForgotPassword';
 
@@ -14,28 +14,6 @@ const ForgotPasswordForm = ({ Email, setEmail, onBackToLogin  }) => {
     onSendEmail,
     onVerifyCode,
 } = useForgotPassword(Email, setEmail);
-  // const [showCodeInput, setShowCodeInput] = useState(false);
-  // const [Code, setCode] = useState('');
-  // const [isCodeSent, setIsCodeSent] = useState(false);
-  // const navigate = useNavigate();
-
-  // const onSendEmail = async (e) => {
-  //   const success = await handleSendVerificationEmail(e, Email, setEmail);
-  //   if (success) {
-  //     setShowCodeInput(true);
-  //     setIsCodeSent(true);
-  //     console.log("Код отправлен на email.");
-  //   } else {
-  //     console.log("Не удалось отправить код на email.");
-  //   }
-  // };
-
-  // // Проверка кода из email
-  // const onVerifyCode = async (e) => {
-  //   e.preventDefault();
-  //   await handleVerificateUserWithCodeFromEmail(Code, setCode, Email, setEmail, navigate);
-  // };
-  
 
   return (
     <form className='forms' onSubmit={showCodeInput ? onVerifyCode : onSendEmail}>

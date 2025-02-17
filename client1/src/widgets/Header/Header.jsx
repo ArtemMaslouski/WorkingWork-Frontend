@@ -6,11 +6,17 @@ import { FiMapPin } from "react-icons/fi";
 import { TfiWorld } from "react-icons/tfi";
 import { FaQuestion } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
+import { handleLogout } from '../../features/auth/model/authHandlers';
 
 const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   const [isWorldModalOpen, setIsWorldModalOpen] = useState(false);
+  const isAuthenticated = !!Cookies.get('token');
+  const navigate = useNavigate()
+  
 
   const toggleIsMenu = () => {
     setIsMenu(prevState => !prevState);
@@ -54,7 +60,13 @@ const Header = () => {
             </NavLink>
             
             <NavLink to='/QuestionComponent' className={({ isActive }) => isActive ? 'active' : ''}><FaQuestion size={20}/></NavLink>
-            <NavLink to='/SignIn' className={({ isActive }) => isActive ? 'active' : ''}>Войти</NavLink>
+            
+            {isAuthenticated ? (
+                <NavLink onClick={() => handleLogout(navigate)} className={({ isActive }) => isActive ? 'active' : ''}>Выйти</NavLink>
+              ) : ( 
+                <NavLink to='/SignIn'className={({ isActive }) => isActive ? 'active' : ''}>Войти</NavLink>
+             )}
+           
           </ul>
         </nav>
       </div>
