@@ -33,7 +33,7 @@ import Swal from 'sweetalert2';
       cancelButtonText: 'Нет, остаться',
       position: 'top', 
       backdrop: true, 
-      width:"300px"
+      width:"320px"
     }).then((result) => {
       if (result.isConfirmed) {
         Cookies.remove('token');
@@ -45,20 +45,17 @@ import Swal from 'sweetalert2';
       } else {
         toast.info("Вы остались в системе");
       }
-    });
-    
+    });  
   };
 
   export const handleRegisterSubmit = async (e, UserName, Email, Password, setName, setEmail, setPassword) => {
     e.preventDefault();
 
     if (!validateEmail(Email)) {
-        toast.error('Введите корректный адрес электронной почты');
         return;
     }
 
     if (!validatePassword(Password)) {
-        toast.error('Пароль должен содержать заглавные буквы, строчные буквы, цифры и специальные символы');
         return;
     }
     try {
@@ -70,7 +67,6 @@ import Swal from 'sweetalert2';
     } catch (error) {
         console.error('Ошибка при регистрации:', error);
         
-        setName('');setPassword('');setEmail('');
         if (error.response && error.response.data && error.response.data.message.includes("email")) {
             toast.error('Пользователь с таким email уже зарегистрирован');
         } else {

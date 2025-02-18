@@ -75,6 +75,14 @@ a.active{
     display: none;
 }
 
+.logout-link{
+    color:black;
+    cursor:pointer;
+}
+
+.logout-link:hover{
+    color: #EE5300;
+}
 @media (max-width: 768px) {
     .desktop_links {
         display: none; 

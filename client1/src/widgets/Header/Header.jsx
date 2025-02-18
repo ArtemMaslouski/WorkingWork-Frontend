@@ -5,6 +5,7 @@ import { IoIosMenu } from "react-icons/io";
 import { FiMapPin } from "react-icons/fi";
 import { TfiWorld } from "react-icons/tfi";
 import { FaQuestion } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
 import { NavLink } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
@@ -62,8 +63,12 @@ const Header = () => {
             <NavLink to='/QuestionComponent' className={({ isActive }) => isActive ? 'active' : ''}><FaQuestion size={20}/></NavLink>
             
             {isAuthenticated ? (
-                <NavLink onClick={() => handleLogout(navigate)} className={({ isActive }) => isActive ? 'active' : ''}>Выйти</NavLink>
-              ) : ( 
+              <>
+                <NavLink to='/Profile'><CgProfile size={20}/></NavLink>
+                <span onClick={() => handleLogout(navigate)} className='logout-link'>Выйти</span>
+              </>
+              ) 
+              :( 
                 <NavLink to='/SignIn'className={({ isActive }) => isActive ? 'active' : ''}>Войти</NavLink>
              )}
            
