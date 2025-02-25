@@ -1,2 +1,2 @@
-export const baseURL = 'https://workingworld-backend.onrender.com'
+export const baseURL = 'https://workingworld-backend-production.up.railway.app'
 
