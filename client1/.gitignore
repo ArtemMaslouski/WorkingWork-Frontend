@@ -1,3 +1,4 @@
+/node_modules
 # Игнорировать кэш Babel
 node_modules/.cache/
 
