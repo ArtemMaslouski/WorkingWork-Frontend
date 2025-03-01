@@ -13,7 +13,7 @@
 }
 
 .intro_item p{
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: gta;
 }
 
@@ -43,7 +43,7 @@
     }
     
     .intro_item p{
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
     
     .text_state {

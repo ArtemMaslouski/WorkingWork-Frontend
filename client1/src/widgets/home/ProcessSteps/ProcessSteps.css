@@ -11,7 +11,8 @@
 }
 
 .text_content p{
-    font-family: gta;;
+    font-family: gta;
+    font-size: 1rem;
 }
 
 .cards_container {
@@ -67,4 +68,14 @@
     .card img {
         height: auto; 
     }
+    .text_content{
+        align-items: center;
+        text-align: center;
+        display: inline;
+    }
+    .text_content p{
+        font-family: gta;
+        font-size: 0.8rem;
+    }
+
 }

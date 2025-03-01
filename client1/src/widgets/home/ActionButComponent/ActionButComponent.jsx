@@ -25,12 +25,12 @@ const ActionButComponent = () => {
                 <Button   
                     text="Найти исполнителя" 
                     onClick={handleClickCreate}
-                    style={{ backgroundColor: '#EE5300',fontWeight:'bold', color: 'black', border: '2px solid #EE5300', width:'34%', height:'8vh' }} 
+                    style={{ backgroundColor: '#EE5300',fontWeight:'light', color: 'black', border: '2px solid #EE5300', width:'65%', height:'7vh' }} 
                 />
                 <Button
                     text="Стать исполнителем" 
                     onClick={handleClickFind}
-                    style={{ backgroundColor: 'white',fontWeight:'bold', color: 'black', border: '2px solid #EE5300',width:'34%',height:'8vh' }} />
+                    style={{ backgroundColor: 'white',fontWeight:'light', color: 'black', border: '2px solid #EE5300',width:'65%',height:'7vh' }} />
             </div>
         </div>
     </div>

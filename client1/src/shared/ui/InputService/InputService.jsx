@@ -11,7 +11,7 @@ const InputService = ({ placeholder }) => {
         placeholder={placeholder || 'Услуги и предложения'}
       />
       <button className="search-button">
-        <FaSearch size={25}/>
+        <FaSearch size={30}/>
       </button>
     </div>
   )
