@@ -32,10 +32,23 @@
         height: 25vw;
     }
 }
-@media (max-width: 540px) {
+@media (max-width: 560px) {
     .helpForm_component {
         padding: 10px;
-        width: 70vw;
-        height: 55vw;
+        width: 50vw;
+        height: 45vw;
     }
+}
+@media (max-width: 440px) {
+    .helpForm_component {
+        padding: 10px;
+        width: 60vw;
+        height: 40vw;
+    }
+    .text_information p,
+.text_information h1{
+    font-size: 0.7rem;
+    text-align: left; 
+    font-family: gta;
+}
 }

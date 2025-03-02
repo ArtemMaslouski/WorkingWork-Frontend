@@ -28,9 +28,9 @@ const Footer = () => {
                     <p>© Информация, опубликованная на данном сайте, предназначена для любой аудитории, если иное не указано дополнительно в отношении отдельных материалов.</p>
                 </div>
                 <div className="icons">
-                    <NavLink><MdOutlineMail size={30}/></NavLink>
-                    <NavLink><SiTelegram size={30}/></NavLink>
-                    <NavLink><FaInstagramSquare size={30}/></NavLink>
+                    <NavLink><MdOutlineMail size={20}/></NavLink>
+                    <NavLink><SiTelegram size={20}/></NavLink>
+                    <NavLink><FaInstagramSquare size={20}/></NavLink>
                 </div>
                
             </div> 

@@ -2,14 +2,14 @@
     border-radius: 20px;
     margin-left: 20px;
     cursor: pointer;
-    font-family: 'Pricedown';
+    /* font-family: 'Pricedown'; */
 }
 
 button{
     width: 36%;
     height: 6vh;
     font-weight: 545;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: gta; 
 }
 
@@ -30,7 +30,7 @@ button{
         width: 70%;
         height: 5vh;
         font-weight: 545;
-        font-size: 1rem;
+        font-size: 0.85rem;
     }
 }
 

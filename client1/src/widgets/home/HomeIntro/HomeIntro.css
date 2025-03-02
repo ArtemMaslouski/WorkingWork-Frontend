@@ -67,6 +67,11 @@
         width: 50vw;
     }
 }
+@media (max-width: 360px) {
+    .intro_item  .text_state{
+        font-size: 0.7rem;
+    }
+}
 
 @media (min-width: 1560px) {
     .image_mainPage img{
