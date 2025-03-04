@@ -16,6 +16,7 @@
     text-align: center;
     align-items: center;
     padding-top: 8vh;
+    gap:7vw;
 }
 
 @media (max-width: 768px) {

@@ -1,12 +1,13 @@
 .contact-button{
     border-radius: 20px;
-    margin-left: 20px;
+    align-items: center;
     cursor: pointer;
     /* font-family: 'Pricedown'; */
 }
 
 button{
-    width: 36%;
+    align-items: center;
+    width: 34%;
     height: 6vh;
     font-weight: 545;
     font-size: 1rem;
@@ -22,8 +23,7 @@ button{
 @media (max-width: 768px) {
     .contact-button{
         border-radius: 20px;
-        margin-right: 20px;
-        
+        align-items: center;
     }
 
     button{

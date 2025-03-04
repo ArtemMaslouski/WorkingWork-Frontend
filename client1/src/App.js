@@ -6,17 +6,22 @@ import HomePage from './pages/HomePage/HomePage';
 import QuestionComponent from './pages/QuestionComponent/QuestionComponent';
 import SignIn from './pages/SignIn/SignIn';
 import FindTask from './pages/FindTask/FindTask';
-import CreatingTask from './pages/CreatingTask/CreatingTask';
+import CreatingTask from './pages/CreatingTask/ui/CreatingTask';
 import Profile from './pages/Profile/Profile'
+import {RecoveryForm} from './features/auth'
 import { ToastContainer } from 'react-toastify';
- import {RecoveryForm} from './features/auth'
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div className="App">
       
-      <ToastContainer />
+      <ToastContainer
+      //  position="bottom-center"
+      //  autoClose={2000}
+       />
+
+
 
        <Header/>
        <div className="content">
