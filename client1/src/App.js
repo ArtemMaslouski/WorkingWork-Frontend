@@ -9,6 +9,7 @@ import FindTask from './pages/FindTask/FindTask';
 import CreatingTask from './pages/CreatingTask/ui/CreatingTask';
 import Profile from './pages/Profile/Profile'
 import {RecoveryForm} from './features/auth'
+import OrderForm from './pages/OrderForm/OrderForm';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/FindTask" element={<FindTask />} />
           <Route path="/SignIn" element={<SignIn />} />
           <Route path="/CreatingTask" element={<CreatingTask />}/>
+          <Route path ="/OrderForm" element={<OrderForm/>}/>
           <Route path="/Profile" element={<Profile />}/>
           <Route 
             path="/RecoveryForm" 

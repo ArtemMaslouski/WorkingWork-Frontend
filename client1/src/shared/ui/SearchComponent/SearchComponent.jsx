@@ -5,7 +5,7 @@ import { FaSearch } from "react-icons/fa";
 const SearchComponent = () => {
     const [work, setWork] = useState('');
     const [city, setCity] = useState('');
-    // const cities = ['Москва', 'Санкт-Петербург', 'Казань', 'Екатеринбург', 'Новосибирск'];
+    const cities = ['Минск', 'Брест', 'Борисов', 'Витебск'];
 
 
     return (
@@ -24,9 +24,9 @@ const SearchComponent = () => {
                     className="city-select"
                 >
                     <option value="" disabled>Город</option>
-                    {/* {cities.map((city, index) => (
+                    {cities.map((city, index) => (
                         <option key={index} value={city}>{city}</option>
-                    ))} */}
+                    ))}
                 </select>
                 <button className="search-button">
                         <FaSearch size={25}/>
