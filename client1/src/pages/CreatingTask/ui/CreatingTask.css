@@ -50,7 +50,7 @@
 .task-link:hover {
     color: #EE5300 !important; 
     font-weight: bold;
-    font-size: 1.3rem; 
+    /* font-size: 1.3rem;  */
 }
 
 @media (max-width: 768px) {

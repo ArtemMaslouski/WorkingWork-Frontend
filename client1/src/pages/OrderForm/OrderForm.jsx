@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React from 'react';
+import { useState } from 'react';
 import './OrderForm.css'
 import Input from '../../shared/ui/Input/Input'
 // import serviceDetails from '../CreatingTask/model/serviceDetails'
@@ -14,8 +15,7 @@ const OrderForm = () => {
   return (
     <div className='order_form_component'>
         <div className="forms_for_tasks">
-            {/* <span>Опишитье свое задание, отправляйте и ждите откликов от исполнителей</span> */}
-           {/* <div className="category_order"> */}
+          
                 <Input
                     type='text'
                     className='input-field'
@@ -30,7 +30,6 @@ const OrderForm = () => {
                     label={'Подкатегория'}
                     required
                 />
-            {/* </div>  */}
           
             <div className="description-field">
                 <textarea
@@ -43,7 +42,7 @@ const OrderForm = () => {
 
             <Input
                  type='text'
-                 className='input-field'
+                 className='inputInt-field'
                  name='Название задания'
                  label={'Адрес'}
                  required
@@ -51,7 +50,6 @@ const OrderForm = () => {
 
             <div className="date_fields">
                 <div className="date_field">
-                    {/* <label htmlFor='startDate'>Дата начала</label> */}
                     <DatePicker
                         selected={startDate}
                         onChange={(date) => setStartDate(date)}
@@ -63,7 +61,6 @@ const OrderForm = () => {
                 </div>
 
                 <div className="date_field">
-                    {/* <label htmlFor='startDate'>Дата окончания</label> */}
                     <DatePicker
                         selected={endDate}
                         onChange={(date) => setEndDate(date)}

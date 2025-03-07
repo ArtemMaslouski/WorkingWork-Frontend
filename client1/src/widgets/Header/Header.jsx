@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import './Header.css';
 import Logo from '../../shared/assets/photo/logo.jpg';
 import { IoIosMenu } from "react-icons/io";
-import { NavLink } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { handleLogout } from '../../features/auth/model/authHandlers';
 import NavLinks  from './NavLinks';
+
 
 const Header = () => {
   
@@ -15,6 +16,7 @@ const Header = () => {
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   const [isWorldModalOpen, setIsWorldModalOpen] = useState(false);
   const isAuthenticated = !!Cookies.get('token');
+  const location = useLocation();
   const navigate = useNavigate()
   const menuRef = useRef(null);
 
@@ -53,8 +55,11 @@ const Header = () => {
               <img src={Logo} alt="logo working work" />
             </NavLink>
             <ul className="desktop_links">
-              <NavLink to='/CreatingTask' className={({ isActive }) => isActive ? 'createExercise active' : 'createExercise'}>Создать задание</NavLink>
-              <NavLink to='/FindTask' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
+            <NavLink to='/CreatingTask' className={({ isActive }) => 
+                (isActive || location.pathname === '/OrderForm') ? 'createExercise active' : 'createExercise'}>
+                Создать задание
+              </NavLink>
+               <NavLink to='/FindTask' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
               {/* <NavLink to='/MeOrders' className={({ isActive }) => isActive ? 'MyOrders active' : 'MyOrders'}>Мои заказы</NavLink> */}
             </ul>
           </div>

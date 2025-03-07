@@ -1,16 +1,22 @@
 // src/components/Header/NavLinks.jsx
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { FiMapPin } from "react-icons/fi";
 import { TfiWorld } from "react-icons/tfi";
 import { FaQuestion } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 
 const NavLinks = ({ isAuthenticated, toggleMapModal, toggleWorldModal, isMapModalOpen, isWorldModalOpen, handleLogout, navigate }) => {
+  const location = useLocation();
+
   return (
+    
     <>
-      <NavLink to='/CreatingTask' className={({ isActive }) => isActive ? 'createExercise active' : 'createExercise'}>Создать задание</NavLink>
-      <NavLink to='/FindTask' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
+       <NavLink to='/CreatingTask' className={({ isActive }) => 
+                      (isActive || location.pathname === '/OrderForm') ? 'createExercise active' : 'createExercise'}>
+                      Создать задание
+        </NavLink>
+        <NavLink to='/FindTask' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
       {/* <NavLink to='/FindTask' className={({ isActive }) => isActive ? 'MyOrders active' : 'MyOrders'}>Мои заказы</NavLink> */}
       
       <NavLink onClick={toggleMapModal} style={{ color: isMapModalOpen ? '#EE5300' : 'black' }}>

@@ -33,7 +33,7 @@ import Swal from 'sweetalert2';
       cancelButtonText: 'Нет, остаться',
       position: 'top', 
       backdrop: true, 
-      width:"320px"
+      width:"330px"
     }).then((result) => {
       if (result.isConfirmed) {
         Cookies.remove('token');
