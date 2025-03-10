@@ -40,7 +40,7 @@ const LoginForm = ({ Email, setEmail, Password,
 
             <Button type="submit" text={'Войти'}
             style={{ backgroundColor: '#EE5300', 
-            color: 'black', border: '2px solid #EE5300', fontWeight:'bold'}} 
+            color: 'black', border: '2px solid #EE5300', fontWeight:'bold', width:'100%'}} 
             />
 
           <p title ='Если забыли пароль, перейдите на страницу, нажатием на текст, для восстановления пароля' style={{ cursor: 'pointer', color: 'black', fontWeight:'bold' }} onClick={onSwitchToForgotPassword}>

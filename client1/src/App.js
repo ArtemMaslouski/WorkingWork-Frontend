@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage/HomePage';
 import QuestionComponent from './pages/QuestionComponent/QuestionComponent';
 import SignIn from './pages/SignIn/SignIn';
 import FindTask from './pages/FindTask/FindTask';
-import CreatingTask from './pages/CreatingTask/ui/CreatingTask';
+import CreatingTask from './pages/CreatingTask/ui/CreatingTask'
 import Profile from './pages/Profile/Profile'
 import {RecoveryForm} from './features/auth'
 import OrderForm from './pages/OrderForm/OrderForm';

@@ -4,6 +4,7 @@ form {
     align-items: center; 
     text-align: center; 
     font-family: gta;
+    width: 30vw;
 }
 
 form h1{
@@ -20,17 +21,13 @@ hr {
 form span{
     color:gray;
     margin-bottom: 1vw;
-    width: 35%;
     font-size: 1rem;
 }
 
 
 @media (max-width: 768px) {
-    form span{
-        width: 70%;
-    }
-
     form{
+        width: 100%;
         height: 60vh;
     }
 }

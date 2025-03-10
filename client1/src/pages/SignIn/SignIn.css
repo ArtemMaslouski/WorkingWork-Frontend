@@ -11,6 +11,12 @@
     justify-content: left; 
     position: relative; 
 }
+.element_forms{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
 
 @media (max-width: 768px) {
     .signIn_registration_component .forms_comp{

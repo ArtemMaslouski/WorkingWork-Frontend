@@ -49,7 +49,7 @@ const ForgotPasswordForm = ({ Email, setEmail, onBackToLogin  }) => {
       {/* Кнопка меняет текст в зависимости от этапа */}
       <Button
         text={showCodeInput ? 'Подтвердить код' : 'Отправить'}
-        style={{ backgroundColor: '#EE5300', color: 'black', border: '2px solid #EE5300', fontWeight: 'bold'}}
+        style={{ backgroundColor: '#EE5300', color: 'black', border: '2px solid #EE5300', fontWeight: 'bold',  width:'100%'}}
       />
 
       <p

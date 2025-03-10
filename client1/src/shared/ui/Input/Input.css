@@ -2,13 +2,16 @@
     position: relative;
     margin-bottom: 20px;
     font-size: 1rem;
-    /* width: 30vw; */
+    width: 100%;
     color:gray;
     font-family: gta;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 }
 
 .user-box input {
-    /* width: 100%; */
+    width: 100%;
     padding: 14px 35px 14px 10px;
     font-size: 1rem;
     color: #333;
@@ -83,7 +86,7 @@ span {
         text-align: center;
     }
     .user-box input {
-        /* width: 100%; */
+        width: 100%;
         padding: 14px 35px 14px 10px;
         font-size: 1rem;
         color: #333;

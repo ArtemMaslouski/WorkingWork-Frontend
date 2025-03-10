@@ -53,7 +53,7 @@ const RecoveryForm = () => {
             />
             <Button type="submit" text={'Войти'}
                 style={{width: buttonWidth, backgroundColor: '#EE5300',
-                color: 'black', border: '2px solid #EE5300', fontWeight:'bold'}} 
+                color: 'black', border: '2px solid #EE5300', fontWeight:'bold', width:'100%'}} 
             />
 
             <p title="Вернуться для входа в систему" style={{ cursor: 'pointer', 
