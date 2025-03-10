@@ -6,10 +6,10 @@ import HomePage from './pages/HomePage/HomePage';
 import QuestionComponent from './pages/QuestionComponent/QuestionComponent';
 import SignIn from './pages/SignIn/SignIn';
 import FindTask from './pages/FindTask/FindTask';
-import CreatingTask from './pages/CreatingTask/ui/CreatingTask'
+import CreatingTask from './pages/CreatingTask/ui/CreatingTask/CreatingTask'
 import Profile from './pages/Profile/Profile'
 import {RecoveryForm} from './features/auth'
-import OrderForm from './pages/OrderForm/OrderForm';
+import OrderForm from './pages/CreatingTask/ui/OrderForm/OrderForm';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
 import './CreatingTask.css';
-import ServicesList from '../../../features/ServicesList/ui/ServicesList';
-import serviceDetails from '../model/serviceDetails'; 
+import ServicesList from '../../../../features/ServicesList/ui/ServicesList';
+import serviceDetails from '../../model/serviceDetails'
 
 const CreatingTask = () => {
   const location = useLocation();

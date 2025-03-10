@@ -1,16 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
 import './OrderForm.css'
-import Input from '../../shared/ui/Input/Input'
-// import serviceDetails from '../CreatingTask/model/serviceDetails'
-import Button from '../../shared/ui/Button/Button'
+import Input from '../../../../shared/ui/Input/Input'
+import serviceDetails from '../../model/serviceDetails'
+import Button from '../../../../shared/ui/Button/Button'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const OrderForm = () => {
 
+    const [Category, setCategory] = useState(null)
+    const [Subcategory, SetSubcategory] = useState(null)
+    const [Address, SetAddress] = useState(null)
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
+    const [Description, SetDescription]= useState(null);
 
   return (
     <div className='order_form_component'>
@@ -22,6 +26,8 @@ const OrderForm = () => {
                     name='Название задания'
                     label={'Категория/название задания '}
                     required
+                    value={Category}
+                    onChange={(e)=>setCategory(e.target.Category)}
                 />
                 <Input
                     type='text'
@@ -29,6 +35,8 @@ const OrderForm = () => {
                     name='Название задания'
                     label={'Подкатегория'}
                     required
+                    value={Subcategory}
+                    onChange={(e)=>SetSubcategory(e.target.Subcategory)}
                 />
           
             <div className="description-field">
@@ -37,6 +45,8 @@ const OrderForm = () => {
                     className="textarea-field"
                     placeholder="Опишите детали вашего задания..."
                     required
+                    value={Description}
+                    onChange={(e)=>SetDescription(e.target.Description)}
                 />
             </div>
 
@@ -46,6 +56,8 @@ const OrderForm = () => {
                  name='Название задания'
                  label={'Адрес'}
                  required
+                 value={Address}
+                 onChange={(e)=>SetAddress(e.target.Address)}
             />
 
             <div className="date_fields">
@@ -57,6 +69,7 @@ const OrderForm = () => {
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Дата начала "
                         required
+                        value={startDate}
                     />
                 </div>
 
@@ -68,6 +81,7 @@ const OrderForm = () => {
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Дата окончания"
                         required
+                        value={endDate}
                         
                     />
                 </div>
