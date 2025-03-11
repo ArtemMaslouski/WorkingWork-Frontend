@@ -44,3 +44,6 @@ class Tasks {
     }
     
 }
+
+const TaskApi = new Tasks();
+export default TaskApi;

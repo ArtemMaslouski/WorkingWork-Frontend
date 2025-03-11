@@ -27,11 +27,16 @@ const CreatingTask = () => {
               alt={selectedService} 
               className="service-image"
             />
-            <div className="task_links">
+           <div className="task_links">
               {serviceDetail.links.map((link, index) => (
-                <NavLink key={index} to={link.path} className="task-link">
-                  {link.name}
-                </NavLink>
+                <NavLink 
+                key={index} 
+                to={`/OrderForm?service=${selectedService}&subcategory=${encodeURIComponent(link.name)}`} 
+                className="task-link"
+              >
+                {link.name}
+              </NavLink>
+              
               ))}
             </div>
           </div>

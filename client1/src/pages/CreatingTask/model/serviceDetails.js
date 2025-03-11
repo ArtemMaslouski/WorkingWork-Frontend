@@ -371,6 +371,13 @@ const serviceDetails = {
         { name: "Что-то другое", path:"/OrderForm" },
       ],
     },
+
+    "Что-то другое": {
+      image: realEstate,
+      links: [
+        { name: "что-то другое" , path:"/OrderForm"},
+      ],
+    },
   };
   
   export default serviceDetails;

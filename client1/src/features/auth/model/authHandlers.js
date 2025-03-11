@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
         const response = await userApi.login({Email, Password});
         console.log(response)
         // сохранение токена
-        Cookies.set('token', response.token, { expires: 7 });
+        Cookies.set('token', response.token, { expires: 7 }); 
         
         toast.success(`Вы успешно вошли в аккаунт`)
         setEmail('');setPassword('')
