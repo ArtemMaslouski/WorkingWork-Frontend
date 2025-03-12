@@ -1,0 +1,12 @@
+.notification_item{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    width: 20vw;
+    border:1px solid #EE5300;
+}
+.emblem_done{
+    color:#EE5300;
+}

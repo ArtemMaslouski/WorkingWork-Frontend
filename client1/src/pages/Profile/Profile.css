@@ -1,3 +1,9 @@
 .profile_component{
-    padding: 0  5vw ;
+    padding: 3vw  5vw ;
+}
+
+.profile_component{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
