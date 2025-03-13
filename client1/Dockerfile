@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:20-bullseye
 
 WORKDIR /app
 
@@ -8,7 +8,6 @@ RUN npm install --legacy-peer-deps
 RUN npm install serve
 
 COPY . .
-
 
 RUN npm run build
 
