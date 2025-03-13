@@ -372,12 +372,6 @@ const serviceDetails = {
       ],
     },
 
-    "Что-то другое": {
-      image: realEstate,
-      links: [
-        { name: "что-то другое" , path:"/OrderForm"},
-      ],
-    },
   };
   
   export default serviceDetails;

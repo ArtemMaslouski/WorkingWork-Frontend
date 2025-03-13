@@ -8,7 +8,7 @@ const HelpForm = () => {
   const navigate = useNavigate();
 
   const handleClick =() =>{
-    navigate('./FindTask');
+    navigate('./CreatingTask');
   }
 
   return (

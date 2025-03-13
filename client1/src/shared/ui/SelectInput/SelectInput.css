@@ -1,0 +1,11 @@
+.input-select{
+    border: 2px solid orange; 
+    border-radius: 20px; 
+    padding: 0.6rem; 
+    outline: none; 
+    transition: border-color 0.3s;
+}
+
+/* .input-group option {
+    color:red;
+} */
