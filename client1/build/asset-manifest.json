@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ebf9149b.css",
-    "main.js": "/static/js/main.c8f4eeca.js",
+    "main.css": "/static/css/main.bf13844c.css",
+    "main.js": "/static/js/main.5df13110.js",
     "static/media/Roboto-Regular.ttf": "/static/media/Roboto-Regular.cfe3602cde0ad1c9ae0e.ttf",
     "static/media/registerPerson.jpg": "/static/media/registerPerson.1d1c35e5efcf58a057a6.jpg",
     "static/media/card2.jpg": "/static/media/card2.afcf91f337fd1dfe97e4.jpg",
@@ -10,15 +10,34 @@
     "static/media/card3.jpg": "/static/media/card3.c31a91b7f9759833488d.jpg",
     "static/media/findTask.jpg": "/static/media/findTask.2d70bc1d8dfb424ea2aa.jpg",
     "static/media/logo.jpg": "/static/media/logo.4b9e6af5542052daa914.jpg",
+    "static/media/Sherlock.png": "/static/media/Sherlock.a568dc08826f03462986.png",
+    "static/media/Rep.jpg": "/static/media/Rep.25336fcd49fe9506c2a7.jpg",
+    "static/media/realEstate.jpg": "/static/media/realEstate.2b2e2c753e7f7bd9fcdf.jpg",
     "static/media/searcbar_arm.jpg": "/static/media/searcbar_arm.d95bdb2302736b538e73.jpg",
+    "static/media/Animals.jpg": "/static/media/Animals.6799f5475c9894c9dc24.jpg",
+    "static/media/cloth.jpg": "/static/media/cloth.a1ea2ce9d3b768db2214.jpg",
+    "static/media/Sport.jpg": "/static/media/Sport.39af5ea74d72d073c798.jpg",
+    "static/media/InstallationAndRepair.jpg": "/static/media/InstallationAndRepair.edc385f72bdeb57fff6d.jpg",
+    "static/media/ComputerHelp.jpg": "/static/media/ComputerHelp.d7be24f5e89ff39cf9b3.jpg",
+    "static/media/TransporRepair.jpg": "/static/media/TransporRepair.496ebe7ae9f7b258764a.jpg",
+    "static/media/DigitalEquipmentRepair.jpg": "/static/media/DigitalEquipmentRepair.8404c7cd1a5e7d73c2a7.jpg",
+    "static/media/HelpAndCeaning.jpg": "/static/media/HelpAndCeaning.d63d83bd2400dea39c14.jpg",
+    "static/media/Courier.jpg": "/static/media/Courier.619d6682c1240980640c.jpg",
+    "static/media/Build.jpg": "/static/media/Build.f089cc312bd771cbbbaf.jpg",
+    "static/media/VirtualHelp.jpg": "/static/media/VirtualHelp.f878038564cddcdfd9f5.jpg",
+    "static/media/BeautyandHelth.jpg": "/static/media/BeautyandHelth.c32b4d5bfa06d25ed98f.jpg",
+    "static/media/CargoTeansportation.jpg": "/static/media/CargoTeansportation.b76b2c2a86c7b7fe99d8.jpg",
+    "static/media/PhotoVideoAudio.jpg": "/static/media/PhotoVideoAudio.882f12ce28b3979e6556.jpg",
+    "static/media/Party.jpg": "/static/media/Party.376c63df4a52f2147c70.jpg",
     "static/media/back_ground.jpg": "/static/media/back_ground.e396a6392b41c9210929.jpg",
     "static/media/Pricedown Bl.otf": "/static/media/Pricedown Bl.6e212bcb2d96be599534.otf",
+    "static/media/Programming.jpg": "/static/media/Programming.ca5a5dd6abae9ef16ddb.jpg",
     "index.html": "/index.html",
-    "main.ebf9149b.css.map": "/static/css/main.ebf9149b.css.map",
-    "main.c8f4eeca.js.map": "/static/js/main.c8f4eeca.js.map"
+    "main.bf13844c.css.map": "/static/css/main.bf13844c.css.map",
+    "main.5df13110.js.map": "/static/js/main.5df13110.js.map"
   },
   "entrypoints": [
-    "static/css/main.ebf9149b.css",
-    "static/js/main.c8f4eeca.js"
+    "static/css/main.bf13844c.css",
+    "static/js/main.5df13110.js"
   ]
 }
