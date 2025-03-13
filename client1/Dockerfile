@@ -1,17 +1,22 @@
 FROM node:20-alpine
 
+# Установите рабочую директорию внутри контейнера
 WORKDIR /app
 
+# Скопируйте package.json и package-lock.json (или npm-shrinkwrap.json)
 COPY package*.json ./
 
-# Установка ВСЕХ зависимостей
-RUN npm install --include=dev
+# Установите зависимости. Используйте --legacy-peer-deps, если есть конфликты
+RUN npm install --legacy-peer-deps
 
-COPY --chown=node:node . .
+# Скопируйте остальные файлы приложения
+COPY . .
 
-# Сборка от имени пользователя
-USER node
+# Соберите приложение (если требуется, например, для React, Vue, Angular)
 RUN npm run build
 
-EXPOSE 3001
+# Укажите порт, который будет прослушивать приложение
+EXPOSE 3000
+
+# Запустите приложение
 CMD ["npm", "start"]
