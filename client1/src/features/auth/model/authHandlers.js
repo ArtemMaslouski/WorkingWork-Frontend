@@ -62,6 +62,8 @@ import Swal from 'sweetalert2';
         const response = await userApi.registerUser({ UserName, Email, Password });
         console.log(response);
         
+        const name = localStorage.setItem('UserName', UserName)
+        console.log(name)
         setName(''); setPassword('');setEmail(''); 
         toast.success('Регистрация прошла успешно!');
     } catch (error) {
