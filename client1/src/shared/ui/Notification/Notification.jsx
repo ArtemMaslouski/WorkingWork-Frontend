@@ -6,7 +6,7 @@ const Notification = () => {
   return (
     <div className='notification_item'>
         <div className="emblem_done">
-            <MdOutlineDone size={35}/>
+            <MdOutlineDone size={30}/>
         </div>
         <div className="text_item">
             <p>Станьте исполнителем и<br/>начните зарабатывать!</p>

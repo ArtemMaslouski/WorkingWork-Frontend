@@ -46,6 +46,7 @@
 }
 
 
+
 @media (max-width: 768px) {
     .services_component {
         grid-template-columns: repeat(2, 1fr); 
