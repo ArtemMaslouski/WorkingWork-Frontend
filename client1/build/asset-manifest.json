@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.bf13844c.css",
-    "main.js": "/static/js/main.5df13110.js",
+    "main.css": "/static/css/main.eebd8615.css",
+    "main.js": "/static/js/main.d3021291.js",
     "static/media/Roboto-Regular.ttf": "/static/media/Roboto-Regular.cfe3602cde0ad1c9ae0e.ttf",
     "static/media/registerPerson.jpg": "/static/media/registerPerson.1d1c35e5efcf58a057a6.jpg",
     "static/media/card2.jpg": "/static/media/card2.afcf91f337fd1dfe97e4.jpg",
@@ -33,11 +33,11 @@
     "static/media/Pricedown Bl.otf": "/static/media/Pricedown Bl.6e212bcb2d96be599534.otf",
     "static/media/Programming.jpg": "/static/media/Programming.ca5a5dd6abae9ef16ddb.jpg",
     "index.html": "/index.html",
-    "main.bf13844c.css.map": "/static/css/main.bf13844c.css.map",
-    "main.5df13110.js.map": "/static/js/main.5df13110.js.map"
+    "main.eebd8615.css.map": "/static/css/main.eebd8615.css.map",
+    "main.d3021291.js.map": "/static/js/main.d3021291.js.map"
   },
   "entrypoints": [
-    "static/css/main.bf13844c.css",
-    "static/js/main.5df13110.js"
+    "static/css/main.eebd8615.css",
+    "static/js/main.d3021291.js"
   ]
 }
