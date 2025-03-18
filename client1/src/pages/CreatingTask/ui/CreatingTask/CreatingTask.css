@@ -1,5 +1,6 @@
 .place_for_tasks {
     padding: 0vw 5vw;
+    /* font-family: gta; */
 }
 
 .image-container {
@@ -24,6 +25,7 @@
     font-size: 2rem;
     color: white;
     z-index: 10; 
+    font-family: gta;
 }
 
 .task_links {
@@ -50,7 +52,6 @@
 .task-link:hover {
     color: #EE5300 !important; 
     font-weight: bold;
-    /* font-size: 1.3rem;  */
 }
 
 @media (max-width: 768px) {

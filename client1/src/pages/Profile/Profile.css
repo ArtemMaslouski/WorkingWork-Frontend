@@ -1,9 +1,26 @@
 .profile_component{
-    padding: 3vw  5vw ;
+    padding: 2vw  5vw ;
 }
 
 .profile_component{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.profile_user_photo_age h3{
+    font-family: gta;
+}
+
+
+
+@media (max-width: 768px) {
+
+    .profile_component{
+        padding: 2vw  5vw ;
+    }
+
+    .profile_user_photo_age h3{
+        font-size: 0.8rem;
+    }
 }

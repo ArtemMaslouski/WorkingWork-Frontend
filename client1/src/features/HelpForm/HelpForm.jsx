@@ -14,7 +14,7 @@ const HelpForm = () => {
   return (
     <div className='helpForm_component'>
         <div className="text_information">
-            <p style={{fontFamily:'Pricedown'}}><b>Помочь с выбором ответственного исполнителя?</b></p>
+            <p style={{fontFamily:'gta', fontSize:'0.9rem'}}><b>Помочь с выбором ответственного исполнителя?</b></p>
             <p>Привет, быстрее оформляй заказ и мы быстро найдем хорошего исполнителя</p>
         </div>
         

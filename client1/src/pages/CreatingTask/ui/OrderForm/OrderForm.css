@@ -83,4 +83,9 @@ select {
     .date_field .input-field{
         width: 80%;
     }
+    
+    .date_field .input-field{
+        border:1px solid #EE5300;
+        color: black;
+    }
 }
