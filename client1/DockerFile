@@ -8,6 +8,8 @@ RUN npm ci --cache-min 9999999
 
 COPY . .
 
+RUN npm install
+
 RUN npm run build --production
 
 CMD ["npm","start"]
