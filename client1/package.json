@@ -19,7 +19,7 @@
     "webpack-dev-server": "^5.2.0"
   },
   "scripts": {
-    "start": "serve -s build",
+    "start": "serve -s build -c 0",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
