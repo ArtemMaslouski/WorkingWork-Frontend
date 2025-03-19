@@ -1,5 +1,5 @@
-.profile_component{
-    padding: 2vw  5vw ;
+.Profile_page{
+    padding: 2vw  5vw 0 5vw;
 }
 
 .profile_component{
@@ -9,18 +9,42 @@
 }
 
 .profile_user_photo_age h3{
-    font-family: gta;
+    font-size: 1.2rem;
 }
 
+.links_profile{
+    margin-top: 5vh;
+    display: flex;
+    gap:5vw;
+}
 
+.links_profile a{
+    text-decoration: none;
+    font-family: gta;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color:black;
+}
 
-@media (max-width: 768px) {
+.help_form_executor{
+    margin-top: 5vh;
+}
 
-    .profile_component{
-        padding: 2vw  5vw ;
+@media (max-width: 486px) {
+    .links_profile a{
+        font-size: 0.7rem;
     }
-
     .profile_user_photo_age h3{
-        font-size: 0.8rem;
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 486px) and (max-width: 768px) {
+    
+    .links_profile a{
+        font-size: 1rem;
+    }
+    .profile_user_photo_age h3{
+        font-size: 1rem;
     }
 }

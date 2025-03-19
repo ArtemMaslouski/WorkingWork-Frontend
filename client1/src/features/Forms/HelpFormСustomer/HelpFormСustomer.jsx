@@ -1,6 +1,6 @@
 import React from 'react'
-import './HelpForm.css'
-import Button from '../../shared/ui/Button/Button'
+import './HelpFormСustomer.css'
+import Button from '../../../shared/ui/Button/Button'
 import { useNavigate } from 'react-router-dom'
 
 const HelpForm = () => {

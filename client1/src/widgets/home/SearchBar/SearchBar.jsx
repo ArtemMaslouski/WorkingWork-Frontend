@@ -1,6 +1,6 @@
 import React from 'react'
 import './SearchBar.css'
-import HelpForm from '../../../features/HelpForm/HelpForm'
+import HelpFormСustomer from '../../../features/Forms/HelpFormСustomer/HelpFormСustomer'
 import SearchComponent from '../../..//shared/ui/SearchComponent/SearchComponent'
 
 const SearchBar = () => {
@@ -9,7 +9,7 @@ const SearchBar = () => {
         <p>Не нашли нужную услугу? Используйте поиск!</p>
         <SearchComponent/>
         <div className="help_form">
-            <HelpForm/>
+            <HelpFormСustomer/>
         </div>
     </div>
   )

@@ -7,6 +7,13 @@
     background-color: white;
     padding: 20px;
 }
+.helpForm_component_ex{
+    width: 30vw;
+    height: 12vw;
+    justify-content: flex-start; 
+    padding: 20px;
+    /* background-color: white; */
+}
 
 .text_information{
     padding-bottom: 1vh;
@@ -20,6 +27,10 @@
 }
 
 @media (max-width: 1400px) {
+    .helpForm_component_ex{
+        width: 30vw;
+        height: 15vw;
+    }
     .helpForm_component {
         width: 30vw;
         height: 15vw;
@@ -27,22 +38,26 @@
 }
 
 @media (max-width: 930px) {
-    .helpForm_component {
+    .helpForm_component,
+    .helpForm_component_ex {
         width: 40vw;
         height: 25vw;
     }
 }
 @media (max-width: 560px) {
-    .helpForm_component {
+    .helpForm_component ,
+    .helpForm_component_ex{
         padding: 10px;
         width: 50vw;
         height: 45vw;
     }
+   
 }
 @media (max-width: 440px) {
-    .helpForm_component {
+    .helpForm_component,
+    .helpForm_component_ex {
         padding: 10px;
-        width: 60vw;
+        width: 70vw;
         height: 40vw;
     }
     .text_information p,

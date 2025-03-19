@@ -3,7 +3,7 @@ import './HomePage.css'
 import HomeIntro from '../../widgets/home/HomeIntro/HomeIntro'
 import ProcessSteps from '../../widgets/home/ProcessSteps/ProcessSteps'
 import ActionBut from '../../widgets/home/ActionButComponent/ActionButComponent'
-import ServicesList from '../../features/ServicesList/ui/ServicesList'
+import ServicesList from '../../widgets/ServicesList/ui/ServicesList'
 import SearchBar from '../../widgets/home/SearchBar/SearchBar' 
 import ReviewComponent from '../../widgets/home/ReviewComponent/ReviewComponent'
 
