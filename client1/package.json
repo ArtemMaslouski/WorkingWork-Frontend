@@ -19,7 +19,7 @@
     "webpack-dev-server": "^5.2.0"
   },
   "scripts": {
-    "start": "node --max-old-space-size=4096 node_modules/react-scripts/bin/react-scripts.js start",
+    "start": "serve -s build",
     "build": "react-scripts build",
     "serve": "serve -s build -l 3000"
   },
