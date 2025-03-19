@@ -1,4 +1,3 @@
-// src/components/Header/NavLinks.jsx
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FiMapPin } from "react-icons/fi";
@@ -10,14 +9,12 @@ const NavLinks = ({ isAuthenticated, toggleMapModal, toggleWorldModal, isMapModa
   const location = useLocation();
 
   return (
-    
     <>
        <NavLink to='/CreatingTask' className={({ isActive }) => 
-                      (isActive || location.pathname === '/OrderForm') ? 'createExercise active' : 'createExercise'}>
-                      Создать задание
+          (isActive || location.pathname === '/OrderForm') ? 'createExercise active' : 'createExercise'}>
+          Создать задание
         </NavLink>
         <NavLink to='/FindTask' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
-      {/* <NavLink to='/FindTask' className={({ isActive }) => isActive ? 'MyOrders active' : 'MyOrders'}>Мои заказы</NavLink> */}
       
       <NavLink onClick={toggleMapModal} style={{ color: isMapModalOpen ? '#EE5300' : 'black' }}>
         <FiMapPin size={20} />

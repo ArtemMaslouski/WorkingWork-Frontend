@@ -1,0 +1,93 @@
+.info_about_user{
+    margin-top: 5vh;
+}
+.action{
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    font-family: gta;
+}
+.action span,
+.delete_profile p{
+    font-size: 1rem;
+    color:rgb(0, 0, 0);
+    margin: 0vh 0 2vh 0;
+}
+.action textarea{
+    height: 20vh;
+}
+
+.info_user_item{
+    display:flex;
+    flex-direction: column;
+    gap:20px
+}
+
+.save_cancellation_button{
+    width: 50%;
+    display: flex;
+    gap:3vw;
+    
+    
+}
+.input-b_day{
+    width: 100%;
+    padding: 14px 35px 14px 10px;
+    font-size: 1rem;
+    color: #333;
+    border: 2px solid orange; 
+    border-radius: 12px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+   
+}
+.gender-selection{
+    margin-bottom: 3vh;
+}
+
+.text_for_password li,
+.text_for_password span
+{
+    color:rgb(104, 103, 103);
+}
+
+.place_for_change_password{
+    margin-top: 5vh;
+}
+
+.delete_profile{
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 486px) {
+    .info_about_user{
+        margin-top: 3vh;
+    }
+    .action{
+        
+        width:100%;
+    }
+
+    .action span{
+        font-size: 0.8rem;
+       
+    }
+    .save_cancellation_button{
+        width: 100%;
+        
+    }
+    
+}
+
+@media (min-width: 486px) and (max-width: 768px) {
+    .action{
+        
+        width:100%;
+    }
+      
+    .save_cancellation_button{
+        width: 80%;
+        
+    }
+}
