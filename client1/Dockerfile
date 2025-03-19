@@ -1,0 +1,32 @@
+# Используем node.js в качестве builder-этапа
+FROM node:18 AS builder
+
+# Устанавливаем рабочую директорию
+WORKDIR /app
+
+# Копируем package.json и package-lock.json перед установкой зависимостей
+COPY package.json package-lock.json ./
+
+# Устанавливаем зависимости
+RUN npm install --frozen-lockfile
+
+# Копируем исходный код
+COPY . .
+
+# Собираем приложение
+RUN npm run build
+
+# Используем Nginx для раздачи статических файлов
+FROM nginx:alpine
+
+# Копируем собранные файлы в Nginx
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# Копируем кастомный Nginx конфиг (если нужен)
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Открываем порт
+EXPOSE 80
+
+# Запускаем Nginx
+CMD ["nginx", "-g", "daemon off;"]
