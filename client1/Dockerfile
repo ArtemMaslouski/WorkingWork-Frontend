@@ -1,8 +1,8 @@
-# Используем LTS-версию Node.js
-FROM node:20-alpine AS builder
+# Используем LTS-версию Node.js с меньшим размером
+FROM node:20-slim AS builder
 
 # Устанавливаем переменные для управления памятью и оптимизации
-ENV NODE_OPTIONS="--max-old-space-size=4096"
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 ENV GENERATE_SOURCEMAP=false
 
 WORKDIR /app
@@ -17,8 +17,8 @@ RUN npm ci --frozen-lockfile --quiet && \
 # Копируем остальные файлы
 COPY . .
 
-# Собираем production-версию
-RUN npm run build
+# Собираем production-версию с оптимизациями
+RUN npm run build -- --mode=production
 
 # Финальный образ с Nginx
 FROM nginx:1.25-alpine
