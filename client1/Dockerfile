@@ -1,32 +1,41 @@
-# Используем node.js в качестве builder-этапа
-FROM node:18 AS builder
+# Используем LTS-версию Node.js
+FROM node:20-alpine AS builder
 
-# Устанавливаем рабочую директорию
+# Устанавливаем переменные для управления памятью и оптимизации
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+ENV GENERATE_SOURCEMAP=false
+
 WORKDIR /app
 
-# Копируем package.json и package-lock.json перед установкой зависимостей
+# Копируем только файлы зависимостей сначала
 COPY package.json package-lock.json ./
 
-# Устанавливаем зависимости
-RUN npm install --frozen-lockfile
+# Устанавливаем зависимости с очисткой кэша
+RUN npm ci --frozen-lockfile --quiet && \
+    npm cache clean --force
 
-# Копируем исходный код
+# Копируем остальные файлы
 COPY . .
 
-# Собираем приложение
+# Собираем production-версию
 RUN npm run build
 
-# Используем Nginx для раздачи статических файлов
-FROM nginx:alpine
+# Финальный образ с Nginx
+FROM nginx:1.25-alpine
 
-# Копируем собранные файлы в Nginx
+# Удаляем дефолтный конфиг
+RUN rm -rf /etc/nginx/conf.d/default.conf
+
+# Копируем кастомную конфигурацию
+COPY nginx.conf /etc/nginx/conf.d
+
+# Копируем собранные файлы
 COPY --from=builder /app/build /usr/share/nginx/html
 
-# Копируем кастомный Nginx конфиг (если нужен)
-COPY nginx.conf /etc/nginx/nginx.conf
+# Оптимизация для Alpine
+RUN chmod -R 755 /usr/share/nginx/html && \
+    chown -R nginx:nginx /usr/share/nginx/html
 
-# Открываем порт
 EXPOSE 80
 
-# Запускаем Nginx
 CMD ["nginx", "-g", "daemon off;"]
