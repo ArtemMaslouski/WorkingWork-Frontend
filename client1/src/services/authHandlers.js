@@ -1,5 +1,5 @@
-import { validateEmail, validatePassword } from '../lib/validation'
-import userApi from '../../../api/userApi'
+import { validateEmail, validatePassword } from '../features/auth/lib/validation'
+import userApi from '../api/userApi'
 import { toast } from 'react-toastify'
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
         console.log(response)
         // сохранение токена
         Cookies.set('token', response.token, { expires: 7 }); 
-        
+
         toast.success(`Вы успешно вошли в аккаунт`)
         setEmail('');setPassword('')
         navigate('/')
@@ -62,8 +62,13 @@ import Swal from 'sweetalert2';
         const response = await userApi.registerUser({ UserName, Email, Password });
         console.log(response);
         
-        const name = localStorage.setItem('UserName', UserName)
-        console.log(name)
+        localStorage.setItem('UserName', UserName)
+        
+        const { id } = response; // Извлекаем id из ответа
+        localStorage.setItem('id', id); //
+        const UserId = localStorage.getItem('id');
+        console.log(UserId)
+
         setName(''); setPassword('');setEmail(''); 
         toast.success('Регистрация прошла успешно!');
     } catch (error) {
@@ -137,3 +142,17 @@ import Swal from 'sweetalert2';
       return { success: false, message: error.message };
     }
   }
+
+//   export const handleDeleteUser = async (id, navigate) => {
+//     try {
+//         console.log(`Удаляем пользователя с ID: ${id}`); // Логируем перед отправкой
+//         const response = await userApi.deleteUser(id); // <-- Убираем { id }
+//         console.log(response);
+//         toast.success('Профиль успешно удален!');
+//         localStorage.clear();
+//         navigate('/SignIn');
+//     } catch (error) {
+//         console.error('Ошибка при удалении пользователя:', error);
+//         toast.error('Ошибка удаления профиля');
+//     }
+// };

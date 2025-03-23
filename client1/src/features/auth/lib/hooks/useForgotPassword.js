@@ -1,4 +1,4 @@
-import { handleSendVerificationEmail, handleVerificateUserWithCodeFromEmail } from '../../model/authHandlers';
+import { handleSendVerificationEmail, handleVerificateUserWithCodeFromEmail } from '../../../../services/authHandlers';
 import  { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,8 +7,9 @@ export const useForgotPassword = (Email, setEmail) =>{
     const [showCodeInput, setShowCodeInput] = useState(false);
     const [Code, setCode] = useState('');
     const [isCodeSent, setIsCodeSent] = useState(false);
-    const navigate = useNavigate();
-
+    
+     const navigate = useNavigate()
+     
     const onSendEmail = async (e) => {
         const success = await handleSendVerificationEmail(e, Email, setEmail);
         if (success) {

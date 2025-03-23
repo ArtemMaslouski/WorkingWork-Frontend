@@ -53,7 +53,7 @@ const RecoveryForm = () => {
                         togglePasswordVisibility={() => setShowConfirmPassword(!showConfirmPassword)}
                         isPasswordVisible={showConfirmPassword}
                     />
-                    <Button type="submit" text={'Войти'}
+                    <Button type="submit" text={'Подтвердить'}
                         style={{backgroundColor: '#EE5300',
                         color: 'black', border: '2px solid #EE5300', fontWeight:'bold', width:'100%'}} 
                     />

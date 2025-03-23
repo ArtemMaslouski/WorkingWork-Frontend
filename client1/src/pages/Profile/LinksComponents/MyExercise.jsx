@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Additional = () => {
+const MyExercise = () => {
   return (
     <div className='info_about_user'>
       <div className="info_user_item">
@@ -13,4 +13,4 @@ const Additional = () => {
   )
 }
 
-export default Additional
+export default MyExercise

@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify'
-import TaskApi from '../../../api/TaskApi'
+import TaskApi from '../api/TaskApi'
 
-export const handleCreateTask = async(e,Category, Subcategory,Address,BeginAt,EndAt, Description,
+export const handleCreateTask = async(e,Category, Subcategory,Address,AddressEnd,BeginAt,EndAt, Description,
     setSubcategory, setCategory, setAddressFrom, setAddressTo, setStartDate, setEndDate, setDescription
  )=>{
     e.preventDefault();
@@ -24,7 +24,7 @@ export const handleCreateTask = async(e,Category, Subcategory,Address,BeginAt,En
 
     
     try{
-        const response = await TaskApi.createTask({Category, Subcategory,Address,BeginAt,EndAt, Description})
+        const response = await TaskApi.createTask({Category, Subcategory,Address,AddressEnd,BeginAt,EndAt, Description})
         console.log(response)
         toast.success(`Вы успешно создали задание!Ждите откликов `)
         setCategory('');
@@ -42,10 +42,10 @@ export const handleCreateTask = async(e,Category, Subcategory,Address,BeginAt,En
     }
 }
 
-export const handleRefreshTasks = async(e,Category, Subcategory,Address,BeginAt,EndAt, Description)=>{
+export const handleRefreshTasks = async(e,Category, Subcategory,Address,AddressEnd,BeginAt,EndAt, Description)=>{
     e.preventDefault();
     try{
-        const response = await TaskApi.refreshTasks({Category, Subcategory,Address,BeginAt,EndAt, Description})
+        const response = await TaskApi.refreshTasks({Category, Subcategory,Address,AddressEnd,BeginAt,EndAt, Description})
         console.log(response)
         toast.success('Задание успешно обновлено!');
     } catch (error) {

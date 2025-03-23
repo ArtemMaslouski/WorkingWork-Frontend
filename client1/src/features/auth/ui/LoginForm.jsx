@@ -2,7 +2,7 @@ import React from 'react'
 import Input from '../../../shared/ui/Input/Input'
 import Button from '../../../shared/ui/Button/Button'
 import '../styles/FormStyles.css'
-import { handleLoginSubmit } from '../model/authHandlers'
+import { handleLoginSubmit } from '../../../services/authHandlers'
 import { useNavigate } from 'react-router-dom'
 
 const LoginForm = ({ Email, setEmail, Password, 

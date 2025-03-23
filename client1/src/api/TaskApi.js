@@ -2,10 +2,10 @@ import axios from 'axios'
 import { baseURL } from '../constants/someConstants'
 
 class Tasks {
-    async createTask ({ Category, Subcategory,Address,BeginAt,EndAt, Description}){
+    async createTask ({ Category, Subcategory,Address, AddressEnd,BeginAt,EndAt, Description}){
         try{
             const response = await axios.post(`${baseURL}/tasks/create`,{
-                Category, Subcategory,Address,BeginAt,
+                Category, Subcategory,Address,AddressEnd, BeginAt,
                 EndAt, Description
             });
             return response.data;
@@ -35,7 +35,7 @@ class Tasks {
         }
     }
 
-    async refreshTasks({id,Category, Subcategory,Address,BeginAt,EndAt, Description}){
+    async refreshTasks({id,Category, Subcategory,Address,AddressEnd,BeginAt,EndAt, Description}){
         const response = await axios.put(`${baseURL}/tasks/refresh/${id}`,Category, Subcategory,Address,BeginAt,EndAt, Description);
         return response.data;
     } catch (error) {

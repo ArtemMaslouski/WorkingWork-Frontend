@@ -5,22 +5,23 @@ import Notification from '../../shared/ui/Notification/Notification'
 import PhotoUploader from '../../features/PhotoUploader/PhotoUploader'
 import { IoMdSettings } from "react-icons/io";
 import HelpFormExecutor from '../../features/Forms/HelpFormExecutor/HelpFormExecutor'
-import AboutuserInfo from './LinksPages/AboutuserInfo'
-import Additionl from './LinksPages/Additional'
-import PersonalData from './LinksPages/PersonalData'
-import Settings from './LinksPages/Settings'
+import AboutuserInfo from './LinksComponents/AboutuserInfo'
+import MyExercise from './LinksComponents/MyExercise'
+import PersonalData from './LinksComponents/PersonalData'
+import Settings from './LinksComponents/Settings'
 
 const Profile = () => {
   const name = localStorage.getItem('UserName')
   // const [photo, setPhoto] = useState(null); 
-  const [activeTab, setActiveTab] = useState('AboutUserInfo')
+  const [activeTab, setActiveTab] = useState('')
 
   const handlePhotoChange = (newPhoto) => {
     // setPhoto(newPhoto); 
   };
 
   const handleTabClick = (tab) =>{
-    setActiveTab(tab)
+    //функция принимает предыдущее значение состояния и его меняет
+    setActiveTab((prevActiveTab) => (prevActiveTab === tab ? '' : tab));
   }
 
   return (
@@ -54,10 +55,10 @@ const Profile = () => {
             Личные Данные
           </NavLink>
           <NavLink
-            onClick={() => handleTabClick('additional')}
-            style={{ color: activeTab === 'additional' ? '#EE5300' : 'black' }}
+            onClick={() => handleTabClick('myExercise')}
+            style={{ color: activeTab === 'myExercise' ? '#EE5300' : 'black' }}
           >
-            Дополнительно
+            Мои задания
           </NavLink>
           <NavLink
             onClick={() => handleTabClick('settings')}
@@ -72,7 +73,7 @@ const Profile = () => {
       </div>
       {activeTab === 'AboutUserInfo' && <AboutuserInfo/>}
       {activeTab === 'personalData' && <PersonalData/>}
-      {activeTab === 'additional' && <Additionl/>}
+      {activeTab === 'myExercise' && <MyExercise/>}
       {activeTab === 'settings' && <Settings/>}
       
       <div className="help_form_executor">

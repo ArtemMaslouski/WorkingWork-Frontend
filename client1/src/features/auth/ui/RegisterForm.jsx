@@ -1,7 +1,7 @@
 import React from 'react'
 import Input from '../../../shared/ui/Input/Input'
 import Button from '../../../shared/ui/Button/Button'
-import {handleRegisterSubmit} from '../model/authHandlers'
+import {handleRegisterSubmit} from '../../../services/authHandlers'
 import '../styles/FormStyles.css'
 
 const RegisterForm = ({

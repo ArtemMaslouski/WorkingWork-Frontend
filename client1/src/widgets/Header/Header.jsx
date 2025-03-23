@@ -5,7 +5,7 @@ import Logo from '../../shared/assets/photo/logo.jpg';
 import { IoIosMenu } from "react-icons/io";
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
-import { handleLogout } from '../../features/auth/model/authHandlers';
+import { handleLogout } from '../../services/authHandlers';
 import NavLinks  from './NavLinks';
 
 

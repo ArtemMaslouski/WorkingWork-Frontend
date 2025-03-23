@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import {handleResetPassword } from '../../model/authHandlers'
+import {handleResetPassword } from '../../../../services/authHandlers'
 import { toast } from 'react-toastify';
 import { useState, useEffect } from "react";
 
