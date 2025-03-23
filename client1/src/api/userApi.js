@@ -37,16 +37,16 @@ class Auth {
         }
     }
 
-    // Удаление пользователя по ID
-    async deleteUser({ id }) {
-        try {
-            const response = await axios.delete(`${baseURL}/auth/delete-users`, { data: { id } });
-            return response.data;
-        } catch (error) {
-            console.error('Ошибка при удалении пользователя:', error.response?.data || error.message);
-            throw error;
-        }
-    }
+    // async deleteUser({ id }) { 
+    //     try {
+    //         const response = await axios.delete(`${baseURL}/auth/delete-users`, { data: { id } });
+    //         return response.data;
+    //     } catch (error) {
+    //         console.error('Ошибка при удалении пользователя:', error.response?.data || error.message);
+    //         throw error;
+    //     }
+    // }
+    
 
     async sendVerificationEmail(Email) {
         try {

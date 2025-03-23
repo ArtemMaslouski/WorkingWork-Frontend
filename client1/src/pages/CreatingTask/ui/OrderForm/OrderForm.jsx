@@ -6,7 +6,7 @@ import Button from '../../../../shared/ui/Button/Button';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import SelectInput from '../../../../shared/ui/SelectInput/SelectInput';
-import { handleCreateTask } from '../../model/tasksHandlers';
+import { handleCreateTask } from '../../../../services/tasksHandlers';
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -51,7 +51,7 @@ const OrderForm = () => {
             return;
         }
 
-        await handleCreateTask(e, category, subcategory,addressTo, startDate, endDate, description,
+        await handleCreateTask(e, category, subcategory,addressFrom, addressTo, startDate, endDate, description,
             setSubcategory, setCategory, setAddressFrom, setAddressTo, setStartDate, setEndDate, setDescription
         );
     };
@@ -104,11 +104,11 @@ const OrderForm = () => {
                     <Input
                         type='text'
                         className='inputInt-field'
-                        name='addressTo'
+                        name='addressFrom'
                         label={'Адрес (куда)'}
                         required
-                        value={addressTo}
-                        onChange={(e) => setAddressTo(e.target.value)}
+                        value={addressFrom}
+                        onChange={(e) => setAddressFrom(e.target.value)}
                     />
                 )}
 

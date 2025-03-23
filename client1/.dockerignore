@@ -1,7 +1,1 @@
 node_modules
-.git
-.DS_Store
-.env
-dist
-build
-*.md
