@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify'
-import TaskApi from '../api/TaskApi'
+import TaskApi from '../api/TaskApi';
 
 export const handleCreateTask = async(e,Category, Subcategory,Address,AddressEnd,BeginAt,EndAt, Description,
     setSubcategory, setCategory, setAddressFrom, setAddressTo, setStartDate, setEndDate, setDescription
@@ -54,3 +54,12 @@ export const handleRefreshTasks = async(e,Category, Subcategory,Address,AddressE
     }
     
 }
+
+// export const handleGetAllUsers= async() => {
+//     try{
+//         const response = await TaskApi.getAllTasks();
+//         console.log(response)
+//     }catch(error){
+//         console.log('Ошибка');
+//     }
+// }

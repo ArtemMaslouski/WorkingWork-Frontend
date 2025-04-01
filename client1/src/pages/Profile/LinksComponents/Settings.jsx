@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Input from '../../../shared/ui/Input/Input';
 import Button from '../../../shared/ui/Button/Button';
-// import { handleDeleteUser } from '../../../services/authHandlers';
+import { handleDeleteUser } from '../../../services/authHandlers';
 // import { useNavigate } from 'react-router-dom';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const Settings = () => {
   const [password, setPassword] = useState("");
@@ -21,18 +21,14 @@ const Settings = () => {
   };
 
 
-  // const onSubmitDeleteUser = async ()=>{
-  //   const confirmed = window.confirm("Вы уверены, что хотите удалить свой профиль? Это действие необратимо.");
-  //   if (confirmed) {
-  //       const id = localStorage.getItem('id'); // Получаем id из localStorage
-  //       console.log(id)
-  //       if (!id) {
-  //           toast.error('Ошибка: ID пользователя не найден.');
-  //           return;
-  //       }
-  //       await handleDeleteUser(id, navigate); // Передаем id и navigate
-  //   }
-  // }
+  const onSubmitDeleteUser = async () => {
+    const confirmed = window.confirm("Вы уверены, что хотите удалить свой профиль?");
+    if (confirmed) {
+        await handleDeleteUser();
+    }
+};
+
+
 
   return (
     <div className='info_about_user'>
@@ -97,7 +93,7 @@ const Settings = () => {
             <Button
               text='Удалить профиль'
               style={{ backgroundColor: '#EE5300',fontWeight:'light', color: 'black', border: '2px solid #EE5300',  height:'4vh' }}
-              // onClick={onSubmitDeleteUser}
+              onClick={onSubmitDeleteUser}
             />
           </div>
         </div>

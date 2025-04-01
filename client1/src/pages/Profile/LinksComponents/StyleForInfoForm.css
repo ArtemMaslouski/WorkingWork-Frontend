@@ -1,12 +1,18 @@
 .info_about_user{
     margin-top: 5vh;
 }
-.action{
+.action,
+.action_tel{
     display: flex;
     flex-direction: column;
     width:50%;
     font-family: gta;
 }
+
+.action_tel {
+    margin-top:5vh;
+}
+
 .action span,
 .delete_profile p{
     font-size: 1rem;
@@ -64,7 +70,8 @@
     .info_about_user{
         margin-top: 3vh;
     }
-    .action{
+    .action,
+    .action_tel{
         
         width:100%;
     }
@@ -81,7 +88,8 @@
 }
 
 @media (min-width: 486px) and (max-width: 768px) {
-    .action{
+    .action,
+    .action_tel{
         
         width:100%;
     }

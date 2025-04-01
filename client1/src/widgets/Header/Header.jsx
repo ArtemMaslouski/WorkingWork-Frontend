@@ -15,7 +15,7 @@ const Header = () => {
 
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
   const [isWorldModalOpen, setIsWorldModalOpen] = useState(false);
-  const isAuthenticated = !!Cookies.get('token');
+  const isAuthenticated = !!Cookies.get('access_token');
   const location = useLocation();
   const navigate = useNavigate()
   const menuRef = useRef(null);
@@ -60,7 +60,7 @@ const Header = () => {
                 Создать задание
               </NavLink>
                <NavLink to='/FindTask' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
-              {/* <NavLink to='/MeOrders' className={({ isActive }) => isActive ? 'MyOrders active' : 'MyOrders'}>Мои заказы</NavLink> */}
+              
             </ul>
           </div>
 

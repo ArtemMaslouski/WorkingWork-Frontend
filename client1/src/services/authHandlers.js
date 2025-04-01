@@ -4,29 +4,36 @@ import { toast } from 'react-toastify'
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
 
-  export const handleLoginSubmit = async(e, Email, setEmail, Password, setPassword,navigate) =>{
-    e.preventDefault();
-      try{
-        const response = await userApi.login({Email, Password});
-        console.log(response)
-        // сохранение токена
-        Cookies.set('token', response.token, { expires: 7 }); 
+export const handleLoginSubmit = async (e, Email, setEmail, Password, setPassword, navigate) => {
+  e.preventDefault();
+  try {
+      const response = await userApi.login({ Email, Password });
+      console.log(response); // Выводим ответ от API
 
-        toast.success(`Вы успешно вошли в аккаунт`)
-        setEmail('');setPassword('')
-        navigate('/')
-      
-      }catch(error){
-        console.log(error)
-        toast.error('Ошибка входа, проверьте вводимые данные')
-        // setEmail('');setPassword('')
+      // Сохранение токена
+      if (response.access_token) {
+          Cookies.set('access_token', response.access_token, { expires: 7 }); 
+          
+          const token = Cookies.get('access_token'); // Получаем токен из Cookies
+          console.log('токе1223н', token); 
+      } else {
+          throw new Error('Токен не получен');
       }
+
+      toast.success(`Вы успешно вошли в аккаунт`);
+      setEmail('');
+      setPassword('');
+      navigate('/');
+    
+  } catch (error) {
+      console.log(error);
+      toast.error('Ошибка входа, проверьте вводимые данные');
   }
+};
 
   export const handleLogout = (navigate) => {
     Swal.fire({
       title: 'Вы хотите выйти из системы?',
-      // text: "Вы хотите выйти из системы?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Да, выйти!',
@@ -36,7 +43,7 @@ import Swal from 'sweetalert2';
       width:"330px"
     }).then((result) => {
       if (result.isConfirmed) {
-        Cookies.remove('token');
+        Cookies.remove('access_token');
         toast.success('Вы вышли из системы');
         
         setTimeout(() => {
@@ -48,39 +55,44 @@ import Swal from 'sweetalert2';
     });  
   };
 
-  export const handleRegisterSubmit = async (e, UserName, Email, Password, setName, setEmail, setPassword) => {
+  export const handleRegisterSubmit = async (e, UserName, Email, Password, setName, setEmail, setPassword, navigate) => {
     e.preventDefault();
 
     if (!validateEmail(Email)) {
+        toast.error('Неверный формат email.');
         return;
     }
 
     if (!validatePassword(Password)) {
+        toast.error('Пароль не соответствует требованиям.');
         return;
     }
+
     try {
         const response = await userApi.registerUser({ UserName, Email, Password });
         console.log(response);
-        
-        localStorage.setItem('UserName', UserName)
-        
-        const { id } = response; // Извлекаем id из ответа
-        localStorage.setItem('id', id); //
-        const UserId = localStorage.getItem('id');
-        console.log(UserId)
 
-        setName(''); setPassword('');setEmail(''); 
+        localStorage.setItem('UserName', UserName);
+
+        setName(''); 
+        setPassword('');
+        setEmail('');
+
         toast.success('Регистрация прошла успешно!');
+
     } catch (error) {
         console.error('Ошибка при регистрации:', error);
-        
+
         if (error.response && error.response.data && error.response.data.message.includes("email")) {
             toast.error('Пользователь с таким email уже зарегистрирован');
         } else {
             toast.error('Ошибка регистрации, попробуйте снова');
         }
+
+        setPassword('');
+        setEmail('');
     }
-  };
+};
 
   export const handleSendVerificationEmail = async (e, Email, setEmail) => {
     e.preventDefault();
@@ -143,16 +155,18 @@ import Swal from 'sweetalert2';
     }
   }
 
-//   export const handleDeleteUser = async (id, navigate) => {
-//     try {
-//         console.log(`Удаляем пользователя с ID: ${id}`); // Логируем перед отправкой
-//         const response = await userApi.deleteUser(id); // <-- Убираем { id }
-//         console.log(response);
-//         toast.success('Профиль успешно удален!');
-//         localStorage.clear();
-//         navigate('/SignIn');
-//     } catch (error) {
-//         console.error('Ошибка при удалении пользователя:', error);
-//         toast.error('Ошибка удаления профиля');
-//     }
-// };
+  export const handleDeleteUser = async () => {
+    try {
+       
+        const response = await userApi.deleteUser(); 
+        if (response.status === 200) {
+            Cookies.remove('access_token'); // Удаляем куку
+            localStorage.clear();
+            window.location.href = '/login'; // Перенаправляем на вход
+            toast.success('Профиль удалён!');
+        }
+    } catch (error) {
+        console.error('Ошибка:', error.response?.data || error.message);
+        // toast.error(error.response?.data?.message || 'Ошибка удаления профиля');
+    }
+};
