@@ -4,8 +4,8 @@ import Button from '../../shared/ui/Button/Button';
 
 const PhotoUploader = ({ onPhotoChange }) => {
   const [photo, setPhoto] = useState(null);
-  const [age, setAge] = useState(null);
-  const [estimates, setEstimates] = useState(null);
+  // const [age, setAge] = useState(null);
+  // const [estimates, setEstimates] = useState(null);
 
   const name = localStorage.getItem('UserName')
   const fileInputRef = useRef(null); 
@@ -64,8 +64,8 @@ const PhotoUploader = ({ onPhotoChange }) => {
         </div>
         <div className="info_about_user">
           <p className="underlined">{name}</p>
-          <p className="underlined">{age} лет</p>
-          <p className="underlined">{estimates} оценок</p>
+          {/* <p className="underlined">{age} лет</p>
+          <p className="underlined">{estimates} оценок</p> */}
         </div>
     </div>
   );

@@ -2,7 +2,9 @@
     padding: 10vh 5vw;
     font-family: gta;
 }
-
+.answers_questions h2{
+    font-family: gta;
+}
 
 .question_item{
     display: flex;
@@ -44,6 +46,14 @@
 }
 
 @media (max-width: 768px) {
+    .answers_questions h1{
+        text-align: center;
+    }
+    .answers_questions h2{
+        font-size: 1.1rem;
+        /* font-family: gta; */
+    }
+
     .question_component{
         padding: 5vh 5vw;
     }
@@ -55,7 +65,7 @@
     }
     .support_button{
         display: flex;
-        justify-content: space-around
+        justify-content: space-around;
     }
     .answers_questions p{
         font-size: 0.9rem;
