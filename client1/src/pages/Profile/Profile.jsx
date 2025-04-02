@@ -76,6 +76,10 @@ const Profile = () => {
       {activeTab === 'myExercise' && <MyExercise/>}
       {activeTab === 'settings' && <Settings/>}
       
+      {/* <div className="full_info">
+        <p>{name}</p>
+      </div> */}
+
       <div className="help_form_executor">
         <HelpFormExecutor />
       </div>

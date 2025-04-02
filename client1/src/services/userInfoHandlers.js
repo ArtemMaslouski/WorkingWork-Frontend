@@ -1,5 +1,7 @@
 import { toast } from "react-toastify";
 import UserInfoApi from '../api/UserInfoApi'
+import Cookies from 'js-cookie';
+
 
 export const handleChangePassword = async (OldPassword, Password, NewPassword) => {
    
@@ -31,29 +33,72 @@ export const handleGetUserInfo = async (userId) => {
     }
 };
 
-export const handleAddPhone = async (PhoneNumber, setPhoneNumber) =>{
-    try{
-        const response = await UserInfoApi.addMobilePhone( PhoneNumber);
-        return response.data; 
+// export const handleAddPhone = async (PhoneNumber, setPhoneNumber) => {
+//     try {
+//         const response = await UserInfoApi.addMobilePhone({ PhoneNumber });
+//         if (!response) {
+//             throw new Error('Ошибка добавления номера телефона');
+//         }
+
+//         console.log(response);
+//         setPhoneNumber(''); 
+//         toast.success('Номер телефона успешно добавлен!');
+//     } catch (error) {
+//         toast.error('Не удалось добавить номер телефона');
+//     }
+// };
+export const handleAddPhone = async (PhoneNumber, setPhoneNumber) => {
+    try {
+        const token = Cookies.get('access_token');
+        if (!token) {
+            toast.error('Ошибка авторизации! Войдите в аккаунт.');
+            return;
+        }
+
+        if (!/^\+?[0-9]{10,15}$/.test(PhoneNumber)) {
+            toast.error('Некорректный формат номера телефона!');
+            return;
+        }
+
+        const response = await UserInfoApi.addMobilePhone({ PhoneNumber });
+
+        if (!response) {
+            throw new Error('Ошибка добавления номера телефона');
+        }
+
+        console.log(response);
+        setPhoneNumber('');
+        toast.success('Номер телефона успешно добавлен!');
+    } catch (error) {
+        console.error('Ошибка:', error);
+        toast.error('Не удалось добавить номер телефона');
     }
-    catch(error){
-        toast.error('Данные о пользователе не добавлены');
-        return null;
-    }
-}
+};
+
 
 export const handleAddUserInfo = async (Name, Surname, BirthdayDate, Sex, City, Email,
-    setName, setSurname, setBirthdayDate, setSex, setCity, setEmail,
-) =>{
-    try{
-        const response = await UserInfoApi.addUserInfo( Name, Surname, BirthdayDate, Sex, City, Email);
-        return response.data; 
-    }
-    catch(error){
-        toast.error('Данные о пользователе не добавлены');
+    setName, setSurname, setBirthdayDate, setSex, setCity, setEmail
+) => {
+    try {
+        const response = await UserInfoApi.addUserInfo({Name, Surname, BirthdayDate, Sex, City, Email});
+        console.log(response)
+        // toast.success('Данные успешно сохранены!');
+        
+        setName('');
+        setSurname('');
+        setBirthdayDate('');
+        setSex('');
+        setCity('');
+        setEmail('');
+        return response;
+    } catch (error) {
+        toast.error('Произошла ошибка при сохранении данных.');
+        console.error('Ошибка:', error);
         return null;
     }
-}
+};
+
+
 
 export const handleUploadFilePhoto = async (file) => {
     if (!file) {

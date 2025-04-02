@@ -1,0 +1,25 @@
+.language-modal {
+    position: fixed; 
+    top: 60px;       
+    right: 100px;     
+    background-color: #f3f3f3; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 10px; 
+    z-index: 1000; 
+    width: 200px; 
+  }
+  
+  .language-item {
+    padding: 8px 12px; 
+    font-size: 14px; 
+    color: #333; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+  }
+  
+  .language-item:hover {
+    background-color: #eaeaea; 
+  }
+  

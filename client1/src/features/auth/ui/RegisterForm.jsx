@@ -3,6 +3,7 @@ import Input from '../../../shared/ui/Input/Input'
 import Button from '../../../shared/ui/Button/Button'
 import {handleRegisterSubmit} from '../../../services/authHandlers'
 import '../styles/FormStyles.css'
+import { useNavigate } from 'react-router-dom'
 
 const RegisterForm = ({
     UserName, setName,
@@ -12,8 +13,10 @@ const RegisterForm = ({
     onBackToLogin
 }) => {
 
+  const navigate = useNavigate()
+
   const onSubmit =(e) =>{
-    handleRegisterSubmit(e, UserName, Email, Password, setName, setEmail, setPassword);
+    handleRegisterSubmit(e, UserName, Email, Password, setName, setEmail, setPassword, navigate);
   }
   
   return (
