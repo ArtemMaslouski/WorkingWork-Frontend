@@ -8,14 +8,12 @@ export const handleLoginSubmit = async (e, Email, setEmail, Password, setPasswor
   e.preventDefault();
   try {
       const response = await userApi.login({ Email, Password });
-      console.log(response); // Выводим ответ от API
+      console.log(response);
 
       // Сохранение токена
       if (response.access_token) {
-          Cookies.set('access_token', response.access_token, { expires: 7 }); 
-          
-          const token = Cookies.get('access_token'); // Получаем токен из Cookies
-          console.log('токе1223н', token); 
+          Cookies.set('access_token', response.access_token, { expires: 7 }); // Сохранение access_token
+          console.log('Токен', response.access_token);
       } else {
           throw new Error('Токен не получен');
       }
@@ -24,7 +22,6 @@ export const handleLoginSubmit = async (e, Email, setEmail, Password, setPasswor
       setEmail('');
       setPassword('');
       navigate('/');
-    
   } catch (error) {
       console.log(error);
       toast.error('Ошибка входа, проверьте вводимые данные');
@@ -157,16 +154,14 @@ export const handleLoginSubmit = async (e, Email, setEmail, Password, setPasswor
 
   export const handleDeleteUser = async () => {
     try {
-       
         const response = await userApi.deleteUser(); 
         if (response.status === 200) {
-            Cookies.remove('access_token'); // Удаляем куку
-            localStorage.clear();
-            window.location.href = '/login'; // Перенаправляем на вход
+            Cookies.remove('access_token'); 
+            window.location.href = '/login'; 
             toast.success('Профиль удалён!');
         }
     } catch (error) {
         console.error('Ошибка:', error.response?.data || error.message);
-        // toast.error(error.response?.data?.message || 'Ошибка удаления профиля');
+       
     }
 };

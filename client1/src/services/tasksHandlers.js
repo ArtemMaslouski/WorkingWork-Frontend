@@ -1,46 +1,49 @@
 import { toast } from 'react-toastify'
 import TaskApi from '../api/TaskApi';
 
-export const handleCreateTask = async(e,Category, Subcategory,Address,AddressEnd,BeginAt,EndAt, Description,
-    setSubcategory, setCategory, setAddressFrom, setAddressTo, setStartDate, setEndDate, setDescription
- )=>{
+export const handleCreateTask = async (e, Category, Subcategory, Address, AddressEnd, BeginAt, EndAt, Description,
+    setSubcategory, setCategory, setAddressFrom, setAddressTo, setStartDate, setEndDate, setDescription) => {
+
     e.preventDefault();
-    if(!Category ){
+
+    // Проверка обязательных полей
+    if (!Category) {
         toast.info('Укажите категорию задания');
         return;
     }
-    if(!Subcategory ){
+    if (!Subcategory) {
         toast.info('Укажите подкатегорию задания');
         return;
     }
-    if(!Address){
-        toast.info('Укажите адресс выполнения заказа');
+    if (!Address) {
+        toast.info('Укажите адрес выполнения заказа');
         return;
     }
-    if(BeginAt > EndAt){
-        toast.info('Укажите верную дату удля выполнения задания');
+    if (BeginAt > EndAt) {
+        toast.info('Укажите верные даты для выполнения задания');
         return;
     }
 
-    
-    try{
-        const response = await TaskApi.createTask({Category, Subcategory,Address,AddressEnd,BeginAt,EndAt, Description})
-        console.log(response)
-        toast.success(`Вы успешно создали задание!Ждите откликов `)
-        setCategory('');
-        setSubcategory('');
-        setAddressFrom('');
-        setAddressTo('');
-        setStartDate('');
-        setEndDate('');
-        setDescription('')
+    // Попытка создать задание
+    try {
+        const response = await TaskApi.createTask({ Category, Subcategory, Address, AddressEnd, BeginAt, EndAt, Description });
+        console.log(response);
+        toast.success('Вы успешно создали задание! Ждите откликов.');
 
+        // Сброс полей формы
+        // setCategory('');
+        // setSubcategory('');
+        // setAddressFrom('');
+        // setAddressTo('');
+        // setStartDate('');
+        // setEndDate('');
+        // setDescription('');
+
+    } catch (error) {
+        console.log(error);
+        toast.error('Ошибка создания, проверьте вводимые данные.');
     }
-    catch(error){
-        console.log(error)
-        toast.error('Ошибка создания, проверьте вводимые данные')
-    }
-}
+};
 
 export const handleRefreshTasks = async(e,Category, Subcategory,Address,AddressEnd,BeginAt,EndAt, Description)=>{
     e.preventDefault();

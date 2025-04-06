@@ -16,7 +16,7 @@
     align-items: center; 
     position: relative;
     width: 100%; 
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 .nav li {
@@ -24,6 +24,14 @@
     text-decoration: none;
     padding: 0 10px;
 }
+
+
+.nav_list .logout-link,
+.nav_list > a[href="/SignIn"] {
+    font-size: 1.3rem; 
+    padding: 5px 10px; 
+}
+
 
 .logo_and_menu {
     display: flex;
@@ -125,5 +133,11 @@ a.active{
 
     .logo img {
         width: 90px; 
+    }
+
+    .nav_list .logout-link,
+    .nav_list > a[href="/SignIn"] {
+        font-size: 1.2rem; 
+        padding: 8px 15px; 
     }
 }

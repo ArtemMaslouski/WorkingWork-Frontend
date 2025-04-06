@@ -1,24 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './FindTask.css';
 import InputService from '../../shared/ui/InputService/InputService';
-// import AuthPeople from '../../api/userApi'; 
+import TaskApi from '../../api/TaskApi';
+import Button from '../../shared/ui/Button/Button'
 
 const FindTask = () => {
-  // const [users, setUsers] = useState([]);
-  // const [error, setError] = useState(null); 
+  const [tasks, setTasks] = useState([]);
+  const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchUsers = async () => {
-  //     try {
-  //       const usersData = await AuthPeople.getUsers();
-  //       setUsers(usersData); // Убедитесь, что данные правильно устанавливаются
-  //     } catch (error) {
-  //       setError(error); 
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const tasksData = await TaskApi.getAllTasks();
+        setTasks(tasksData);
+      } catch (error) {
+        setError(error);
+      }
+    };
 
-  //   fetchUsers();
-  // }, []);
+    fetchTasks();
+  }, []);
 
   return (
     <div className='findTask_component'>
@@ -28,21 +29,41 @@ const FindTask = () => {
           <InputService placeholder="Например, требуется курьер, доставить товар" />
         </div>
       </div>
-      {/* <div className="all_users">
+
+      <div className="all_tasks">
         {error ? (
           <p>Ошибка при загрузке данных: {error.message}</p>
-        ) : users.length > 0 ? (
-          users.map((user) => (
-            <div key={user.id}>
-              <p>ID: {user.id}</p>
-              <p>Имя пользователя: {user.UserName}</p>
-              <p>Email: {user.Email}</p>
+        ) : tasks.length > 0 ? (
+          tasks.map((task) => (
+            <div key={task.id} className="task_item_border">
+
+              <div className="emblem_exercise">
+                <p>llsdldsd,clk</p>
+              </div>
+
+              <div className="tasks">
+                <h3>{task.Category} / {task.Subcategory}</h3>
+                <p>{task.AddressEnd}</p>
+                <p>Начало выполнения: <b>{task.BeginAt}</b>. Окончание выполнения: <b>{task.EndAt}</b></p>
+                <p>{task.Description}</p>
+                
+              </div>
+               
+               <div className="response_button">
+               <Button   
+                    text="Откликнуться" 
+                    style={{ backgroundColor: '#EE5300',fontWeight:'light', color: 'black', border: '2px solid #EE5300', width:'100%', height:'6vh', fontFamily:'gta',
+                     marginTop:'100px'
+                     }} 
+                />
+               </div>
+            
             </div>
           ))
         ) : (
-          <p>Пользователи не найдены.</p>
+          <p>Задания не найдены.</p>
         )}
-      </div> */}
+      </div>
     </div>
   );
 };

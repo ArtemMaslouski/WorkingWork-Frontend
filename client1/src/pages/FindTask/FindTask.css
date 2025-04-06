@@ -42,6 +42,35 @@
     color:rgba(238,83,0);
 }
 
+.tasks h3{
+    font-size: 1.2rem;
+    border-bottom: 1px solid currentColor;
+    font-family: gta;
+}
+.tasks p{
+    font-size: 1.1rem;
+    font-family: gta;
+}
+
+
+.task_item_border {
+    width: 100%;
+    border: 1px solid black;
+    margin: 1vw 0;
+    display: flex;
+    gap: 15vw;
+    position: relative; 
+    padding-bottom: 50px; 
+}
+
+.response_button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 200px; 
+}
+
+
 @media (max-width: 768px) {
     .place_for_find_task{
         padding-top: 10vh;
@@ -51,5 +80,16 @@
         text-align: center;
         width: 100%;
         margin: 0 auto;
+    }
+    .task_item_border {
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 70px;
+    }
+    
+    .response_button {
+        position: static;
+        width: 100%;
+        margin-top: 15px;
     }
 }

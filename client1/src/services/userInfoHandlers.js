@@ -49,8 +49,8 @@ export const handleGetUserInfo = async (userId) => {
 // };
 export const handleAddPhone = async (PhoneNumber, setPhoneNumber) => {
     try {
-        const token = Cookies.get('access_token');
-        if (!token) {
+        const access_token = Cookies.get('access_token');
+        if (!access_token) {
             toast.error('Ошибка авторизации! Войдите в аккаунт.');
             return;
         }

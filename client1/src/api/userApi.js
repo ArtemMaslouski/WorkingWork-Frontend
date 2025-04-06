@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {baseURL} from '../constants/someConstants'
 import Cookies from 'js-cookie';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 class Auth {
     
@@ -12,7 +12,7 @@ class Auth {
             });
             return response.data;
         } catch (error) {
-            console.error('Ошибка при регистрации:', error.response?.data || error.message);
+            // console.error('Ошибка при регистрации:', error.response?.data || error.message);
             throw error;
         }
     }
@@ -71,23 +71,24 @@ class Auth {
     }
 
     async deleteUser() {
+       
         try {
-            const token = Cookies.get('access_token'); // Получаем токен из cookies
-            // console.log(token)
-            if (!token) {
+            const access_token = Cookies.get('access_token'); 
+            console.log('токен',access_token)
+            if (!access_token) {
                 throw new Error('Токен не найден.');
             }
     
             console.log('Отправка запроса на удаление пользователя');
     
             const response = await axios.delete(`${baseURL}/auth/delete-users`, {
-                headers: { Authorization: `Bearer ${token}` },
+                headers: { Authorization: `Bearer ${access_token}` },
             });
     
-            return response; // Вернуть ответ для проверки статуса
+            return response; 
         } catch (error) {
             console.error('Ошибка удаления пользователя:', error.response?.data || error.message);
-            throw error; // Пробросить ошибку выше для обработки
+            throw error; 
         }
     }
 }

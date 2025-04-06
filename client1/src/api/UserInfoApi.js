@@ -29,15 +29,15 @@ class UserInfo {
 
     async addMobilePhone({ PhoneNumber }) {
         try {
-            const token = Cookies.get('access_token');
-            if (!token) throw new Error('Не найден токен');
+            const access_token = Cookies.get('access_token');
+            if (!access_token) throw new Error('Не найден токен');
             
             const response = await axios.post(`${baseURL}/user-info/add-phone-number`, 
                 { 
                     PhoneNumber 
                 },
                 { 
-                    headers: { Authorization: `Bearer ${token}` },
+                    headers: { Authorization: `Bearer ${access_token}` },
                     withCredentials: true 
                 }
             );
@@ -55,9 +55,9 @@ class UserInfo {
         
         try {
            
-            const token = Cookies.get('access_token');
-            console.log('Токен:', token); // Должен быть валидный JWT
-            if (!token) {
+            const access_token = Cookies.get('access_token');
+            console.log('Токен:', access_token); // Должен быть валидный JWT
+            if (!access_token) {
             console.error('Токен не найден в куках');
         }
             const formattedDate = BirthdayDate ? new Date(BirthdayDate).toISOString() : null;
@@ -68,7 +68,7 @@ class UserInfo {
             const response = await axios.post(`${baseURL}/user-info/add-user-info`, 
                 { Name, Surname, BirthdayDate: formattedDate, Sex, City, Email },
                 { 
-                    headers: { Authorization: `Bearer ${token}` },
+                    headers: { Authorization: `Bearer ${access_token}` },
                     withCredentials: true
                 }
             );

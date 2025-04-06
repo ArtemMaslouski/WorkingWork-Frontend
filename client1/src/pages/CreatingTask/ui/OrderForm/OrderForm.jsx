@@ -42,8 +42,8 @@ const OrderForm = () => {
     
     const onSubmitCreateTasks = async (e) => {
         e.preventDefault(); 
-        const token = Cookies.get('token');
-        if (!token) {
+        const access_token = Cookies.get('access_token');
+        if (!access_token) {
             toast.error('Пожалуйста, войдите в систему, чтобы оформить задание.');
             setTimeout(() => {
                 navigate('/SignIn');

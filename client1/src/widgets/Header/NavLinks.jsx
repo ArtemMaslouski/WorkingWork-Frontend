@@ -44,11 +44,11 @@ const NavLinks = ({ isAuthenticated, toggleMapModal, isMapModalOpen, handleLogou
       
       <NavLink 
         onClick={toggleMapModal} style={{ color: isMapModalOpen ? '#EE5300' : 'black' }}>
-        <FiMapPin size={20} />
+        <FiMapPin size={25} />
       </NavLink>
 
       <NavLink onClick={()=> setShowLanguageDropdown((prev) => !prev)} style={{ color: showLanguageDropdown ? '#EE5300' : 'black' }}>
-        <TfiWorld size={20} />
+        <TfiWorld size={25} />
       </NavLink>
       <div ref={langModalRef}>
         <LanguageModal 
@@ -57,11 +57,11 @@ const NavLinks = ({ isAuthenticated, toggleMapModal, isMapModalOpen, handleLogou
         />
       </div>
 
-      <NavLink to='/QuestionComponent' className={({ isActive }) => isActive ? 'active' : ''}><FaQuestion size={20}/></NavLink>
+      <NavLink to='/QuestionComponent' className={({ isActive }) => isActive ? 'active' : ''}><FaQuestion size={25}/></NavLink>
       
       {isAuthenticated ? (
         <>
-          <NavLink to='/Profile'><CgProfile size={20}/></NavLink>
+          <NavLink to='/Profile'><CgProfile size={25}/></NavLink>
           <span onClick={() => handleLogout(navigate)} className='logout-link'>Выйти</span>
         </>
       ) : (
