@@ -13,6 +13,7 @@ class UserInfo {
           NewPassword,
         }
       );
+      console.log();
       return response.data;
     } catch (error) {
       console.error(
