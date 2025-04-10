@@ -7,7 +7,7 @@ class UserInfo {
     try {
       console.log();
       const response = await axios.post(
-        `${baseURL}/user-info/change-password`,
+        `${process.env.URL}/user-info/change-password`,
         {
           OldPassword,
           Password,
@@ -27,7 +27,7 @@ class UserInfo {
 
   async getUserInfo() {
     try {
-      const response = await axios.get(`${baseURL}/user-info/get-info`);
+      const response = await axios.get(`${process.env.URL}/user-info/get-info`);
       return response.data;
     } catch (error) {
       console.log('Ошибка получения данных пользователя', error.response);
@@ -41,7 +41,7 @@ class UserInfo {
       if (!access_token) throw new Error('Не найден токен');
 
       const response = await axios.post(
-        `${baseURL}/user-info/add-phone-number`,
+        `${process.env.URL}/user-info/add-phone-number`,
         {
           PhoneNumber,
         },
@@ -81,7 +81,7 @@ class UserInfo {
       });
 
       const response = await axios.post(
-        `${baseURL}/user-info/add-user-info`,
+        `${process.env.URL}/user-info/add-user-info`,
         { Name, Surname, BirthdayDate: formattedDate, Sex, City, Email },
         {
           withCredentials: true,
@@ -104,7 +104,7 @@ class UserInfo {
 
     try {
       const response = await axios.post(
-        `${baseURL}/user-info/upload-avatar`,
+        `${process.env.URL}/user-info/upload-avatar`,
         formData,
         {
           headers: {
