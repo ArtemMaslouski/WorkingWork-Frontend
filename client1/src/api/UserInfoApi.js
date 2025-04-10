@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 class UserInfo {
   async changePassword({ OldPassword, Password, NewPassword }) {
     try {
+      console.log();
       const response = await axios.post(
         `${baseURL}/user-info/change-password`,
         {
@@ -13,6 +14,7 @@ class UserInfo {
           NewPassword,
         }
       );
+      console.log();
       return response.data;
     } catch (error) {
       console.error(

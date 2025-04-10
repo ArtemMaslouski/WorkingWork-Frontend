@@ -17,27 +17,21 @@ class Auth {
         }
     }
 
-    // async logout() {
-    // try {
-    //     const response = await axios.post(`${baseURL}/auth/quit`, {}, { withCredentials: true });
-    //     return response.data; 
-    // } catch (error) {
-    //     console.error('Ошибка при выходе:', error); 
-    //     throw error; 
-    // }
-// }
-
-    async login({Email, Password}){
-        try{
-            const response = await axios.post(`${baseURL}/auth/login`,{
-                Email, Password
-            });
-            return response.data;
-        }catch(error){
-            console.error('Ошибка при регистрации:', error.response?.data || error.message);
-            throw error;
-        }
+  async login({ Email, Password }) {
+    try {
+      const response = await axios.post(`${baseURL}/auth/login`, {
+        Email,
+        Password,
+      });
+      return response.data;
+    } catch (error) {
+      console.error(
+        'Ошибка при регистрации:',
+        error.response?.data || error.message
+      );
+      throw error;
     }
+  }
 
     async getUsers(){
         try{
