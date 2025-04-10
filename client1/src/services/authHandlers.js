@@ -157,7 +157,7 @@ export const handleLoginSubmit = async (e, Email, setEmail, Password, setPasswor
         const response = await userApi.deleteUser(); 
         if (response.status === 200) {
             Cookies.remove('access_token'); 
-            window.location.href = '/login'; 
+            window.location.href = '/SignIn'; 
             toast.success('Профиль удалён!');
         }
     } catch (error) {

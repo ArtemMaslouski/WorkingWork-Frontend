@@ -29,7 +29,7 @@ const PersonalData = () => {
             BirthdayDate, 
             Sex, 
             City, 
-            Email 
+            Email,  setName, setSurname, setBirthdayDate, setSex, setCity, setEmail
         );
     } catch (error) {
         console.error('Ошибка сохранения:', error);

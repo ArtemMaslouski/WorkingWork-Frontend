@@ -31,13 +31,13 @@ export const handleCreateTask = async (e, Category, Subcategory, Address, Addres
         toast.success('Вы успешно создали задание! Ждите откликов.');
 
         // Сброс полей формы
-        // setCategory('');
-        // setSubcategory('');
-        // setAddressFrom('');
-        // setAddressTo('');
-        // setStartDate('');
-        // setEndDate('');
-        // setDescription('');
+        setCategory('');
+        setSubcategory('');
+        setAddressFrom('');
+        setAddressTo('');
+        setStartDate('');
+        setEndDate('');
+        setDescription('');
 
     } catch (error) {
         console.log(error);

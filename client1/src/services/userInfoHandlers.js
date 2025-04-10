@@ -90,6 +90,7 @@ export const handleAddUserInfo = async (Name, Surname, BirthdayDate, Sex, City, 
         setSex('');
         setCity('');
         setEmail('');
+        // toast.success('Информация обновлена')
         return response;
     } catch (error) {
         toast.error('Произошла ошибка при сохранении данных.');
