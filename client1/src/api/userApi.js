@@ -19,6 +19,7 @@ class Auth {
   }
 
   async login({ Email, Password }) {
+    console.log('Логин');
     try {
       const response = await axios.post(`${baseURL}/auth/login`, {
         Email,
