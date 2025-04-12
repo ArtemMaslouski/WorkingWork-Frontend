@@ -33,7 +33,7 @@ class Tasks {
       }
 
       const response = await axios.post(
-        `${process.env.URL}/tasks/create`,
+        `${process.env.REACT_APP_URL}/tasks/create`,
         {
           Category,
           Subcategory,
@@ -60,7 +60,9 @@ class Tasks {
 
   async getAllTasks() {
     try {
-      const response = await axios.get(`${process.env.URL}/tasks/get`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_URL}/tasks/get`
+      );
       return response.data;
     } catch (error) {
       console.error(
@@ -73,9 +75,12 @@ class Tasks {
 
   async deleteTask({ id }) {
     try {
-      const response = await axios.delete(`${process.env.URL}/tasks/delete`, {
-        data: { id },
-      });
+      const response = await axios.delete(
+        `${process.env.REACT_APP_URL}/tasks/delete`,
+        {
+          data: { id },
+        }
+      );
       return response.data;
     } catch (error) {
       console.error(
@@ -97,7 +102,7 @@ class Tasks {
     Description,
   }) {
     const response = await axios.put(
-      `${process.env.URL}/tasks/refresh/${id}`,
+      `${process.env.REACT_APP_URL}/tasks/refresh/${id}`,
       Category,
       Subcategory,
       Address,

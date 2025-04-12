@@ -6,11 +6,14 @@ import Cookies from 'js-cookie';
 class Auth {
   async registerUser({ UserName, Email, Password }) {
     try {
-      const response = await axios.post(`${process.env.URL}/auth/create-user`, {
-        UserName,
-        Email,
-        Password,
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_URL}/auth/create-user`,
+        {
+          UserName,
+          Email,
+          Password,
+        }
+      );
       return response.data;
     } catch (error) {
       // console.error('Ошибка при регистрации:', error.response?.data || error.message);
@@ -22,12 +25,16 @@ class Auth {
     console.log('test1');
     console.log('Login');
     try {
-      const response = await axios.post(`${process.env.URL}/auth/login`, {
-        Email,
-        Password,
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_URL}/auth/login`,
+        {
+          Email,
+          Password,
+        }
+      );
       return response.data;
     } catch (error) {
+      console.log(process.env.REACT_APP_URL);
       console.error(
         'Ошибка при регистрации:',
         error.response?.data || error.message
@@ -38,7 +45,9 @@ class Auth {
 
   async getUsers() {
     try {
-      const response = await axios.get(`${process.env.URL}/auth/get-users`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_URL}/auth/get-users`
+      );
       return response.data;
     } catch (error) {
       console.error(
@@ -51,9 +60,12 @@ class Auth {
 
   async sendVerificationEmail(Email) {
     try {
-      const response = await axios.post(`${process.env.URL}/auth/send`, {
-        Email,
-      });
+      const response = await axios.post(
+        `${process.env.REACT_APP_URL}/auth/send`,
+        {
+          Email,
+        }
+      );
       return response.data;
     } catch (error) {
       console.error(
@@ -67,7 +79,7 @@ class Auth {
   async verificateUserWithCodeFromEmail(Code, Email) {
     try {
       const response = await axios.post(
-        `${process.env.URL}/auth/forgotPassword`,
+        `${process.env.REACT_APP_URL}/auth/forgotPassword`,
         { Code, Email }
       );
       return response.data;
@@ -80,7 +92,7 @@ class Auth {
   async resetPassword(Email, Password) {
     try {
       const response = await axios.post(
-        `${process.env.URL}/auth/resetPassword`,
+        `${process.env.REACT_APP_URL}/auth/resetPassword`,
         { Email, Password }
       );
       return response.data;
@@ -101,7 +113,7 @@ class Auth {
 
       console.log('Отправка запроса на удаление пользователя');
 
-      await axios.delete(`${process.env.URL}/auth/delete-users`, {
+      await axios.delete(`${process.env.REACT_APP_URL}/auth/delete-users`, {
         withCredentials: true,
       });
 
