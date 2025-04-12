@@ -18,7 +18,7 @@ class UserInfo {
       return response.data;
     } catch (error) {
       console.error(
-        'Ошибка при регистрации:',
+        'Ошибка при регистрации пользователя:',
         error.response?.data || error.message
       );
       throw error;
