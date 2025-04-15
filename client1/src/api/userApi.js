@@ -24,6 +24,7 @@ class Auth {
   async login({ Email, Password }) {
     console.log('test1');
     console.log('Login');
+    console.log(process.env.REACT_APP_URL);
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_URL}/auth/login`,
