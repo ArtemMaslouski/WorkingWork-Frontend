@@ -30,6 +30,9 @@ class Auth {
         {
           Email,
           Password,
+        },
+        {
+          withCredentials: true,
         }
       );
       return response.data;
