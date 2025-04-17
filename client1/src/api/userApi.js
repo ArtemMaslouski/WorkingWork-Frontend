@@ -22,13 +22,7 @@ class Auth {
   }
 
   async login({ Email, Password }) {
-<<<<<<< HEAD
     console.log('vkjdhvkhsovhsd')
-=======
-    console.log('test1');
-    console.log('Login');
-    console.log(process.env.REACT_APP_URL);
->>>>>>> a5f5fe398b13608fb70dec6eb0e2437f105b0c4e
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_URL}/auth/login`,
