@@ -3,20 +3,6 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 class Tasks {
-  // async createTask ({ Category, Subcategory,Address, AddressEnd,BeginAt,EndAt, Description}){
-
-  //     try{
-
-  //         const response = await axios.post(`${baseURL}/tasks/create`,{
-  //             Category, Subcategory,Address,AddressEnd, BeginAt,
-  //             EndAt, Description
-  //         });
-  //         return response.data;
-  //     }catch (error){
-  //         console.error('Ошибка при создании задания:', error.response?.data || error.message);
-  //         throw error;
-  //     }
-  // }
   async createTask({
     Category,
     Subcategory,
