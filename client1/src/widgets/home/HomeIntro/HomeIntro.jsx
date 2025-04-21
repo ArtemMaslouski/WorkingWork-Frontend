@@ -6,7 +6,7 @@ import Person from '../../../shared/assets/photo/mainPerson.jpg'
 const HomeIntro = () => {
   return (
     <div className='homeIntro_component'>
-        <div className="homeIntro_content">
+        <div className="overlay">
             <div className="intro_item">
                 <h1>Освободим вас от забот</h1>
                 <p>Для любой задачи есть профи!</p>

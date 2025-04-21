@@ -12,7 +12,7 @@
     padding: 14px 35px 14px 10px;
     font-size: 1rem;
     color: #333;
-    border: 2px solid orange; 
+    border: 2px solid #998756; 
     border-radius: 12px;
     outline: none;
     background: white;
@@ -22,7 +22,7 @@
 }
 
 .user-box input:focus {
-    border-color: darkorange;
+    border-color: #998756;
     box-shadow: 0px 4px 10px rgba(255, 140, 0, 0.3);
 }
 
@@ -41,7 +41,7 @@
     top: 2px;
     left: 12px;
     font-size: 0.7rem;
-    color: #ff7b00;
+    color: #998756;
     background: white;
     padding: 2px 6px;
     border-radius: 6px;
@@ -87,7 +87,7 @@ span {
         padding: 14px 35px 14px 10px;
         font-size: 1rem;
         color: #333;
-        border: 2px solid orange; 
+        border: 2px solid #998756; 
         border-radius: 12px;
         outline: none;
         background: white;
@@ -114,7 +114,7 @@ span {
         padding: 14px 35px 14px 10px;
         font-size: 1rem;
         color: #333;
-        border: 2px solid orange; 
+        border: 2px solid #998756; 
         border-radius: 12px;
         outline: none;
         background: white;

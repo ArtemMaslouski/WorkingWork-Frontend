@@ -1,9 +1,5 @@
 .question_component{
-    padding: 10vh 5vw;
-    font-family: gta;
-}
-.answers_questions h2{
-    font-family: gta;
+    padding: 10vh 5vw
 }
 
 .question_item{
@@ -18,8 +14,7 @@
     list-style-type: none;
 }
 .answers_questions h1{
-    color:#EE5300;
-    font-family: Pricedown;
+    color:#a5811e;
 }
 
 .answers_questions h2{
@@ -27,13 +22,13 @@
 }
 .answers_questions h2:active,
 .answers_questions h2:hover{
-    color:#EE5300;
+    color:#a5811e;
     font-size: 1.2rem;
     cursor: pointer;
 }
 
 .answers_questions p{
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 @media (min-width: 768px) {
@@ -48,9 +43,10 @@
 @media (max-width: 768px) {
     .answers_questions h1{
         text-align: center;
+        font-size: 1.5rem;
     }
     .answers_questions h2{
-        font-size: 1.1rem;
+        font-size: 0.9rem;
         /* font-family: gta; */
     }
 

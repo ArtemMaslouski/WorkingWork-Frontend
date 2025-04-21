@@ -1,12 +1,10 @@
 body {
     margin: 0;
     /* padding: 0vw 3vw 1vw 3vw;  */
-    /* background: url('./shared/assets/photo//back_ground.jpg')  no-repeat center center fixed;; */
+    background: url('./shared/assets/photo//back_ground.jpg')  no-repeat center center fixed;;
     position: relative;
     background-size: cover; 
     position: relative;
-    font-family: gta;
-     
 }
 
 body::after {
@@ -32,23 +30,22 @@ body::after {
 }
 
 @font-face {
-    font-family: 'Pricedown';
-    src: url('./shared/assets/font/Pricedown\ Bl.otf') format('opentype');
+    /* font-family: 'Pricedown'; */
+    /* src: url('./shared/assets/font/Pricedown\ Bl.otf') format('opentype');
     font-weight: normal;
-    font-style: normal;
+    font-style: normal; */
 }
 
 @font-face {
-    font-family: 'gta';
-    src: url('./shared/assets/font/Roboto-Regular.ttf') format('opentype');
+    /* font-family: 'gta'; */
+    /* src: url('./shared/assets/font/Roboto-Regular.ttf') format('opentype');
     font-weight: normal;
-    font-style: normal;
+    font-style: normal; */
 }
 
 
  h2{
     font-size: 1.7rem;
-    font-family: Pricedown ;
 }
  h3, p
 {

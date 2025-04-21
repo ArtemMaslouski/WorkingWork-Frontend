@@ -48,9 +48,9 @@ const ServicesList = () => {
       ))}
       {isMobile && services.length > 6 &&(
         <Button onClick={toggleShowAll} text={showAll ? 'Скрыть категории' : 'Показать все категории'}
-        style={{ backgroundColor: 'white', color: 'gray', border: '2px solid #EE5300',width:'100%',height:'4.5vh', fontWeight:'light' }} 
+        style={{ backgroundColor: 'white', color: 'gray', border: '2px solid rgb(162, 139, 76)',width:'100%',height:'4.5vh', fontWeight:'light' }} 
        />
-      )}
+      )} 
     </div>
   );
 };

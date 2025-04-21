@@ -1,87 +1,108 @@
-.homeIntro_content{
-    margin-top: 5vh;
+.homeIntro_component {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.overlay {
     display: flex;
     justify-content: space-between;
-    /* font-family: Pricedown; */
+    align-items: center;
+    width: 100%;
+    z-index: 2;
 }
 
-.intro_item h1{
-    color:rgba(238,83,0);
-    margin-top: 15vh;
-    font-size: 2.8rem;
-    font-family: Pricedown ;
+.intro_item {
+    flex: 1;
+    max-width: 50%;
+    color: #333;
 }
 
-.intro_item p{
-    font-size: 1rem;
-    font-family: gta;
+.intro_item h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.intro_item p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .text_state {
-    background-color: rgb(221, 232, 197);
-    width: 25vw;
-    height: 5vh;
+    background-color: #F4F4F4;
+    width: fit-content;
+    height: auto;
     display: flex;
     align-items: center;
     border-radius: 20px;
-    padding-left: 1vw;
-    border: 1px solid rgb(140, 195, 18);
+    padding: 0.6rem 1rem;
+    border: 1px solid rgb(0, 0, 0);
+    font-size: 1rem;
+    margin-top: 1rem;
 }
 
+.image_mainPage img {
+    height: 70vh;
+    width: 30vw;
+    /* border-radius: 20px; */
+    /* object-fit: cover; */
+}
 
+/* --- Mobile / Tablet --- */
 @media (max-width: 768px) {
-    
-    .homeIntro_content{
-        margin-top: 1vh;
-        display: inline;
-        justify-content: center;
-        align-items: center;
+    .homeIntro_component {
+        background-image: url('../../../shared/assets/photo/mainPerson.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 80vh;
+        padding: 0;
+        color: white;
     }
-    .intro_item h1{
-        margin-top: 5vh;
-        font-size: 1.5rem;
-    }
-    
-    .intro_item p{
-        font-size: 0.9rem;
-    }
-    
-    .text_state {
-        background-color: rgb(221, 232, 197);
-        width: 85vw;
-        height: 4vh;
-        display: flex;
-        align-items: center;
-        border-radius: 20px;
-        padding-left: 1vw;
-        border: 1px solid rgb(140, 195, 18);
-    } 
 
-    .image_mainPage{
-        display: flex;
+    .homeIntro_component::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5); /* затемнение */
+        z-index: 1;
+    }
+
+    .overlay {
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
         text-align: center;
-        justify-content: center;
-    }
-    .image_mainPage img{
-        width: 50vw;
-    }
-}
-@media (max-width: 360px) {
-    .intro_item  .text_state{
-        font-size: 0.7rem;
-    }
-}
-
-@media (min-width: 1560px) {
-    .image_mainPage img{
-        width: 33vw;
-    }
-    .intro_item h1{
-        color:rgba(238,83,0);
-        margin-top: 15vh;
-        font-size: 3.5rem;
-        font-family: Pricedown ;
+        z-index: 2;
+        padding: 0 5vw;
     }
 
+    .intro_item {
+        max-width: 100%;
+        color: white;
+    }
+
+    .intro_item h1 {
+        font-size: 2rem;
+        margin-top: 3vh;
+    }
+
+    .intro_item p {
+        font-size: 1rem;
+    }
+
+    .text_state {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        border: 1px solid #fff;
+    }
+
+    .image_mainPage {
+        display: none;
+    }
 }

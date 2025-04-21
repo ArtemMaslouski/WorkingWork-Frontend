@@ -7,6 +7,7 @@
     margin: 5vh 0;
     padding: 5vh 0;
     background-color: rgba(255, 255, 255, 0.5);
+    border:1px solid #7d6f49;
     border-radius: 10px;
     font-family: gta;
 }
@@ -17,10 +18,10 @@
     justify-content: center;
     padding: 10px;
     margin: 5px;
-    border: 1px solid #a5a4a4;
+    border: 1px solid #7d6f49;
     border-radius: 8px;
     cursor: pointer;
-    color: #928F8F; 
+    color: #7d6f49; 
     text-decoration: none; 
     gap:0.5vw;
 }
@@ -32,16 +33,16 @@
 }
 
 .service_item:hover {
-    border-color: #EE5300;
-    background: #f7eac7; 
-    color: #EE5300; 
+    border-color: #7d6f49;
+    background: #ebe9e8; 
+    color: #7d6f49; 
 }
 
 
 .service_item.active-service {
-    border-color: #EE5300;
-    background: #ffe8cc;
-    color: #EE5300;
+    border-color: #7d6f49;
+    background: #ebe9e8;
+    color: #7d6f49;
     text-decoration: none; 
 }
 

@@ -1,6 +1,6 @@
 .order_form_component{
     padding: 0vw 5vw 3vw 5vw;
-    background-image: url('../../../../shared//assets/photo/Sherlock.png');
+    /* background-image: url('../../../../shared//assets/photo/Sherlock.png'); */
     position: relative;
     background-repeat: no-repeat;
     background-size: 50%;
@@ -33,7 +33,7 @@
 }
 
 .date_field .input-field{
-    border:1px solid #EE5300;
+    border:1px solid #998756;
     color: black;
 }
 
@@ -68,7 +68,6 @@ select {
         height: 100px;
         margin-bottom: 10px;
         font-size: 1rem;
-        font-family: gta;
     }
     
     
@@ -85,7 +84,7 @@ select {
     }
     
     .date_field .input-field{
-        border:1px solid #EE5300;
+        border:1px solid #998756;
         color: black;
     }
 }

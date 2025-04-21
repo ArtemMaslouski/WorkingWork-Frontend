@@ -1,18 +1,19 @@
 .processSteps_component {
     margin-top: 5vh;
 }
-.processSteps_component h2,
-.processSteps_component h3{
-    font-family: Pricedown;
+.processSteps_component h2{
+    color: #333;
+    font-size: 2rem;
 }
 .processSteps_component h3{
-    font-size: 1rem;
+    color: #333;
+    font-size: 1.2rem;
     font-family: gta;
 }
 
 .text_content p{
-    font-family: gta;
-    font-size: 1rem;
+    color: #333;
+    font-size: 1.1rem;
 }
 
 .cards_container {
@@ -26,8 +27,8 @@
     display: flex;
     flex-direction: column; 
     justify-content: space-between; 
-    background-color: #DDE8C5; 
-    border: 1px solid #EE5300;  
+    background-color: rgba(197, 180, 137, 0.5); 
+    border: 1px solid #625430;  
     align-items: center;
     text-align: center;
     width: 20vw; 
@@ -46,6 +47,9 @@
 
 
 @media (max-width: 768px) {
+    .processSteps_component h2{
+        font-size: 1.4rem;
+    }
     .cards_container {
         display: flex;
         justify-content: space-between; 
@@ -57,8 +61,7 @@
         display: flex; 
         flex-direction: column;
         justify-content: space-between; 
-        background-color: #DDE8C5; 
-        border: 1px solid #EE5300;  
+        background-color: #cbbd99; 
         align-items: center;
         text-align: center;
         width: 25vw; 
@@ -74,7 +77,6 @@
         display: inline;
     }
     .text_content p{
-        font-family: gta;
         font-size: 0.8rem;
     }
 

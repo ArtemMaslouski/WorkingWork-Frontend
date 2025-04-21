@@ -51,11 +51,11 @@ const RegisterForm = ({
             />
 
             <Button type="submit"  text={'Зарегистрироваться'}
-             style={{ backgroundColor: '#EE5300', 
-            color: 'black', border: '2px solid #EE5300', fontWeight:'bold',  width:'100%'}} />
+             style={{ backgroundColor: 'rgba(215, 201, 164)', 
+            color: 'black', border: '2px solid #998756', fontWeight:'bold',  width:'100%'}} />
          
              <p title='Вернуться для входа в систему, если есть аккаунт' style={{ cursor: 'pointer', fontWeight:'bold' }} onClick={onBackToLogin}>
-             Уже есть аккаунт? <span style={{ color:'#EE5300'}}>Вход</span></p>
+             Уже есть аккаунт? <span style={{ color:'#998756'}}>Вход</span></p>
     </form>
   )
 }
