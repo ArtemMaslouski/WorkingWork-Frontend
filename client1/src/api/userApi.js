@@ -22,7 +22,7 @@ class Auth {
   }
 
   async login({ Email, Password }) {
-    console.log('vkjdhvkhsovhsd')
+    console.log(process.env.REACT_APP_URL)
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_URL}/auth/login`,
@@ -33,7 +33,6 @@ class Auth {
       );
       return response.data;
     } catch (error) {
-      console.log(process.env.REACT_APP_URL);
       console.error(
         'Ошибка при регистрации:',
         error.response?.data || error.message
