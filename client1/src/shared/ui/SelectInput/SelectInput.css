@@ -4,8 +4,11 @@
     padding: 0.6rem; 
     outline: none; 
     transition: border-color 0.3s;
+    height: 5vh;
 }
 
-/* .input-group option {
-    color:red;
-} */
+@media (max-width: 768px) {
+    .input-select{
+        height: 6vh;
+    }
+}

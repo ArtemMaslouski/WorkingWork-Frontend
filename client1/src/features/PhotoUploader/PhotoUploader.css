@@ -9,9 +9,9 @@
     align-items: center;
 }
   .images {
-    width: 150px; 
-    height: 150px; 
-    border: 2px dashed #ccc;
+    width: 10vw; 
+    height: 25vh; 
+    border: 2px dashed #9c9191;
     display: flex;
     justify-content: center;
     align-items: center;

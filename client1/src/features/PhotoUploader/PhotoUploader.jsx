@@ -7,7 +7,7 @@ const PhotoUploader = ({ onPhotoChange }) => {
   // const [age, setAge] = useState(null);
   // const [estimates, setEstimates] = useState(null);
 
-  const name = localStorage.getItem('UserName')
+  // const name = localStorage.getItem('UserName')
   const fileInputRef = useRef(null); 
 
   const handlePhotoChange = (event) => {
@@ -53,8 +53,8 @@ const PhotoUploader = ({ onPhotoChange }) => {
             style={{
               backgroundColor: 'white',
               color: 'gray',
-              border: '1px solid #EE5300',
-              width: '150px',
+              border: '1px solid #625430',
+              width: '120px',
               height: '4vh',
               marginTop: '1vh'
             }}
@@ -63,7 +63,7 @@ const PhotoUploader = ({ onPhotoChange }) => {
           </div>
         </div>
         <div className="info_about_user">
-          <p className="underlined">{name}</p>
+          {/* <p className="underlined">{name}</p> */}
           {/* <p className="underlined">{age} лет</p>
           <p className="underlined">{estimates} оценок</p> */}
         </div>

@@ -11,7 +11,7 @@ import PersonalData from './LinksComponents/PersonalData'
 import Settings from './LinksComponents/Settings'
 
 const Profile = () => {
-  const name = localStorage.getItem('UserName')
+  // const name = localStorage.getItem('UserName')
   // const [photo, setPhoto] = useState(null); 
   const [activeTab, setActiveTab] = useState('')
 
@@ -28,7 +28,7 @@ const Profile = () => {
     <div className='Profile_page'>
       <div className="profile_component">
         <div className="profile_user_photo_age">
-          <h3>Здравствуйте, {name}!</h3>
+          {/* <h3>Здравствуйте, {name}!</h3> */}
         </div>
 
         <div className="notification_form">
@@ -44,27 +44,27 @@ const Profile = () => {
         <div className="links_profile">
           <NavLink
             onClick={() => handleTabClick('AboutUserInfo')}
-            style={{ color: activeTab === 'AboutUserInfo' ? '#EE5300' : 'black' }}
+            style={{ color: activeTab === 'AboutUserInfo' ? '#625430' : 'black' }}
           >
             Обо Мне
           </NavLink>
           <NavLink
             onClick={() => handleTabClick('personalData')}
-            style={{ color: activeTab === 'personalData' ? '#EE5300' : 'black' }}
+            style={{ color: activeTab === 'personalData' ? '#625430' : 'black' }}
           >
             Личные Данные
           </NavLink>
           <NavLink
             onClick={() => handleTabClick('myExercise')}
-            style={{ color: activeTab === 'myExercise' ? '#EE5300' : 'black' }}
+            style={{ color: activeTab === 'myExercise' ? '#625430' : 'black' }}
           >
             Мои задания
           </NavLink>
           <NavLink
             onClick={() => handleTabClick('settings')}
-            style={{ color: activeTab === 'settings' ? '#EE5300' : 'black' }}
+            style={{ color: activeTab === 'settings' ? '#625430' : 'black' }}
           >
-            <IoMdSettings size={25} color={activeTab === 'settings' ? '#EE5300' : 'gray'} />
+            <IoMdSettings size={25} color={activeTab === 'settings' ? '#625430' : 'gray'} />
           </NavLink>
         </div>
         <div className="line">
@@ -75,10 +75,6 @@ const Profile = () => {
       {activeTab === 'personalData' && <PersonalData/>}
       {activeTab === 'myExercise' && <MyExercise/>}
       {activeTab === 'settings' && <Settings/>}
-      
-      {/* <div className="full_info">
-        <p>{name}</p>
-      </div> */}
 
       <div className="help_form_executor">
         <HelpFormExecutor />

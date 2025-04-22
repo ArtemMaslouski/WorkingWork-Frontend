@@ -59,7 +59,7 @@ const OrderForm = () => {
     return (
         <div className='order_form_component'>
             <div className="forms_for_tasks">
-            <span style={{ color: '#998756' , fontSize:'1.3rem'}}>Создавайте и описывайте задания,<br/> оформляйте и ждите ответ!</span>
+            <span style={{ color: '#998756' , fontSize:'1.3rem'}}><p>Создавайте и описывайте задания,<br/> оформляйте и ждите ответ!</p></span>
             
                 <SelectInput
                     id="category"
