@@ -58,6 +58,29 @@ export const handleRefreshTasks = async(e,Category, Subcategory,Address,AddressE
     
 }
 
+export const handleGetUserTasks = async (setTasks) => {
+    try {
+      const result = await TaskApi.getUserTasks();
+      const tasks = result[0]?.tasks || []; 
+      setTasks(tasks);
+    } catch (error) {
+      toast.error('Не удалось загрузить задания пользователя');
+    }
+  };
+
+
+  export const handleDeleteTask = async (id) => {
+    try {
+      const response = await TaskApi.deleteTask({ id });
+      toast.success('Задание успешно удалено!');
+      return response; 
+    } catch (error) {
+      toast.error('Задание не удалено!');
+      throw error; 
+    }
+  };
+
+
 // export const handleGetAllUsers= async() => {
 //     try{
 //         const response = await TaskApi.getAllTasks();

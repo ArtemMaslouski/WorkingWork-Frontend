@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from '../../../shared/ui/Input/Input';
 import Button from '../../../shared/ui/Button/Button';
 import { handleDeleteUser } from '../../../services/authHandlers';
-// import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 import {handleChangePassword } from '../../../services/userInfoHandlers'
 
 const Settings = () => {
@@ -14,15 +14,26 @@ const Settings = () => {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  // const navigate = useNavigate();
-
   const togglePasswordVisibility = (setShow) => {
     setShow((prev) => !prev);
   };
 
-  const onSubmitChangePassword = async() => {
-    await handleChangePassword(password, newPassword, confirmPassword);
-  }
+  const onSubmitChangePassword = async (e) => {
+    e.preventDefault();
+    
+    if (newPassword.length < 8) {
+      toast.error('Пароль должен содержать минимум 8 символов');
+      return;
+    }
+  
+    if (newPassword !== confirmPassword) {
+      toast.error('Пароли не совпадают');
+      return;
+    }
+  
+    await handleChangePassword(password, newPassword, confirmPassword, setPassword, setNewPassword, setConfirmPassword);
+  };
+  
   const onSubmitDeleteUser = async () => {
     const confirmed = window.confirm(
       'Вы уверены, что хотите удалить свой профиль?'

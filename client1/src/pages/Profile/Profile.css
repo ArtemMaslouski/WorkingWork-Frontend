@@ -26,8 +26,13 @@
     color:black;
 }
 
-.help_form_executor{
-    /* margin-top: 2vh; */
+.info_user h3{
+    font-size: 1.3rem;
+}
+
+.profile_photo{
+    display: flex;
+    justify-content: space-between;
 }
 
 @media (max-width: 486px) {
@@ -36,6 +41,9 @@
     }
     .profile_user_photo_age h3{
         font-size: 1rem;
+    }
+    .info_user h3{
+        font-size: 1.1rem;
     }
 }
 

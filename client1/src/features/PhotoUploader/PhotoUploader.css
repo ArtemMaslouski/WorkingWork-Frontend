@@ -43,8 +43,8 @@
 
   @media (max-width: 486px) {
     .images {
-        width: 120px; 
-        height: 120px;
+        width: 150px; 
+        height: 150px;
       }
       .info_about_user p{
         font-size: 0.9rem;
@@ -53,8 +53,8 @@
 
 @media (min-width: 486px) and (max-width: 768px) {
     .images {
-        width: 120px; 
-        height: 120px;
+        width: 150px; 
+        height: 150px;
       }
       /* .info_about_user p{
         font-size: .7rem;

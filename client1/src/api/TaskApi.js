@@ -105,6 +105,23 @@ class Tasks {
     );
     throw error;
   }
+
+  async getUserTasks() {
+    try {
+      const access_token = Cookies.get('access_token');
+      if (!access_token) throw new Error('Не найден токен');
+  
+      const response = await axios.get(`${process.env.REACT_APP_URL}/tasks/userTask`, {
+        withCredentials: true,
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Ошибка при получении заданий пользователя:', error.response?.data || error.message);
+      throw error;
+    }
+  }
+  
+  
 }
 
 const TaskApi = new Tasks();

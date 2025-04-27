@@ -1,13 +1,18 @@
-import React, { useState } from 'react'
-import './StyleForInfoForm.css'
-import Button from '../../../shared/ui/Button/Button'
+import React, { useState } from 'react';
+import './StyleForInfoForm.css';
+import Button from '../../../shared/ui/Button/Button';
+import { handleAddDescription } from '../../../services/userInfoHandlers'
 
 const AboutuserInfo = () => {
-  const [description, setDescription] = useState('')
+  const [description, setDescription] = useState('');
 
   const handleCancel = () => {
-    setDescription('') // сброс поля
-  }
+    setDescription(''); 
+  };
+
+  const handleSave = async () => {
+      await handleAddDescription(description);
+  };
 
   return (
     <div className='info_about_user'>
@@ -37,6 +42,7 @@ const AboutuserInfo = () => {
           />
           <Button
             text='Сохранить'
+            onClick={handleSave} // Add onClick handler for saving
             style={{
               backgroundColor: 'white',
               fontWeight: 'light',
@@ -48,7 +54,7 @@ const AboutuserInfo = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AboutuserInfo
+export default AboutuserInfo;

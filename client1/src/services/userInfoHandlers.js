@@ -3,53 +3,51 @@ import UserInfoApi from '../api/UserInfoApi'
 import Cookies from 'js-cookie';
 
 
-export const handleChangePassword = async (OldPassword, Password, NewPassword) => {
-    if (Password !== NewPassword) {
-      toast.info('Новый пароль и подтверждение пароля не совпадают.');
-      return;
-    }
-  
+export const handleChangePassword = async (OldPassword, Password, NewPassword, setPassword, setNewPassword, setConfirmPassword) => {
     try {
+      if (Password !== NewPassword) {
+        toast.error('Новый пароль и подтверждение не совпадают');
+        return;
+      }
+  
       const response = await UserInfoApi.changePassword({
         OldPassword,
         Password,
-        NewPassword,
+        NewPassword, 
       });
-      console.log(response);
-      toast.success('Пароль успешно изменён!');
+      if(response){
+        toast.success('Пароль успешно изменён!');
+        setPassword('');
+        setNewPassword('');
+        setConfirmPassword('')
+      }
+      else{
+         
+      toast.error('Ошибка при изменении пароля. Проверьте введенные данные');
+      }
+      
+    //   toast.success('Пароль успешно изменён!');
+    //   return response;
     } catch (error) {
-      console.error(error);
-      toast.error('Ошибка при изменении пароля, проверьте введённые данные');
+      const errorMessage = error.response?.data?.message 
+        || 'Ошибка при изменении пароля';
+      toast.error(errorMessage);
+    //   return;
+      console.error('Full error:', error);
+      throw error;
     }
   };
-  
 
-export const handleGetUserInfo = async (userId) => {
+export const handleGetUserInfo = async () => {
     try {
-        const response = await UserInfoApi.getUserInfo(userId);
-        console.log(response);
-        return response.data; 
+        const response = await UserInfoApi.getUserInfo();
+        return response; 
     } catch (error) {
         console.error(error);
         toast.error('Ошибка при получении информации о пользователе.');
         return null; 
     }
 };
-
-// export const handleAddPhone = async (PhoneNumber, setPhoneNumber) => {
-//     try {
-//         const response = await UserInfoApi.addMobilePhone({ PhoneNumber });
-//         if (!response) {
-//             throw new Error('Ошибка добавления номера телефона');
-//         }
-
-//         console.log(response);
-//         setPhoneNumber(''); 
-//         toast.success('Номер телефона успешно добавлен!');
-//     } catch (error) {
-//         toast.error('Не удалось добавить номер телефона');
-//     }
-// };
 export const handleAddPhone = async (PhoneNumber, setPhoneNumber) => {
     try {
         const access_token = Cookies.get('access_token');
@@ -85,7 +83,6 @@ export const handleAddUserInfo = async (Name, Surname, BirthdayDate, Sex, City, 
     try {
         const response = await UserInfoApi.addUserInfo({Name, Surname, BirthdayDate, Sex, City, Email});
         console.log(response)
-        // toast.success('Данные успешно сохранены!');
         
         setName('');
         setSurname('');
@@ -126,3 +123,19 @@ export const handleUploadFilePhoto = async (file) => {
         return null;
     }
 };
+
+export const handleAddDescription = async (description) => {
+    try {
+      const response = await UserInfoApi.addDescription({ Description: description });
+      if (response) {
+        toast.success('Описание успешно добавлено!');
+        return response;
+      } else {
+        toast.error('Ошибка при добавлении описания.');
+      }
+    } catch (error) {
+      const errorMessage = error.response?.data?.message || 'Ошибка при добавлении описания';
+      toast.error(errorMessage);
+      console.error('Ошибка:', error);
+    }
+  };
