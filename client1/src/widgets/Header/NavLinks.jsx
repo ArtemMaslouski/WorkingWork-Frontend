@@ -43,11 +43,11 @@ const NavLinks = ({ isAuthenticated, toggleMapModal, isMapModalOpen, handleLogou
         <NavLink to='/FindTask' className={({ isActive }) => isActive ? 'findExercise active' : 'findExercise'}>Найти задание</NavLink>
       
       <NavLink 
-        onClick={toggleMapModal} style={{ color: isMapModalOpen ? '#EE5300' : 'black' }}>
+        onClick={toggleMapModal} style={{ color: isMapModalOpen ? '#a5811e' : 'black' }}>
         <FiMapPin size={25} />
       </NavLink>
 
-      <NavLink onClick={()=> setShowLanguageDropdown((prev) => !prev)} style={{ color: showLanguageDropdown ? '#EE5300' : 'black' }}>
+      <NavLink onClick={()=> setShowLanguageDropdown((prev) => !prev)} style={{ color: showLanguageDropdown ? '#a5811e' : 'black' }}>
         <TfiWorld size={25} />
       </NavLink>
       <div ref={langModalRef}>

@@ -20,7 +20,7 @@ const HelpForm = () => {
         
        <Button 
         text="Оформить заявку"
-        style={{backgroundColor: '#EE5300', color:'black',border: '2px solid #EE5300', width:'60%'}}
+        style={{backgroundColor: 'rgba(215, 201, 164)', color:'black',border: '2px solid #625430', width:'60%'}}
         onClick={handleClick}
             />
     </div>

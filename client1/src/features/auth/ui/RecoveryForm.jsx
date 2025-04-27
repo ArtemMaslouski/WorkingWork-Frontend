@@ -54,13 +54,13 @@ const RecoveryForm = () => {
                         isPasswordVisible={showConfirmPassword}
                     />
                     <Button type="submit" text={'Подтвердить'}
-                        style={{backgroundColor: '#EE5300',
-                        color: 'black', border: '2px solid #EE5300', fontWeight:'bold', width:'100%'}} 
+                        style={{backgroundColor: '#998756',
+                        color: 'black', border: '2px solid #998756', fontWeight:'bold', width:'100%'}} 
                     />
 
                     <p title="Вернуться для входа в систему" style={{ cursor: 'pointer', 
                     fontWeight: 'bold' }} onClick={handleBackToLogin}>Вернуться на страницу
-                    <span style={{ color: '#EE5300' }}> Вход</span>
+                    <span style={{ color: '#998756' }}> Вход</span>
                     </p>
                 </form>
             </div>

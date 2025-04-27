@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import './Header.css';
-import Logo from '../../shared/assets/photo/logo.jpg';
+import Logo from '../../shared/assets/photo/logo1.jpg';
 import { IoIosMenu } from "react-icons/io";
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';

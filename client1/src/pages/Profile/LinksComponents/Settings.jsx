@@ -3,6 +3,7 @@ import Input from '../../../shared/ui/Input/Input';
 import Button from '../../../shared/ui/Button/Button';
 import { handleDeleteUser } from '../../../services/authHandlers';
 // import { useNavigate } from 'react-router-dom';
+import {handleChangePassword } from '../../../services/userInfoHandlers'
 
 const Settings = () => {
   const [password, setPassword] = useState('');
@@ -19,6 +20,9 @@ const Settings = () => {
     setShow((prev) => !prev);
   };
 
+  const onSubmitChangePassword = async() => {
+    await handleChangePassword(password, newPassword, confirmPassword);
+  }
   const onSubmitDeleteUser = async () => {
     const confirmed = window.confirm(
       'Вы уверены, что хотите удалить свой профиль?'
@@ -93,12 +97,13 @@ const Settings = () => {
             <Button
               text='Сохранить пароль'
               style={{
-                backgroundColor: '#EE5300',
+                backgroundColor: 'rgba(215, 201, 164)',
                 fontWeight: 'light',
                 color: 'black',
-                border: '2px solid #EE5300',
+                border: '2px solid #625430',
                 height: '4vh',
               }}
+              onClick={onSubmitChangePassword}
             />
           </div>
 
@@ -110,10 +115,10 @@ const Settings = () => {
             <Button
               text='Удалить профиль'
               style={{
-                backgroundColor: '#EE5300',
+                backgroundColor: 'rgba(215, 201, 164)',
                 fontWeight: 'light',
                 color: 'black',
-                border: '2px solid #EE5300',
+                border: '2px solid #625430',
                 height: '4vh',
               }}
               onClick={onSubmitDeleteUser}

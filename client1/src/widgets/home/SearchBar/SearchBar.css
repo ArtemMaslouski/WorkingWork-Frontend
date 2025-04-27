@@ -1,19 +1,18 @@
 .searchBar_component{
-    /* padding: 0vw 5vw; */
-    margin-top: 5vh;
+    margin-top: 10vh;
     margin-bottom: 5vh;
     width: 100%;
 }
 
 .searchBar_component p{
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     align-items: center;
     text-align: center;
-    font-family: gta;
+    color:#333;
 }
 
 .help_form {
-    width: 100%;
+    /* width: 100%; */
     min-height: 400px; 
     height: auto; 
     background-image: url('../../../shared/assets/photo/searcbar_arm.jpg');

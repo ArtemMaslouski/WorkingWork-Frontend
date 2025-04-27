@@ -16,7 +16,6 @@
 .text_information h1{
     font-size: 1.1rem;
     text-align: left; 
-    font-family: gta;
 }
 
 @media (max-width: 1400px) {
@@ -48,7 +47,6 @@
     .text_information p,
 .text_information h1{
     font-size: 0.7rem;
-    text-align: left; 
-    font-family: gta;
+    text-align: left;
 }
 }

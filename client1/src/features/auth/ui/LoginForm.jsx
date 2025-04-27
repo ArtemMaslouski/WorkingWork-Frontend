@@ -39,8 +39,8 @@ const LoginForm = ({ Email, setEmail, Password,
             />
 
             <Button type="submit" text={'Войти'}
-            style={{ backgroundColor: '#EE5300', 
-            color: 'black', border: '2px solid #EE5300', fontWeight:'bold', width:'100%'}} 
+            style={{ backgroundColor: 'rgba(215, 201, 164)', 
+            color: 'black', border: '2px solid #998756', fontWeight:'bold', width:'100%'}} 
             />
 
           <p title ='Если забыли пароль, перейдите на страницу, нажатием на текст, для восстановления пароля' style={{ cursor: 'pointer', color: 'black', fontWeight:'bold' }} onClick={onSwitchToForgotPassword}>
@@ -48,7 +48,7 @@ const LoginForm = ({ Email, setEmail, Password,
           </p>
 
           <p style={{ cursor: 'pointer', color: 'black', fontWeight:'bold' }} onClick={onSwitchToRegister}>
-          У вас ещё нет аккаунта? <span title='Зарегистрироваться' style={{ color:'#EE5300'}}>Зарегистрироваться</span> 
+          У вас ещё нет аккаунта? <span title='Зарегистрироваться' style={{ color:' #998756'}}>Зарегистрироваться</span> 
           </p>
     </form>
   )

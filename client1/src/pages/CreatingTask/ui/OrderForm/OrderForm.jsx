@@ -59,7 +59,7 @@ const OrderForm = () => {
     return (
         <div className='order_form_component'>
             <div className="forms_for_tasks">
-            <span style={{ color: '#EE5300' , fontSize:'1.2rem'}}>Создавайте и описывайте задания,<br/> оформляйте и ждите ответ!</span>
+            <span style={{ color: '#998756' , fontSize:'1.3rem'}}><p>Создавайте и описывайте задания,<br/> оформляйте и ждите ответ!</p></span>
             
                 <SelectInput
                     id="category"
@@ -149,7 +149,8 @@ const OrderForm = () => {
                 <Button
                     onClick={onSubmitCreateTasks}
                     text='Оформить задание'
-                    style={{ backgroundColor: '#EE5300', color: 'black', border: '2px solid #EE5300', width: '100%', height: '6vh', fontWeight: 'bold' }}
+                    style={{ backgroundColor: 'rgba(215, 201, 164)', 
+                        color: 'black', border: '2px solid #998756', fontWeight:'bold', width:'100%'}} 
                 />
             </div>
         </div>

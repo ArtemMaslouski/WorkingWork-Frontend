@@ -34,7 +34,7 @@ const PersonalData = () => {
     } catch (error) {
         console.error('Ошибка сохранения:', error);
     }
-};
+  };
  
   
   const onSubmitAddPhoneNumber = async () => {
@@ -44,8 +44,20 @@ const PersonalData = () => {
     }
 
     await handleAddPhone(PhoneNumber, setPhoneNumber);
-};
+  };
 
+  const handleCancelUserData = () => {
+    setName('');
+    setSurname('');
+    setBirthdayDate(null);
+    setSex('');
+    setCity('');
+    setEmail('');
+  };
+
+  const handleCancelPhone = () => {
+    setPhoneNumber('');
+  };
 
   return (
     <div className='info_about_user'>
@@ -110,13 +122,13 @@ const PersonalData = () => {
 
         <div className="save_cancellation_button">
           <Button
-            text='Отмена' 
-            style={{ backgroundColor: '#EE5300', fontWeight: 'light', color: 'black', border: '2px solid #EE5300', height: '4vh' }} 
+            text='Отмена'  onClick={handleCancelUserData}
+            style={{ backgroundColor: 'rgba(215, 201, 164)', fontWeight: 'light', color: 'black', border: '2px solid #625430', height: '4vh' }} 
           />
           <Button
             text='Сохранить данные'
             onClick={handleSave} 
-            style={{ backgroundColor: 'white', fontWeight: 'light', color: 'black', border: '2px solid #EE5300', height: '4vh' }} 
+            style={{ backgroundColor: 'white', fontWeight: 'light', color: 'black', border: '2px solid #625430', height: '4vh' }} 
           />
         </div>
 
@@ -127,7 +139,7 @@ const PersonalData = () => {
             type='tel'
             className='inputInt-field'
             name='number'
-            label={'Номер телефона'}
+            label={'Номер телефона (с кодом)'}
             required
             value={PhoneNumber}
             onChange={e => setPhoneNumber(e.target.value)}
@@ -140,14 +152,14 @@ const PersonalData = () => {
         
         <div className="save_cancellation_button">
           <Button
-            text='Отмена' 
-            style={{ backgroundColor: '#EE5300', fontWeight: 'light', color: 'black', border: '2px solid #EE5300', height: '4vh' }} 
+            text='Отмена' onClick={handleCancelPhone}
+            style={{ backgroundColor: 'rgba(215, 201, 164)', fontWeight: 'light', color: 'black', border: '2px solid #625430', height: '4vh' }} 
           />
           <Button
             text='Сохранить данные'
             onClick={onSubmitAddPhoneNumber}
             // onClick={handleSave} 
-            style={{ backgroundColor: 'white', fontWeight: 'light', color: 'black', border: '2px solid #EE5300', height: '4vh' }} 
+            style={{ backgroundColor: 'white', fontWeight: 'light', color: 'black', border: '2px solid #625430', height: '4vh' }} 
           />
         </div>
 

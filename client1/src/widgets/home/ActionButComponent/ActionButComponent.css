@@ -1,13 +1,14 @@
 .action_component{
     margin-top: 10vh;
     margin-bottom: 5vh;
-    font-family: gta;
+
 }
 
 .find_help_component p{
     font-size: 1.4rem;
     align-items: center;
     text-align: center;
+    color:#333;
 }
 
 .action_button{

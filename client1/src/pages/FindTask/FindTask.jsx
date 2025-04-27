@@ -52,7 +52,7 @@ const FindTask = () => {
                <div className="response_button">
                <Button   
                     text="Откликнуться" 
-                    style={{ backgroundColor: '#EE5300',fontWeight:'light', color: 'black', border: '2px solid #EE5300', width:'100%', height:'6vh', fontFamily:'gta',
+                    style={{ backgroundColor: 'rgba(215, 201, 164)',fontWeight:'light', color: 'black', border: '2px solid #998756', width:'100%', height:'6vh', fontFamily:'gta',
                      marginTop:'100px'
                      }} 
                 />

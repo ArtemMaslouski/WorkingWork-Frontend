@@ -4,22 +4,25 @@ import Cookies from 'js-cookie';
 
 
 export const handleChangePassword = async (OldPassword, Password, NewPassword) => {
-   
     if (Password !== NewPassword) {
-        toast.info('Новый пароль и подтверждение пароля не совпадают.');
-        return;
+      toast.info('Новый пароль и подтверждение пароля не совпадают.');
+      return;
     }
-
+  
     try {
-        const response = await UserInfoApi.changePassword({ OldPassword, Password });
-        console.log(response);
-        
-        toast.success('Пароль успешно изменён!');
+      const response = await UserInfoApi.changePassword({
+        OldPassword,
+        Password,
+        NewPassword,
+      });
+      console.log(response);
+      toast.success('Пароль успешно изменён!');
     } catch (error) {
-        console.error(error);
-        toast.error('Ошибка при изменении пароля, проверьте введённые данные');
+      console.error(error);
+      toast.error('Ошибка при изменении пароля, проверьте введённые данные');
     }
-};
+  };
+  
 
 export const handleGetUserInfo = async (userId) => {
     try {

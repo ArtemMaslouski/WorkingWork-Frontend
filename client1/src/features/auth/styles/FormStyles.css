@@ -3,12 +3,7 @@ form {
     flex-direction: column;
     align-items: center; 
     text-align: center; 
-    font-family: gta;
     width: 30vw;
-}
-
-form h1{
-    font-family: 'Pricedown';
 }
 
 hr {
@@ -21,7 +16,7 @@ hr {
 form span{
     color:gray;
     margin-bottom: 1vw;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 .recovery_form{
     display: column;
@@ -30,6 +25,12 @@ form span{
 }
 
 @media (max-width: 768px) {
+    .forms span{
+        font-size: 0.8rem;
+    }
+    .forms h1{
+        font-size: 1.5rem;
+    }
     form{
         width: 100%;
         height: 60vh;
