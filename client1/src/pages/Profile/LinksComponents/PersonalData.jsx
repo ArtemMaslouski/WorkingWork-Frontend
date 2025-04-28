@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Input from '../../../shared/ui/Input/Input';
 import DatePicker from 'react-datepicker';
 import Button from '../../../shared/ui/Button/Button';
@@ -6,7 +6,7 @@ import { handleAddPhone, handleAddUserInfo } from '../../../services/userInfoHan
 import { toast } from "react-toastify";
 import Cookies from 'js-cookie';
 
-const PersonalData = () => {
+const PersonalData = ({userInfo, onUpdateUserInfo}) => {
   const [Name, setName] = useState('');
   const [Surname, setSurname] = useState('');
   const [BirthdayDate, setBirthdayDate] = useState(null);
@@ -14,6 +14,18 @@ const PersonalData = () => {
   const [City, setCity] = useState('');
   const [Email, setEmail] = useState('');
   const [PhoneNumber, setPhoneNumber] = useState('');
+
+  useEffect(() => {
+    if (userInfo?.userInfo) {
+      setName(userInfo.userInfo.Name || '');
+      setSurname(userInfo.userInfo.Surname || '');
+      setBirthdayDate(userInfo.userInfo.BirthdayDate ? new Date(userInfo.userInfo.BirthdayDate) : null);
+      setSex(userInfo.userInfo.Sex || '');
+      setCity(userInfo.userInfo.City || '');
+      setEmail(userInfo.userInfo.Email || '');
+      setPhoneNumber(userInfo.userInfo.PhoneNumber || '');
+    }
+  }, [userInfo]);
 
   const handleSave = async () => {
     const access_token = Cookies.get('access_token');
@@ -24,18 +36,19 @@ const PersonalData = () => {
 
     try {
         await handleAddUserInfo(
-            Name, 
-            Surname, 
-            BirthdayDate, 
-            Sex, 
-            City, 
-            Email,  setName, setSurname, setBirthdayDate, setSex, setCity, setEmail
+            Name, Surname, 
+            BirthdayDate,Sex, 
+            City,Email,  setName, 
+            setSurname, setBirthdayDate, 
+            setSex, setCity, setEmail
         );
+        if (onUpdateUserInfo) {
+          await onUpdateUserInfo(); 
+        }
     } catch (error) {
         console.error('Ошибка сохранения:', error);
     }
   };
- 
   
   const onSubmitAddPhoneNumber = async () => {
     if (!PhoneNumber.trim()) {
@@ -47,16 +60,18 @@ const PersonalData = () => {
   };
 
   const handleCancelUserData = () => {
-    setName('');
-    setSurname('');
-    setBirthdayDate(null);
-    setSex('');
-    setCity('');
-    setEmail('');
+    if (userInfo?.userInfo) {
+      setName(userInfo.userInfo.Name || '');
+      setSurname(userInfo.userInfo.Surname || '');
+      setBirthdayDate(userInfo.userInfo.BirthdayDate ? new Date(userInfo.userInfo.BirthdayDate) : null);
+      setSex(userInfo.userInfo.Sex || '');
+      setCity(userInfo.userInfo.City || '');
+      setEmail(userInfo.userInfo.Email || '');
+    }
   };
 
   const handleCancelPhone = () => {
-    setPhoneNumber('');
+    setPhoneNumber(userInfo?.userInfo?.PhoneNumber || '');
   };
 
   return (
@@ -145,8 +160,7 @@ const PersonalData = () => {
             onChange={e => setPhoneNumber(e.target.value)}
           />
           <label>
-            <input type="checkbox" name="agree" value="agree" />
-            Показывать <b><i>номер телефона</i></b>, чтобы с вами могли связаться клиенты
+            Введите <b><i>номер телефона</i></b>, чтобы с вами могли связаться клиенты
           </label>
         </div>
         

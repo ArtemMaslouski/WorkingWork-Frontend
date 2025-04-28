@@ -79,7 +79,7 @@ const PhotoUploader = ({ onPhotoChange, currentPhoto }) => {
               color: isUploading ? '#aaa' : 'gray',
               border: '1px solid #625430',
               width: '150px',
-              height: '4vh',
+              height: '5vh',
               marginTop: '1vh',
               cursor: isUploading ? 'not-allowed' : 'pointer'
             }}

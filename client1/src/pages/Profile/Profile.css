@@ -25,14 +25,16 @@
     font-weight: bold;
     color:black;
 }
-
+.info_user{
+    width: 70%;
+}
 .info_user h3{
     font-size: 1.3rem;
 }
 
 .profile_photo{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 @media (max-width: 486px) {
@@ -43,7 +45,18 @@
         font-size: 1rem;
     }
     .info_user h3{
-        font-size: 1.1rem;
+        font-size: 1rem;
+    }
+    .info_user p{
+        font-size: 0.8rem;
+    }
+    .info_user{
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .profile_photo{
+        display: inline;
     }
 }
 

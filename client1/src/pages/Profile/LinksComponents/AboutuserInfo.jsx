@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './StyleForInfoForm.css';
 import Button from '../../../shared/ui/Button/Button';
 import { handleAddDescription } from '../../../services/userInfoHandlers'
 
-const AboutuserInfo = () => {
+const AboutuserInfo = ({ userInfo, onUpdateUserInfo }) => {
   const [description, setDescription] = useState('');
 
+  useEffect(() => {
+    if (userInfo?.userInfo?.Description) {
+      setDescription(userInfo.userInfo.Description); 
+    }
+  }, [userInfo]); 
+
   const handleCancel = () => {
-    setDescription(''); 
+    if (userInfo?.userInfo?.Description) {
+      setDescription(userInfo.userInfo.Description); 
+    } else {
+      setDescription('');
+    }
   };
 
   const handleSave = async () => {
-      await handleAddDescription(description);
+    await handleAddDescription(description);
+    if (onUpdateUserInfo) {
+      await onUpdateUserInfo(); 
+    }
   };
 
   return (
@@ -42,7 +55,7 @@ const AboutuserInfo = () => {
           />
           <Button
             text='Сохранить'
-            onClick={handleSave} // Add onClick handler for saving
+            onClick={handleSave}
             style={{
               backgroundColor: 'white',
               fontWeight: 'light',
