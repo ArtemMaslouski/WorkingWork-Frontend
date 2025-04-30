@@ -38,22 +38,25 @@ const FindTask = () => {
             <div key={task.id} className="task_item_border">
 
               <div className="emblem_exercise">
-                <p>llsdldsd,clk</p>
+                {/* <p>llsdldsd,clk</p> */}
               </div>
 
               <div className="tasks">
                 <h3>{task.Category} / {task.Subcategory}</h3>
-                <p>{task.AddressEnd}</p>
-                <p>Начало выполнения: <b>{task.BeginAt}</b>. Окончание выполнения: <b>{task.EndAt}</b></p>
-                <p>{task.Description}</p>
+                <p>Адресс назначения: {task.Address}</p>
+                <p>
+                  Начало выполнения: <b>{new Date(task.BeginAt).toLocaleDateString('ru-RU')}</b> --- 
+                  Окончание выполнения: <b>{new Date(task.EndAt).toLocaleDateString('ru-RU')}</b>
+                </p>
+                <p>Описание задания: {task.Description}</p>
                 
               </div>
                
                <div className="response_button">
                <Button   
                     text="Откликнуться" 
-                    style={{ backgroundColor: 'rgba(215, 201, 164)',fontWeight:'light', color: 'black', border: '2px solid #998756', width:'100%', height:'6vh', fontFamily:'gta',
-                     marginTop:'100px'
+                    style={{ backgroundColor: 'rgba(215, 201, 164)',fontWeight:'light', color: 'black', border: '2px solid #998756', width:'100%', height:'5vh'
+                    
                      }} 
                 />
                </div>

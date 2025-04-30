@@ -17,12 +17,7 @@ function App() {
   return (
     <div className="App">
       
-      <ToastContainer
-      //  position="bottom-center"
-      //  autoClose={2000}
-       />
-
-
+      <ToastContainer/>
 
        <Header/>
        <div className="content">

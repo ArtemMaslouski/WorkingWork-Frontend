@@ -23,14 +23,12 @@ const MyExercise = () => {
   }, []);
 
   const handleDelete = async (taskId) => {
-    // const confirmed = window.confirm('Вы уверены, что хотите удалить это задание?');
-    // if (confirmed) {
+    
       try {
         await handleDeleteTask(taskId);
         setTasks((prevTasks) => prevTasks.filter(task => task.id !== taskId)); // Remove the task from the state
       } catch (error) {
         toast.error('Ошибка при удалении задания');
-      // }
     }
   };
 
