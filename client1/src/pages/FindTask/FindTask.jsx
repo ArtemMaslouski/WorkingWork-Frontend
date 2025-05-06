@@ -3,72 +3,111 @@ import './FindTask.css';
 import InputService from '../../shared/ui/InputService/InputService';
 import TaskApi from '../../api/TaskApi';
 import Button from '../../shared/ui/Button/Button'
+import Filter from '../../features/filter/Filter';
+import serviceDetails from '../CreatingTask/model/serviceDetails';
+import { filterTasks } from '../../shared/utils/filterTask';
+import { searchTasks } from '../../shared/utils/searchTasks';
+import SearchAndFilter from '../../shared/ui/SearchAndFilter/SearchAndFilter';
 
 const FindTask = () => {
   const [tasks, setTasks] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState([]);
   const [error, setError] = useState(null);
+  const [isFilterOpen, setIsFilterOpen] = useState(false); 
+  const [searchQuery, setSearchQuery] = useState('');
+
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         const tasksData = await TaskApi.getAllTasks();
         setTasks(tasksData);
+        setFilteredTasks(tasksData); 
       } catch (error) {
         setError(error);
       }
     };
+    
 
     fetchTasks();
   }, []);
+
+  const handleFilterApply = (filters) => {
+    const filtered = filterTasks(tasks, filters);
+    setFilteredTasks(filtered)
+  };
+  
+  
 
   return (
     <div className='findTask_component'>
       <div className="find_task_item">
         <div className="place_for_find_task">
           <h1>Все задания</h1>
-          <InputService placeholder="Например, требуется курьер, доставить товар" />
+          <InputService
+            placeholder="Например, требуется курьер, доставить товар"
+            onFilterClick={() => setIsFilterOpen(true)}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            onSearchClick={() => {
+              const results = searchTasks(tasks, searchQuery);
+              setFilteredTasks(results);
+            }}
+          />
+
         </div>
       </div>
 
       <div className="all_tasks">
         {error ? (
           <p>Ошибка при загрузке данных: {error.message}</p>
-        ) : tasks.length > 0 ? (
-          tasks.map((task) => (
+        ) : filteredTasks.length > 0 ? (
+          filteredTasks.map((task) => (
             <div key={task.id} className="task_item_border">
 
               <div className="emblem_exercise">
-                {/* <p>llsdldsd,clk</p> */}
+                {/* Иконка/эмблема задания */}
               </div>
 
               <div className="tasks">
                 <h3>{task.Category} / {task.Subcategory}</h3>
-                <p>Адресс назначения: {task.Address}</p>
+                <p>Адрес назначения: {task.Address}</p>
                 <p>
                   Начало выполнения: <b>{new Date(task.BeginAt).toLocaleDateString('ru-RU')}</b> --- 
                   Окончание выполнения: <b>{new Date(task.EndAt).toLocaleDateString('ru-RU')}</b>
                 </p>
                 <p>Описание задания: {task.Description}</p>
-                
               </div>
                
-               <div className="response_button">
-               <Button   
-                    text="Откликнуться" 
-                    style={{ backgroundColor: 'rgba(215, 201, 164)',fontWeight:'light', color: 'black', border: '2px solid #998756', width:'100%', height:'5vh'
-                    
-                     }} 
+              <div className="response_button">
+                <Button   
+                  text="Откликнуться" 
+                  style={{ 
+                    backgroundColor: 'rgba(215, 201, 164)',
+                    fontWeight: 'light',
+                    color: 'black',
+                    border: '2px solid #998756',
+                    width: '100%',
+                    height: '5vh'
+                  }} 
                 />
-               </div>
-            
+              </div>
             </div>
           ))
         ) : (
           <p>Задания не найдены.</p>
         )}
       </div>
+
+      <Filter 
+        isOpen={isFilterOpen}
+        onClose={() => setIsFilterOpen(false)}
+        onFilterApply={handleFilterApply}
+        serviceDetails={serviceDetails}
+      />
     </div>
   );
 };
+
 
 export default FindTask;

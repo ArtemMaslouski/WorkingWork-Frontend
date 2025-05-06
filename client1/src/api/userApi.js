@@ -1,12 +1,12 @@
-import axios from 'axios';
+// import axios from 'axios';
 //import { baseURL } from '../constants/someConstants';
 import Cookies from 'js-cookie';
-// import { toast } from 'react-toastify';
+import apiClient from './apiClient'
 
 class Auth {
   async registerUser({ UserName, Email, Password }) {
     try {
-      const response = await axios.post(
+      const response = await apiClient.post(
         `${process.env.REACT_APP_URL}/auth/create-user`,
         {
           UserName,
@@ -22,9 +22,8 @@ class Auth {
   }
 
   async login({ Email, Password }) {
-    console.log('vkjdhvkhsovhsd')
     try {
-      const response = await axios.post(
+      const response = await apiClient.post(
         `${process.env.REACT_APP_URL}/auth/login`,
         {
           Email,
@@ -47,7 +46,7 @@ class Auth {
 
   async getUsers() {
     try {
-      const response = await axios.get(
+      const response = await apiClient.get(
         `${process.env.REACT_APP_URL}/auth/get-users`
       );
       return response.data;
@@ -62,7 +61,7 @@ class Auth {
 
   async sendVerificationEmail(Email) {
     try {
-      const response = await axios.post(
+      const response = await apiClient.post(
         `${process.env.REACT_APP_URL}/auth/send`,
         {
           Email,
@@ -80,7 +79,7 @@ class Auth {
 
   async verificateUserWithCodeFromEmail(Code, Email) {
     try {
-      const response = await axios.post(
+      const response = await apiClient.post(
         `${process.env.REACT_APP_URL}/auth/forgotPassword`,
         { Code, Email }
       );
@@ -93,7 +92,7 @@ class Auth {
 
   async resetPassword(Email, Password) {
     try {
-      const response = await axios.post(
+      const response = await apiClient.post(
         `${process.env.REACT_APP_URL}/auth/resetPassword`,
         { Email, Password }
       );
@@ -115,7 +114,7 @@ class Auth {
 
       console.log('Отправка запроса на удаление пользователя');
 
-      await axios.delete(`${process.env.REACT_APP_URL}/auth/delete-users`, {
+      await apiClient.delete(`${process.env.REACT_APP_URL}/auth/delete-users`, {
         withCredentials: true,
       });
 

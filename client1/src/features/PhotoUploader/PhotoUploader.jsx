@@ -3,6 +3,7 @@ import './PhotoUploader.css';
 import Button from '../../shared/ui/Button/Button';
 import { toast } from 'react-toastify';
 import { handleUploadFilePhoto } from '../../services/userInfoHandlers'; // Import the upload function
+import { baseURL } from '../../constants/someConstants';
 
 const PhotoUploader = ({ onPhotoChange, currentPhoto }) => {
   const [photo, setPhoto] = useState(currentPhoto || null);
@@ -34,11 +35,16 @@ const PhotoUploader = ({ onPhotoChange, currentPhoto }) => {
 
       const response = await handleUploadFilePhoto(file);
       
-      if (response && response.imageUrl) {
-        if (onPhotoChange) {
-          onPhotoChange(response.imageUrl); 
-        }
+      if (response?.userInfo?.Photo?.url) {
+        console.log(response)
+        onPhotoChange(`${baseURL}${response.userInfo.Photo.url}`);
       }
+      
+      // if (response && response.imageUrl) {
+      //   if (onPhotoChange) {
+      //     onPhotoChange(response.imageUrl); 
+      //   }
+      // }
     } catch (error) {
       console.error('Upload error:', error);
       setPhoto(null); 
