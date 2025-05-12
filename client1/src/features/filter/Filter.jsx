@@ -1,10 +1,11 @@
 import './Filter.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Button from '../../shared/ui/Button/Button';
 
 const Filter = ({ isOpen, onClose, onFilterApply,serviceDetails}) => {
   const categories = Object.keys(serviceDetails);
   const [subcategories, setSubcategories] = useState([]);
+  const modalRef = useRef(null);
 
   const [filters, setFilters] = React.useState({
     category: '',
@@ -14,6 +15,7 @@ const Filter = ({ isOpen, onClose, onFilterApply,serviceDetails}) => {
     startDate: '',
     endDate: ''
   });
+
   useEffect(() => {
     if (filters.category && serviceDetails[filters.category]) {
       setSubcategories(serviceDetails[filters.category].links || []);
@@ -23,6 +25,19 @@ const Filter = ({ isOpen, onClose, onFilterApply,serviceDetails}) => {
     setFilters(prev => ({ ...prev, subcategory: '' }));
   }, [filters.category, serviceDetails]);
   
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose]);
 
   const handleApply = () => {
     onFilterApply(filters);
@@ -48,7 +63,7 @@ const Filter = ({ isOpen, onClose, onFilterApply,serviceDetails}) => {
 
   return (
     <div className="filter-modal">
-      <div className="filter-content">
+      <div className="filter-content" ref={modalRef}>
         <h2>Фильтры</h2>
 
         {/* Категория */}
