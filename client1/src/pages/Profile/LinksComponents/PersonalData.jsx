@@ -55,8 +55,14 @@ const PersonalData = ({userInfo, onUpdateUserInfo}) => {
         toast.error('Введите номер телефона');
         return;
     }
-
-    await handleAddPhone(PhoneNumber, setPhoneNumber);
+    try{
+      await handleAddPhone(PhoneNumber, setPhoneNumber);
+      if(onUpdateUserInfo){
+        await onUpdateUserInfo();
+      }
+    }catch (error) {
+      console.error('Ошибка сохранения:', error);
+  }
   };
 
   const handleCancelUserData = () => {

@@ -7,7 +7,7 @@ import Filter from '../../features/filter/Filter';
 import serviceDetails from '../CreatingTask/model/serviceDetails';
 import { filterTasks } from '../../shared/utils/filterTask';
 import { searchTasks } from '../../shared/utils/searchTasks';
-import SearchAndFilter from '../../shared/ui/SearchAndFilter/SearchAndFilter';
+// import SearchAndFilter from '../../shared/ui/SearchAndFilter/SearchAndFilter';
 
 const FindTask = () => {
   const [tasks, setTasks] = useState([]);
@@ -15,7 +15,7 @@ const FindTask = () => {
   const [error, setError] = useState(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false); 
   const [searchQuery, setSearchQuery] = useState('');
-
+  // const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -27,8 +27,6 @@ const FindTask = () => {
         setError(error);
       }
     };
-    
-
     fetchTasks();
   }, []);
 
@@ -60,7 +58,11 @@ const FindTask = () => {
 
       <div className="all_tasks">
         {error ? (
-          <p>Ошибка при загрузке данных: {error.message}</p>
+           <div className="no-tasks-animation">
+           <span className="w-letter">W</span>
+           <span className="w-letter">W</span>
+         </div>
+          // <p>Ошибка при загрузке данных: {error.message}</p>
         ) : filteredTasks.length > 0 ? (
           filteredTasks.map((task) => (
             <div key={task.id} className="task_item_border">
@@ -71,12 +73,12 @@ const FindTask = () => {
 
               <div className="tasks">
                 <h3>{task.Category} / {task.Subcategory}</h3>
-                <p>Адрес назначения: {task.Address}</p>
+                <p><i>Адрес назначения:</i> {task.Address}</p>
                 <p>
-                  Начало выполнения: <b>{new Date(task.BeginAt).toLocaleDateString('ru-RU')}</b> --- 
-                  Окончание выполнения: <b>{new Date(task.EndAt).toLocaleDateString('ru-RU')}</b>
+                  <i>Начало выполнения:</i> <b>{new Date(task.BeginAt).toLocaleDateString('ru-RU')}</b><br/>
+                  <i> Окончание выполнения:</i> <b>{new Date(task.EndAt).toLocaleDateString('ru-RU')}</b>
                 </p>
-                <p>Описание задания: {task.Description}</p>
+                <p><i>Описание задания:</i> {task.Description}</p>
               </div>
                
               <div className="response_button">
@@ -95,7 +97,12 @@ const FindTask = () => {
             </div>
           ))
         ) : (
-          <p>Задания не найдены.</p>
+          // <p>Задания не найдены.</p>
+          <div className="no-tasks-animation">
+            <span className="w-letter">W</span>
+            <span className="w-letter">W</span>
+          </div>
+
         )}
       </div>
 
