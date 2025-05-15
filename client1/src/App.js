@@ -8,6 +8,7 @@ import SignIn from './pages/SignIn/SignIn';
 import FindTask from './pages/FindTask/FindTask';
 import CreatingTask from './pages/CreatingTask/ui/CreatingTask/CreatingTask'
 import Profile from './pages/Profile/Profile'
+import UserChat from './pages/UserChat/UserChat';
 import {RecoveryForm} from './features/auth'
 import OrderForm from './pages/CreatingTask/ui/OrderForm/OrderForm';
 import { ToastContainer } from 'react-toastify';
@@ -29,6 +30,9 @@ function App() {
           <Route path="/CreatingTask" element={<CreatingTask />}/>
           <Route path ="/OrderForm" element={<OrderForm/>}/>
           <Route path="/Profile" element={<Profile />}/>
+          <Route path="/UserChat" element={<UserChat />}/>
+          <Route path="/find-task" element={<FindTask />} />
+
           <Route 
             path="/RecoveryForm" 
             element={<RecoveryForm />} 

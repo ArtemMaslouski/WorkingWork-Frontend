@@ -4,6 +4,7 @@ import { FiMapPin } from "react-icons/fi";
 import { TfiWorld } from "react-icons/tfi";
 import { FaQuestion } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
+import { BsChatLeft } from "react-icons/bs";
 import LanguageModal from '../modals/LanguageModal/LanguageModal';
 
 const NavLinks = ({ isAuthenticated, toggleMapModal, isMapModalOpen, handleLogout, navigate }) => {
@@ -56,12 +57,13 @@ const NavLinks = ({ isAuthenticated, toggleMapModal, isMapModalOpen, handleLogou
           onSelectLanguage={handleSelectLanguage}
         />
       </div>
-
       <NavLink to='/QuestionComponent' className={({ isActive }) => isActive ? 'active' : ''}><FaQuestion size={20}/></NavLink>
-      
+    
       {isAuthenticated ? (
         <>
+         <NavLink to='/UserChat' className={({ isActive }) => isActive ? 'active' : ''}><BsChatLeft size={20}/> </NavLink>
           <NavLink to='/Profile'><CgProfile size={20}/></NavLink>
+          
           <span onClick={() => handleLogout(navigate)} className='logout-link'>Выйти</span>
         </>
       ) : (

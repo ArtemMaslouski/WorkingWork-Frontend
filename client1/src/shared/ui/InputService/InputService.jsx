@@ -20,13 +20,15 @@ const InputService = ({
         onChange={(e) => onSearchChange(e.target.value)}
       />
 
-      <button className="search-button" onClick={onFilterClick}>
-        <MdOutlineFilterList size={30}/>
-      </button>
+      {onFilterClick && (
+          <button className="search-button" onClick={onFilterClick}>
+            <MdOutlineFilterList size={30}/>
+          </button>
+        )}
 
-      <button className="search-button" onClick={onSearchClick}>
-        <FaSearch size={30}/>
-      </button>
+        <button className="search-button" onClick={onSearchClick}>
+          <FaSearch size={30}/>
+        </button>
     </div>
   );
 };

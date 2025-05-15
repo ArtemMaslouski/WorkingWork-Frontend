@@ -1,8 +1,5 @@
-// components/SearchAndFilter.js
 import React, { useState } from 'react';
 import InputService from '../InputService/InputService';
-// import Button from '../shared/ui/Button/Button';
-// import { filterTasks } from '../../../shared/utils/filterTask'
 import { searchTasks } from '../../utils/searchTasks';
 import Filter from '../../../features/filter/Filter'
 import serviceDetails from '../../../pages/CreatingTask/model/serviceDetails';

@@ -12,11 +12,11 @@ const Footer = () => {
 
             <div className="help_link">
                 <ul>
-                    <NavLink to='/CreatingTask'>Создать задание </NavLink>
+                    <NavLink to='/OrderForm'>Создать задание </NavLink>
                     <NavLink to='./QuestionComponent'>Условия использования</NavLink>
                     <NavLink>О компании</NavLink>
                     <NavLink to='./SignIn'>Вход</NavLink>
-                    <NavLink>Все услуги</NavLink>
+                    <NavLink to='./CreatingTask'>Все услуги</NavLink>
                     <NavLink to='./CreatingTask'>Каталог работ</NavLink>
                     <NavLink>Все отзывы</NavLink>
                    

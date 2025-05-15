@@ -14,7 +14,7 @@
     list-style-type: none;
 }
 .answers_questions h1{
-    color:#a5811e;
+    color:#7d6f49;
 }
 
 .answers_questions h2{
@@ -22,7 +22,7 @@
 }
 .answers_questions h2:active,
 .answers_questions h2:hover{
-    color:#a5811e;
+    color:#7d6f49;
     font-size: 1.2rem;
     cursor: pointer;
 }

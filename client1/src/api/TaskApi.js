@@ -10,7 +10,7 @@ class Tasks {
     AddressEnd,
     BeginAt,
     EndAt,
-    Description,
+    Description,я
   }) {
     try {
       const access_token = Cookies.get('access_token'); // Получаем токен из кук

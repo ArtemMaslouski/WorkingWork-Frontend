@@ -1,11 +1,13 @@
 import './Filter.css';
 import React, { useEffect, useState, useRef } from 'react';
 import Button from '../../shared/ui/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Filter = ({ isOpen, onClose, onFilterApply,serviceDetails}) => {
   const categories = Object.keys(serviceDetails);
   const [subcategories, setSubcategories] = useState([]);
   const modalRef = useRef(null);
+  const navigate = useNavigate();
 
   const [filters, setFilters] = React.useState({
     category: '',
@@ -39,8 +41,19 @@ const Filter = ({ isOpen, onClose, onFilterApply,serviceDetails}) => {
     };
   }, [onClose]);
 
+  // const handleApply = () => {
+  //   onFilterApply(filters);
+  //   onClose();
+  // };
   const handleApply = () => {
     onFilterApply(filters);
+    
+    const queryParams = new URLSearchParams();
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value) queryParams.set(key, value);
+    });
+
+    navigate(`/find-task?${queryParams.toString()}`);
     onClose();
   };
 

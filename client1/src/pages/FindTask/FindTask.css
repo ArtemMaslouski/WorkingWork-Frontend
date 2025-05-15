@@ -37,27 +37,28 @@
 
 .place_for_find_task h1{
     font-size: 2.5rem;
-    /* color:#7d6e46; */
     color:rgba(215, 201, 164)
 }
 
 .tasks h3{
     font-size: 1.2rem;
-    /* border-bottom: 1px solid currentColor; */
+    color:#7d6f49;
+    border-bottom: 1px solid currentColor;
 }
 .tasks p{
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    margin-left: 2vw;
 }
-
 
 .task_item_border {
     width: 100%;
-    border: 1px solid black;
+    border: 1px solid #7d6f49;
     margin: 1vw 0;
     display: flex;
-    gap: 5vw;
+    padding-left: 3vw;
     position: relative; 
     padding-bottom: 1vh; 
+    
 }
 
 .response_button {
@@ -66,38 +67,10 @@
     right: 20px;
     width: 200px; 
 }
-/* анимация для букв */
 
-.no-tasks-animation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-top: 40px;
-  }
-  
-  .w-letter {
-    font-size: 40px;
-    font-weight: bold;
-    color: #998756;
-    animation: pulse 1.2s infinite ease-in-out;
-  }
-  
-  .w-letter:nth-child(2) {
-    animation-delay: 0.3s;
-  }
-  
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 0.6;
-    }
-    50% {
-      transform: scale(1.3);
-      opacity: 1;
-    }
-  }
-  
+.all_tasks{
+    margin-right: 3vw;
+}
 
 @media (max-width: 768px) {
     .place_for_find_task h1{
