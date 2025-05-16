@@ -51,5 +51,17 @@
   @media (max-width: 768px) {
     .filter-content {
       width: 80%;
+      max-width: 450px;
+      padding: 15px;
     }
+  
+    .filter-content h2 {
+      font-size: 1.2rem;
+      color: black;
+    }
+
+    .filter-buttons button {
+      width: 100%;
+    }
+    
   }
