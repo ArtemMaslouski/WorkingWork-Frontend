@@ -45,18 +45,18 @@ export const handleCreateTask = async (e, Category, Subcategory, Address, Addres
     }
 };
 
-export const handleRefreshTasks = async(e,Category, Subcategory,Address,AddressEnd,BeginAt,EndAt, Description)=>{
-    e.preventDefault();
-    try{
-        const response = await TaskApi.refreshTasks({Category, Subcategory,Address,AddressEnd,BeginAt,EndAt, Description})
-        console.log(response)
+export const handleRefreshTasks = async (updatedTask) => {
+    try {
+        const response = await TaskApi.refreshTasks(updatedTask);
+        console.log('Задание обновлено:', response);
         toast.success('Задание успешно обновлено!');
+        return response;
     } catch (error) {
-        console.error(error);
-        toast.error('Ошибка при обновлении задания, проверьте вводимые данные');
+        console.error('Ошибка при обновлении задания:', error);
+        toast.error(error.message || 'Ошибка при обновлении задания');
+        throw error;
     }
-    
-}
+};
 
 export const handleGetUserTasks = async (setTasks) => {
     try {

@@ -40,6 +40,21 @@ const OrderForm = () => {
         handleCategoryChange
     } = useOrderForm(selectedService, selectedSubcategory);
     
+    // const onSubmitCreateTasks = async (e) => {
+    //     e.preventDefault(); 
+    //     const access_token = Cookies.get('access_token');
+    //     if (!access_token) {
+    //         toast.error('Пожалуйста, войдите в систему, чтобы оформить задание.');
+    //         setTimeout(() => {
+    //             navigate('/SignIn');
+    //         }, 2000);
+    //         return;
+    //     }
+
+    //     await handleCreateTask(e, category, subcategory,addressFrom, addressTo, startDate, endDate, description,
+    //         setSubcategory, setCategory, setAddressFrom, setAddressTo, setStartDate, setEndDate, setDescription
+    //     );
+    // };
     const onSubmitCreateTasks = async (e) => {
         e.preventDefault(); 
         const access_token = Cookies.get('access_token');
@@ -50,11 +65,30 @@ const OrderForm = () => {
             }, 2000);
             return;
         }
-
-        await handleCreateTask(e, category, subcategory,addressFrom, addressTo, startDate, endDate, description,
-            setSubcategory, setCategory, setAddressFrom, setAddressTo, setStartDate, setEndDate, setDescription
+    
+        // ✅ Преобразование дат в ISO-строку
+        const formattedStartDate = startDate ? new Date(startDate).toISOString() : null;
+        const formattedEndDate = endDate ? new Date(endDate).toISOString() : null;
+    
+        await handleCreateTask(
+            e,
+            category,
+            subcategory,
+            addressFrom,
+            addressTo,
+            formattedStartDate,
+            formattedEndDate,
+            description,
+            setSubcategory,
+            setCategory,
+            setAddressFrom,
+            setAddressTo,
+            setStartDate,
+            setEndDate,
+            setDescription
         );
     };
+    
 
     return (
         <div className='order_form_component'>
@@ -116,20 +150,32 @@ const OrderForm = () => {
                     <div className="date_field">
                         <DatePicker
                             selected={startDate}
-                            onChange={(date) => setStartDate(date)}
+                            onChange={(date) => {
+                                if (date) {
+                                    date.setHours(12, 0, 0, 0);
+                                }
+                                setStartDate(date);
+                            }}
                             className="input-field"
                             dateFormat="dd/MM/yyyy"
                             placeholderText="Дата начала"
+                            minDate={new Date()}//minDate для предотвращения выбора прошедших дат
                         />
                     </div>
 
                     <div className="date_field">
                         <DatePicker
                             selected={endDate}
-                            onChange={(date) => setEndDate(date)}
+                            onChange={(date) => {
+                                if (date) {
+                                    date.setHours(12, 0, 0, 0);
+                                }
+                                setEndDate(date);
+                            }}
                             className="input-field"
                             dateFormat="dd/MM/yyyy"
                             placeholderText="Дата окончания"
+                            minDate={startDate || new Date()}
                         />
                     </div>
                 </div>
