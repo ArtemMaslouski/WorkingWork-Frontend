@@ -20,7 +20,7 @@ const HelpFormExecutor = () => {
         
        <Button 
         text="Найти заявку"
-        style={{backgroundColor: 'rgba(185, 170, 130, 1)', color:'black',border: '2px solid #625430', width:'60%', height:'4vh'}}
+        style={{ backgroundColor: 'rgba(215, 201, 164)', color:'black',border: '2px solid #625430', width:'60%', height:'4vh'}}
         onClick={handleClick}/>
     </div>
   )

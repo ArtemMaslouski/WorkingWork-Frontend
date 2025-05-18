@@ -17,17 +17,8 @@ class Tasks {
       if (!access_token) {
         throw new Error('Токен не найден. Пользователь не авторизован.');
       }
-
-      // смещение даты ня 12:00 для корретного отображения даты
-      const formatDate = (date) => {
-        if (!date) return null;
-        const d = new Date(date);
-        d.setHours(12, 0, 0, 0);
-        return d.toISOString();
-      };
-
-      const formattedBeginAt = formatDate(BeginAt);
-      const formattedEndAt = formatDate(EndAt);
+      const formattedBeginAt = BeginAt ? new Date(BeginAt).toISOString() : null;
+      const formattedEndAt = EndAt ? new Date(EndAt).toISOString() : null;
       
       const response = await axios.post(
         `${process.env.REACT_APP_URL}/tasks/create`,

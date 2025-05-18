@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import serviceDetails from '../../model/serviceDetails';
 
 const useOrderForm = (selectedService, selectedSubcategory) => {
-    
+    const [isLoading, setIsLoading] = useState(true);
     const [categories, setCategories] = useState([]);
     const [subcategories, setSubcategories] = useState([]);
     const [category, setCategory] = useState(selectedService || '');
@@ -14,6 +14,9 @@ const useOrderForm = (selectedService, selectedSubcategory) => {
     const [description, setDescription] = useState('');
 
     useEffect(() => {
+        setIsLoading(true);
+        // Simulate loading delay
+        setTimeout(() => {
             setCategories(Object.keys(serviceDetails));
             if (selectedService) {
                 setSubcategories(serviceDetails[selectedService]?.links || []);
@@ -21,35 +24,37 @@ const useOrderForm = (selectedService, selectedSubcategory) => {
             if (selectedSubcategory) {
                 setSubcategory(selectedSubcategory);
             }
-        }, [selectedService, selectedSubcategory]);
+            setIsLoading(false);
+        }, 500);
+    }, [selectedService, selectedSubcategory]);
     
-        const handleCategoryChange = (e) => {
-            const selectedCategory = e.target.value;
-            setCategory(selectedCategory);
-            setSubcategories(serviceDetails[selectedCategory]?.links || []);
-            setSubcategory('');
-        };
+    const handleCategoryChange = (e) => {
+        const selectedCategory = e.target.value;
+        setCategory(selectedCategory);
+        setSubcategories(serviceDetails[selectedCategory]?.links || []);
+        setSubcategory('');
+    };
 
-
-        return{
-            categories,
-            subcategories,
-            category,
-            subcategory,
-            addressFrom,
-            addressTo,
-            startDate,
-            endDate,
-            description,
-            setCategory,
-            setSubcategory,
-            setAddressFrom,
-            setAddressTo,
-            setStartDate,
-            setEndDate,
-            setDescription,
-            handleCategoryChange
-        }
+    return {
+        isLoading,
+        categories,
+        subcategories,
+        category,
+        subcategory,
+        addressFrom,
+        addressTo,
+        startDate,
+        endDate,
+        description,
+        setCategory,
+        setSubcategory,
+        setAddressFrom,
+        setAddressTo,
+        setStartDate,
+        setEndDate,
+        setDescription,
+        handleCategoryChange
+    }
 }
 
 export default useOrderForm;

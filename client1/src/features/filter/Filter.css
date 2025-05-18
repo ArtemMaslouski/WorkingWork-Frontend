@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    color:black;
   }
   
   .filter-content {
@@ -24,13 +25,15 @@
   }
   
   .filter-field {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+
   }
   
   .filter-field label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    font-size: 0.8rem;
   }
   
   .filter-field select,
@@ -48,6 +51,10 @@
     margin-top: 20px;
   }
 
+  .filter-field input{
+    width: 98%;
+  }
+  
   @media (max-width: 768px) {
     .filter-content {
       width: 80%;
@@ -63,5 +70,8 @@
     .filter-buttons button {
       width: 100%;
     }
-    
+    .filter-field {
+      margin-bottom: 10px;
+      width: 100%;
+    }
   }

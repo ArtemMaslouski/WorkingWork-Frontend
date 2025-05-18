@@ -4,11 +4,12 @@ import { handleGetUserTasks, handleDeleteTask, handleRefreshTasks } from '../../
 import Button from '../../../shared/ui/Button/Button';
 import serviceDetails from '../../CreatingTask/model/serviceDetails';
 import RefreshTasks from '../../../features/RefreshTasks/RefreshTasks';
+import Loader from '../../../shared/ui/Loader/Loader';
 
 const MyExercise = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [editingTask, setEditingTask] = useState(null); // текущая задача для редактирования
+  const [editingTask, setEditingTask] = useState(null); 
 
   useEffect(() => {
     handleGetUserTasks(setTasks).finally(() => setLoading(false));
@@ -28,8 +29,6 @@ const MyExercise = () => {
       await handleGetUserTasks(setTasks); 
   };
 
-  if (loading) return <p>Загрузка заданий...</p>;
-
   return (
     <div className='tasks_user'>
       {editingTask && (
@@ -42,9 +41,12 @@ const MyExercise = () => {
       />
       )}
 
-      {tasks.length === 0 ? (
-        <p>У вас пока нет заданий</p>
-      ) : (
+      <Loader
+        isLoading={loading}
+        isEmpty={!loading && tasks.length === 0}
+      />
+
+      {!loading && tasks.length > 0 && (
         <div className='task_element'>
           {tasks.map((task) => (
             <div className='element' key={task.id}>
