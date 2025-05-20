@@ -30,14 +30,14 @@
     display:block;
     justify-content: center;
     align-items: center;
-    text-align: center;
     width: 50%;
     margin: 0 auto;
 }
 
 .place_for_find_task h1{
     font-size: 2.5rem;
-    color:rgba(215, 201, 164)
+    color:rgba(215, 201, 164);
+    text-align: center;
 }
 
 .tasks h3{
