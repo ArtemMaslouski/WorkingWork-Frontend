@@ -40,11 +40,6 @@ const PhotoUploader = ({ onPhotoChange, currentPhoto }) => {
         onPhotoChange(`${baseURL}${response.userInfo.Photo.url}`);
       }
       
-      // if (response && response.imageUrl) {
-      //   if (onPhotoChange) {
-      //     onPhotoChange(response.imageUrl); 
-      //   }
-      // }
     } catch (error) {
       console.error('Upload error:', error);
       setPhoto(null); 
@@ -84,7 +79,7 @@ const PhotoUploader = ({ onPhotoChange, currentPhoto }) => {
               backgroundColor: 'white',
               color: isUploading ? '#aaa' : 'gray',
               border: '1px solid #625430',
-              width: '150px',
+              width: '200px',
               height: '5vh',
               marginTop: '1vh',
               cursor: isUploading ? 'not-allowed' : 'pointer'

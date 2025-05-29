@@ -10,12 +10,14 @@ import MyExercise from './LinksComponents/MyExercise';
 import PersonalData from './LinksComponents/PersonalData';
 import Settings from './LinksComponents/Settings';
 import { handleGetUserInfo } from '../../services/userInfoHandlers';
-import { baseURL } from '../../constants/someConstants'; // твой baseURL
+import { baseURL } from '../../constants/someConstants'; 
+import { useTranslation } from 'react-i18next';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('');
   const [userInfo, setUserInfo] = useState(null);
   const [photoUrl, setPhotoUrl] = useState(null);
+  const {t} = useTranslation();
 
   const fetchUserInfo = async () => {
         const data = await handleGetUserInfo();
@@ -65,9 +67,9 @@ const Profile = () => {
           </div>
   
           <div className="info_user">
-            <h3>{userInfo?.UserName || 'Имя не указано'}</h3>
+            <h3>{`${userInfo?.userInfo.Surname || ''} ${userInfo?.userInfo.Name || ''}`.trim() || 'Имя не указано'}</h3>
             <p><strong>Пол:</strong><i> {userInfo?.userInfo?.Sex || 'Не указан'}</i></p>
-            <p><strong>Город:</strong> {userInfo?.userInfo?.City || 'Не указан'}</p>
+            <p><strong>{t('city')}:</strong> {userInfo?.userInfo?.City || 'Не указан'}</p>
             <p><strong>Дата рождения:</strong> {formatBirthday(userInfo?.userInfo?.BirthdayDate) || 'Не указан'}</p>
             <p><strong>Почта:</strong> {userInfo?.userInfo?.Email || 'Не указан'}</p>
             <p><strong>Номер телефона:</strong> {userInfo?.userInfo?.PhoneNumber || 'Не указан'}</p>

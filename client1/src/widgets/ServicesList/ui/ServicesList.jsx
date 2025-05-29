@@ -4,11 +4,13 @@ import services from '../model/servicesData';
 import './ServicesList.css';
 import { useLocation } from 'react-router-dom';
 import Button from '../../../shared/ui/Button/Button';
+import { useTranslation } from 'react-i18next';
 
 const ServicesList = () => {
   const location = useLocation();
   const [showAll, setShowAll] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth<=480);
+  const {t} = useTranslation();
 
   const isActiveService  = (serviceName) => {
     const params = new URLSearchParams(location.search);
@@ -42,12 +44,12 @@ const ServicesList = () => {
             key={index}>
           <div 
             className={`service_item ${isActiveService(service.name) ? 'active-service' : ''}`}>
-            {service.icon} {service.name}
+            {service.icon} {t(service.key)}
           </div>
         </NavLink>
       ))}
       {isMobile && services.length > 6 &&(
-        <Button onClick={toggleShowAll} text={showAll ? 'Скрыть категории' : 'Показать все категории'}
+        <Button onClick={toggleShowAll} text={showAll ? t('HideCategories') : t('ShowAllCategories')}
         style={{ backgroundColor: 'white', color: 'gray', border: '2px solid rgb(162, 139, 76)',width:'100%',height:'4.5vh', fontWeight:'light' }} 
        />
       )} 

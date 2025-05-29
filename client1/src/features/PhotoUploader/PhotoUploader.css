@@ -9,7 +9,7 @@
     align-items: center;
 }
   .images {
-    width: 10vw; 
+    width: 200px; 
     height: 25vh; 
     border: 2px dashed #9c9191;
     display: flex;
@@ -43,8 +43,7 @@
 
   @media (max-width: 486px) {
     .images {
-        width: 150px; 
-        height: 150px;
+        height: 200px;
       }
       .info_about_user p{
         font-size: 0.9rem;
@@ -53,10 +52,6 @@
 
 @media (min-width: 486px) and (max-width: 768px) {
     .images {
-        width: 150px; 
-        height: 150px;
+        height: 200px;
       }
-      /* .info_about_user p{
-        font-size: .7rem;
-      } */
 }

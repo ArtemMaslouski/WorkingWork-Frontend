@@ -1,0 +1,11 @@
+{
+    "createTask": "Create Task",
+    "findTask": "Find Task",
+    "logout": "Logout",
+    "login": "Login",
+    "profile": "Profile",
+    "chat": "Chat",
+    "questions": "Questions",
+    "map": "Map",
+    "language": "Language"
+} 

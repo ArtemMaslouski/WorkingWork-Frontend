@@ -41,10 +41,6 @@ const Filter = ({ isOpen, onClose, onFilterApply,serviceDetails}) => {
     };
   }, [onClose]);
 
-  // const handleApply = () => {
-  //   onFilterApply(filters);
-  //   onClose();
-  // };
   const handleApply = () => {
     onFilterApply(filters);
     

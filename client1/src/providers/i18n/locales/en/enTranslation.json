@@ -1,0 +1,65 @@
+{
+    "createTask":"Сreate a task",
+    "findTask":"Find a task",
+    "logout": "Logout",
+    "login": "Login",
+    "password":"Password",
+    "username":"Username:",
+    "register":"Register",
+    "freeFromWorries" : "Let us free you from worries",
+    "proForTask" : "There is a pro for every task!",
+    "servicesAndOffers":"Services and offers",
+    "BecomeAPerformer":"Become a performer and start earning money",
+    "HideCategories":"Hide categories",
+    "ShowAllCategories":"Show all categories",
+    "HowItWork" :"How does this work",
+    "didntFindServices":"Didn't find the service you need? Use search!",
+    "choosingExecutor" : "Help with choosing a responsible executor?",
+    "quicklyFind" : "Hello, quickly place your order and we will quickly find a good contractor",
+    "SubmitAnApplication" :"Submit an application",
+    "whatWork" : "What work do you need to do?",
+    "city":"City",
+    "trustedSpecialists":"Look for trusted specialists or profitable orders using the service",
+    "FindAWorker":"Find a worker",
+    "BecomeAWorker":"Become a worker",
+    "Reviews":"Reviews",
+
+    "services": {
+        "courier": "Courier services",
+        "construction": "Repair and construction",
+        "software": "Software development",
+        "cleaning": "Cleaning and home help",
+        "computerHelp": "Computer assistance",
+        "carRepair": "Vehicle repair",
+        "photoVideo": "Photo, video, audio",
+        "teaching": "Tutoring and education",
+        "design": "Design",
+        "applianceRepair": "Appliance installation and repair",
+        "virtualAssistant": "Virtual assistant",
+        "events": "Events",
+        "beautyHealth": "Beauty and health",
+        "digitalRepair": "Digital device repair",
+        "cargo": "Cargo transportation",
+        "pets": "Pets",
+        "sports": "Sports",
+        "realEstate": "Real estate",
+        "legalAccounting": "Legal and accounting services"
+    }, 
+
+    "cardSteps": {
+        "1": {
+            "title": "Describe",
+            "description": "Your task and requirements. It's free and takes 3–4 minutes."
+        },
+        "2": {
+            "title": "Get responses",
+            "description": "With prices from service providers. Usually they come within 30 minutes."
+        },
+        "3": {
+            "title": "Choose",
+            "description": "The right service provider and discuss the deadlines."
+        }
+    }
+
+
+}

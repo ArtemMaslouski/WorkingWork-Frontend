@@ -92,6 +92,29 @@ a.active{
     color: #a5811e;
     /* color:rgb(187, 177, 148); */
 }
+
+.header_controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.language-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.language-button:hover {
+    color: #998756;
+}
+
 @media (max-width: 768px) {
 
     

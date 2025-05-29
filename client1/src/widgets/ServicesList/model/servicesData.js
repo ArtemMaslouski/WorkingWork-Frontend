@@ -18,26 +18,26 @@ import { GiScales } from "react-icons/gi";
 import { FaPaw } from "react-icons/fa6";
 import { MdOutlineSportsBasketball } from "react-icons/md";
 
-const services =[
-    { name: "Курьерские услуги", icon: <IoIosCheckbox/> },
-    { name: "Ремонт и строительство", icon: <MdConstruction/> },
-    { name: "Разработка ПО", icon: <MdDeveloperMode/>},
-    { name: "Уборка и помощь по дому", icon: <MdOutlineCleaningServices/>},
-    { name: "Компьютерная помощь", icon: <MdOutlineComputer/>},
-    { name: "Ремонт транспорта", icon: <MdOutlineCarRepair/>},
-    { name: "Фото, видео, аудио", icon: <FaCamera/> },
-    { name: "Репетиторы и обучение", icon: <FaChalkboardTeacher/>},
-    { name: "Дизайн", icon: <MdDesignServices/>},
-    { name: "Установка и ремонт техники", icon: <PiWashingMachine/>},
-    { name: "Виртуальный помощник", icon: <GrVirtualMachine/>},
-    { name: "Мероприятия", icon: <SlPresent/>},
-    { name: "Красота и здоровье", icon: <BsScissors/>},
-    { name: "Ремонт цифровой техники", icon: <LuMonitorSmartphone/>},
-    { name: "Грузоперевозки", icon: <GiCargoCrate/>},
-    { name: "Животные", icon: <FaPaw/>},
-    { name: "Спорт", icon: <MdOutlineSportsBasketball/>},
-    { name: "Недвижимость", icon: <MdOutlineRealEstateAgent/>},
-    { name: "Юридические и бухгалтерские услуги", icon: <GiScales/>},
-]
+const services = [
+  { key: "services.courier", icon: <IoIosCheckbox /> },
+  { key: "services.construction", icon: <MdConstruction /> },
+  { key: "services.software", icon: <MdDeveloperMode /> },
+  { key: "services.cleaning", icon: <MdOutlineCleaningServices /> },
+  { key: "services.computerHelp", icon: <MdOutlineComputer /> },
+  { key: "services.carRepair", icon: <MdOutlineCarRepair /> },
+  { key: "services.photoVideo", icon: <FaCamera /> },
+  { key: "services.teaching", icon: <FaChalkboardTeacher /> },
+  { key: "services.design", icon: <MdDesignServices /> },
+  { key: "services.applianceRepair", icon: <PiWashingMachine /> },
+  { key: "services.virtualAssistant", icon: <GrVirtualMachine /> },
+  { key: "services.events", icon: <SlPresent /> },
+  { key: "services.beautyHealth", icon: <BsScissors /> },
+  { key: "services.digitalRepair", icon: <LuMonitorSmartphone /> },
+  { key: "services.cargo", icon: <GiCargoCrate /> },
+  { key: "services.pets", icon: <FaPaw /> },
+  { key: "services.sports", icon: <MdOutlineSportsBasketball /> },
+  { key: "services.realEstate", icon: <MdOutlineRealEstateAgent /> },
+  { key: "services.legalAccounting", icon: <GiScales /> },
+];
 
-export default services
+export default services;

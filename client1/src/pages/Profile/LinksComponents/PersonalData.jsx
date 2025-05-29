@@ -89,15 +89,6 @@ const PersonalData = ({userInfo, onUpdateUserInfo}) => {
           <Input
             type='text'
             className='inputInt-field'
-            name='name'
-            label={'Имя '}
-            required
-            value={Name}
-            onChange={e => setName(e.target.value)}
-          />
-          <Input
-            type='text'
-            className='inputInt-field'
             name='surname'
             label={'Фамилия'}
             required
@@ -105,6 +96,16 @@ const PersonalData = ({userInfo, onUpdateUserInfo}) => {
             onChange={e => setSurname(e.target.value)}
           />
         
+          <Input
+            type='text'
+            className='inputInt-field'
+            name='name'
+            label={'Имя '}
+            required
+            value={Name}
+            onChange={e => setName(e.target.value)}
+          />
+    
           <DatePicker
             className="input-b_day"
             dateFormat="dd/MM/yyyy"
