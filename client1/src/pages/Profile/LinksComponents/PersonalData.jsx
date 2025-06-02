@@ -5,6 +5,7 @@ import Button from '../../../shared/ui/Button/Button';
 import { handleAddPhone, handleAddUserInfo } from '../../../services/userInfoHandlers'; 
 import { toast } from "react-toastify";
 import Cookies from 'js-cookie';
+import { useTranslation } from 'react-i18next';
 
 const PersonalData = ({userInfo, onUpdateUserInfo}) => {
   const [Name, setName] = useState('');
@@ -14,6 +15,7 @@ const PersonalData = ({userInfo, onUpdateUserInfo}) => {
   const [City, setCity] = useState('');
   const [Email, setEmail] = useState('');
   const [PhoneNumber, setPhoneNumber] = useState('');
+  const {t} = useTranslation();
 
   useEffect(() => {
     if (userInfo?.userInfo) {
@@ -84,13 +86,13 @@ const PersonalData = ({userInfo, onUpdateUserInfo}) => {
     <div className='info_about_user'>
       <div className="info_user_item">
         <div className="action">
-          <p>Заполните личные данные для своего портфолио</p>
+          <p>{t('profile.writeAboutYourself')}</p>
           
           <Input
             type='text'
             className='inputInt-field'
             name='surname'
-            label={'Фамилия'}
+            label={t('profile.surname')}
             required
             value={Surname}
             onChange={e => setSurname(e.target.value)}
@@ -100,7 +102,7 @@ const PersonalData = ({userInfo, onUpdateUserInfo}) => {
             type='text'
             className='inputInt-field'
             name='name'
-            label={'Имя '}
+            label={t('profile.name')}
             required
             value={Name}
             onChange={e => setName(e.target.value)}
@@ -109,22 +111,22 @@ const PersonalData = ({userInfo, onUpdateUserInfo}) => {
           <DatePicker
             className="input-b_day"
             dateFormat="dd/MM/yyyy"
-            placeholderText="Дата Рождения"
+            placeholderText={t('profile.dateOfBirth')}
             selected={BirthdayDate}
             onChange={date => setBirthdayDate(date)}
           />
 
           <div className="gender-selection">
-            <p>Пол</p>
-            <label><input type="radio" name="gender" value="male" onChange={() => setSex('мужской')} />мужской</label>
-            <label><input type="radio" name="gender" value="female" onChange={() => setSex('женский')} />женский</label>
+            <p>{t('profile.gender')}</p>
+            <label><input type="radio" name="gender" value="male" onChange={() => setSex('мужской')} />{t('profile.male')}</label>
+            <label><input type="radio" name="gender" value="female" onChange={() => setSex('женский')} />{t('profile.female')}</label>
           </div>
 
           <Input
             type='text'
             className='inputInt-field'
             name='city'
-            label={'Город'}
+            label={t('city')}
             required
             value={City}
             onChange={e => setCity(e.target.value)}
@@ -144,40 +146,40 @@ const PersonalData = ({userInfo, onUpdateUserInfo}) => {
 
         <div className="save_cancellation_button">
           <Button
-            text='Отмена'  onClick={handleCancelUserData}
+            text={t('Cancel')}  onClick={handleCancelUserData}
             style={{ backgroundColor: 'rgba(215, 201, 164)', fontWeight: 'light', color: 'black', border: '2px solid #625430', height: '4vh' }} 
           />
           <Button
-            text='Сохранить данные'
+            text={t('Save')}
             onClick={handleSave} 
             style={{ backgroundColor: 'white', fontWeight: 'light', color: 'black', border: '2px solid #625430', height: '4vh' }} 
           />
         </div>
 
         <div className="action_tel">
-        <p>Заполните личные данные для своего портфолио</p>
+        <p>{t('profile.personalInformation')}</p>
           
           <Input
             type='tel'
             className='inputInt-field'
             name='number'
-            label={'Номер телефона (с кодом)'}
+            label={`${t('profile.numberPhone')} ${t('profile.withCode')}`}
             required
             value={PhoneNumber}
             onChange={e => setPhoneNumber(e.target.value)}
           />
           <label>
-            Введите <b><i>номер телефона</i></b>, чтобы с вами могли связаться клиенты
+            {t('Enter')} <b><i>{t('profile.numberPhone')}</i></b>, {t('profile.canContact')}
           </label>
         </div>
         
         <div className="save_cancellation_button">
           <Button
-            text='Отмена' onClick={handleCancelPhone}
+            text={t('Cancel')} onClick={handleCancelPhone}
             style={{ backgroundColor: 'rgba(215, 201, 164)', fontWeight: 'light', color: 'black', border: '2px solid #625430', height: '4vh' }} 
           />
           <Button
-            text='Сохранить данные'
+            text={t('Cancel')}
             onClick={onSubmitAddPhoneNumber}
             // onClick={handleSave} 
             style={{ backgroundColor: 'white', fontWeight: 'light', color: 'black', border: '2px solid #625430', height: '4vh' }} 

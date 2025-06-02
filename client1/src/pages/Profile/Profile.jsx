@@ -44,7 +44,7 @@ const Profile = () => {
   };
 
   const formatBirthday = (birthday) => {
-    if (!birthday) return 'Не указан';
+    if (!birthday) return t('profile.notSpecified');
     
     const date = new Date(birthday);
     const day = String(date.getDate()).padStart(2, '0');

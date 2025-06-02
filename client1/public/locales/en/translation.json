@@ -34,6 +34,7 @@
     "FulfillOrders" : "Fulfill orders for",
     "OnlyAdultUsers": "only adult users or persons over 16 years of age who have completed the profile confirmation procedure can do so.",
     "loading":"Loading...",
+    "Enter" : "Enter",
 
     "services": {
         "courier": "Courier services",
@@ -90,6 +91,8 @@
         "aboutMe":"About me",
         "NameNotSpecified":"Name not specified",
         "gender":"Gender",
+        "male" : "Male",
+        "female" : "Female",
         "dateOfBirth":"Date of birth",
         "email" :"Email",
         "numberPhone":"Number phone",
@@ -100,7 +103,12 @@
         "PersonalData" : "Personal data",
         "MyAssignments" : "My assignments",
         "DescribeYourExp" : "Describe your experience, skills and strengths in a specific area",
-        "writeAboutYourself":"Write more about yourself"
+        "writeAboutYourself":"Write more about yourself",
+        "personalInformation" : "Fill in personal information for your portfolio",
+        "surname": "Surname",
+        "name": "Name",
+        "withCode" : "(with code)",
+        "canContact":"so that clients can contact you"
       }
 
 
