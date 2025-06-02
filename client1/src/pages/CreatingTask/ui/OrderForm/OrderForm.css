@@ -25,6 +25,10 @@
     font-family: gta;
 }
 
+/* span{
+
+    color:black
+} */
 .date_fields {
     display: flex;
     justify-content: space-between;

@@ -33,6 +33,7 @@
     "TermsOfUse" : "Terms of use",
     "HelpMeFindTask" : "Help me find a task?",
     "FulfillOrders" : "Fulfill orders for",
+    "OnlyAdultUsers" :"only adult users or persons over 16 years of age who have completed the profile confirmation procedure can do so.",
     "loading":"Loading...",
     "Enter" : "Enter",
     "noTasks": "No tasks found for this request",
@@ -53,7 +54,25 @@
     "returnToEntrance" : "Return to entrance",
     "AllTasks" :"All tasks",
     "Delivery" : "Delivery",
-
+    "filters": "Filters",
+    "category":"Category",
+    "selectCategory":"Select category",
+    "selectSubcategory":"Select subcategory",
+    "subcategory":"Subcategory",
+    "address" : "Address",
+    "enterAddress":"Enter address",
+    "to": "(to)",
+    "startDate":"Start date",
+    "endDate":"End date",
+    "resetFilter":"Reset filter",
+    "Apply":"Apply",
+    "courierServices" : "Courier services",
+    "start":"Start",
+    "ending":"Ending",
+    "description" :"Description",
+    "edit":"Edit",
+    "delete":"Delete",
+    "years":"years",
 
 
 
@@ -132,7 +151,74 @@
         "canContact":"so that clients can contact you",
         "becomePerformer" : "Become a performer and",
         "startEarning"  : "start earning money!"
-      }
-
-
+      },
+    "questions": {
+        "title": "Questions and Answers",
+        "howItWorks": {
+            "question": "How does the service work?",
+            "answer": "You choose a service, describe your task and place an order. Specialists see your order and send proposals, sometimes with prices and contacts. You can also search for specialists on your own. When you choose a suitable one, contact them by phone or chat. Agree on the work. After completing the work, leave a review about the specialist's work - this will help other clients make a choice."
+        },
+        "howToChooseSpecialist": {
+            "question": "How to choose a specialist?",
+            "answer": "Choose a service from the list or find a service through search. You will see prompt questions. They will help describe the task details needed for specialists. Enter your phone number and click \"Create Order\"."
+        },
+        "howToChooseSpecialistProcess": {
+            "question": "How to choose a specialist? Process.",
+            "answer": "Choose a service from the list or find a service through search. You will see prompt questions. They will help describe the task details needed for specialists. Enter your phone number and click \"Create Order\"."
+        },
+        "howToChooseSpecialistReviews": {
+            "question": "How to choose a specialist? Reviews, ratings, profile",
+            "answer": "We accept reviews after work completion. Make sure the specialist's profile has the service you need and positive reviews specifically for this service. The average rating depends on reviews. The profile is the specialist's business card. Pay attention to how the specialist describes themselves, if they have professional certificates, what work examples they show. We verify documents and qualifications. In the profile, we show statuses: qualification confirmed, passport verified, works under contract, provides guarantee."
+        },
+        "serviceResponsibility": {
+            "question": "Is the service responsible for specialists?",
+            "answer": "Specialists work for themselves and are responsible for their work. They are not employees of the service. We monitor the quality of profiles on the site and the authenticity of reviews, verify documents. If a specialist frequently receives negative reviews, we delete their profile."
+        },
+        "whoCanLeaveReview": {
+            "question": "Who can leave a review?",
+            "answer": "You can find the \"Leave a review\" button in the chat with the specialist. If you haven't communicated with the specialist, you cannot leave a review. You cannot leave a review without an order."
+        },
+        "howToLeaveReview": {
+            "question": "How to leave a review?",
+            "answer": "You can find the \"Leave a review\" button in the chat with the specialist. If you haven't communicated with the specialist, you cannot leave a review. You cannot leave a review without an order."
+        },
+        "reviewsNotPublished": {
+            "question": "Which reviews are not published?",
+            "answer": [
+                "We do not publish:",
+                "- insults, including memes;",
+                "- nationalist, political, religious statements;",
+                "- baseless accusations of crimes - if something happens by accident, contact us immediately;",
+                "- assumptions and speculations;",
+                "- personal data;",
+                "- reviews of services prohibited by company rules;",
+                "- links to other sites;",
+                "- spam;",
+                "- reviews about unreliable service work;",
+                "- reviews about work with former employees and so on."
+            ]
+        },
+        "unsatisfiedWithWork": {
+            "question": "I'm not satisfied with the specialist's work, what should I do?",
+            "answer": [
+                "Contact support or email. We will deal with the unpleasant situation.",
+                "We will listen to your problem. We won't leave you in a difficult situation.",
+                "We will examine the evidence. Contracts, receipts, and photos help in disputes.",
+                "We will contact the specialist. We will ask for their point of view.",
+                "We will ask the specialist to fix the shortcomings if the facts are on your side."
+            ]
+        },
+        "howToEditOrder": {
+            "question": "How to edit an order?",
+            "answer": "Go to the \"Order\" tab. In the app - click on the section with the order description you want to edit; on the website - click on the pencil icon."
+        },
+        "howToCancelOrder": {
+            "question": "How to cancel an order?",
+            "answer": "Go to the \"Order\" tab. Click the \"Cancel Order\" button (at the bottom of the page)."
+        },
+        "whyLeavePhone": {
+            "question": "Why leave a phone number?",
+            "answer": "So that the specialist can call you if you choose them. We won't show your phone to anyone else and won't send promotional SMS."
+        }
+    }
 }

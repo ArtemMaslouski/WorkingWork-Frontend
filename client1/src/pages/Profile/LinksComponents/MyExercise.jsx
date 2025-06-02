@@ -5,11 +5,15 @@ import Button from '../../../shared/ui/Button/Button';
 import serviceDetails from '../../CreatingTask/model/serviceDetails';
 import RefreshTasks from '../../../features/RefreshTasks/RefreshTasks';
 import Loader from '../../../shared/ui/Loader/Loader';
+import { useTranslation } from 'react-i18next';
+import { useTaskTranslation } from '../../../hooks/useTaskTranslation';
 
 const MyExercise = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingTask, setEditingTask] = useState(null); 
+  const { t } = useTranslation();
+  const { translatedTasks } = useTaskTranslation(tasks);
 
   useEffect(() => {
     handleGetUserTasks(setTasks).finally(() => setLoading(false));
@@ -20,7 +24,7 @@ const MyExercise = () => {
       await handleDeleteTask(taskId);
       setTasks((prev) => prev.filter(task => task.id !== taskId));
     } catch {
-      toast.error('Ошибка при удалении задания');
+      toast.error(t('errors.deleteTaskError'));
     }
   };
 
@@ -48,31 +52,31 @@ const MyExercise = () => {
 
       {!loading && tasks.length > 0 && (
         <div className='task_element'>
-          {tasks.map((task) => (
+          {translatedTasks.map((task) => (
             <div className='element' key={task.id}>
-              <b>Категория:</b> {task.Category} <br />
-              <b>Подкатегория:</b> {task.Subcategory} <br />
-              <b>Адрес:</b> {task.Address} <br />
-              {task.Category === 'Курьерские услуги' && (
+              <b>{t('category')}:</b> {task.Category} <br />
+              <b>{t('subcategory')}:</b> {task.Subcategory} <br />
+              <b>{t('address')}:</b> {task.Address} <br />
+              {task.Category === t('courierServices') && (
                 <>
-                  <b>Адрес назначения:</b> {task.AddressEnd} <br />
+                  <b>{`${t('address')} ${t('to')}`}:</b> {task.AddressEnd} <br />
                 </>
               )}
               
-              <b>Начало:</b> {new Date(task.BeginAt).toLocaleDateString('ru-RU')} <br />
-              <b>Окончание:</b> {new Date(task.EndAt).toLocaleDateString('ru-RU')} <br />
-              <b>Описание:</b> {task.Description} <br />
+              <b>{t('start')}:</b> {new Date(task.BeginAt).toLocaleDateString('ru-RU')} <br />
+              <b>{t('ending')}:</b> {new Date(task.EndAt).toLocaleDateString('ru-RU')} <br />
+              <b>{t('description')}:</b> {task.Description} <br />
 
               <div className="but_change">
               <Button
-                  text="Редактировать"
+                  text={t('edit')}
                   style={{ backgroundColor: 'rgba(215, 201, 164)', color: 'black', border: '2px solid #625430', height:'4vh', width:'150px' }}
                   onClick={() =>  setEditingTask(task)
                   }
                 />
 
                 <Button
-                  text="Удалить"
+                  text={t('delete')}
                   style={{ backgroundColor: 'rgba(215, 201, 164)', color: 'black', border: '2px solid #625430', height:'4vh', width:'150px' }}
                   onClick={() => handleDelete(task.id)}
                 />

@@ -88,6 +88,15 @@ const handleSubmit = () => {
               <option key={cat} value={cat}>{cat}</option>
             ))}
           </select>
+          {refresh.category && serviceDetails[refresh.category]?.image && (
+            <div className="category-image">
+              <img 
+                src={serviceDetails[refresh.category].image} 
+                alt={refresh.category}
+                style={{ maxWidth: '200px', marginTop: '10px' }}
+              />
+            </div>
+          )}
         </div>
 
         <div className="filter-field">
