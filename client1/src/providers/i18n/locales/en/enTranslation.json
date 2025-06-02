@@ -6,6 +6,8 @@
     "password":"Password",
     "username":"Username:",
     "register":"Register",
+    "Cancel" : "Cancel",
+    "Save" : "Save",
     "freeFromWorries" : "Let us free you from worries",
     "proForTask" : "There is a pro for every task!",
     "servicesAndOffers":"Services and offers",
@@ -23,6 +25,15 @@
     "FindAWorker":"Find a worker",
     "BecomeAWorker":"Become a worker",
     "Reviews":"Reviews",
+    "AllServices":"All services",
+    "AllReviews" : "All reviews",
+    "CatalogOfWorks" : "Catalog of works",
+    "AboutTheCompany" : "About the company",
+    "TermsOfUse" : "Terms of use",
+    "HelpMeFindTask" : "Help me find a task?",
+    "FulfillOrders" : "Fulfill orders for",
+    "OnlyAdultUsers": "only adult users or persons over 16 years of age who have completed the profile confirmation procedure can do so.",
+    "loading":"Loading...",
 
     "services": {
         "courier": "Courier services",
@@ -59,7 +70,38 @@
             "title": "Choose",
             "description": "The right service provider and discuss the deadlines."
         }
-    }
+    },
+
+    "footer" : {
+        "Reviews":"Reviews",
+        "AllServices":"All services",
+        "AllReviews" : "All reviews",
+        "CatalogOfWorks" : "Catalog of works",
+        "AboutTheCompany" : "About the company",
+        "TermsOfUse" : "Terms of use",
+        "infoForPublic" :"© The information published on this site is intended for any audience, unless otherwise specified in relation to individual materials."
+    },
+
+    "chat" : {
+        "chat" : "Сhats"
+    },
+
+    "profile": {
+        "aboutMe":"About me",
+        "NameNotSpecified":"Name not specified",
+        "gender":"Gender",
+        "dateOfBirth":"Date of birth",
+        "email" :"Email",
+        "numberPhone":"Number phone",
+        "notSpecified" :"Not specified",
+        "noDescription" :"No description",
+        "noPhoto" : "No photo",
+        "ChangePhoto" :"Change photo",
+        "PersonalData" : "Personal data",
+        "MyAssignments" : "My assignments",
+        "DescribeYourExp" : "Describe your experience, skills and strengths in a specific area",
+        "writeAboutYourself":"Write more about yourself"
+      }
 
 
 }

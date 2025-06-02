@@ -4,8 +4,11 @@ import Button from '../../../shared/ui/Button/Button';
 import { handleDeleteUser } from '../../../services/authHandlers';
 import { toast } from "react-toastify";
 import {handleChangePassword } from '../../../services/userInfoHandlers'
+import { useTranslation } from 'react-i18next';
 
 const Settings = () => {
+  const {t} = useTranslation();
+  
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');

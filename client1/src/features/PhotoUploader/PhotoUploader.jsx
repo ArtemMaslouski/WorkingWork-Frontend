@@ -4,11 +4,13 @@ import Button from '../../shared/ui/Button/Button';
 import { toast } from 'react-toastify';
 import { handleUploadFilePhoto } from '../../services/userInfoHandlers'; // Import the upload function
 import { baseURL } from '../../constants/someConstants';
+import { useTranslation } from 'react-i18next';
 
 const PhotoUploader = ({ onPhotoChange, currentPhoto }) => {
   const [photo, setPhoto] = useState(currentPhoto || null);
   const [isUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef(null);
+  const {t} = useTranslation();
 
   const handlePhotoChange = async (event) => {
     const file = event.target.files[0];
@@ -59,7 +61,7 @@ const PhotoUploader = ({ onPhotoChange, currentPhoto }) => {
           {photo ? (
             <img src={photo} alt="Uploaded" className="photo" />
           ) : (
-            <div className="placeholder">Нет фото</div>
+            <div className="placeholder">{t('profile.noPhoto')}</div>
           )}
         </div>
         <div className="button_uploader">
@@ -72,7 +74,7 @@ const PhotoUploader = ({ onPhotoChange, currentPhoto }) => {
             disabled={isUploading}
           />
           <Button
-            text={isUploading ? "Загрузка..." : "Изменить фото"}
+            text={isUploading ? t('loading') : t('profile.ChangePhoto')}
             onClick={handleButtonClick}
             disabled={isUploading}
             style={{

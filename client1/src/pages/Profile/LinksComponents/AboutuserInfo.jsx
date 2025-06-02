@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './StyleForInfoForm.css';
 import Button from '../../../shared/ui/Button/Button';
 import { handleAddDescription } from '../../../services/userInfoHandlers'
+import { useTranslation } from 'react-i18next';
 
 const AboutuserInfo = ({ userInfo, onUpdateUserInfo }) => {
   const [description, setDescription] = useState('');
+  const {t} = useTranslation();
 
   useEffect(() => {
     if (userInfo?.userInfo?.Description) {
@@ -31,11 +33,11 @@ const AboutuserInfo = ({ userInfo, onUpdateUserInfo }) => {
     <div className='info_about_user'>
       <div className="info_user_item">
         <div className="action">
-          <p>Опишите свой опыт, навыки и преимущества в определенной сфере</p>
+          <p>{t('profile.DescribeYourExp')}</p>
           <textarea
             name="taskDescription"
             className="textarea-field"
-            placeholder="Напишите о себе подробнее"
+            placeholder= {t('profile.writeAboutYourself')}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
@@ -43,7 +45,7 @@ const AboutuserInfo = ({ userInfo, onUpdateUserInfo }) => {
         </div>
         <div className="save_cancellation_button">
           <Button
-            text='Отмена'
+            text={t('Cancel')}
             onClick={handleCancel}
             style={{
               backgroundColor: 'rgba(215, 201, 164)',
@@ -54,7 +56,7 @@ const AboutuserInfo = ({ userInfo, onUpdateUserInfo }) => {
             }}
           />
           <Button
-            text='Сохранить'
+            text={t('Save')}
             onClick={handleSave}
             style={{
               backgroundColor: 'white',

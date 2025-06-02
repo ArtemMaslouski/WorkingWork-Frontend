@@ -67,13 +67,13 @@ const Profile = () => {
           </div>
   
           <div className="info_user">
-            <h3>{`${userInfo?.userInfo.Surname || ''} ${userInfo?.userInfo.Name || ''}`.trim() || 'Имя не указано'}</h3>
-            <p><strong>Пол:</strong><i> {userInfo?.userInfo?.Sex || 'Не указан'}</i></p>
-            <p><strong>{t('city')}:</strong> {userInfo?.userInfo?.City || 'Не указан'}</p>
-            <p><strong>Дата рождения:</strong> {formatBirthday(userInfo?.userInfo?.BirthdayDate) || 'Не указан'}</p>
-            <p><strong>Почта:</strong> {userInfo?.userInfo?.Email || 'Не указан'}</p>
-            <p><strong>Номер телефона:</strong> {userInfo?.userInfo?.PhoneNumber || 'Не указан'}</p>
-            <p><strong>Обо мне:</strong> {userInfo?.userInfo?.Description || 'Описание отсутствует'}</p>
+            <h3>{`${userInfo?.userInfo.Surname || ''} ${userInfo?.userInfo.Name || ''}`.trim() || t('profile.NameNotSpecified')}</h3>
+            <p><strong>{t('profile.gender')}:</strong><i> {userInfo?.userInfo?.Sex || t('profile.notSpecified')}</i></p>
+            <p><strong>{t('city')}:</strong> {userInfo?.userInfo?.City || t('profile.notSpecified')}</p>
+            <p><strong>{t('profile.dateOfBirth')}:</strong> {formatBirthday(userInfo?.userInfo?.BirthdayDate) || t('profile.notSpecified')}</p>
+            <p><strong>{t('profile.email')}:</strong> {userInfo?.userInfo?.Email || t('profile.notSpecified')}</p>
+            <p><strong>{t('profile.numberPhone')}:</strong> {userInfo?.userInfo?.PhoneNumber || t('profile.notSpecified')}</p>
+            <p><strong>{t('profile.aboutMe')}:</strong> {userInfo?.userInfo?.Description || t('profile.noDescription')}</p>
           </div>
         </div>
       </div>
@@ -86,13 +86,13 @@ const Profile = () => {
     <div className="link_about_user">
       <div className="links_profile">
         <NavLink onClick={() => handleTabClick('AboutUserInfo')} style={{ color: activeTab === 'AboutUserInfo' ? '#625430' : 'black' }}>
-          Обо Мне
+        {t('profile.aboutMe')}
         </NavLink>
         <NavLink onClick={() => handleTabClick('personalData')} style={{ color: activeTab === 'personalData' ? '#625430' : 'black' }}>
-          Личные Данные
+          {t('profile.PersonalData')}
         </NavLink>
         <NavLink onClick={() => handleTabClick('myExercise')} style={{ color: activeTab === 'myExercise' ? '#625430' : 'black' }}>
-          Мои задания
+        {t('profile.MyAssignments')}
         </NavLink>
         <NavLink onClick={() => handleTabClick('settings')} style={{ color: activeTab === 'settings' ? '#625430' : 'black' }}>
           <IoMdSettings size={25} color={activeTab === 'settings' ? '#625430' : 'gray'} />
