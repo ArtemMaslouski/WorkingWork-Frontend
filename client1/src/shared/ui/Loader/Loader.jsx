@@ -1,7 +1,10 @@
 import React from 'react';
 import './Loader.css';
+import { useTranslation } from 'react-i18next';
 
 const Loader = ({ error, isLoading, isEmpty }) => {
+  const {t} = useTranslation();
+
   if (error) {
     return (
       <div className="no-tasks-animation">
@@ -23,7 +26,7 @@ const Loader = ({ error, isLoading, isEmpty }) => {
   if (isEmpty) {
     return (
       <div className="no-tasks-animation">
-        <div>Заданий по данному запросу не найдено</div>
+        <div>{t('noTasks')}</div>
       </div>
     );
   }

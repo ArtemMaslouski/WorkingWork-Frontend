@@ -3,6 +3,7 @@
     "findTask":"Find a task",
     "logout": "Logout",
     "login": "Login",
+    "entrance" : "Entrance",
     "password":"Password",
     "username":"Username:",
     "register":"Register",
@@ -32,9 +33,29 @@
     "TermsOfUse" : "Terms of use",
     "HelpMeFindTask" : "Help me find a task?",
     "FulfillOrders" : "Fulfill orders for",
-    "OnlyAdultUsers": "only adult users or persons over 16 years of age who have completed the profile confirmation procedure can do so.",
     "loading":"Loading...",
     "Enter" : "Enter",
+    "noTasks": "No tasks found for this request",
+    "getOut" : "Yes, get out!",
+    "noStay" : "No, stay",
+    "wantToLogout" : "Do you want to log out?",
+    "alreadyHaveAnAccount" : "Already have an account?",
+    "DontHaveAccount" : "Don't have an account yet?",
+    "ForgotYourPassword" : "Forgot your password?",
+    "AccountRecovery" :"Account recovery",
+    "RepeatPassword" : "Repeat password",
+    "confirm": "Confirm",
+    "returnToPage" : "Return to page",
+    "HavingTrouble" : "Having trouble logging in?",
+    "enterYourEmail" : "Enter your email and we will send you a code to restore access",
+    "enterTheCode" : "Enter the code sent to your email",
+    "send" : "Send",
+    "returnToEntrance" : "Return to entrance",
+    "AllTasks" :"All tasks",
+    "Delivery" : "Delivery",
+
+
+
 
     "services": {
         "courier": "Courier services",
@@ -108,7 +129,9 @@
         "surname": "Surname",
         "name": "Name",
         "withCode" : "(with code)",
-        "canContact":"so that clients can contact you"
+        "canContact":"so that clients can contact you",
+        "becomePerformer" : "Become a performer and",
+        "startEarning"  : "start earning money!"
       }
 
 
