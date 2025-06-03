@@ -30,36 +30,35 @@
     display:block;
     justify-content: center;
     align-items: center;
-    text-align: center;
     width: 50%;
     margin: 0 auto;
 }
 
 .place_for_find_task h1{
     font-size: 2.5rem;
-    /* color:#7d6e46; */
-    color:rgba(215, 201, 164)
+    color:rgba(215, 201, 164);
+    text-align: center;
 }
 
 .tasks h3{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    color:#7d6f49;
     border-bottom: 1px solid currentColor;
-    font-family: gta;
 }
 .tasks p{
     font-size: 1.1rem;
-    font-family: gta;
+    margin-left: 2vw;
 }
-
 
 .task_item_border {
     width: 100%;
-    border: 1px solid black;
+    border: 1px solid #7d6f49;
     margin: 1vw 0;
     display: flex;
-    gap: 15vw;
+    padding-left: 3vw;
     position: relative; 
-    padding-bottom: 50px; 
+    padding-bottom: 1vh; 
+    
 }
 
 .response_button {
@@ -69,6 +68,9 @@
     width: 200px; 
 }
 
+.all_tasks{
+    margin-right: 3vw;
+}
 
 @media (max-width: 768px) {
     .place_for_find_task h1{
@@ -91,13 +93,24 @@
     }
     .task_item_border {
         flex-direction: column;
-        gap: 10px;
-        padding-bottom: 70px;
+        gap: 1vh;
+        padding: 0vw 1vw 0vw 1vw;
     }
-    
+    .tasks p {
+        padding:0 3vw 0 3vw;
+    }
     .response_button {
         position: static;
+        display: inline;
+        /* align-items: center; */
+        /* text-align: center; */
         width: 100%;
-        margin-top: 15px;
+        margin-top: 5px;
+    }
+    .tasks h3{
+        font-size: 0.9rem;
+    }
+    .tasks p {
+        font-size: 0.9rem;
     }
 }

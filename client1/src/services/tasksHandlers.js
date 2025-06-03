@@ -45,18 +45,41 @@ export const handleCreateTask = async (e, Category, Subcategory, Address, Addres
     }
 };
 
-export const handleRefreshTasks = async(e,Category, Subcategory,Address,AddressEnd,BeginAt,EndAt, Description)=>{
-    e.preventDefault();
-    try{
-        const response = await TaskApi.refreshTasks({Category, Subcategory,Address,AddressEnd,BeginAt,EndAt, Description})
-        console.log(response)
+export const handleRefreshTasks = async (updatedTask) => {
+    try {
+        const response = await TaskApi.refreshTasks(updatedTask);
+        console.log('Задание обновлено:', response);
         toast.success('Задание успешно обновлено!');
+        return response;
     } catch (error) {
-        console.error(error);
-        toast.error('Ошибка при обновлении задания, проверьте вводимые данные');
+        console.error('Ошибка при обновлении задания:', error);
+        toast.error(error.message || 'Ошибка при обновлении задания');
+        throw error;
     }
-    
-}
+};
+
+export const handleGetUserTasks = async (setTasks) => {
+    try {
+      const result = await TaskApi.getUserTasks();
+      const tasks = result[0]?.tasks || []; 
+      setTasks(tasks);
+    } catch (error) {
+      toast.error('Не удалось загрузить задания пользователя');
+    }
+  };
+
+
+  export const handleDeleteTask = async (id) => {
+    try {
+      const response = await TaskApi.deleteTask({ id });
+      toast.success('Задание успешно удалено!');
+      return response; 
+    } catch (error) {
+      toast.error('Задание не удалено!');
+      throw error; 
+    }
+  };
+
 
 // export const handleGetAllUsers= async() => {
 //     try{

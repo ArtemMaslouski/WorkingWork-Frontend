@@ -4,28 +4,30 @@ import { MdOutlineMail } from "react-icons/md";
 import { SiTelegram } from "react-icons/si";
 import { FaInstagramSquare } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+    const {t} = useTranslation();
   return (
     <div className='footer_component'>
         <div className="content_footer">
 
             <div className="help_link">
                 <ul>
-                    <NavLink to='/CreatingTask'>Создать задание </NavLink>
-                    <NavLink to='./QuestionComponent'>Условия использования</NavLink>
-                    <NavLink>О компании</NavLink>
-                    <NavLink to='./SignIn'>Вход</NavLink>
-                    <NavLink>Все услуги</NavLink>
-                    <NavLink to='./CreatingTask'>Каталог работ</NavLink>
-                    <NavLink>Все отзывы</NavLink>
+                    <NavLink to='/OrderForm'>{t('createTask')}</NavLink>
+                    <NavLink to='./QuestionComponent'>{t('footer.TermsOfUse')}</NavLink>
+                    <NavLink>{t('footer.AboutTheCompany')}</NavLink>
+                    <NavLink to='./SignIn'>{t('login')}</NavLink>
+                    <NavLink to='./CreatingTask'>{t('footer.AllServices')}</NavLink>
+                    <NavLink to='./CreatingTask'>{t('footer.CatalogOfWorks')}</NavLink>
+                    <NavLink>{t('footer.AllReviews')}</NavLink>
                    
                 </ul>
             </div>
             
             <div className="footer_info">
                 <div className="text_footer">
-                    <p>© Информация, опубликованная на данном сайте, предназначена для любой аудитории, если иное не указано дополнительно в отношении отдельных материалов.</p>
+                    <p>{t('footer.infoForPublic')}</p>
                 </div>
                 <div className="icons">
                     <NavLink><MdOutlineMail size={22}/></NavLink>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 //import { baseURL } from '../constants/someConstants';
 import Cookies from 'js-cookie';
-// import { toast } from 'react-toastify';
+// import apiClient from './apiClient'
 
 class Auth {
   async registerUser({ UserName, Email, Password }) {
@@ -22,7 +22,6 @@ class Auth {
   }
 
   async login({ Email, Password }) {
-    console.log('vkjdhvkhsovhsd')
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_URL}/auth/login`,

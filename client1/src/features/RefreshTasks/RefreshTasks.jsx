@@ -1,0 +1,197 @@
+import React, { useEffect, useState, useRef } from 'react';
+import Button from '../../shared/ui/Button/Button';
+import '../filter/Filter.css'
+
+const RefreshTasks = ({ isOpen, onClose, onSubmit, serviceDetails, initialData, onClick }) => {
+  const modalRef = useRef(null);
+  const categories = Object.keys(serviceDetails);
+  const [subcategories, setSubcategories] = useState([]);
+  const today = new Date().toISOString().split('T')[0];
+
+  const [refresh, setRefresh] = useState({
+    category: '',
+    subcategory: '',
+    addressTo: '',
+    addressFrom: '',
+    startDate: '',
+    endDate: '',
+  });
+
+  const [description, setDescription] = useState('');
+
+  useEffect(() => {
+    if (initialData) {
+      setRefresh({
+        category: initialData.Category || '',
+        subcategory: initialData.Subcategory || '',
+        addressTo: initialData.AddressEnd || '',
+        addressFrom: initialData.Address || '',
+        startDate: initialData.BeginAt ? initialData.BeginAt.slice(0, 10) : '',
+        endDate: initialData.EndAt ? initialData.EndAt.slice(0, 10) : '',
+      });
+      setDescription(initialData.Description || '');
+    }
+  }, [initialData]);  
+
+  useEffect(() => {
+    if (refresh.category && serviceDetails[refresh.category]) {
+      setSubcategories(serviceDetails[refresh.category].links || []);
+    } else {
+      setSubcategories([]);
+    }
+  }, [refresh.category, serviceDetails]);
+
+  useEffect(() => {//клик вне модалки
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        onClose();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [onClose]);
+
+const handleSubmit = () => {
+    onSubmit({
+      ...initialData,
+      id: initialData.id,
+      Category: refresh.category,
+      Subcategory: refresh.subcategory,
+      Address: refresh.addressFrom,
+      AddressEnd: refresh.addressTo,
+      BeginAt: refresh.startDate,
+      EndAt: refresh.endDate,
+      Description: description,
+    });
+    onClose();
+  };
+
+  const handleReset = () => {
+    onClose();
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="filter-modal">
+      <div className="filter-content" ref={modalRef}>
+        <h2>Редактировать задание</h2>
+
+        <div className="filter-field">
+          <label>Категория:</label>
+          <select
+            value={refresh.category}
+            onChange={(e) => setRefresh({ ...refresh, category: e.target.value })}
+          >
+            <option value="">-- Выберите категорию --</option>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
+          {refresh.category && serviceDetails[refresh.category]?.image && (
+            <div className="category-image">
+              <img 
+                src={serviceDetails[refresh.category].image} 
+                alt={refresh.category}
+                style={{ maxWidth: '200px', marginTop: '10px' }}
+              />
+            </div>
+          )}
+        </div>
+
+        <div className="filter-field">
+          <label>Подкатегория:</label>
+          <select
+            value={refresh.subcategory}
+            onChange={(e) => setRefresh({ ...refresh, subcategory: e.target.value })}
+            disabled={!refresh.category}
+          >
+            <option value="">-- Выберите подкатегорию --</option>
+            {subcategories.map((subcat) => (
+              <option key={subcat.name} value={subcat.name}>{subcat.name}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="filter-field">
+          <label>Адрес:</label>
+          <input
+            type="text"
+            value={refresh.addressFrom}
+            onChange={(e) => setRefresh({ ...refresh, addressFrom: e.target.value })}
+          />
+        </div>
+
+        {refresh.category === 'Курьерские услуги' && (
+            <div className="filter-field">
+                <label>Адрес назначения:</label>
+                <input
+                type="text"
+                value={refresh.addressTo}
+                onChange={(e) => setRefresh({ ...refresh, addressTo: e.target.value })}
+                />
+            </div>
+            )}
+
+
+        <div className="filter-field">
+          <label>Дата начала:</label>
+          <input
+            type="date"
+            value={refresh.startDate}
+            min={today}
+            onChange={(e) => setRefresh({ ...refresh, startDate: e.target.value })}
+            />
+        </div>
+
+        <div className="filter-field">
+          <label>Дата окончания:</label>
+          <input
+            type="date"
+            value={refresh.endDate}
+            min={refresh.startDate || today} // конец не раньше начала
+            onChange={(e) => setRefresh({ ...refresh, endDate: e.target.value })}
+            />
+        </div>
+
+        <div className="description-field">
+          <textarea
+            name="taskDescription"
+            className="textarea-field"
+            placeholder="Опишите детали задания..."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="filter-buttons">
+          <Button
+            onClick={handleReset}
+            text="Отмена"
+            style={{
+              backgroundColor: 'rgba(215, 201, 164)',
+              color: 'black',
+              border: '2px solid #998756',
+              fontWeight: 'bold',
+              width: '50%'
+            }}
+          />
+          <Button
+            onClick={handleSubmit}
+            text="Обновить"
+            style={{
+              backgroundColor: 'rgba(215, 201, 164)',
+              color: 'black',
+              border: '2px solid #998756',
+              fontWeight: 'bold',
+              width: '50%'
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RefreshTasks;

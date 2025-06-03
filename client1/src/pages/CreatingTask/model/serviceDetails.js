@@ -76,7 +76,7 @@ const serviceDetails = {
         { name: "Поддерживающая уборка", path:"/OrderForm" },
         { name: "Генеральная уборка" , path:"/OrderForm"},
         { name: "Мытье окон", path:"/OrderForm" },
-        { name: "ВВынос мусора" , path:"/OrderForm"},
+        { name: "Вынос мусора" , path:"/OrderForm"},
         { name: "Помощь швеи" , path:"/OrderForm"},
         { name: "Приготовление еды" , path:"/OrderForm"},
         { name: "Глажение белья", path:"/OrderForm" },

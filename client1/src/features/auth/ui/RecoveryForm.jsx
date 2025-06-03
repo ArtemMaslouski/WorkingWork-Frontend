@@ -3,9 +3,11 @@ import '../styles/FormStyles.css'
 import Input from '../../../shared/ui/Input/Input';
 import Button from '../../../shared/ui/Button/Button';
 import { useRecoveryForm } from '../lib/hooks/useRecoveryForm';
+import { useTranslation } from 'react-i18next';
+
 
 const RecoveryForm = () => {
-    
+    const {t} = useTranslation();
   const{
     confirmPassword,setConfirmPassword,
     showConfirmPassword,setShowConfirmPassword,
@@ -22,7 +24,7 @@ const RecoveryForm = () => {
         <div className='signIn_registration_component'>
             <div className="element_forms">
                 <form className="forms" onSubmit={onSubmitResetPassword}>
-                    <h1>Восстановление аккаунта<br /><hr /></h1>
+                    <h1>{t('AccountRecovery')}<br /><hr /></h1>
                     <Input
                         type="text"
                         name="Email"
@@ -34,7 +36,7 @@ const RecoveryForm = () => {
                     <Input
                         type={showPassword ? 'text' : 'password'}
                         name="Password"
-                        label="Пароль"
+                        label={t('password')}
                         required
                         showToggleButton
                         togglePasswordVisibility={() => setShowPassword(!showPassword)}
@@ -45,7 +47,7 @@ const RecoveryForm = () => {
                     <Input
                         type={showConfirmPassword ? 'text' : 'password'}
                         name="confirmPassword"
-                        label="Повторите пароль"
+                        label={t('RepeatPassword')}
                         required
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
@@ -53,14 +55,14 @@ const RecoveryForm = () => {
                         togglePasswordVisibility={() => setShowConfirmPassword(!showConfirmPassword)}
                         isPasswordVisible={showConfirmPassword}
                     />
-                    <Button type="submit" text={'Подтвердить'}
+                    <Button type="submit" text={t('confirm')}
                         style={{backgroundColor: '#998756',
-                        color: 'black', border: '2px solid #998756', fontWeight:'bold', width:'100%'}} 
+                        color: 'black', border: '2px solid #998756', fontWeight:'bold', width:'100%', height:'5vh'}} 
                     />
 
                     <p title="Вернуться для входа в систему" style={{ cursor: 'pointer', 
-                    fontWeight: 'bold' }} onClick={handleBackToLogin}>Вернуться на страницу
-                    <span style={{ color: '#998756' }}> Вход</span>
+                    fontWeight: 'bold' }} onClick={handleBackToLogin}>{t('returnToPage')}
+                    <span style={{ color: '#998756' }}>{t('login')}</span>
                     </p>
                 </form>
             </div>

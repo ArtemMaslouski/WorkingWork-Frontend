@@ -3,67 +3,147 @@ import './FindTask.css';
 import InputService from '../../shared/ui/InputService/InputService';
 import TaskApi from '../../api/TaskApi';
 import Button from '../../shared/ui/Button/Button'
+import Filter from '../../features/filter/Filter';
+import serviceDetails from '../CreatingTask/model/serviceDetails';
+import { filterTasks } from '../../shared/utils/filterTask';
+import { searchTasks } from '../../shared/utils/searchTasks';
+import { MdOutlineDescription } from "react-icons/md";
+import { IoCalendarOutline } from "react-icons/io5";
+import { GiFinishLine } from "react-icons/gi";
+import { LuFlagTriangleRight } from "react-icons/lu";
+import { useLocation } from 'react-router-dom';
+import Loader from '../../shared/ui/Loader/Loader';
+import { useTranslation } from 'react-i18next';
 
 const FindTask = () => {
   const [tasks, setTasks] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState([]);
   const [error, setError] = useState(null);
+  const [isFilterOpen, setIsFilterOpen] = useState(false); 
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showNoTasks, setShowNoTasks] = useState(false);
 
+  const location = useLocation();
+  const {t} = useTranslation();
+  
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const search = params.get('search');
+  
+    // 1. Поиск по тексту
+    if (search) {
+      setSearchQuery(search);
+      const results = searchTasks(tasks, search);
+      setFilteredTasks(results);
+      return;
+    }
+  
+    // 2. Фильтрация
+    const filtersFromUrl = {
+      category: params.get('category') || '',
+      subcategory: params.get('subcategory') || '',
+      addressFrom: params.get('addressFrom') || '',
+      addressTo: params.get('addressTo') || '',
+      startDate: params.get('startDate') || '',
+      endDate: params.get('endDate') || ''
+    };
+  
+    const filtered = filterTasks(tasks, filtersFromUrl);
+    setFilteredTasks(filtered);
+  }, [tasks, location.search]);
+  
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         const tasksData = await TaskApi.getAllTasks();
         setTasks(tasksData);
+        setFilteredTasks(tasksData);
       } catch (error) {
         setError(error);
       }
     };
-
     fetchTasks();
   }, []);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (filteredTasks.length === 0) {
+        setShowNoTasks(true);
+      }
+    }, 1600);
+  
+    return () => clearTimeout(timeout);
+  }, [filteredTasks]);
+  
+
+  const handleFilterApply = (filters) => {
+    const filtered = filterTasks(tasks, filters);
+    setFilteredTasks(filtered);
+  };
+
+  const handleSearchClick = () => {
+    const results = searchTasks(tasks, searchQuery);
+    setFilteredTasks(results);
+  };
 
   return (
     <div className='findTask_component'>
       <div className="find_task_item">
         <div className="place_for_find_task">
-          <h1>Все задания</h1>
-          <InputService placeholder="Например, требуется курьер, доставить товар" />
+          <h1>{t('AllTasks')}</h1>
+          <InputService
+            placeholder={t('Delivery')}
+            onFilterClick={() => setIsFilterOpen(true)}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            onSearchClick={handleSearchClick}
+          />
         </div>
       </div>
 
       <div className="all_tasks">
-        {error ? (
-          <p>Ошибка при загрузке данных: {error.message}</p>
-        ) : tasks.length > 0 ? (
-          tasks.map((task) => (
+        {filteredTasks.length > 0 ? (
+          filteredTasks.map((task) => (
             <div key={task.id} className="task_item_border">
-
-              <div className="emblem_exercise">
-                <p>llsdldsd,clk</p>
-              </div>
-
               <div className="tasks">
                 <h3>{task.Category} / {task.Subcategory}</h3>
-                <p>{task.AddressEnd}</p>
-                <p>Начало выполнения: <b>{task.BeginAt}</b>. Окончание выполнения: <b>{task.EndAt}</b></p>
-                <p>{task.Description}</p>
-                
+                <p><i><LuFlagTriangleRight size={20}/> Адрес назначения:</i> {task.Address}</p>
+                <p>
+                  <i><IoCalendarOutline size={20}/> Начало выполнения:</i> <b>{new Date(task.BeginAt).toLocaleDateString('ru-RU')}</b><br/>
+                  <i><GiFinishLine size={20}/> Окончание выполнения:</i> <b>{new Date(task.EndAt).toLocaleDateString('ru-RU')}</b>
+                </p>
+                <p><i><MdOutlineDescription size={20}/> Описание задания:</i> {task.Description}</p>
               </div>
-               
-               <div className="response_button">
-               <Button   
-                    text="Откликнуться" 
-                    style={{ backgroundColor: 'rgba(215, 201, 164)',fontWeight:'light', color: 'black', border: '2px solid #998756', width:'100%', height:'6vh', fontFamily:'gta',
-                     marginTop:'100px'
-                     }} 
+              <div className="response_button">
+                <Button   
+                  text="Откликнуться" 
+                  style={{ 
+                    backgroundColor: 'rgba(215, 201, 164)',
+                    fontWeight: 'light',
+                    color: 'black',
+                    border: '2px solid #998756',
+                    width: '100%',
+                    height: '5vh'
+                  }} 
                 />
-               </div>
-            
+              </div>
             </div>
           ))
         ) : (
-          <p>Задания не найдены.</p>
+          <Loader
+            error={error}
+            isLoading={!showNoTasks && !error && filteredTasks.length === 0}
+            isEmpty={showNoTasks}
+          />
         )}
       </div>
+
+      <Filter 
+        isOpen={isFilterOpen}
+        onClose={() => setIsFilterOpen(false)}
+        onFilterApply={handleFilterApply}
+        serviceDetails={serviceDetails}
+      />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { CiLock } from "react-icons/ci";
 import Button from '../../../shared/ui/Button/Button';
 import '../styles/FormStyles.css'
 import { useForgotPassword } from '../lib/hooks/useForgotPassword';
+import { useTranslation } from 'react-i18next';
 
 const ForgotPasswordForm = ({ Email, setEmail, onBackToLogin  }) => {
   const {
@@ -14,15 +15,16 @@ const ForgotPasswordForm = ({ Email, setEmail, onBackToLogin  }) => {
     onSendEmail,
     onVerifyCode,
 } = useForgotPassword(Email, setEmail);
+  const {t} = useTranslation();
 
   return (
     <form className='forms' onSubmit={showCodeInput ? onVerifyCode : onSendEmail}>
       <div className='Lock_icon'><CiLock size={50} /></div>
-      <h1>Не удается войти?<br /><hr /></h1>
+      <h1>{t('HavingTrouble')}<br /><hr /></h1>
       <span>
         {!isCodeSent
-          ? "Введите свой email, и мы отправим вам код для восстановления доступа"
-          : "Введите код, отправленный на ваш email"}
+          ? t('enterYourEmail')
+          : t('enterTheCode')}
       </span>
 
         <Input
@@ -39,7 +41,7 @@ const ForgotPasswordForm = ({ Email, setEmail, onBackToLogin  }) => {
         <Input
           type='text'
           name='code'
-          label='Введите код'
+          label={t('enterTheCode')}
           value={Code}
           onChange={(e) => setCode(e.target.value)}
           required
@@ -48,16 +50,16 @@ const ForgotPasswordForm = ({ Email, setEmail, onBackToLogin  }) => {
 
       {/* Кнопка меняет текст в зависимости от этапа */}
       <Button
-        text={showCodeInput ? 'Подтвердить код' : 'Отправить'}
-        style={{ backgroundColor: 'rgba(215, 201, 164)', color: 'black', border: '2px solid #7d6e46', fontWeight: 'bold',  width:'100%'}}
+        text={showCodeInput ? t('confirm') : t('send')}
+        style={{ backgroundColor: 'rgba(215, 201, 164)', color: 'black', border: '2px solid #7d6e46', fontWeight: 'bold',  width:'100%', height:'5vh'}}
       />
 
       <p
-        title='Вернуться к входу'
+        title={t('returnToEntrance')}
         style={{ cursor: 'pointer', color: '#7d6e46', fontWeight: 'bold' }}
         onClick={onBackToLogin}
       >
-        Вернуться к входу
+        {t('returnToEntrance')}
       </p>
     </form>
   );

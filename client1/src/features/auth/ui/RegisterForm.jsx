@@ -4,6 +4,7 @@ import Button from '../../../shared/ui/Button/Button'
 import {handleRegisterSubmit} from '../../../services/authHandlers'
 import '../styles/FormStyles.css'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next';
 
 const RegisterForm = ({
     UserName, setName,
@@ -14,6 +15,7 @@ const RegisterForm = ({
 }) => {
 
   const navigate = useNavigate()
+  const {t} = useTranslation();
 
   const onSubmit =(e) =>{
     handleRegisterSubmit(e, UserName, Email, Password, setName, setEmail, setPassword, navigate);
@@ -21,11 +23,11 @@ const RegisterForm = ({
   
   return (
     <form className='forms' onSubmit={onSubmit}>
-      <h1>Зарегистрироваться<br/><hr/></h1>
+      <h1>{t('login')}<br/><hr/></h1>
         <Input 
                 type='text' 
                 name='username' 
-                label={'Имя пользователя'} 
+                label={t('username')}
                 required={true} 
                 value={UserName}
                 onChange={(e) => setName(e.target.value)}
@@ -41,7 +43,7 @@ const RegisterForm = ({
             <Input 
                 type={showPassword ? 'text' : 'password'} 
                 name='password' 
-                label={'Пароль'}
+                label={t('password')}
                 required={true}
                 showToggleButton 
                 togglePasswordVisibility={togglePasswordVisibility}
@@ -50,12 +52,12 @@ const RegisterForm = ({
                 onChange={(e) => setPassword(e.target.value)}
             />
 
-            <Button type="submit"  text={'Зарегистрироваться'}
+            <Button type="submit"  text={t('register')}
              style={{ backgroundColor: 'rgba(215, 201, 164)', 
-            color: 'black', border: '2px solid #998756', fontWeight:'bold',  width:'100%'}} />
+            color: 'black', border: '2px solid #998756', fontWeight:'bold',  width:'100%', height:'5vh'}} />
          
              <p title='Вернуться для входа в систему, если есть аккаунт' style={{ cursor: 'pointer', fontWeight:'bold' }} onClick={onBackToLogin}>
-             Уже есть аккаунт? <span style={{ color:'#998756'}}>Вход</span></p>
+             {t('alreadyHaveAnAccount')} <span style={{ color:'#998756'}}> {t('login')}</span></p>
     </form>
   )
 }

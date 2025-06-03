@@ -1,0 +1,224 @@
+{
+    "createTask":"Сreate a task",
+    "findTask":"Find a task",
+    "logout": "Logout",
+    "login": "Login",
+    "entrance" : "Entrance",
+    "password":"Password",
+    "username":"Username:",
+    "register":"Register",
+    "Cancel" : "Cancel",
+    "Save" : "Save",
+    "freeFromWorries" : "Let us free you from worries",
+    "proForTask" : "There is a pro for every task!",
+    "servicesAndOffers":"Services and offers",
+    "BecomeAPerformer":"Become a performer and start earning money",
+    "HideCategories":"Hide categories",
+    "ShowAllCategories":"Show all categories",
+    "HowItWork" :"How does this work",
+    "didntFindServices":"Didn't find the service you need? Use search!",
+    "choosingExecutor" : "Help with choosing a responsible executor?",
+    "quicklyFind" : "Hello, quickly place your order and we will quickly find a good contractor",
+    "SubmitAnApplication" :"Submit an application",
+    "whatWork" : "What work do you need to do?",
+    "city":"City",
+    "trustedSpecialists":"Look for trusted specialists or profitable orders using the service",
+    "FindAWorker":"Find a worker",
+    "BecomeAWorker":"Become a worker",
+    "Reviews":"Reviews",
+    "AllServices":"All services",
+    "AllReviews" : "All reviews",
+    "CatalogOfWorks" : "Catalog of works",
+    "AboutTheCompany" : "About the company",
+    "TermsOfUse" : "Terms of use",
+    "HelpMeFindTask" : "Help me find a task?",
+    "FulfillOrders" : "Fulfill orders for",
+    "OnlyAdultUsers" :"only adult users or persons over 16 years of age who have completed the profile confirmation procedure can do so.",
+    "loading":"Loading...",
+    "Enter" : "Enter",
+    "noTasks": "No tasks found for this request",
+    "getOut" : "Yes, get out!",
+    "noStay" : "No, stay",
+    "wantToLogout" : "Do you want to log out?",
+    "alreadyHaveAnAccount" : "Already have an account?",
+    "DontHaveAccount" : "Don't have an account yet?",
+    "ForgotYourPassword" : "Forgot your password?",
+    "AccountRecovery" :"Account recovery",
+    "RepeatPassword" : "Repeat password",
+    "confirm": "Confirm",
+    "returnToPage" : "Return to page",
+    "HavingTrouble" : "Having trouble logging in?",
+    "enterYourEmail" : "Enter your email and we will send you a code to restore access",
+    "enterTheCode" : "Enter the code sent to your email",
+    "send" : "Send",
+    "returnToEntrance" : "Return to entrance",
+    "AllTasks" :"All tasks",
+    "Delivery" : "Delivery",
+    "filters": "Filters",
+    "category":"Category",
+    "selectCategory":"Select category",
+    "selectSubcategory":"Select subcategory",
+    "subcategory":"Subcategory",
+    "address" : "Address",
+    "enterAddress":"Enter address",
+    "to": "(to)",
+    "startDate":"Start date",
+    "endDate":"End date",
+    "resetFilter":"Reset filter",
+    "Apply":"Apply",
+    "courierServices" : "Courier services",
+    "start":"Start",
+    "ending":"Ending",
+    "description" :"Description",
+    "edit":"Edit",
+    "delete":"Delete",
+    "years":"years",
+
+
+
+    "services": {
+        "courier": "Courier services",
+        "construction": "Repair and construction",
+        "software": "Software development",
+        "cleaning": "Cleaning and home help",
+        "computerHelp": "Computer assistance",
+        "carRepair": "Vehicle repair",
+        "photoVideo": "Photo, video, audio",
+        "teaching": "Tutoring and education",
+        "design": "Design",
+        "applianceRepair": "Appliance installation and repair",
+        "virtualAssistant": "Virtual assistant",
+        "events": "Events",
+        "beautyHealth": "Beauty and health",
+        "digitalRepair": "Digital device repair",
+        "cargo": "Cargo transportation",
+        "pets": "Pets",
+        "sports": "Sports",
+        "realEstate": "Real estate",
+        "legalAccounting": "Legal and accounting services"
+    }, 
+
+    "cardSteps": {
+        "1": {
+            "title": "Describe",
+            "description": "Your task and requirements. It's free and takes 3–4 minutes."
+        },
+        "2": {
+            "title": "Get responses",
+            "description": "With prices from service providers. Usually they come within 30 minutes."
+        },
+        "3": {
+            "title": "Choose",
+            "description": "The right service provider and discuss the deadlines."
+        }
+    },
+
+    "footer" : {
+        "Reviews":"Reviews",
+        "AllServices":"All services",
+        "AllReviews" : "All reviews",
+        "CatalogOfWorks" : "Catalog of works",
+        "AboutTheCompany" : "About the company",
+        "TermsOfUse" : "Terms of use",
+        "infoForPublic" :"© The information published on this site is intended for any audience, unless otherwise specified in relation to individual materials."
+    },
+
+    "chat" : {
+        "chat" : "Сhats"
+    },
+
+    "profile": {
+        "aboutMe":"About me",
+        "NameNotSpecified":"Name not specified",
+        "gender":"Gender",
+        "male" : "Male",
+        "female" : "Female",
+        "dateOfBirth":"Date of birth",
+        "email" :"Email",
+        "numberPhone":"Number phone",
+        "notSpecified" :"Not specified",
+        "noDescription" :"No description",
+        "noPhoto" : "No photo",
+        "ChangePhoto" :"Change photo",
+        "PersonalData" : "Personal data",
+        "MyAssignments" : "My assignments",
+        "DescribeYourExp" : "Describe your experience, skills and strengths in a specific area",
+        "writeAboutYourself":"Write more about yourself",
+        "personalInformation" : "Fill in personal information for your portfolio",
+        "surname": "Surname",
+        "name": "Name",
+        "withCode" : "(with code)",
+        "canContact":"so that clients can contact you",
+        "becomePerformer" : "Become a performer and",
+        "startEarning"  : "start earning money!"
+      },
+    "questions": {
+        "title": "Questions and Answers",
+        "howItWorks": {
+            "question": "How does the service work?",
+            "answer": "You choose a service, describe your task and place an order. Specialists see your order and send proposals, sometimes with prices and contacts. You can also search for specialists on your own. When you choose a suitable one, contact them by phone or chat. Agree on the work. After completing the work, leave a review about the specialist's work - this will help other clients make a choice."
+        },
+        "howToChooseSpecialist": {
+            "question": "How to choose a specialist?",
+            "answer": "Choose a service from the list or find a service through search. You will see prompt questions. They will help describe the task details needed for specialists. Enter your phone number and click \"Create Order\"."
+        },
+        "howToChooseSpecialistProcess": {
+            "question": "How to choose a specialist? Process.",
+            "answer": "Choose a service from the list or find a service through search. You will see prompt questions. They will help describe the task details needed for specialists. Enter your phone number and click \"Create Order\"."
+        },
+        "howToChooseSpecialistReviews": {
+            "question": "How to choose a specialist? Reviews, ratings, profile",
+            "answer": "We accept reviews after work completion. Make sure the specialist's profile has the service you need and positive reviews specifically for this service. The average rating depends on reviews. The profile is the specialist's business card. Pay attention to how the specialist describes themselves, if they have professional certificates, what work examples they show. We verify documents and qualifications. In the profile, we show statuses: qualification confirmed, passport verified, works under contract, provides guarantee."
+        },
+        "serviceResponsibility": {
+            "question": "Is the service responsible for specialists?",
+            "answer": "Specialists work for themselves and are responsible for their work. They are not employees of the service. We monitor the quality of profiles on the site and the authenticity of reviews, verify documents. If a specialist frequently receives negative reviews, we delete their profile."
+        },
+        "whoCanLeaveReview": {
+            "question": "Who can leave a review?",
+            "answer": "You can find the \"Leave a review\" button in the chat with the specialist. If you haven't communicated with the specialist, you cannot leave a review. You cannot leave a review without an order."
+        },
+        "howToLeaveReview": {
+            "question": "How to leave a review?",
+            "answer": "You can find the \"Leave a review\" button in the chat with the specialist. If you haven't communicated with the specialist, you cannot leave a review. You cannot leave a review without an order."
+        },
+        "reviewsNotPublished": {
+            "question": "Which reviews are not published?",
+            "answer": [
+                "We do not publish:",
+                "- insults, including memes;",
+                "- nationalist, political, religious statements;",
+                "- baseless accusations of crimes - if something happens by accident, contact us immediately;",
+                "- assumptions and speculations;",
+                "- personal data;",
+                "- reviews of services prohibited by company rules;",
+                "- links to other sites;",
+                "- spam;",
+                "- reviews about unreliable service work;",
+                "- reviews about work with former employees and so on."
+            ]
+        },
+        "unsatisfiedWithWork": {
+            "question": "I'm not satisfied with the specialist's work, what should I do?",
+            "answer": [
+                "Contact support or email. We will deal with the unpleasant situation.",
+                "We will listen to your problem. We won't leave you in a difficult situation.",
+                "We will examine the evidence. Contracts, receipts, and photos help in disputes.",
+                "We will contact the specialist. We will ask for their point of view.",
+                "We will ask the specialist to fix the shortcomings if the facts are on your side."
+            ]
+        },
+        "howToEditOrder": {
+            "question": "How to edit an order?",
+            "answer": "Go to the \"Order\" tab. In the app - click on the section with the order description you want to edit; on the website - click on the pencil icon."
+        },
+        "howToCancelOrder": {
+            "question": "How to cancel an order?",
+            "answer": "Go to the \"Order\" tab. Click the \"Cancel Order\" button (at the bottom of the page)."
+        },
+        "whyLeavePhone": {
+            "question": "Why leave a phone number?",
+            "answer": "So that the specialist can call you if you choose them. We won't show your phone to anyone else and won't send promotional SMS."
+        }
+    }
+}

@@ -7,7 +7,7 @@
 
 button{
     align-items: center;
-    width: 34%;
+    width: 35%;
     height: 6vh;
     font-weight: 545;
     font-size: 1rem;
@@ -28,10 +28,18 @@ button{
     }
 
     button{
-        width: 70%;
+        width: 50%;
         height: 5vh;
         font-weight: 545;
         font-size: 0.85rem;
     }
 }
 
+@media (max-width: 486px){
+    button{
+        width: 40%;
+        height: 4vh;
+        font-weight: 545;
+        font-size: 0.85rem;
+    }
+}

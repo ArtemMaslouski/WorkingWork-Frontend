@@ -1,0 +1,27 @@
+/* .userChat_component{
+    background-image: url('../../shared//assets//photo');
+} */
+
+.userChat{
+    margin: 3vh 20vw;
+    padding: 2vh 5vw;
+    background-color: rgb(252, 245, 245);
+    height: 100vh;
+    border-radius: 20px;
+}
+
+.menu_chat{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu_and_name,
+.menu_emblems{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap:1vw;
+    font-size: 1.2rem;
+    font-weight: bold;
+}

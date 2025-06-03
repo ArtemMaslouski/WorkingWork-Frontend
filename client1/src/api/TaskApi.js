@@ -13,11 +13,13 @@ class Tasks {
     Description,
   }) {
     try {
-      const access_token = Cookies.get('access_token'); // Получаем токен из кук
+      const access_token = Cookies.get('access_token');
       if (!access_token) {
         throw new Error('Токен не найден. Пользователь не авторизован.');
       }
-
+      const formattedBeginAt = BeginAt ? new Date(BeginAt).toISOString() : null;
+      const formattedEndAt = EndAt ? new Date(EndAt).toISOString() : null;
+      
       const response = await axios.post(
         `${process.env.REACT_APP_URL}/tasks/create`,
         {
@@ -25,8 +27,8 @@ class Tasks {
           Subcategory,
           Address,
           AddressEnd,
-          BeginAt: new Date(BeginAt).toISOString(),
-          EndAt: new Date(EndAt).toISOString(),
+          BeginAt: formattedBeginAt,
+          EndAt: formattedEndAt,
           Description,
         },
         {
@@ -77,34 +79,58 @@ class Tasks {
     }
   }
 
-  async refreshTasks({
-    id,
-    Category,
-    Subcategory,
-    Address,
-    AddressEnd,
-    BeginAt,
-    EndAt,
-    Description,
-  }) {
-    const response = await axios.put(
-      `${process.env.REACT_APP_URL}/tasks/refresh/${id}`,
-      Category,
-      Subcategory,
-      Address,
-      BeginAt,
-      EndAt,
-      Description
-    );
-    return response.data;
+  async refreshTasks({ id, Category, Subcategory, Address, AddressEnd, BeginAt, EndAt, Description }) {
+    try {
+      const access_token = Cookies.get('access_token');
+      if (!access_token) {
+        throw new Error('Токен не найден. Пользователь не авторизован.');
+      }
+
+      // Format dates to ISO string
+      const formattedBeginAt = BeginAt ? new Date(BeginAt).toISOString() : null;
+      const formattedEndAt = EndAt ? new Date(EndAt).toISOString() : null;
+
+      if (!formattedBeginAt || !formattedEndAt) {
+        throw new Error('Некорректный формат даты');
+      }
+
+      const response = await axios.put(
+        `${process.env.REACT_APP_URL}/tasks/refresh/${id}`,
+        {
+          Category,
+          Subcategory,
+          Address,
+          AddressEnd,
+          BeginAt: formattedBeginAt,
+          EndAt: formattedEndAt,
+          Description
+        },
+        {
+          withCredentials: true
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error('Ошибка при обновлении задания:', error.message);
+      throw error;
+    }
   }
-  catch(error) {
-    console.error(
-      'Ошибка при удалении пользователя:',
-      error.response?.data || error.message
-    );
-    throw error;
+  async getUserTasks() {
+    try {
+      const access_token = Cookies.get('access_token');
+      if (!access_token) throw new Error('Не найден токен');
+  
+      const response = await axios.get(`${process.env.REACT_APP_URL}/tasks/userTask`, {
+        withCredentials: true,
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Ошибка при получении заданий пользователя:', error.response?.data || error.message);
+      throw error;
+    }
   }
+  
+  
 }
 
 const TaskApi = new Tasks();

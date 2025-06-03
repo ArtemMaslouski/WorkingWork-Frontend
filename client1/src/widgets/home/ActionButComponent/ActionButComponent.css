@@ -13,7 +13,7 @@
 
 .action_button{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: center;
     align-items: center;
     padding-top: 8vh;

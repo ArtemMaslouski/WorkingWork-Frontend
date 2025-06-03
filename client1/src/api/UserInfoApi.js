@@ -1,39 +1,69 @@
 import axios from 'axios';
-//import { baseURL } from '../constants/someConstants';
+import { baseURL } from '../constants/someConstants';
 import Cookies from 'js-cookie';
 
 class UserInfo {
   async changePassword({ OldPassword, Password, NewPassword }) {
     try {
+      const access_token = Cookies.get('access_token');
+      if (!access_token) throw new Error('Не найден токен');
+      
       const response = await axios.post(
-        `${process.env.REACT_APP_URL}/user-info/change-password`,
+        `${baseURL}/user-info/change-password`,
         {
           OldPassword,
           Password,
-          NewPassword,
+          NewPassword
+        },
+        {
+          withCredentials: true
         }
       );
       return response.data;
     } catch (error) {
-      console.error(
-        'Ошибка при регистрации пользователя:',
-        error.response?.data || error.message
+      console.error('Ошибка при изменении пароля:', {
+        status: error.response?.status,
+        data: error.response?.data,
+        message: error.message
+      });
+      throw error;
+    }
+  }
+
+  async addDescription({ Description }) {
+    try {
+      const access_token = Cookies.get('access_token');
+      if (!access_token) throw new Error('Не найден токен');
+
+      const response = await axios.post(
+        `${baseURL}/user-info/add-description`,
+        { Description },
+        {
+          withCredentials: true,
+        }
       );
+      return response.data;
+    } catch (error) {
+      console.error('Ошибка при добавлении описания:', {
+        status: error.response?.status,
+        data: error.response?.data,
+        message: error.message,
+      });
       throw error;
     }
   }
 
   async getUserInfo() {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_URL}/user-info/get-info`
-      );
+      const response = await axios.get(`${baseURL}/user-info/get-info`, {
+        withCredentials: true 
+      });
       return response.data;
     } catch (error) {
       console.log('Ошибка получения данных пользователя', error.response);
       throw error;
     }
-  }
+}
 
   async addMobilePhone({ PhoneNumber }) {
     try {
@@ -41,7 +71,7 @@ class UserInfo {
       if (!access_token) throw new Error('Не найден токен');
 
       const response = await axios.post(
-        `${process.env.REACT_APP_URL}/user-info/add-phone-number`,
+        `${baseURL}/user-info/add-phone-number`,
         {
           PhoneNumber,
         },
@@ -81,7 +111,7 @@ class UserInfo {
       });
 
       const response = await axios.post(
-        `${process.env.REACT_APP_URL}/user-info/add-user-info`,
+        `${baseURL}/user-info/add-user-info`,
         { Name, Surname, BirthdayDate: formattedDate, Sex, City, Email },
         {
           withCredentials: true,
@@ -104,12 +134,10 @@ class UserInfo {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_URL}/user-info/upload-avatar`,
+        `${baseURL}/user-info/upload-avatar`,
         formData,
         {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
+          withCredentials: true,
         }
       );
       return response.data;

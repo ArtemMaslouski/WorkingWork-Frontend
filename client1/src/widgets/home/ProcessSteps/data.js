@@ -5,20 +5,20 @@ import card3 from '../../../shared/assets/photo/cards/card3.jpg';
 const cardsData = [
     {
         id: 1,
-        title: "Опишите",
-        description: "Свою задачу и условия. Это бесплатно и займет 3-4 минуты.",
+        title: 'cardSteps.1.title',
+        description: 'cardSteps.1.description',
         image: card1,
     },
     {
         id: 2,
-        title: "Получите отклики",
-        description: "С ценами от исполнителей. Обычно они приходят в течение 30 минут.",
+        title: 'cardSteps.2.title',
+        description: 'cardSteps.2.description',
         image: card2,
     },
     {
         id: 3,
-        title: "Выберите",
-        description: "Подходящего исполнителя и обсудите сроки выполнения.",
+        title: 'cardSteps.3.title',
+        description: 'cardSteps.3.description',
         image: card3,
     },
 ];

@@ -18,26 +18,26 @@ import { GiScales } from "react-icons/gi";
 import { FaPaw } from "react-icons/fa6";
 import { MdOutlineSportsBasketball } from "react-icons/md";
 
-const services =[
-    { name: "Курьерские услуги", icon: <IoIosCheckbox/> },
-    { name: "Ремонт и строительство", icon: <MdConstruction/> },
-    { name: "Разработка ПО", icon: <MdDeveloperMode/>},
-    { name: "Уборка и помощь по дому", icon: <MdOutlineCleaningServices/>},
-    { name: "Компьютерная помощь", icon: <MdOutlineComputer/>},
-    { name: "Ремонт транспорта", icon: <MdOutlineCarRepair/>},
-    { name: "Фото, видео, аудио", icon: <FaCamera/> },
-    { name: "Репетиторы и обучение", icon: <FaChalkboardTeacher/>},
-    { name: "Дизайн", icon: <MdDesignServices/>},
-    { name: "Установка и ремонт техники", icon: <PiWashingMachine/>},
-    { name: "Виртуальный помощник", icon: <GrVirtualMachine/>},
-    { name: "Мероприятия", icon: <SlPresent/>},
-    { name: "Красота и здоровье", icon: <BsScissors/>},
-    { name: "Ремонт цифровой техники", icon: <LuMonitorSmartphone/>},
-    { name: "Грузоперевозки", icon: <GiCargoCrate/>},
-    { name: "Животные", icon: <FaPaw/>},
-    { name: "Спорт", icon: <MdOutlineSportsBasketball/>},
-    { name: "Недвижимость", icon: <MdOutlineRealEstateAgent/>},
-    { name: "Юридические и бухгалтерские услуги", icon: <GiScales/>},
-]
+const services = [
+  { name: "Курьерские услуги", key: "services.courier", icon: <IoIosCheckbox /> },
+  { name: "Ремонт и строительство", key: "services.construction", icon: <MdConstruction /> },
+  { name: "Разработка ПО", key: "services.software", icon: <MdDeveloperMode /> },
+  { name: "Уборка и помощь по дому", key: "services.cleaning", icon: <MdOutlineCleaningServices /> },
+  { name: "Компьютерная помощь", key: "services.computerHelp", icon: <MdOutlineComputer /> },
+  { name: "Ремонт транспорта", key: "services.carRepair", icon: <MdOutlineCarRepair /> },
+  { name: "Фото, видео, аудио", key: "services.photoVideo", icon: <FaCamera /> },
+  { name: "Репетиторы и обучение", key: "services.teaching", icon: <FaChalkboardTeacher /> },
+  { name: "Дизайн", key: "services.design", icon: <MdDesignServices /> },
+  { name: "Установка и ремонт техники", key: "services.applianceRepair", icon: <PiWashingMachine /> },
+  { name: "Виртуальная помощь", key: "services.virtualAssistant", icon: <GrVirtualMachine /> },
+  { name: "Организация праздников", key: "services.events", icon: <SlPresent /> },
+  { name: "Красота и здоровье", key: "services.beautyHealth", icon: <BsScissors /> },
+  { name: "Ремонт цифровой техники", key: "services.digitalRepair", icon: <LuMonitorSmartphone /> },
+  { name: "Грузоперевозки", key: "services.cargo", icon: <GiCargoCrate /> },
+  { name: "Уход за животными", key: "services.pets", icon: <FaPaw /> },
+  { name: "Спорт", key: "services.sports", icon: <MdOutlineSportsBasketball /> },
+  { name: "Недвижимость", key: "services.realEstate", icon: <MdOutlineRealEstateAgent /> },
+  { name: "Юридические и бухгалтерские услуги", key: "services.legalAccounting", icon: <GiScales /> },
+];
 
-export default services
+export default services;
