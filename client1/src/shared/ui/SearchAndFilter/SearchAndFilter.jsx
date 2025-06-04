@@ -3,13 +3,15 @@ import InputService from '../InputService/InputService';
 import { searchTasks } from '../../utils/searchTasks';
 import Filter from '../../../features/filter/Filter'
 import serviceDetails from '../../../pages/CreatingTask/model/serviceDetails';
+import { useTranslation } from 'react-i18next';
 
 const SearchAndFilter = ({ tasks, onFilterApply, onSearchResults }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const { t } = useTranslation();
 
   const handleSearchClick = () => {
-    const results = searchTasks(tasks, searchQuery);
+    const results = searchTasks(tasks, searchQuery, t);
     onSearchResults(results);
   };
 

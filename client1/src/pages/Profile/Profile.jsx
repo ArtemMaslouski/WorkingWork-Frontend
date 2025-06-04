@@ -55,7 +55,7 @@ const Profile = () => {
   
     const age = new Date().getFullYear() - year; 
   
-    return `${day}.${month}.${year} (${age} лет)`;
+    return `${day}.${month}.${year} (${age} ${t('years')})`;
   };
 
   return (

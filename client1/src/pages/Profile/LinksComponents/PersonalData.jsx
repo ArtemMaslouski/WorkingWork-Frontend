@@ -163,8 +163,8 @@ const PersonalData = ({userInfo, onUpdateUserInfo}) => {
             type='tel'
             className='inputInt-field'
             name='number'
-            label={`${t('profile.numberPhone')} ${t('profile.withCode')}`}
-            required
+            label={`${t('profile.numberPhone')} ${t('profile.withCode')} *`}
+            required={false}
             value={PhoneNumber}
             onChange={e => setPhoneNumber(e.target.value)}
           />
@@ -179,9 +179,8 @@ const PersonalData = ({userInfo, onUpdateUserInfo}) => {
             style={{ backgroundColor: 'rgba(215, 201, 164)', fontWeight: 'light', color: 'black', border: '2px solid #625430', height: '4vh' }} 
           />
           <Button
-            text={t('Cancel')}
+            text={t('Save')}
             onClick={onSubmitAddPhoneNumber}
-            // onClick={handleSave} 
             style={{ backgroundColor: 'white', fontWeight: 'light', color: 'black', border: '2px solid #625430', height: '4vh' }} 
           />
         </div>

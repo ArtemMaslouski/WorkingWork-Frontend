@@ -52,16 +52,16 @@ const Settings = () => {
         <div className='action'>
           <div className='text_for_password'>
             <p>
-              <b>Изменить пароль</b>
+              <b>{t('profile.ChangePassword')}</b>
             </p>
-            <span>Придумайте новый пароль с такими требованиями:</span>
+            <span>{t('profile.createNewPas')}:</span>
             <li>
-              длина не менее <b>8</b> символов;
+              {t('profile.length')} <b>8</b> {t('profile.characters')};
             </li>
-            <li>заглавные латинские буквы;</li>
-            <li>строчные латинские буквы;</li>
+            <li>{t('profile.capLatinLat')};</li>
+            <li>{t('profile.lowLatinLat')};</li>
             <li>
-              цифры или специальные символы <b>%,#,$</b> и другие.
+              {t('profile.numOrSpecSymb')} <b>%,#,$</b> {t('profile.andOther')}.
             </li>
           </div>
 
@@ -69,7 +69,7 @@ const Settings = () => {
             <Input
               type={showPassword ? 'text' : 'password'}
               name='password'
-              label={'Действующий пароль'}
+              label={t('profile.CurrentPassword')}
               showToggleButton
               togglePasswordVisibility={() =>
                 togglePasswordVisibility(setShowPassword)
@@ -84,7 +84,7 @@ const Settings = () => {
               type={showNewPassword ? 'text' : 'password'}
               className='inputInt-field'
               name='new_password'
-              label={'Новый пароль'}
+              label={t('profile.newPassword')}
               showToggleButton
               togglePasswordVisibility={() =>
                 togglePasswordVisibility(setShowNewPassword)
@@ -98,7 +98,7 @@ const Settings = () => {
               type={showConfirmPassword ? 'text' : 'password'}
               className='inputInt-field'
               name='new_password_again'
-              label={'Повторите пароль'}
+              label={t('profile.RepeatPassword')}
               showToggleButton
               togglePasswordVisibility={() =>
                 togglePasswordVisibility(setShowConfirmPassword)
@@ -109,7 +109,7 @@ const Settings = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <Button
-              text='Сохранить пароль'
+              text={`${t('Save')} ${t('password')}`}
               style={{
                 backgroundColor: 'rgba(215, 201, 164)',
                 fontWeight: 'light',
@@ -123,11 +123,11 @@ const Settings = () => {
 
           <div className='delete_profile'>
             <p>
-              <b>Удалить профиль</b>
+              <b>{`${t('delete')} ${t('profile.profile')}`}</b>
             </p>
-            <span>При удалении профиля, восстановить будет невозможно!</span>
+            <span>{t('profile.ifYouDelete')}</span>
             <Button
-              text='Удалить профиль'
+              text={`${t('delete')} ${t('profile.profile')}`}
               style={{
                 backgroundColor: 'rgba(215, 201, 164)',
                 fontWeight: 'light',

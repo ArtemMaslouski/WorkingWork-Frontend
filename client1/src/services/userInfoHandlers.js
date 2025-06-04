@@ -56,6 +56,10 @@ export const handleAddPhone = async (PhoneNumber, setPhoneNumber) => {
             return;
         }
 
+        if (!PhoneNumber.trim()) {
+            return;
+        }
+
         if (!/^\+?[0-9]{10,15}$/.test(PhoneNumber)) {
             toast.error('Некорректный формат номера телефона!');
             return;

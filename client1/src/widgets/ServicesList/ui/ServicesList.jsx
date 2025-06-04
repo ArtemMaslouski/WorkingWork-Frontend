@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 import services from '../model/servicesData';
 import './ServicesList.css';
-import { useLocation } from 'react-router-dom';
 import Button from '../../../shared/ui/Button/Button';
+import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const ServicesList = () => {
@@ -12,9 +12,9 @@ const ServicesList = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth<=480);
   const {t} = useTranslation();
 
-  const isActiveService = (serviceName) => {
+  const isActiveService = (service) => {
     const params = new URLSearchParams(location.search);
-    return params.get('service') === serviceName;
+    return params.get('service') === t(service.key);
   };
 
   const toggleShowAll = () => {
@@ -28,6 +28,7 @@ const ServicesList = () => {
         setShowAll(false);
       }
     }
+
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -37,14 +38,14 @@ const ServicesList = () => {
   return (
     <div className='services_component'>
       {visibleServices.map((service, index) => (
-        <NavLink 
-          to={`/CreatingTask?service=${encodeURIComponent(service.name)}`} 
+        <NavLink
+          to={`/CreatingTask?service=${encodeURIComponent(t(service.key))}`}
           key={index}
         >
           <div 
-            className={`service_item ${isActiveService(service.name) ? 'active-service' : ''}`}
+            className={`service_item ${isActiveService(service) ? 'active-service' : ''}`}
           >
-            {service.icon} {service.name}
+            <span className="service-icon">{service.icon}</span> {t(service.key)}
           </div>
         </NavLink>
       ))}
@@ -52,16 +53,9 @@ const ServicesList = () => {
         <Button 
           onClick={toggleShowAll} 
           text={showAll ? t('HideCategories') : t('ShowAllCategories')}
-          style={{ 
-            backgroundColor: 'white', 
-            color: 'gray', 
-            border: '2px solid rgb(162, 139, 76)',
-            width: '100%',
-            height: '4.5vh', 
-            fontWeight: 'light' 
-          }} 
+          style={{ backgroundColor: 'white', color: 'gray', border: '2px solid rgb(162, 139, 76)', width:'100%', height:'4.5vh', fontWeight:'light' }} 
         />
-      )} 
+      )}
     </div>
   );
 };

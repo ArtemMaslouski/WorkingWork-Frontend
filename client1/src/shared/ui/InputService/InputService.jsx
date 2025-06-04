@@ -3,6 +3,7 @@ import './InputService.css'
 import { FaSearch } from "react-icons/fa";
 import { MdOutlineFilterList } from "react-icons/md";
 import serviceDetails from '../../../pages/CreatingTask/model/serviceDetails';
+import { useTranslation } from 'react-i18next';
 
 const InputService = ({ 
   placeholder, 
@@ -14,6 +15,7 @@ const InputService = ({
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const suggestionsRef = useRef(null);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -39,15 +41,31 @@ const InputService = ({
 
     //категории
     Object.keys(serviceDetails).forEach(category => {
-      if (category.toLowerCase().includes(lowerCaseQuery)) {
-        results.push({ type: 'category', name: category });
+      const serviceKey = category.split('.')[1];
+      const translatedCategory = t(`services.${serviceKey}`);
+      
+      // Проверяем совпадение в переведенном тексте
+      if (translatedCategory.toLowerCase().includes(lowerCaseQuery)) {
+        results.push({ 
+          type: 'category', 
+          name: translatedCategory,
+          originalKey: category 
+        });
       }
 
-    //подкатегории
+      //подкатегории
       if (serviceDetails[category].links) {
         serviceDetails[category].links.forEach(link => {
-          if (link.name.toLowerCase().includes(lowerCaseQuery)) {
-            results.push({ type: 'subcategory', name: link.name, category });
+          const translatedSubcategory = t(link.name);
+          
+          // Проверяем совпадение в переведенном тексте
+          if (translatedSubcategory.toLowerCase().includes(lowerCaseQuery)) {
+            results.push({ 
+              type: 'subcategory', 
+              name: translatedSubcategory,
+              category: translatedCategory,
+              originalKey: link.name
+            });
           }
         });
       }
@@ -72,7 +90,7 @@ const InputService = ({
       <input
         type="text"
         className="input-field"
-        placeholder={placeholder || 'Услуги и предложения'}
+        placeholder={placeholder || t('servicesAndOffers')}
         value={searchQuery}
         onChange={(e) => handleInputChange(e.target.value)}
         onFocus={() => setShowSuggestions(true)}
@@ -87,7 +105,7 @@ const InputService = ({
               onClick={() => handleSuggestionClick(suggestion)}
             >
               <span className="suggestion-type">
-                {suggestion.type === 'category' ? 'Категория:' : 'Подкатегория:'}
+                {suggestion.type === 'category' ? t('category') + ':' : t('subcategory') + ':'}
               </span>
               <span className="suggestion-name">{suggestion.name}</span>
               {suggestion.type === 'subcategory' && (
