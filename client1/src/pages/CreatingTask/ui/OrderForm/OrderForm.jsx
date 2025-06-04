@@ -11,10 +11,12 @@ import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import useOrderForm from '../../lib/hooks/useOrderForm';
+import { useTranslation } from 'react-i18next';
 
 const OrderForm = () => {
     const navigate = useNavigate();
     const location = useLocation();
+    const {t} = useTranslation();
 
     const queryParams = new URLSearchParams(location.search);
     const selectedService = queryParams.get('service');
@@ -40,21 +42,6 @@ const OrderForm = () => {
         handleCategoryChange
     } = useOrderForm(selectedService, selectedSubcategory);
     
-    // const onSubmitCreateTasks = async (e) => {
-    //     e.preventDefault(); 
-    //     const access_token = Cookies.get('access_token');
-    //     if (!access_token) {
-    //         toast.error('Пожалуйста, войдите в систему, чтобы оформить задание.');
-    //         setTimeout(() => {
-    //             navigate('/SignIn');
-    //         }, 2000);
-    //         return;
-    //     }
-
-    //     await handleCreateTask(e, category, subcategory,addressFrom, addressTo, startDate, endDate, description,
-    //         setSubcategory, setCategory, setAddressFrom, setAddressTo, setStartDate, setEndDate, setDescription
-    //     );
-    // };
     const onSubmitCreateTasks = async (e) => {
         e.preventDefault(); 
         const access_token = Cookies.get('access_token');
@@ -66,7 +53,6 @@ const OrderForm = () => {
             return;
         }
     
-        // ✅ Преобразование дат в ISO-строку
         const formattedStartDate = startDate ? new Date(startDate).toISOString() : null;
         const formattedEndDate = endDate ? new Date(endDate).toISOString() : null;
     
@@ -89,39 +75,47 @@ const OrderForm = () => {
         );
     };
     
+    // Проверяем, является ли выбранная категория курьерскими услугами
+    const isCourierService = category === t('services.courier');
 
     return (
         <div className='order_form_component'>
             <div className="forms_for_tasks">
                 <span style={{ color: '#998756', fontSize:'1.3rem'}}>
-                    <p data-translate>Создавайте и описывайте задания,<br/> оформляйте и ждите ответ!</p>
+                    <p data-translate>{t('createTasks')}</p>
                 </span>
                 
                 <SelectInput
                     id="category"
-                    label={<span data-translate>Категория</span>}
+                    label={<span data-translate>{t('category')}</span>}
                     value={category}
-                    options={categories.map(cat => ({ value: cat, label: cat }))}
-                    onChange={handleCategoryChange}
+                    options={categories.map(cat => ({ value: cat.translatedName, label: cat.translatedName }))}
+                    onChange={(e) => {
+                        console.log('Category changed:', e.target.value);
+                        handleCategoryChange(e.target.value);
+                    }}
                     required
                 />
 
                 <SelectInput
                     id="subcategory"
-                    label={<span data-translate>Подкатегория</span>}
+                    label={<span data-translate>{t('subcategory')}</span>}
                     value={subcategory}
-                    options={subcategories.map(sub => ({ value: sub.name, label: sub.name }))}
-                    onChange={(e) => setSubcategory(e.target.value)}
+                    options={subcategories.map(sub => ({ value: sub.translatedName, label: sub.translatedName }))}
+                    onChange={(e) => {
+                        console.log('Subcategory changed:', e.target.value);
+                        setSubcategory(e.target.value);
+                    }}
                     required
                 />
 
-                {category === 'Курьерские услуги' ? (
+                {isCourierService ? (
                     <>
                         <Input
                             type='text'
                             className='inputInt-field'
                             name='addressFrom'
-                            label={<span data-translate>Адрес (откуда)</span>}
+                            label={<span data-translate>{t('address')}</span>}
                             required
                             value={addressFrom}
                             onChange={(e) => setAddressFrom(e.target.value)}
@@ -130,7 +124,7 @@ const OrderForm = () => {
                             type='text'
                             className='inputInt-field'
                             name='addressTo'
-                            label={<span data-translate>Адрес (куда)</span>}
+                            label={<span data-translate>{`${t('address')} ${t('to')}`}</span>}
                             required
                             value={addressTo}
                             onChange={(e) => setAddressTo(e.target.value)}
@@ -141,7 +135,7 @@ const OrderForm = () => {
                         type='text'
                         className='inputInt-field'
                         name='addressFrom'
-                        label={<span data-translate>Адрес (куда)</span>}
+                        label={<span data-translate>{`${t('address')} ${t('to')}`}</span>}
                         required
                         value={addressFrom}
                         onChange={(e) => setAddressFrom(e.target.value)}
@@ -160,7 +154,7 @@ const OrderForm = () => {
                             }}
                             className="input-field"
                             dateFormat="dd/MM/yyyy"
-                            placeholderText={<span data-translate>Дата начала</span>}
+                            placeholderText={t('startDate')}
                             minDate={new Date()}
                         />
                     </div>
@@ -176,7 +170,7 @@ const OrderForm = () => {
                             }}
                             className="input-field"
                             dateFormat="dd/MM/yyyy"
-                            placeholderText={<span data-translate>Дата окончания</span>}
+                            placeholderText={t('endDate')}
                             minDate={startDate || new Date()}
                         />
                     </div>
@@ -186,7 +180,7 @@ const OrderForm = () => {
                     <textarea
                         name="taskDescription"
                         className="textarea-field"
-                        placeholder={<span data-translate>Опишите детали задания...</span>}
+                        placeholder={t('describeTheDetails')}
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         required
@@ -195,7 +189,7 @@ const OrderForm = () => {
 
                 <Button
                     onClick={onSubmitCreateTasks}
-                    text={<span data-translate>Оформить задание</span>}
+                    text={<span data-translate>{t('CompleteTheAssignment')}</span>}
                     style={{ backgroundColor: 'rgba(215, 201, 164)', 
                         color: 'black', border: '2px solid #998756', fontWeight:'bold', width:'100%'}} 
                 />

@@ -23,7 +23,7 @@ const NavLinks = ({ isAuthenticated, toggleMapModal, isMapModalOpen, handleLogou
   
     if (langCode) {
       i18n.changeLanguage(langCode);
-      localStorage.setItem('language', langCode); // сохраняем язык
+      localStorage.setItem('language', langCode); 
       setShowLanguageDropdown(false);
     }
   };
@@ -76,7 +76,7 @@ const NavLinks = ({ isAuthenticated, toggleMapModal, isMapModalOpen, handleLogou
          <NavLink to='/UserChat' className={({ isActive }) => isActive ? 'active' : ''}><BsChatLeft size={20}/> </NavLink>
           <NavLink to='/Profile'><CgProfile size={20}/></NavLink>
           
-          <span onClick={() => handleLogout(navigate, t)} className='logout-link'>{t('logout')}</span>
+          <span onClick={() => handleLogout(navigate)} className='logout-link'>{t('login')}</span>
         </>
       ) : (
         <NavLink to='/SignIn' className={({ isActive }) => isActive ? 'active' : ''}>{t('logout')}</NavLink>

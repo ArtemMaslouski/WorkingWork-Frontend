@@ -12,14 +12,13 @@ const CreatingTask = () => {
   const selectedServiceName = queryParams.get('service');
   const { t } = useTranslation();
 
-  // Find the service object that matches the selected name
   const selectedService = services.find(service => {
-    const translatedName = t(service.name);
+    const translatedName = t(service.key);
     return translatedName === selectedServiceName;
   });
 
   // Get service details using the original key
-  const serviceDetail = selectedService ? serviceDetails[selectedService.name] : null;
+  const serviceDetail = selectedService ? serviceDetails[selectedService.key] : null;
 
   return (
     <div className='create_task_component'>
@@ -31,17 +30,17 @@ const CreatingTask = () => {
       <div className="subcategories_item">
         {selectedServiceName && serviceDetail && (
           <div className="image-container">
-            <h2 className="service-title">{t(selectedService.name)}</h2>
+            <h2 className="service-title">{selectedServiceName}</h2>
             <img 
               src={serviceDetail.image} 
-              alt={t(selectedService.name)} 
+              alt={selectedServiceName} 
               className="service-image"
             />
             <div className="task_links">
               {serviceDetail.links.map((link, index) => (
                 <NavLink 
                   key={index}
-                  to={`/OrderForm?service=${encodeURIComponent(t(selectedService.name))}&subcategory=${encodeURIComponent(t(link.name))}`} 
+                  to={`/OrderForm?service=${encodeURIComponent(selectedServiceName)}&subcategory=${encodeURIComponent(t(link.name))}`} 
                   className="task-link"
                 >
                   {t(link.name)}

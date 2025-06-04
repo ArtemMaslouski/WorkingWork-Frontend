@@ -14,6 +14,7 @@ import { LuFlagTriangleRight } from "react-icons/lu";
 import { useLocation } from 'react-router-dom';
 import Loader from '../../shared/ui/Loader/Loader';
 import { useTranslation } from 'react-i18next';
+import { useTaskTranslation } from '../../hooks/useTaskTranslation';
 
 const FindTask = () => {
   const [tasks, setTasks] = useState([]);
@@ -22,9 +23,10 @@ const FindTask = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false); 
   const [searchQuery, setSearchQuery] = useState('');
   const [showNoTasks, setShowNoTasks] = useState(false);
+  const { translatedTasks } = useTaskTranslation(filteredTasks);
+  const { t } = useTranslation();
 
   const location = useLocation();
-  const {t} = useTranslation();
   
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -75,7 +77,6 @@ const FindTask = () => {
     return () => clearTimeout(timeout);
   }, [filteredTasks]);
   
-
   const handleFilterApply = (filters) => {
     const filtered = filterTasks(tasks, filters);
     setFilteredTasks(filtered);
@@ -102,21 +103,21 @@ const FindTask = () => {
       </div>
 
       <div className="all_tasks">
-        {filteredTasks.length > 0 ? (
-          filteredTasks.map((task) => (
+        {translatedTasks.length > 0 ? (
+          translatedTasks.map((task) => (
             <div key={task.id} className="task_item_border">
               <div className="tasks">
                 <h3>{task.Category} / {task.Subcategory}</h3>
-                <p><i><LuFlagTriangleRight size={20}/> Адрес назначения:</i> {task.Address}</p>
+                <p><i><LuFlagTriangleRight size={20}/> {`${t('destination')} ${t('address')}`}:</i> {task.Address}</p>
                 <p>
-                  <i><IoCalendarOutline size={20}/> Начало выполнения:</i> <b>{new Date(task.BeginAt).toLocaleDateString('ru-RU')}</b><br/>
-                  <i><GiFinishLine size={20}/> Окончание выполнения:</i> <b>{new Date(task.EndAt).toLocaleDateString('ru-RU')}</b>
+                  <i><IoCalendarOutline size={20}/>{t('start')}:</i> <b>{new Date(task.BeginAt).toLocaleDateString('ru-RU')}</b><br/>
+                  <i><GiFinishLine size={20}/> {t('ending')}:</i> <b>{new Date(task.EndAt).toLocaleDateString('ru-RU')}</b>
                 </p>
-                <p><i><MdOutlineDescription size={20}/> Описание задания:</i> {task.Description}</p>
+                <p><i><MdOutlineDescription size={20}/> {t('description')}:</i> {task.Description}</p>
               </div>
               <div className="response_button">
                 <Button   
-                  text="Откликнуться" 
+                  text={t('respond')} 
                   style={{ 
                     backgroundColor: 'rgba(215, 201, 164)',
                     fontWeight: 'light',

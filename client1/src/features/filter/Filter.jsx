@@ -4,12 +4,15 @@ import Button from '../../shared/ui/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const Filter = ({ isOpen, onClose, onFilterApply,serviceDetails}) => {
-  const categories = Object.keys(serviceDetails);
+const Filter = ({ isOpen, onClose, onFilterApply, serviceDetails }) => {
+  const { t } = useTranslation();
+  const categories = Object.keys(serviceDetails).map(key => ({
+    key: key,
+    name: t(key)
+  }));
   const [subcategories, setSubcategories] = useState([]);
   const modalRef = useRef(null);
   const navigate = useNavigate();
-  const {t} = useTranslation();
 
   const [filters, setFilters] = React.useState({
     category: '',
@@ -22,13 +25,16 @@ const Filter = ({ isOpen, onClose, onFilterApply,serviceDetails}) => {
 
   useEffect(() => {
     if (filters.category && serviceDetails[filters.category]) {
-      setSubcategories(serviceDetails[filters.category].links || []);
+      const subcats = serviceDetails[filters.category].links.map(link => ({
+        key: link.name,
+        name: t(link.name)
+      }));
+      setSubcategories(subcats);
     } else {
       setSubcategories([]);
     }
     setFilters(prev => ({ ...prev, subcategory: '' }));
-  }, [filters.category, serviceDetails]);
-  
+  }, [filters.category, serviceDetails, t]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -44,10 +50,17 @@ const Filter = ({ isOpen, onClose, onFilterApply,serviceDetails}) => {
   }, [onClose]);
 
   const handleApply = () => {
-    onFilterApply(filters);
+    // Получаем переведенные значения для фильтрации
+    const translatedFilters = {
+      ...filters,
+      category: filters.category ? t(filters.category) : '',
+      subcategory: filters.subcategory ? t(filters.subcategory) : ''
+    };
+    
+    onFilterApply(translatedFilters);
     
     const queryParams = new URLSearchParams();
-    Object.entries(filters).forEach(([key, value]) => {
+    Object.entries(translatedFilters).forEach(([key, value]) => {
       if (value) queryParams.set(key, value);
     });
 
@@ -68,13 +81,12 @@ const Filter = ({ isOpen, onClose, onFilterApply,serviceDetails}) => {
     onFilterApply(emptyFilters);
     onClose();
   };
-  
 
   if (!isOpen) return null;
 
   return (
     <div className="filter-modal">
-      <div className="filter-content" ref={modalRef}>
+      <div className="filter-content">
         <h2>{t('filters')}</h2>
 
         {/* Категория */}
@@ -89,8 +101,8 @@ const Filter = ({ isOpen, onClose, onFilterApply,serviceDetails}) => {
           >
             <option value="">-- {t('selectCategory')} --</option>
             {categories.map((cat) => (
-              <option key={cat} value={cat}>
-                {cat}
+              <option key={cat.key} value={cat.key}>
+                {cat.name}
               </option>
             ))}
           </select>
@@ -104,9 +116,9 @@ const Filter = ({ isOpen, onClose, onFilterApply,serviceDetails}) => {
             onChange={(e) => setFilters({ ...filters, subcategory: e.target.value })}
             disabled={!filters.category} 
           >
-            <option value="">--  {t('selectSubcategory')} --</option>
+            <option value="">-- {t('selectSubcategory')} --</option>
             {subcategories.map((subcat) => (
-              <option key={subcat.name} value={subcat.name}>
+              <option key={subcat.key} value={subcat.key}>
                 {subcat.name}
               </option>
             ))}

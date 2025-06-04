@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Button from '../../shared/ui/Button/Button';
 import '../filter/Filter.css'
+import { useTranslation } from 'react-i18next';
 
 const RefreshTasks = ({ isOpen, onClose, onSubmit, serviceDetails, initialData, onClick }) => {
   const modalRef = useRef(null);
   const categories = Object.keys(serviceDetails);
   const [subcategories, setSubcategories] = useState([]);
   const today = new Date().toISOString().split('T')[0];
+  const { t } = useTranslation();
 
   const [refresh, setRefresh] = useState({
     category: '',
@@ -75,38 +77,30 @@ const handleSubmit = () => {
   return (
     <div className="filter-modal">
       <div className="filter-content" ref={modalRef}>
-        <h2>Редактировать задание</h2>
+        <h2>{t('editTask')}</h2>
 
         <div className="filter-field">
-          <label>Категория:</label>
+          <label>{t('category')}:</label>
           <select
             value={refresh.category}
             onChange={(e) => setRefresh({ ...refresh, category: e.target.value })}
           >
-            <option value="">-- Выберите категорию --</option>
+            <option value="">-- {t('selectCategory')} --</option>
             {categories.map((cat) => (
               <option key={cat} value={cat}>{cat}</option>
             ))}
           </select>
-          {refresh.category && serviceDetails[refresh.category]?.image && (
-            <div className="category-image">
-              <img 
-                src={serviceDetails[refresh.category].image} 
-                alt={refresh.category}
-                style={{ maxWidth: '200px', marginTop: '10px' }}
-              />
-            </div>
-          )}
+         
         </div>
 
         <div className="filter-field">
-          <label>Подкатегория:</label>
+          <label>{t('subcategory')}:</label>
           <select
             value={refresh.subcategory}
             onChange={(e) => setRefresh({ ...refresh, subcategory: e.target.value })}
             disabled={!refresh.category}
           >
-            <option value="">-- Выберите подкатегорию --</option>
+            <option value="">-- {t('selectSubcategory')} --</option>
             {subcategories.map((subcat) => (
               <option key={subcat.name} value={subcat.name}>{subcat.name}</option>
             ))}
@@ -114,7 +108,7 @@ const handleSubmit = () => {
         </div>
 
         <div className="filter-field">
-          <label>Адрес:</label>
+          <label>{t('address')}:</label>
           <input
             type="text"
             value={refresh.addressFrom}
@@ -124,7 +118,7 @@ const handleSubmit = () => {
 
         {refresh.category === 'Курьерские услуги' && (
             <div className="filter-field">
-                <label>Адрес назначения:</label>
+                <label>{`${t('address')} ${t('to')}`}:</label>
                 <input
                 type="text"
                 value={refresh.addressTo}
@@ -135,7 +129,7 @@ const handleSubmit = () => {
 
 
         <div className="filter-field">
-          <label>Дата начала:</label>
+          <label>{t('startDate')}:</label>
           <input
             type="date"
             value={refresh.startDate}
@@ -145,7 +139,7 @@ const handleSubmit = () => {
         </div>
 
         <div className="filter-field">
-          <label>Дата окончания:</label>
+          <label>{t('endDate')}:</label>
           <input
             type="date"
             value={refresh.endDate}
@@ -158,7 +152,7 @@ const handleSubmit = () => {
           <textarea
             name="taskDescription"
             className="textarea-field"
-            placeholder="Опишите детали задания..."
+            placeholder={t('describeTheDetails')}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
@@ -168,7 +162,7 @@ const handleSubmit = () => {
         <div className="filter-buttons">
           <Button
             onClick={handleReset}
-            text="Отмена"
+            text={t('Cancel')}
             style={{
               backgroundColor: 'rgba(215, 201, 164)',
               color: 'black',
@@ -179,7 +173,7 @@ const handleSubmit = () => {
           />
           <Button
             onClick={handleSubmit}
-            text="Обновить"
+            text={t('update')}
             style={{
               backgroundColor: 'rgba(215, 201, 164)',
               color: 'black',
