@@ -1,8 +1,6 @@
-/node_modules
-# Игнорировать кэш Babel
-node_modules/.cache/
+# Игнорировать node_modules везде
+**/node_modules/
 
-
-# Игнорировать временные файлы сборки
-client1/node_modules/.cache/
-client1/node_modules/.cache/default-development/
+# Игнорировать кэш Babel и прочие временные файлы в node_modules
+**/node_modules/.cache/
+**/node_modules/.cache/default-development/
