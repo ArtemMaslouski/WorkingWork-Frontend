@@ -41,6 +41,7 @@ const ServicesList = () => {
         <NavLink
           to={`/CreatingTask?service=${encodeURIComponent(t(service.key))}`}
           key={index}
+          style={{ textDecoration: 'none' }}
         >
           <div 
             className={`service_item ${isActiveService(service) ? 'active-service' : ''}`}
