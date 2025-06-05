@@ -76,10 +76,10 @@ const NavLinks = ({ isAuthenticated, toggleMapModal, isMapModalOpen, handleLogou
          <NavLink to='/UserChat' className={({ isActive }) => isActive ? 'active' : ''}><BsChatLeft size={20}/> </NavLink>
           <NavLink to='/Profile'><CgProfile size={20}/></NavLink>
           
-          <span onClick={() => handleLogout(navigate)} className='logout-link'>{t('login')}</span>
+          <span onClick={() => handleLogout(navigate, t)} className='logout-link'>{t('logout')}</span>
         </>
       ) : (
-        <NavLink to='/SignIn' className={({ isActive }) => isActive ? 'active' : ''}>{t('logout')}</NavLink>
+        <NavLink to='/SignIn' className={({ isActive }) => isActive ? 'active' : ''}>{t('login')}</NavLink>
       )}
     </>
   );
