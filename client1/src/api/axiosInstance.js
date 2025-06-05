@@ -9,6 +9,7 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
     console.log(originalRequest);
+    console.log(originalRequest);
 
     if (
       error.response &&
