@@ -4,7 +4,10 @@ class Chat {
   async getChats() {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_URL}/chats/get-chats`
+        `${process.env.REACT_APP_URL}/chats/get-chats`,
+        {
+          withCredentials: true,
+        }
       );
 
       return response.data;
