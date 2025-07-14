@@ -15,39 +15,50 @@ const useOrderForm = (selectedService, selectedSubcategory) => {
     const [endDate, setEndDate] = useState(null);
     const [description, setDescription] = useState('');
 
+    // Функция для получения ключа категории по переведенному названию
+    const getCategoryKey = (translatedName) => {
+        return Object.keys(serviceDetails).find(key => 
+            t(key) === translatedName
+        );
+    };
+
+    // Функция для получения ключа подкатегории по переведенному названию
+    const getSubcategoryKey = (categoryKey, translatedName) => {
+        if (!categoryKey || !serviceDetails[categoryKey]) return null;
+        return serviceDetails[categoryKey].links.find(link => 
+            t(link.name) === translatedName
+        )?.name;
+    };
     
     const updateCategories = () => {
-        const translatedCategories = Object.keys(serviceDetails).map(key => {
-            const serviceKey = key.split('.')[1];
-            return {
-                key: serviceKey,
-                translatedName: t(`services.${serviceKey}`)
-            };
-        });
+        const translatedCategories = Object.keys(serviceDetails).map(key => ({
+            key: key,
+            translatedName: t(key)
+        }));
         setCategories(translatedCategories);
     };
 
     const updateSubcategories = (categoryKey) => {
-        if (categoryKey) {
-            const serviceKey = `services.${categoryKey}`;
-            const subcats = serviceDetails[serviceKey]?.links.map(link => {
-                const subKey = link.name.split('.').pop();
-                return {
-                    key: subKey,
-                    translatedName: t(link.name)
-                };
-            }) || [];
-            setSubcategories(subcats);
+        if (!categoryKey || !serviceDetails[categoryKey]) {
+            setSubcategories([]);
+            return;
         }
+
+        const subcats = serviceDetails[categoryKey].links.map(link => ({
+            key: link.name,
+            translatedName: t(link.name)
+        }));
+        setSubcategories(subcats);
     };
 
+    // Эффект для инициализации категорий и подкатегорий
     useEffect(() => {
         setIsLoading(true);
         try {
             updateCategories();
 
             if (selectedService) {
-                const categoryKey = categories.find(cat => cat.translatedName === selectedService)?.key;
+                const categoryKey = getCategoryKey(selectedService);
                 if (categoryKey) {
                     setCategory(selectedService);
                     updateSubcategories(categoryKey);
@@ -58,17 +69,17 @@ const useOrderForm = (selectedService, selectedSubcategory) => {
                 setSubcategory(selectedSubcategory);
             }
         } catch (error) {
-            console.error('Error in useOrderForm:', error);
+            console.error('Error in useOrderForm initialization:', error);
         } finally {
             setIsLoading(false);
         }
     }, [selectedService, selectedSubcategory]);
 
-    // Отдельный эффект для обновления переводов при изменении языка
+    // Эффект для обновления переводов при изменении языка
     useEffect(() => {
         updateCategories();
         if (category) {
-            const categoryKey = categories.find(cat => cat.translatedName === category)?.key;
+            const categoryKey = getCategoryKey(category);
             if (categoryKey) {
                 updateSubcategories(categoryKey);
             }
@@ -76,14 +87,11 @@ const useOrderForm = (selectedService, selectedSubcategory) => {
     }, [i18n.language]);
 
     const handleCategoryChange = (value) => {
-        console.log('handleCategoryChange called with:', value);
         setCategory(value);
         setSubcategory('');
         
         try {
-            const categoryKey = categories.find(cat => cat.translatedName === value)?.key;
-            console.log('Found category key:', categoryKey);
-            
+            const categoryKey = getCategoryKey(value);
             if (categoryKey) {
                 updateSubcategories(categoryKey);
             }

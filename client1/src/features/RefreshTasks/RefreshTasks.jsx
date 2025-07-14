@@ -2,13 +2,12 @@ import React, { useEffect, useState, useRef } from 'react';
 import Button from '../../shared/ui/Button/Button';
 import '../filter/Filter.css'
 import { useTranslation } from 'react-i18next';
+import serviceDetails from '../../pages/CreatingTask/model/serviceDetails';
 
-const RefreshTasks = ({ isOpen, onClose, onSubmit, serviceDetails, initialData, onClick }) => {
+const RefreshTasks = ({ isOpen, onClose, onSubmit, initialData }) => {
   const modalRef = useRef(null);
-  const categories = Object.keys(serviceDetails);
-  const [subcategories, setSubcategories] = useState([]);
-  const today = new Date().toISOString().split('T')[0];
   const { t } = useTranslation();
+  const today = new Date().toISOString().split('T')[0];
 
   const [refresh, setRefresh] = useState({
     category: '',
@@ -20,6 +19,46 @@ const RefreshTasks = ({ isOpen, onClose, onSubmit, serviceDetails, initialData, 
   });
 
   const [description, setDescription] = useState('');
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
+
+  const getCategoryKey = (translatedName) => {
+    return Object.keys(serviceDetails).find(key => 
+      t(key) === translatedName
+    );
+  };
+
+  const getSubcategoryKey = (categoryKey, translatedName) => {
+    if (!categoryKey || !serviceDetails[categoryKey]) return null;
+    return serviceDetails[categoryKey].links.find(link => 
+      t(link.name) === translatedName
+    )?.name;
+  };
+
+  const updateCategories = () => {
+    const translatedCategories = Object.keys(serviceDetails).map(key => ({
+      key: key,
+      translatedName: t(key)
+    }));
+    setCategories(translatedCategories);
+  };
+
+  const updateSubcategories = (categoryKey) => {
+    if (!categoryKey || !serviceDetails[categoryKey]) {
+      setSubcategories([]);
+      return;
+    }
+
+    const subcats = serviceDetails[categoryKey].links.map(link => ({
+      key: link.name,
+      translatedName: t(link.name)
+    }));
+    setSubcategories(subcats);
+  };
+
+  useEffect(() => {
+    updateCategories();
+  }, []);
 
   useEffect(() => {
     if (initialData) {
@@ -32,18 +71,25 @@ const RefreshTasks = ({ isOpen, onClose, onSubmit, serviceDetails, initialData, 
         endDate: initialData.EndAt ? initialData.EndAt.slice(0, 10) : '',
       });
       setDescription(initialData.Description || '');
+
+      // Обновляем подкатегории при инициализации
+      const categoryKey = getCategoryKey(initialData.Category);
+      if (categoryKey) {
+        updateSubcategories(categoryKey);
+      }
     }
-  }, [initialData]);  
+  }, [initialData]);
 
   useEffect(() => {
-    if (refresh.category && serviceDetails[refresh.category]) {
-      setSubcategories(serviceDetails[refresh.category].links || []);
-    } else {
-      setSubcategories([]);
+    if (refresh.category) {
+      const categoryKey = getCategoryKey(refresh.category);
+      if (categoryKey) {
+        updateSubcategories(categoryKey);
+      }
     }
-  }, [refresh.category, serviceDetails]);
+  }, [refresh.category]);
 
-  useEffect(() => {//клик вне модалки
+  useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         onClose();
@@ -53,7 +99,7 @@ const RefreshTasks = ({ isOpen, onClose, onSubmit, serviceDetails, initialData, 
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [onClose]);
 
-const handleSubmit = () => {
+  const handleSubmit = () => {
     onSubmit({
       ...initialData,
       id: initialData.id,
@@ -87,10 +133,11 @@ const handleSubmit = () => {
           >
             <option value="">-- {t('selectCategory')} --</option>
             {categories.map((cat) => (
-              <option key={cat} value={cat}>{cat}</option>
+              <option key={cat.key} value={cat.translatedName}>
+                {cat.translatedName}
+              </option>
             ))}
           </select>
-         
         </div>
 
         <div className="filter-field">
@@ -102,7 +149,9 @@ const handleSubmit = () => {
           >
             <option value="">-- {t('selectSubcategory')} --</option>
             {subcategories.map((subcat) => (
-              <option key={subcat.name} value={subcat.name}>{subcat.name}</option>
+              <option key={subcat.key} value={subcat.translatedName}>
+                {subcat.translatedName}
+              </option>
             ))}
           </select>
         </div>
@@ -116,17 +165,16 @@ const handleSubmit = () => {
           />
         </div>
 
-        {refresh.category === 'Курьерские услуги' && (
-            <div className="filter-field">
-                <label>{`${t('address')} ${t('to')}`}:</label>
-                <input
-                type="text"
-                value={refresh.addressTo}
-                onChange={(e) => setRefresh({ ...refresh, addressTo: e.target.value })}
-                />
-            </div>
-            )}
-
+        {refresh.category === t('services.courier') && (
+          <div className="filter-field">
+            <label>{`${t('address')} ${t('to')}`}:</label>
+            <input
+              type="text"
+              value={refresh.addressTo}
+              onChange={(e) => setRefresh({ ...refresh, addressTo: e.target.value })}
+            />
+          </div>
+        )}
 
         <div className="filter-field">
           <label>{t('startDate')}:</label>
@@ -135,7 +183,7 @@ const handleSubmit = () => {
             value={refresh.startDate}
             min={today}
             onChange={(e) => setRefresh({ ...refresh, startDate: e.target.value })}
-            />
+          />
         </div>
 
         <div className="filter-field">
@@ -143,9 +191,9 @@ const handleSubmit = () => {
           <input
             type="date"
             value={refresh.endDate}
-            min={refresh.startDate || today} // конец не раньше начала
+            min={refresh.startDate || today}
             onChange={(e) => setRefresh({ ...refresh, endDate: e.target.value })}
-            />
+          />
         </div>
 
         <div className="description-field">

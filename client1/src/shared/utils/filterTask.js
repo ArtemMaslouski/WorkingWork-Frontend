@@ -1,5 +1,3 @@
-import { useTranslation } from 'react-i18next';
-
 export const filterTasks = (tasks, filters) => {
   const { category, subcategory, addressFrom, addressTo, startDate, endDate } = filters;
 

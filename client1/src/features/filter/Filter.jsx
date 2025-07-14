@@ -3,7 +3,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import Button from '../../shared/ui/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { NavLink } from 'react-router-dom';
 
 const Filter = ({ isOpen, onClose, onFilterApply, serviceDetails }) => {
   const { t } = useTranslation();

@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './QuestionComponent.css';
-import question from './questions';
+import questions from './questions';
 
 const QuestionComponent = () => {
   const [activeQuestion, setActiveQuestion] = useState(null);
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+  const currentQuestions = questions[currentLanguage] || questions.ru;
 
   const toggleQuestion = (index) => {
     setActiveQuestion(activeQuestion === index ? null : index);
@@ -11,9 +15,12 @@ const QuestionComponent = () => {
 
   return (
     <div className='question-component'>
-      <h1 className='question-title'>Вопросы и ответы</h1>
+      <h1 className='question-title'>{currentLanguage === 'ru' ? 'Вопросы и ответы' : 
+        currentLanguage === 'en' ? 'Questions and Answers' :
+        currentLanguage === 'es' ? 'Preguntas y Respuestas' :
+        'Fragen und Antworten'}</h1>
       <ul className='question-list'>
-        {question.map((item, index) => (
+        {currentQuestions.map((item, index) => (
           <li key={index} className='question-item'>
             <h2
               className='question-text'
