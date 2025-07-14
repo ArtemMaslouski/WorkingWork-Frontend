@@ -17,7 +17,7 @@ const UserChat = () => {
   useEffect(() => {
     const fetchUserChats = async () => {
       try {
-        const data = ChatApi.getUserChats();
+        const data = await ChatApi.getUserChats();
         setChats(data);
       } catch (error) {
         setError(t('chat.loadError') || 'Ошибка загрузки чатов');
@@ -41,8 +41,18 @@ const UserChat = () => {
             <IoIosArchive size={30} />
           </div>
         </div>
-
-        <div className='chats'></div>
+        <div className='chats'>
+          {chats.map((chat) => (
+            <>
+              {chat.messages.map((message) => (
+                <>
+                  <li>{message.sender.UserName}</li>
+                  <li>{message.content}</li>
+                </>
+              ))}
+            </>
+          ))}
+        </div>
       </div>
     </div>
   );
