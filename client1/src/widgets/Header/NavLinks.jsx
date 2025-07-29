@@ -23,15 +23,6 @@ const NavLinks = ({
   const langModalRef = useRef(null);
   const { t } = useTranslation();
 
-  const loadChats = async () => {
-    const data = ChatApi.getUserChats();
-
-    if (data) {
-      setChats(chats);
-      navigate('/UserChats');
-    }
-  };
-
   const handleSelectLanguage = (lang) => {
     const langCode = {
       Русский: 'ru',
@@ -112,10 +103,6 @@ const NavLinks = ({
       {isAuthenticated ? (
         <>
           <NavLink
-            onClick={(e) => {
-              e.preventDefault();
-              loadChats();
-            }}
             to='/UserChat'
             className={({ isActive }) => (isActive ? 'active' : '')}
           >
