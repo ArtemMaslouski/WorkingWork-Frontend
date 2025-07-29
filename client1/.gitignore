@@ -4,3 +4,4 @@
 # Игнорировать кэш Babel и прочие временные файлы в node_modules
 **/node_modules/.cache/
 **/node_modules/.cache/default-development/
+**/src/images
