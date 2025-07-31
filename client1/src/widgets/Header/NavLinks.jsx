@@ -18,7 +18,6 @@ const NavLinks = ({
   navigate,
 }) => {
   const location = useLocation();
-  const [chats, setChats] = useState([]);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
   const langModalRef = useRef(null);
   const { t } = useTranslation();
