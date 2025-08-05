@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, Fragment, useState } from 'react';
 import './UserChat.css';
 import { MdOutlineMenu } from 'react-icons/md';
 import { TfiWrite } from 'react-icons/tfi';
 import { IoIosArchive } from 'react-icons/io';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 import ChatApi from '../../api/ChatApi';
 import avatarImg from '../../images/photo_2025-05-27_12-39-41.jpg';
+import deafultImg from '../../images/No_Name_Avatar.jpg';
+import ChatModal from './ModalChat/ChatModal';
 
 const UserChat = () => {
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ const UserChat = () => {
   const [chats, setChats] = useState([]);
   const [error, setError] = useState(true);
   const [loading, setLoading] = useState(null);
-  const [time, setTime] = useState('');
+  const [selectedChat, setSelectedChat] = useState(null);
 
   useEffect(() => {
     const fetchUserChats = async () => {
@@ -29,6 +30,21 @@ const UserChat = () => {
     };
     fetchUserChats();
   }, [t]);
+
+  const handleSendMessage = async (chatId, content) => {
+    try {
+      const newMessage = await ChatApi.sendMessage(chatId, content); // <- напиши такой метод
+      setChats((prevChats) =>
+        prevChats.map((chat) =>
+          chat.id === chatId
+            ? { ...chat, messages: [...chat.messages, newMessage] }
+            : chat
+        )
+      );
+    } catch (error) {
+      console.error('Ошибка отправки сообщения:', error);
+    }
+  };
 
   return (
     <div className='userChat_component'>
@@ -45,10 +61,18 @@ const UserChat = () => {
         </div>
         <div className='chats_item'>
           {chats.map((chat) => (
-            <>
+            <Fragment key={chat.id}>
               {chat.messages.map((message) => (
-                <div className='dialog_container'>
-                  <img className='user_photo' src={avatarImg} alt='Avatar' />
+                <div
+                  key={message.id}
+                  className='dialog_container'
+                  onClick={() => setSelectedChat(chat)}
+                >
+                  <img
+                    className='user_photo'
+                    src={avatarImg}
+                    alt={deafultImg}
+                  />
                   <div className='user_info'>
                     <div className='user_nickName'>
                       {message.sender.UserName}
@@ -57,10 +81,18 @@ const UserChat = () => {
                   </div>
                 </div>
               ))}
-            </>
+            </Fragment>
           ))}
         </div>
       </div>
+
+      {/* Модалка */}
+      <ChatModal
+        isOpen={!!selectedChat}
+        onClose={() => setSelectedChat(null)}
+        chat={selectedChat}
+        onSend={handleSendMessage}
+      />
     </div>
   );
 };
