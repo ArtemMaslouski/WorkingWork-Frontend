@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ChatApi from '../../../api/ChatApi';
 import './ChatModal.css';
 
 const ChatModal = ({ isOpen, onClose, chat, onSend, currentUserId }) => {
@@ -13,10 +14,14 @@ const ChatModal = ({ isOpen, onClose, chat, onSend, currentUserId }) => {
 
   if (!isOpen || !chat) return null;
 
-  const handleSend = () => {
-    if (message.trim()) {
-      onSend(chat.id, message);
-      setMessage('');
+  const handleSend = async () => {
+    try {
+      console.log(message);
+
+      const messageForSending = await ChatApi.createMessage(chat.id, message);
+      return messageForSending;
+    } catch (error) {
+      console.error('Ошибка: ', error.message);
     }
   };
 

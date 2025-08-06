@@ -9,6 +9,18 @@ class Chat {
       console.error(`Ошибка: `, error.message);
     }
   }
+
+  async createMessage(chatId, content) {
+    try {
+      const response = await api.post('/chats/createMessage', {
+        chatId,
+        content,
+      });
+      return response.data;
+    } catch (error) {
+      console.error(`Ошибка: `, error.message);
+    }
+  }
 }
 
 const ChatApi = new Chat();
