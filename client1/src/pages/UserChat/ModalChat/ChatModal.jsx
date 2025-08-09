@@ -12,12 +12,30 @@ const ChatModal = ({ isOpen, onClose, chat, onSend, currentUserId }) => {
     }
   }, [chat?.messages]);
 
+  console.log(chat);
+
+  useEffect(() => {
+    if (isOpen && chat) {
+      const fetchMessages = async () => {
+        try {
+          //console.log(chat);
+          const data = await ChatApi.getChatMessage(chat.id);
+          //console.log(data);
+          setMessage(data);
+          //console.log(message);
+        } catch (error) {
+          console.error(`Ошибка: `, error.message);
+        }
+      };
+
+      fetchMessages();
+    }
+  }, [isOpen, chat]);
+
   if (!isOpen || !chat) return null;
 
   const handleSend = async () => {
     try {
-      console.log(message);
-
       const messageForSending = await ChatApi.createMessage(chat.id, message);
       return messageForSending;
     } catch (error) {
