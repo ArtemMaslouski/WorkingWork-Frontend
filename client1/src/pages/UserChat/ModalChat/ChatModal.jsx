@@ -4,25 +4,21 @@ import './ChatModal.css';
 
 const ChatModal = ({ isOpen, onClose, chat, onSend, currentUserId }) => {
   const [message, setMessage] = useState('');
+  const [fetchMessage, setFetchMessage] = useState([]);
   const bottomRef = useRef(null);
 
   useEffect(() => {
     if (bottomRef.current) {
       bottomRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [chat?.messages]);
-
-  console.log(chat);
+  }, [fetchMessage]);
 
   useEffect(() => {
     if (isOpen && chat) {
       const fetchMessages = async () => {
         try {
-          //console.log(chat);
           const data = await ChatApi.getChatMessage(chat.id);
-          //console.log(data);
-          setMessage(data);
-          //console.log(message);
+          setFetchMessage(data);
         } catch (error) {
           console.error(`Ошибка: `, error.message);
         }
@@ -56,7 +52,7 @@ const ChatModal = ({ isOpen, onClose, chat, onSend, currentUserId }) => {
         </div>
 
         <div className='chat_modal_body'>
-          {chat.messages.map((msg) => {
+          {fetchMessage.map((msg) => {
             const isSelf = msg.sender.id === currentUserId;
 
             return (
