@@ -9,12 +9,12 @@ import avatarImg from '../../images/photo_2025-05-27_12-39-41.jpg';
 import deafultImg from '../../images/No_Name_Avatar.jpg';
 import ChatModal from './ModalChat/ChatModal';
 
-const UserChat = () => {
+const UserChat = ({ socket, currentUserId }) => {
   const { t } = useTranslation();
 
   const [chats, setChats] = useState([]);
-  const [error, setError] = useState(true);
-  const [loading, setLoading] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [selectedChat, setSelectedChat] = useState(null);
 
   useEffect(() => {
@@ -31,13 +31,38 @@ const UserChat = () => {
     fetchUserChats();
   }, [t]);
 
+  // Подписка на новые сообщения по сокету
+  useEffect(() => {
+    if (!socket) return;
+
+    const handleNewMessage = (newMessage) => {
+      setChats((prevChats) =>
+        prevChats.map((chat) =>
+          chat.id === newMessage.chatId
+            ? {
+                ...chat,
+                messages: [...(chat.messages || []), newMessage],
+              }
+            : chat
+        )
+      );
+    };
+
+    socket.on('newMessage', handleNewMessage);
+
+    return () => {
+      socket.off('newMessage', handleNewMessage);
+    };
+  }, [socket]);
+
+  // Обновляем сообщения выбранного чата после отправки
   const handleSendMessage = async (chatId, content) => {
     try {
-      const newMessage = await ChatApi.sendMessage(chatId, content); // <- напиши такой метод
+      const newMessage = await ChatApi.createMessage(chatId, content);
       setChats((prevChats) =>
         prevChats.map((chat) =>
           chat.id === chatId
-            ? { ...chat, messages: [...chat.messages, newMessage] }
+            ? { ...chat, messages: [...(chat.messages || []), newMessage] }
             : chat
         )
       );
@@ -45,6 +70,14 @@ const UserChat = () => {
       console.error('Ошибка отправки сообщения:', error);
     }
   };
+
+  if (loading) {
+    return <div>{t('chat.loading') || 'Загрузка...'}</div>;
+  }
+
+  if (error) {
+    return <div className='error'>{error}</div>;
+  }
 
   return (
     <div className='userChat_component'>
@@ -62,11 +95,11 @@ const UserChat = () => {
         <div className='chats_item'>
           {chats.map((chat) => (
             <Fragment key={chat.id}>
-              {chat.messages.map((message) => (
+              {chat.messages && chat.messages.length > 0 && (
                 <div
-                  key={message.id}
                   className='dialog_container'
                   onClick={() => setSelectedChat(chat)}
+                  style={{ cursor: 'pointer' }}
                 >
                   <img
                     className='user_photo'
@@ -75,23 +108,27 @@ const UserChat = () => {
                   />
                   <div className='user_info'>
                     <div className='user_nickName'>
-                      {message.sender.UserName}
+                      {chat.messages[chat.messages.length - 1].sender
+                        ?.UserName || 'Пользователь'}
                     </div>
-                    <div className='user_message'>{message.content}</div>
+                    <div className='user_message'>
+                      {chat.messages[chat.messages.length - 1].content}
+                    </div>
                   </div>
                 </div>
-              ))}
+              )}
             </Fragment>
           ))}
         </div>
       </div>
 
-      {/* Модалка */}
       <ChatModal
         isOpen={!!selectedChat}
         onClose={() => setSelectedChat(null)}
         chat={selectedChat}
         onSend={handleSendMessage}
+        currentUserId={currentUserId}
+        socket={socket}
       />
     </div>
   );
