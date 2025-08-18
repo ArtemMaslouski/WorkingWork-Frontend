@@ -5,7 +5,6 @@ import { TfiWrite } from 'react-icons/tfi';
 import { IoIosArchive } from 'react-icons/io';
 import { useTranslation } from 'react-i18next';
 import ChatApi from '../../api/ChatApi';
-import avatarImg from '../../images/photo_2025-05-27_12-39-41.jpg';
 import deafultImg from '../../images/No_Name_Avatar.jpg';
 import ChatModal from './ModalChat/ChatModal';
 
@@ -127,11 +126,7 @@ const UserChat = ({ socket, currentUserId }) => {
                     onClick={() => setSelectedChat(chat)}
                     style={{ cursor: 'pointer' }}
                   >
-                    <img
-                      className='user_photo'
-                      src={avatarImg}
-                      alt={deafultImg}
-                    />
+                    <img className='user_photo' src={deafultImg} />
                     <div className='user_info'>
                       <div className='user_nickName'>
                         {lastMessage.sender?.UserName || 'Пользователь'}
