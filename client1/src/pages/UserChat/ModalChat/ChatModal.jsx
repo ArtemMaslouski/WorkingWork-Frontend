@@ -92,6 +92,7 @@ const ChatModal = ({
 
       setFetchMessage((prev) => [...prev, messageWithSender]);
       setMessage('');
+
       if (onSend) onSend(chat.id, messageWithSender);
     } catch (error) {
       console.error('Ошибка отправки сообщения: ', error.message);
