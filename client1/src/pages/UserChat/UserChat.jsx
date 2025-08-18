@@ -35,25 +35,22 @@ const UserChat = ({ socket, currentUserId }) => {
     if (!socket) return;
 
     const handleNewMessage = (newMessage) => {
-      setChats((prevChats) => {
-        const updatedChats = prevChats.map((chat) =>
+      setChats((prevChats) =>
+        prevChats.map((chat) =>
           chat.id === newMessage.chatId
             ? { ...chat, messages: [...(chat.messages || []), newMessage] }
             : chat
-        );
+        )
+      );
 
-        setSelectedChat((prevSelected) => {
-          if (prevSelected?.id === newMessage.chatId) {
-            return (
-              updatedChats.find((chat) => chat.id === newMessage.chatId) ||
-              prevSelected
-            );
-          }
-          return prevSelected;
-        });
-
-        return updatedChats;
-      });
+      setSelectedChat((prevSelected) =>
+        prevSelected?.id === newMessage.chatId
+          ? {
+              ...prevSelected,
+              messages: [...(prevSelected.messages || []), newMessage],
+            }
+          : prevSelected
+      );
     };
 
     socket.on('newMessage', handleNewMessage);
@@ -63,32 +60,24 @@ const UserChat = ({ socket, currentUserId }) => {
     };
   }, [socket]);
 
-  // Отправка сообщения и обновление состояний
-  const handleSendMessage = async (chatId, content) => {
-    try {
-      const newMessage = await ChatApi.createMessage(chatId, content);
+  // Обновление состояния чатов при отправке
+  const handleSendMessage = (chatId, newMessage) => {
+    setChats((prevChats) =>
+      prevChats.map((chat) =>
+        chat.id === chatId
+          ? { ...chat, messages: [...(chat.messages || []), newMessage] }
+          : chat
+      )
+    );
 
-      setChats((prevChats) => {
-        const updatedChats = prevChats.map((chat) =>
-          chat.id === chatId
-            ? { ...chat, messages: [...(chat.messages || []), newMessage] }
-            : chat
-        );
-
-        setSelectedChat((prevSelected) => {
-          if (prevSelected?.id === chatId) {
-            return (
-              updatedChats.find((chat) => chat.id === chatId) || prevSelected
-            );
+    setSelectedChat((prevSelected) =>
+      prevSelected?.id === chatId
+        ? {
+            ...prevSelected,
+            messages: [...(prevSelected.messages || []), newMessage],
           }
-          return prevSelected;
-        });
-
-        return updatedChats;
-      });
-    } catch (error) {
-      console.error('Ошибка отправки сообщения:', error);
-    }
+        : prevSelected
+    );
   };
 
   if (loading) {
@@ -118,23 +107,26 @@ const UserChat = ({ socket, currentUserId }) => {
               chat.messages && chat.messages.length > 0
                 ? chat.messages[chat.messages.length - 1]
                 : null;
+
             return (
               <Fragment key={chat.id}>
-                {lastMessage && (
-                  <div
-                    className='dialog_container'
-                    onClick={() => setSelectedChat(chat)}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <img className='user_photo' src={deafultImg} />
-                    <div className='user_info'>
-                      <div className='user_nickName'>
-                        {lastMessage.sender?.UserName || 'Пользователь'}
-                      </div>
-                      <div className='user_message'>{lastMessage.content}</div>
+                <div
+                  className='dialog_container'
+                  onClick={() => setSelectedChat(chat)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <img className='user_photo' src={deafultImg} />
+                  <div className='user_info'>
+                    <div className='user_nickName'>
+                      {lastMessage
+                        ? lastMessage.sender?.UserName
+                        : chat.user?.UserName || 'Пользователь'}
+                    </div>
+                    <div className='user_message'>
+                      {lastMessage ? lastMessage.content : 'Нет сообщений'}
                     </div>
                   </div>
-                )}
+                </div>
               </Fragment>
             );
           })}
