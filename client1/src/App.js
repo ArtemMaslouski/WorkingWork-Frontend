@@ -16,15 +16,14 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTranslation } from 'react-i18next';
 import './providers/i18n/i18n';
-import { AuthProvider } from './context/AuthContext';
-import { useAuth } from './context/AuthContext';
-
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { io } from 'socket.io-client';
+import { jwt_decode } from 'jwt-decode';
 
 const socket = io(process.env.REACT_APP_URL);
 
-function App() {
-  const { user, currentUserId } = useAuth();
+function InnerApp() {
+  const { currentUserId } = useAuth();
   const { i18n } = useTranslation();
 
   useEffect(() => {
@@ -35,31 +34,35 @@ function App() {
   }, [i18n]);
 
   return (
-    <AuthProvider>
-      <div className='App'>
-        <ToastContainer />
-        <Header />
-        <div className='content'>
-          <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/QuestionComponent' element={<QuestionComponent />} />
-            <Route path='/FindTask' element={<FindTask />} />
-            <Route path='/SignIn' element={<SignIn />} />
-            <Route path='/CreatingTask' element={<CreatingTask />} />
-            <Route path='/OrderForm' element={<OrderForm />} />
-            <Route path='/Profile' element={<Profile />} />
-            <Route
-              path='/UserChat'
-              element={
-                <UserChat socket={socket} currentUserId={currentUserId} />
-              }
-            />
-            <Route path='/find-task' element={<FindTask />} />
-            <Route path='/RecoveryForm' element={<RecoveryForm />} />
-          </Routes>
-        </div>
-        <Footer />
+    <div className='App'>
+      <ToastContainer />
+      <Header />
+      <div className='content'>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/QuestionComponent' element={<QuestionComponent />} />
+          <Route path='/FindTask' element={<FindTask />} />
+          <Route path='/SignIn' element={<SignIn />} />
+          <Route path='/CreatingTask' element={<CreatingTask />} />
+          <Route path='/OrderForm' element={<OrderForm />} />
+          <Route path='/Profile' element={<Profile />} />
+          <Route
+            path='/UserChat'
+            element={<UserChat socket={socket} currentUserId={currentUserId} />}
+          />
+          <Route path='/find-task' element={<FindTask />} />
+          <Route path='/RecoveryForm' element={<RecoveryForm />} />
+        </Routes>
       </div>
+      <Footer />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <InnerApp />
     </AuthProvider>
   );
 }
