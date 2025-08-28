@@ -15,6 +15,9 @@ import { useLocation } from 'react-router-dom';
 import Loader from '../../shared/ui/Loader/Loader';
 import { useTranslation } from 'react-i18next';
 import { useTaskTranslation } from '../../hooks/useTaskTranslation';
+import ChatApi from '../../api/ChatApi';
+import AuthPeople from '../../api/userApi';
+import { jwtDecode } from 'jwt-decode';
 
 const FindTask = () => {
   const [tasks, setTasks] = useState([]);
@@ -77,8 +80,18 @@ const FindTask = () => {
     return () => clearTimeout(timeout);
   }, [filteredTasks]);
 
-  const TriggerforClicking = (id) => {
-    alert(id);
+  const TriggerforClicking = async (id1) => {
+    try {
+      const token = await AuthPeople.getAccessToken();
+      const id2 = jwtDecode(token);
+
+      console.log(id1, id2.sub);
+
+      await ChatApi.createChatBetweenTwoUsers(id2.sub, id1);
+      alert('Чат был создан');
+    } catch (error) {
+      console.error(`Ошибка: `, error.message);
+    }
   };
 
   const handleFilterApply = (filters) => {

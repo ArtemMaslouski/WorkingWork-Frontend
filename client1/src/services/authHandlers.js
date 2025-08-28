@@ -89,7 +89,6 @@ export const handleRegisterSubmit = async (
 
   try {
     const response = await userApi.registerUser({ UserName, Email, Password });
-    console.log(response);
 
     localStorage.setItem('UserName', UserName);
 
@@ -120,7 +119,6 @@ export const handleSendVerificationEmail = async (e, Email, setEmail) => {
   e.preventDefault();
   try {
     const response = await userApi.sendVerificationEmail(Email);
-    console.log(response);
 
     toast.success('Код успешно отправлен на email');
     return true;
@@ -183,7 +181,7 @@ export const handleResetPassword = async (
 
   try {
     const response = await userApi.resetPassword(Email, Password);
-    console.log(response);
+
     toast.success('Восстановление прошло успешно!');
     navigate('/SignIn');
     return { success: true };

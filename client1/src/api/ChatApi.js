@@ -30,6 +30,17 @@ class Chat {
       console.error(`Ошибка: `, error.message);
     }
   }
+  async createChatBetweenTwoUsers(userId1, userId2) {
+    try {
+      const response = await api.post('/chats/createChat', {
+        userId1,
+        userId2,
+      });
+      return response.data;
+    } catch (error) {
+      console.error(`Ошибка: `, error.message);
+    }
+  }
 }
 
 const ChatApi = new Chat();
