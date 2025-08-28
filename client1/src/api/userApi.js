@@ -13,7 +13,10 @@ class Auth {
       });
       return response.data;
     } catch (error) {
-      console.error('Ошибка при регистрации:', error.response?.data || error.message);
+      console.error(
+        'Ошибка при регистрации:',
+        error.response?.data || error.message
+      );
       throw error;
     }
   }
@@ -36,7 +39,10 @@ class Auth {
       const response = await api.get('/auth/get-users');
       return response.data;
     } catch (error) {
-      console.error('Ошибка при получении пользователей:', error.response?.data || error.message);
+      console.error(
+        'Ошибка при получении пользователей:',
+        error.response?.data || error.message
+      );
       throw error;
     }
   }
@@ -46,7 +52,10 @@ class Auth {
       const response = await api.post('/auth/send', { Email });
       return response.data;
     } catch (error) {
-      console.error('Ошибка при отправке письма:', error.response?.data || error.message);
+      console.error(
+        'Ошибка при отправке письма:',
+        error.response?.data || error.message
+      );
       throw error;
     }
   }
@@ -56,17 +65,26 @@ class Auth {
       const response = await api.post('/auth/forgotPassword', { Code, Email });
       return response.data;
     } catch (error) {
-      console.error('Ошибка при верификации кода:', error.response?.data || error.message);
+      console.error(
+        'Ошибка при верификации кода:',
+        error.response?.data || error.message
+      );
       throw error;
     }
   }
 
   async resetPassword(Email, Password) {
     try {
-      const response = await api.post('/auth/resetPassword', { Email, Password });
+      const response = await api.post('/auth/resetPassword', {
+        Email,
+        Password,
+      });
       return response.data;
     } catch (error) {
-      console.error('Ошибка при сбросе пароля:', error.response?.data || error.message);
+      console.error(
+        'Ошибка при сбросе пароля:',
+        error.response?.data || error.message
+      );
       throw error;
     }
   }
@@ -80,8 +98,21 @@ class Auth {
 
       await api.delete('/auth/delete-users');
     } catch (error) {
-      console.error('Ошибка удаления пользователя:', error.response?.data || error.message);
+      console.error(
+        'Ошибка удаления пользователя:',
+        error.response?.data || error.message
+      );
       throw error;
+    }
+  }
+  async getAccessToken() {
+    try {
+      const response = await api.get('/auth/getToken', {
+        withCredentials: true,
+      });
+      return response.data;
+    } catch (error) {
+      console.error(`Ошибка: `, error.message);
     }
   }
 }
