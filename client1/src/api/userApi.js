@@ -110,7 +110,8 @@ class Auth {
       const response = await api.get('/auth/getToken', {
         withCredentials: true,
       });
-      return response.data;
+
+      return response.data.access_token;
     } catch (error) {
       console.error(`Ошибка: `, error.message);
     }

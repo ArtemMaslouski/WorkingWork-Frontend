@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
 import './FindTask.css';
 import InputService from '../../shared/ui/InputService/InputService';
 import TaskApi from '../../api/TaskApi';
@@ -28,14 +29,57 @@ const FindTask = () => {
   const [showNoTasks, setShowNoTasks] = useState(false);
   const { translatedTasks } = useTaskTranslation(filteredTasks);
   const { t } = useTranslation();
-
   const location = useLocation();
+  const [socket, setSocket] = useState(null);
+  const [currentUserId, setCurrentUserId] = useState(null);
+
+  useEffect(() => {
+    const setupSocket = async () => {
+      try {
+        const token = await AuthPeople.getAccessToken();
+        const user = jwtDecode(token);
+        setCurrentUserId(user.sub);
+
+        console.log('Socket auth token:', token, typeof token);
+
+        const socketConnection = io(process.env.REACT_APP_URL, {
+          auth: { token },
+        });
+
+        socketConnection.on('inviteToChat', ({ chatId }) => {
+          console.log('Приглашение в чат:', chatId);
+          socketConnection.emit('joinChat', { chatId });
+          alert('Вас пригласили в чат!');
+        });
+
+        //написать такой же запрос и для пользователя с обратной сторны
+        socketConnection.on('joinedChat', ({ chatId }) => {
+          console.log(`Вы присоединились к чату ${chatId}`);
+        });
+
+        socketConnection.on('sendMessage', (data) => {
+          console.error('Ошибка от сервера:', data.message);
+          alert(`Ошибка: ${data.message}`);
+        });
+
+        setSocket(socketConnection);
+        console.log(socket);
+      } catch (err) {
+        console.error('Ошибка соединения с socket.io:', err);
+      }
+    };
+
+    setupSocket();
+
+    return () => {
+      if (socket) socket.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const search = params.get('search');
 
-    // 1. Поиск по тексту
     if (search) {
       setSearchQuery(search);
       const results = searchTasks(tasks, search);
@@ -43,7 +87,6 @@ const FindTask = () => {
       return;
     }
 
-    // 2. Фильтрация
     const filtersFromUrl = {
       category: params.get('category') || '',
       subcategory: params.get('subcategory') || '',
@@ -61,6 +104,7 @@ const FindTask = () => {
     const fetchTasks = async () => {
       try {
         const tasksData = await TaskApi.getAllTasks();
+        console.log(tasksData);
         setTasks(tasksData);
         setFilteredTasks(tasksData);
       } catch (error) {
@@ -80,17 +124,37 @@ const FindTask = () => {
     return () => clearTimeout(timeout);
   }, [filteredTasks]);
 
-  const TriggerforClicking = async (id1) => {
+  const TriggerforClicking = async (task, ownerUserId) => {
+    console.log(task);
+    if (!socket || !currentUserId) {
+      alert('Соединение не установлено или неавторизованный пользователь');
+      return;
+    }
+
     try {
-      const token = await AuthPeople.getAccessToken();
-      const id2 = jwtDecode(token);
+      const chat = await ChatApi.createChatBetweenTwoUsers(
+        currentUserId,
+        ownerUserId
+      );
 
-      console.log(id1, id2.sub);
+      if (chat && chat.id) {
+        socket.emit('joinChat', { chatId: chat.id });
 
-      await ChatApi.createChatBetweenTwoUsers(id2.sub, id1);
-      alert('Чат был создан');
+        socket.once('joinedChat', ({ chatId }) => {
+          socket.emit('sendInvitation', { userId: ownerUserId, chatId });
+          socket.emit('sendMessage', {
+            chatId,
+            senderId: currentUserId,
+            content: 'Тестовое сообщение',
+          });
+          alert('Чат был создан и пользователи присоединены');
+        });
+      } else {
+        alert('Ошибка: не удалось получить chatId');
+      }
     } catch (error) {
-      console.error(`Ошибка: `, error.message);
+      console.error('Ошибка при создании чата:', error);
+      alert('Не удалось создать чат');
     }
   };
 
@@ -136,8 +200,7 @@ const FindTask = () => {
                 </p>
                 <p>
                   <i>
-                    <IoCalendarOutline size={20} />
-                    {t('start')}:
+                    <IoCalendarOutline size={20} /> {t('start')}:
                   </i>{' '}
                   <b>{new Date(task.BeginAt).toLocaleDateString('ru-RU')}</b>
                   <br />
@@ -155,7 +218,7 @@ const FindTask = () => {
               </div>
               <div className='response_button'>
                 <Button
-                  onClick={() => TriggerforClicking(task.UserId)}
+                  onClick={() => TriggerforClicking(task, task.UserId)}
                   text={t('respond')}
                   style={{
                     backgroundColor: 'rgba(215, 201, 164)',
