@@ -1,50 +1,47 @@
 import React, { createContext, useEffect, useContext, useState } from 'react';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
+import AuthPeople from '../api/userApi';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    !!Cookies.get('access_token')
-  );
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUserId, setCurrentUserId] = useState(null);
 
-  useEffect(() => {
-    const token = Cookies.get('access_token');
-    setIsAuthenticated(!!token);
+  const login = async (token) => {
+    const decode = jwtDecode(token);
 
-    if (token) {
-      try {
-        const decoded = jwtDecode(token);
-        setCurrentUserId(decoded.sub); // assuming 'sub' contains user id
-      } catch (error) {
-        console.error('Error decoding token', error);
-        setCurrentUserId(null);
-      }
-    } else {
-      setCurrentUserId(null);
-    }
-  }, []);
-
-  const login = (token) => {
-    Cookies.set('access_token', token, { expires: 7 });
     setIsAuthenticated(true);
-
-    try {
-      const decoded = jwtDecode(token);
-      setCurrentUserId(decoded.sub);
-    } catch (error) {
-      console.error('Error decoding token', error);
-      setCurrentUserId(null);
-    }
+    setCurrentUserId(decode.sub);
   };
 
-  const logout = () => {
-    Cookies.remove('access_token');
+  const logout = async () => {
     setIsAuthenticated(false);
     setCurrentUserId(null);
   };
+
+  useEffect(() => {
+    const restoreSession = async () => {
+      try {
+        const token = await AuthPeople.getAccessToken();
+        if (token) {
+          const decode = jwtDecode(token);
+          setIsAuthenticated(true);
+          setCurrentUserId(decode.sub);
+        } else {
+          setIsAuthenticated(false);
+          setCurrentUserId(null);
+        }
+      } catch (error) {
+        console.error(`Ошибка восстановления сессии: `, error);
+        setIsAuthenticated(false);
+        setCurrentUserId(null);
+      }
+    };
+
+    restoreSession();
+  }, []);
 
   return (
     <AuthContext.Provider
