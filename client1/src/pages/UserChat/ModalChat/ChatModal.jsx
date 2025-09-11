@@ -113,8 +113,6 @@ const ChatModal = ({
 
         <div className='chat_modal_body'>
           {fetchMessage.map((msg) => {
-            console.log(msg);
-            console.log(currentUserId);
             const isSelf = msg.sender.id === currentUserId;
             return (
               <div
