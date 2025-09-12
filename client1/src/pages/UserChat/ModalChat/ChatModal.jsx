@@ -17,6 +17,15 @@ function addSenderToMessage(msg, currentUserId, currentUserName = 'Вы') {
   return msg;
 }
 
+function insertAnotherUser(chat, currentUserId) {
+  if (!chat || !chat.participants) return null;
+  const anotherUser = chat.participants.find(
+    (participant) => participant.userId !== currentUserId
+  );
+
+  return anotherUser?.user?.UserName || 'Пользователь';
+}
+
 const ChatModal = ({
   isOpen,
   onClose,
@@ -28,6 +37,8 @@ const ChatModal = ({
   const [message, setMessage] = useState('');
   const [fetchMessage, setFetchMessage] = useState([]);
   const bottomRef = useRef(null);
+
+  const otherUser = insertAnotherUser(chat, currentUserId);
 
   // Загрузка сообщений при открытии/смене чата
   useEffect(() => {
@@ -104,7 +115,7 @@ const ChatModal = ({
       <div className='chat_modal_container'>
         <div className='chat_modal_header'>
           <div className='chat_modal_title'>
-            Чат с {chat.user?.UserName || 'Пользователем'}
+            Чат с {otherUser || 'Пользователем'}
           </div>
           <button className='chat_modal_close' onClick={onClose}>
             ×
