@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import ChatApi from '../../../api/ChatApi';
 import './ChatModal.css';
 
-// Функция для дополнения сообщения полем sender
 function addSenderToMessage(msg, currentUserId, currentUserName = 'Вы') {
   if (!msg.sender) {
     return {
@@ -18,31 +17,24 @@ function addSenderToMessage(msg, currentUserId, currentUserName = 'Вы') {
 }
 
 function insertAnotherUser(chat, currentUserId) {
-  if (!chat || !chat.participants) return null;
+  if (!chat?.participants) return null;
   const anotherUser = chat.participants.find(
     (participant) => participant.userId !== currentUserId
   );
-
   return anotherUser?.user?.UserName || 'Пользователь';
 }
 
-const ChatModal = ({
-  isOpen,
-  onClose,
-  chat,
-  onSend,
-  currentUserId,
-  socket,
-}) => {
+const ChatModal = ({ isOpen, onClose, chat, currentUserId, socket }) => {
   const [message, setMessage] = useState('');
   const [fetchMessage, setFetchMessage] = useState([]);
   const bottomRef = useRef(null);
 
   const otherUser = insertAnotherUser(chat, currentUserId);
 
-  // Загрузка сообщений при открытии/смене чата
+  // Загрузка сообщений при открытии чата
   useEffect(() => {
-    if (isOpen && chat) {
+    if (isOpen && chat?.id) {
+      socket.emit('joinChat', { chatId: chat.id });
       ChatApi.getChatMessage(chat.id)
         .then((data) => {
           const enriched = data.map((msg) =>
@@ -50,78 +42,51 @@ const ChatModal = ({
           );
           setFetchMessage(enriched);
         })
-        .catch((err) => console.error('Ошибка: ', err.message));
+        .catch((err) => console.error(err));
     }
-  }, [isOpen, chat, currentUserId]);
+  }, [isOpen, chat, currentUserId, socket]);
 
-  // Очистка состояния при закрытии модалки
+  // Автоскролл при новых сообщениях
   useEffect(() => {
-    if (!isOpen) {
-      setFetchMessage([]);
-      setMessage('');
-    }
-  }, [isOpen]);
-
-  // Автоскролл при изменении сообщений
-  useEffect(() => {
-    if (bottomRef.current) {
-      bottomRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [fetchMessage]);
 
-  // Обработка новых сообщений через сокет
+  // Подписка на новые сообщения через сокет
   useEffect(() => {
     if (!socket) return;
-
     const handleNewMessage = (newMsg) => {
-      if (chat && newMsg.chatId === chat.id) {
-        const enrichedMsg = addSenderToMessage(newMsg, currentUserId);
-        setFetchMessage((prev) => [...prev, enrichedMsg]);
+      if (chat?.id && newMsg.chatId === chat.id) {
+        const enriched = addSenderToMessage(newMsg, currentUserId);
+        setFetchMessage((prev) => [...prev, enriched]);
       }
     };
-
     socket.on('newMessage', handleNewMessage);
-
-    return () => {
-      socket.off('newMessage', handleNewMessage);
-    };
+    return () => socket.off('newMessage', handleNewMessage);
   }, [socket, chat, currentUserId]);
-
-  if (!isOpen || !chat) return null;
 
   const handleSend = async () => {
     if (!message.trim()) return;
-
     try {
-      const messageForSending = await ChatApi.createMessage(chat.id, message);
-
-      // Дополняем sender для рендера
-      const messageWithSender = addSenderToMessage(
-        messageForSending,
-        currentUserId
-      );
-
-      setFetchMessage((prev) => [...prev, messageWithSender]);
+      const msg = await ChatApi.createMessage(chat.id, message);
+      const enriched = addSenderToMessage(msg, currentUserId);
+      setFetchMessage((prev) => [...prev, enriched]);
       setMessage('');
-
-      if (onSend) onSend(chat.id, messageWithSender);
-    } catch (error) {
-      console.error('Ошибка отправки сообщения: ', error.message);
+    } catch (err) {
+      console.error(err);
     }
   };
+
+  if (!isOpen || !chat?.id) return null;
 
   return (
     <div className='chat_modal_overlay'>
       <div className='chat_modal_container'>
         <div className='chat_modal_header'>
-          <div className='chat_modal_title'>
-            Чат с {otherUser || 'Пользователем'}
-          </div>
+          <div className='chat_modal_title'>Чат с {otherUser}</div>
           <button className='chat_modal_close' onClick={onClose}>
             ×
           </button>
         </div>
-
         <div className='chat_modal_body'>
           {fetchMessage.map((msg) => {
             const isSelf = msg.sender.id === currentUserId;
@@ -137,12 +102,11 @@ const ChatModal = ({
           })}
           <div ref={bottomRef} />
         </div>
-
         <div className='chat_modal_footer'>
           <input
             type='text'
-            placeholder='Введите сообщение...'
             value={message}
+            placeholder='Введите сообщение...'
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
           />
