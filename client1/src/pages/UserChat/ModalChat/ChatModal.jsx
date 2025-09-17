@@ -31,10 +31,11 @@ const ChatModal = ({ isOpen, onClose, chat, currentUserId, socket }) => {
 
   const otherUser = insertAnotherUser(chat, currentUserId);
 
-  // Загрузка сообщений при открытии чата
+  // Загружаем историю
   useEffect(() => {
     if (isOpen && chat?.id) {
       socket.emit('joinChat', { chatId: chat.id });
+
       ChatApi.getChatMessage(chat.id)
         .then((data) => {
           const enriched = data.map((msg) =>
@@ -46,34 +47,56 @@ const ChatModal = ({ isOpen, onClose, chat, currentUserId, socket }) => {
     }
   }, [isOpen, chat, currentUserId, socket]);
 
-  // Автоскролл при новых сообщениях
+  // Автоскролл
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [fetchMessage]);
 
-  // Подписка на новые сообщения через сокет
+  // Ловим новые сообщения
   useEffect(() => {
     if (!socket) return;
+
     const handleNewMessage = (newMsg) => {
       if (chat?.id && newMsg.chatId === chat.id) {
         const enriched = addSenderToMessage(newMsg, currentUserId);
-        setFetchMessage((prev) => [...prev, enriched]);
+
+        setFetchMessage((prev) => {
+          // Убираем временное сообщение, если оно есть
+          const withoutPending = prev.filter(
+            (m) => !(m.status === 'pending' && m.content === enriched.content)
+          );
+          return [...withoutPending, enriched];
+        });
       }
     };
+
     socket.on('newMessage', handleNewMessage);
     return () => socket.off('newMessage', handleNewMessage);
   }, [socket, chat, currentUserId]);
 
-  const handleSend = async () => {
+  // Отправка сообщения
+  const handleSend = () => {
     if (!message.trim()) return;
-    try {
-      const msg = await ChatApi.createMessage(chat.id, message);
-      const enriched = addSenderToMessage(msg, currentUserId);
-      setFetchMessage((prev) => [...prev, enriched]);
-      setMessage('');
-    } catch (err) {
-      console.error(err);
-    }
+
+    // Добавляем временное сообщение (pending)
+    const tempMsg = {
+      id: `temp-${Date.now()}`,
+      chatId: chat.id,
+      senderId: currentUserId,
+      content: message,
+      sender: { id: currentUserId, UserName: 'Вы' },
+      status: 'pending',
+    };
+    setFetchMessage((prev) => [...prev, tempMsg]);
+
+    // Отправляем на сервер
+    socket.emit('sendMessage', {
+      chatId: chat.id,
+      content: message,
+    });
+
+    // Очищаем input
+    setMessage('');
   };
 
   if (!isOpen || !chat?.id) return null;
@@ -93,10 +116,15 @@ const ChatModal = ({ isOpen, onClose, chat, currentUserId, socket }) => {
             return (
               <div
                 key={msg.id}
-                className={`chat_message ${isSelf ? 'self' : 'other'}`}
+                className={`chat_message ${isSelf ? 'self' : 'other'} ${
+                  msg.status === 'pending' ? 'pending' : ''
+                }`}
               >
                 <div className='chat_message_sender'>{msg.sender.UserName}</div>
                 <div className='chat_message_text'>{msg.content}</div>
+                {msg.status === 'pending' && (
+                  <div className='chat_message_status'>Отправляется...</div>
+                )}
               </div>
             );
           })}

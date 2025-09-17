@@ -1,22 +1,24 @@
 import React, { createContext, useEffect, useContext, useState } from 'react';
-import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
-import AuthPeople from '../api/userApi';
+import AuthPeople from '../api/userApi'; // ваш API для получения токена
 
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUserId, setCurrentUserId] = useState(null);
+  const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const login = async (token) => {
-    const decode = jwtDecode(token);
-
+  const login = async (newToken) => {
+    const decode = jwtDecode(newToken);
+    setToken(newToken);
     setIsAuthenticated(true);
     setCurrentUserId(decode.sub);
   };
 
   const logout = async () => {
+    setToken(null);
     setIsAuthenticated(false);
     setCurrentUserId(null);
   };
@@ -24,30 +26,42 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const restoreSession = async () => {
       try {
-        const token = await AuthPeople.getAccessToken();
-        if (token) {
-          const decode = jwtDecode(token);
+        const savedToken = await AuthPeople.getAccessToken();
+        console.log('Restored token:', savedToken);
+        if (savedToken) {
+          const decode = jwtDecode(savedToken);
+          setToken(savedToken);
           setIsAuthenticated(true);
           setCurrentUserId(decode.sub);
         } else {
+          setToken(null);
           setIsAuthenticated(false);
           setCurrentUserId(null);
         }
       } catch (error) {
-        console.error(`Ошибка восстановления сессии: `, error);
+        console.error('Ошибка восстановления сессии:', error);
+        setToken(null);
         setIsAuthenticated(false);
         setCurrentUserId(null);
+      } finally {
+        setLoading(false);
       }
     };
-
     restoreSession();
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, login, logout, currentUserId }}
+      value={{
+        isAuthenticated,
+        login,
+        logout,
+        currentUserId,
+        token,
+        loading,
+      }}
     >
-      {children}
+      {!loading && children}
     </AuthContext.Provider>
   );
 };

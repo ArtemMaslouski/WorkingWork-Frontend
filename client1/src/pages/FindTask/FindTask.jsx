@@ -40,19 +40,17 @@ const FindTask = () => {
         const user = jwtDecode(token);
         setCurrentUserId(user.sub);
 
-        console.log('Socket auth token:', token, typeof token);
-
         const socketConnection = io(process.env.REACT_APP_URL, {
           auth: { token },
         });
 
+        // Обработка приглашения в чат второго пользователя
         socketConnection.on('inviteToChat', ({ chatId }) => {
           console.log('Приглашение в чат:', chatId);
           socketConnection.emit('joinChat', { chatId });
           alert('Вас пригласили в чат!');
         });
 
-        //написать такой же запрос и для пользователя с обратной сторны
         socketConnection.on('joinedChat', ({ chatId }) => {
           console.log(`Вы присоединились к чату ${chatId}`);
         });
@@ -63,7 +61,6 @@ const FindTask = () => {
         });
 
         setSocket(socketConnection);
-        console.log(socket);
       } catch (err) {
         console.error('Ошибка соединения с socket.io:', err);
       }
@@ -104,7 +101,6 @@ const FindTask = () => {
     const fetchTasks = async () => {
       try {
         const tasksData = await TaskApi.getAllTasks();
-        console.log(tasksData);
         setTasks(tasksData);
         setFilteredTasks(tasksData);
       } catch (error) {
@@ -125,7 +121,6 @@ const FindTask = () => {
   }, [filteredTasks]);
 
   const TriggerforClicking = async (task, ownerUserId) => {
-    console.log(task);
     if (!socket || !currentUserId) {
       alert('Соединение не установлено или неавторизованный пользователь');
       return;
@@ -141,10 +136,11 @@ const FindTask = () => {
         socket.emit('joinChat', { chatId: chat.id });
 
         socket.once('joinedChat', ({ chatId }) => {
+          // Отправка приглашения второму пользователю опциональна,
+          // если сервер уже отправляет приглашение, дублировать можно не обязательно
           socket.emit('sendInvitation', { userId: ownerUserId, chatId });
           socket.emit('sendMessage', {
             chatId,
-            senderId: currentUserId,
             content: 'Тестовое сообщение',
           });
           alert('Чат был создан и пользователи присоединены');

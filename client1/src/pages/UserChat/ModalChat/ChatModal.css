@@ -186,6 +186,16 @@
   user-select: none;
 }
 
+.chat_message.pending {
+  opacity: 0.6;
+}
+
+.chat_message_status {
+  font-size: 12px;
+  color: gray;
+  margin-top: 2px;
+}
+
 .chat_modal_footer button:hover {
   background: #f9e6c9;
 }

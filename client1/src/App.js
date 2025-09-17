@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './widgets/Header/Header';
 import Footer from './widgets/Footer/Footer';
@@ -20,11 +20,19 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import { io } from 'socket.io-client';
 import { jwt_decode } from 'jwt-decode';
 
-const socket = io(process.env.REACT_APP_URL);
-
 function InnerApp() {
-  const { currentUserId } = useAuth();
+  const { currentUserId, token } = useAuth();
   const { i18n } = useTranslation();
+
+  const socket = useMemo(() => {
+    if (!token) return null;
+
+    return io(process.env.REACT_APP_URL, {
+      auth: {
+        token,
+      },
+    });
+  }, [token]);
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language') || 'ru';
