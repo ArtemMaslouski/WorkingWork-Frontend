@@ -16,12 +16,10 @@ function addSenderToMessage(msg, currentUserId, currentUserName = 'Вы') {
   return msg;
 }
 
-function insertAnotherUser(chat, currentUserId) {
-  if (!chat?.participants) return null;
-  const anotherUser = chat.participants.find(
-    (participant) => participant.userId !== currentUserId
-  );
-  return anotherUser?.user?.UserName || 'Пользователь';
+export function insertAnotherUser(chat, currentUserId) {
+  if (!chat?.participants) return 'Пользователь';
+  const other = chat.participants.find((p) => p.userId !== currentUserId);
+  return other?.user?.UserName || 'Пользователь';
 }
 
 const ChatModal = ({ isOpen, onClose, chat, currentUserId, socket }) => {
