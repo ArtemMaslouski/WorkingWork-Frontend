@@ -6,7 +6,7 @@ import { IoIosArchive } from 'react-icons/io';
 import { useTranslation } from 'react-i18next';
 import ChatApi from '../../api/ChatApi';
 import deafultImg from '../../images/No_Name_Avatar.jpg';
-import ChatModal from './ModalChat/ChatModal';
+import ChatModal, { insertAnotherUser } from './ModalChat/ChatModal';
 
 const UserChat = ({ socket, currentUserId }) => {
   const { t } = useTranslation();
@@ -108,6 +108,8 @@ const UserChat = ({ socket, currentUserId }) => {
                 ? chat.messages[chat.messages.length - 1]
                 : null;
 
+            const otherUserName = insertAnotherUser(chat, currentUserId);
+
             return (
               <Fragment key={chat.id}>
                 <div
@@ -115,13 +117,13 @@ const UserChat = ({ socket, currentUserId }) => {
                   onClick={() => setSelectedChat(chat)}
                   style={{ cursor: 'pointer' }}
                 >
-                  <img className='user_photo' src={deafultImg} />
+                  <img
+                    className='user_photo'
+                    src={deafultImg}
+                    alt='User avatar'
+                  />
                   <div className='user_info'>
-                    <div className='user_nickName'>
-                      {lastMessage
-                        ? lastMessage.sender?.UserName
-                        : chat.user?.UserName || 'Пользователь'}
-                    </div>
+                    <div className='user_nickName'>{otherUserName}</div>
                     <div className='user_message'>
                       {lastMessage ? lastMessage.content : 'Нет сообщений'}
                     </div>
